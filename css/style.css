@@ -1,0 +1,1136 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* -------------------- Universal Link Style -------------------- */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* -------------------- Header and Navigation -------------------- */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 60px;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    color: #000;
+    font-weight: 500;
+    font-family: 'IBM Plex Sans', sans-serif;
+    padding: 10px 0;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #007bff;
+}
+
+/* Dropdown specific styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown > a:after {
+    content: ' \25BE';
+    font-size: 10px;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    min-width: 200px;
+    border-radius: 5px;
+}
+
+.dropdown-menu li a {
+    padding: 10px 20px;
+    white-space: nowrap;
+    font-weight: 400;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f0f0f0;
+    color: #007bff;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.search-icon {
+    margin-left: 20px;
+}
+
+.search-icon img {
+    height: 24px;
+    cursor: pointer;
+}
+
+/* -------------------- Hero Section Styles -------------------- */
+.hero-section {
+    position: relative;
+    height: auto;
+    color: white;
+    padding: 80px;
+    text-align: left;
+    overflow: hidden;
+    background-image: linear-gradient(135deg, #005F5F 0%, #1A237E 50%, #4B0082 100%);
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 20% 80%, rgba(120, 219, 226, 0.4) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.4) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 0;
+    line-height: 1.1;
+    max-width: 45%;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.hero-description-container {
+    max-width: 50%;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.learn-more-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 25px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    background: transparent;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.learn-more-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: white;
+    transform: translateY(-2px);
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs><pattern id="circuit" patternUnits="userSpaceOnUse" width="40" height="40"><path d="M0 20h40M20 0v40M10 10h20M30 30h10M10 30h10" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/></pattern></defs><rect width="100%" height="100%" fill="url(%23circuit)"/></svg>');
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* -------------------- Slideshow Container -------------------- */
+.container {
+    position: relative;
+    max-width: 1000px;
+    margin: 40px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.mySlides {
+    display: none;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-top-left-radius: 10px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.caption-container {
+    text-align: center;
+    background-color: #222;
+    padding: 10px 16px;
+    color: white;
+    font-size: 1.1em;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.column {
+    float: left;
+    width: 16.66%;
+    padding: 5px;
+}
+
+.demo {
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+    border-radius: 5px;
+}
+
+.active, .demo:hover {
+    opacity: 1;
+}
+
+/* -------------------- Meet the Institutes Section -------------------- */
+.institutes-section {
+    padding: 80px 40px;
+    background-color: #f5f5f5;
+    text-align: center;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 40px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    white-space: normal;
+}
+
+.institutes-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.institute-card-link {
+    display: block;
+    flex-shrink: 0;
+    width: 250px;
+    height: 350px;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.institute-card-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.institute-card {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.institute-logo-area {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #fff;
+    flex-shrink: 0;
+}
+
+.institute-logo-placeholder {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    padding: 10px;
+}
+
+.institute-card h3 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #1a237e;
+    margin: 0;
+    text-align: center;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.institute-card p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.4;
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: 0;
+}
+
+/* -------------------- Explore Resources Section Styles -------------------- */
+.explore-resources-section {
+    background-color: #F8F4FD;
+    padding: 60px 80px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.explore-resources-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.explore-resources-text {
+    flex: 1;
+    max-width: 50%;
+    text-align: left;
+}
+
+.explore-resources-text h2 {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    line-height: 1.2;
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: #333;
+}
+
+.explore-resources-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    color: #555;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.explore-resources-button {
+    margin-top: 20px;
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #9B63CE;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid transparent; /* Set a transparent border for the initial state */
+    border-radius: 25px;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.explore-resources-button:hover {
+    background-color: #834BB3;
+}
+
+.explore-resources-icons {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.resource-icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.resource-icon-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #5A8FCE;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.resource-icon-circle img {
+    max-width: 60%;
+    max-height: 60%;
+    filter: invert(36%) sepia(87%) saturate(2250%) hue-rotate(200deg) brightness(96%) contrast(98%);
+}
+
+.resource-icon-text {
+    padding: 5px 15px;
+    background-color: #C3DBFF;
+    border-radius: 20px;
+    color: #1A237E;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* -------------------- Footer Styles -------------------- */
+.footer {
+    background-color: #0074E0;
+    color: white;
+    padding: 40px 80px 20px;
+    margin-top: 50px;
+    font-size: 0.9em;
+    line-height: 1.6;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 30px;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section.about {
+    max-width: 40%;
+}
+
+.footer-section h3 {
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.footer-section p,
+.footer-section ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: #ffffff;
+    line-height: 1.8;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.footer-section p {
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.nsf-logo-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.nsf-logo-container img {
+    height: 50px;
+}
+
+.nsf-logo-container p {
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* -------------------- General Main Content Wrapper -------------------- */
+.page-main-content {
+    padding: 40px 0;
+    background-color: #fff;
+}
+
+.content-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+/* Styles for page-specific content like Institute Page Hero */
+.institute-page-hero {
+    padding-bottom: 20px;
+}
+
+h1 {
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.institute-page-hero h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.institute-page-hero p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    text-align: left;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* Styles for general sections within the main content */
+.institute-details h2 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    margin-bottom: 15px;
+}
+
+.institute-details p {
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-bottom: 15px;
+}
+
+.institute-details ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    color: #555;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-bottom: 15px;
+}
+
+.institute-details ul li {
+    margin-bottom: 8px;
+}
+
+/* Related Institutes section (on individual institute pages) */
+.related-institutes-section {
+    padding: 40px 0;
+    margin-top: 50px;
+    background-color: transparent;
+    border-top: none;
+    text-align: center;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.related-institutes-section h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 30px;
+    white-space: normal;
+    padding: 0 20px;
+    box-sizing: border-box;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.related-institutes-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 20px 20px 20px;
+    box-sizing: border-box;
+    width: fit-content;
+    min-width: 100%;
+    margin: 0;
+}
+
+/* -------------------- HDR in Action Section -------------------- */
+.hdr-action-section {
+    background-color: #ffffff;
+    padding: 80px 40px;
+    margin-top: 0;
+}
+
+.hdr-action-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hdr-action-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.hdr-action-subtitle {
+    font-size: 1.3rem;
+    color: #666;
+    margin-bottom: 60px;
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.hdr-action-content {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+/* Section Headers */
+.section-header {
+    margin-bottom: 30px;
+}
+
+.section-header h3 a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'IBM Plex Sans', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-header h3 a:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.arrow {
+    color: inherit;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+/* Events Section */
+.events-section {
+    flex: 1;
+    max-width: 400px;
+}
+
+.event-item {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.event-item:last-child {
+    border-bottom: none;
+}
+
+.event-item h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.event-date {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+    margin: 0 0 8px 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.event-location {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    color: #666;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.location-icon {
+    color: #9B63CE;
+    font-size: 1rem;
+}
+
+/* News Section */
+.news-section {
+    flex: 2;
+}
+
+.news-grid {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.news-item {
+    position: relative;
+}
+
+.news-item.large-news {
+    flex: 1.2;
+}
+
+.news-item:not(.large-news) {
+    flex: 1;
+}
+
+.news-date-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #5A8FCE;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    z-index: 2;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.news-image {
+    width: 100%;
+    height: 250px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* HDR Magazine Styling */
+.hdr-magazine {
+    background: linear-gradient(135deg, #FF6B9D 0%, #4ECDC4 50%, #45B7D1 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.magazine-content {
+    padding: 20px;
+}
+
+.nsf-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: white;
+    color: #4ECDC4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 0 auto 15px;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.magazine-content h4 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    letter-spacing: 2px;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.magazine-tagline {
+    font-size: 0.8rem;
+    font-weight: 500;
+    opacity: 0.9;
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* Conference Image Styling */
+.conference-image {
+    background: linear-gradient(135deg, #FF6B9D 0%, #4ECDC4 50%, #45B7D1 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.conference-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-item h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 10px 0;
+    line-height: 1.4;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.news-item p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* -------------------- Responsive Design -------------------- */
+@media (max-width: 1024px) {
+    .hdr-action-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .events-section {
+        max-width: none;
+    }
+    
+    .news-grid {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .hdr-action-title {
+        font-size: 2.5rem;
+    }
+    
+    .hdr-action-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .section-header h3 {
+        font-size: 1.8rem;
+    }
+    
+    .news-image {
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 10px 20px;
+    }
+    .hero-section {
+        padding: 60px 20px;
+    }
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    .hero-title, .hero-description-container {
+        max-width: 100%;
+    }
+    .explore-resources-section {
+        padding: 40px 30px;
+    }
+    .explore-resources-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    .explore-resources-text {
+        max-width: 100%;
+    }
+    .explore-resources-icons {
+        justify-content: center;
+        gap: 20px;
+    }
+    .explore-resources-text h2 {
+        font-size: 2rem;
+    }
+    .footer {
+        padding: 30px 20px;
+    }
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-section {
+        margin-bottom: 20px;
+        min-width: unset;
+    }
+    .institutes-section {
+        padding: 30px 0;
+    }
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+    .institutes-grid {
+        padding: 0 15px 15px 15px;
+        gap: 15px;
+        justify-content: flex-start;
+    }
+    .institute-card-link {
+        width: 200px;
+    }
+    .institute-card h3 {
+        font-size: 1.4rem;
+    }
+    .institute-card p {
+        font-size: 0.85rem;
+    }
+    .container {
+        margin: 20px auto;
+    }
+    .prev, .next {
+        padding: 12px;
+        font-size: 18px;
+        margin-top: -30px;
+    }
+    .numbertext {
+        font-size: 10px;
+        padding: 6px 10px;
+    }
+    .caption-container {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+    .column {
+        padding: 3px;
+    }
+    .related-institutes-section {
+        padding: 30px 0;
+    }
+    .related-institutes-section h2 {
+        padding: 0 15px;
+    }
+    .related-institutes-grid {
+        padding: 0 15px 15px 15px;
+        gap: 15px;
+        justify-content: flex-start;
+    }
+    .related-institutes-grid .institute-card-link {
+        width: 180px;
+    }
+}
+
+/* -------------------- HDR By The Numbers Section -------------------- */
+.numbers-section {
+    padding: 30px 40px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.numbers-header h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 50px;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.numbers-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.number-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    max-width: 200px;
+}
+
+.number-icon {
+    width: 80px;
+    height: 80px;
+}
+
+.number-value {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.number-label {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .numbers-grid {
+        flex-wrap: wrap;
+        gap: 40px 20px;
+    }
+
+    .number-item {
+        max-width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .number-item {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .institute-card-link {
+        width: 180px;
+    }
+    .institutes-grid {
+        padding: 0 10px 10px 10px;
+        gap: 10px;
+    }
+    .institute-logo-area {
+        width: 70px;
+        height: 70px;
+    }
+    .prev, .next {
+        padding: 10px;
+        font-size: 16px;
+        margin-top: -25px;
+    }
+    .caption-container {
+        font-size: 0.8em;
+    }
+    .related-institutes-grid .institute-card-link {
+        width: 180px;
+    }
+    .related-institutes-grid {
+        padding: 0 10px 10px 10px;
+        gap: 10px;
+    }
+}
