@@ -48,3 +48,4 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(numbersSection);
     }
 });
+

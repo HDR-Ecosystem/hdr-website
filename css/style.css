@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&family=Source+Sans+3:wght@300;400;600&display=swap');
 
 * {
     box-sizing: border-box;
@@ -6,7 +6,7 @@
 
 body {
     margin: 0;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
     background-color: #f5f5f5;
 }
 
@@ -158,7 +158,7 @@ a {
     font-size: 1.1rem;
     line-height: 1.6;
     opacity: 0.9;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .learn-more-btn {
@@ -245,7 +245,7 @@ a {
     top: 0;
     background-color: rgba(0, 0, 0, 0.5);
     border-top-left-radius: 10px;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .caption-container {
@@ -256,7 +256,7 @@ a {
     font-size: 1.1em;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .row:after {
@@ -287,7 +287,7 @@ a {
     background-color: #f5f5f5;
     text-align: center;
     overflow-x: auto;
-    white-space: nowrap;
+    white-space: normal;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -375,7 +375,7 @@ a {
     color: #555;
     line-height: 1.4;
     text-align: center;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
     margin: 0;
 }
 
@@ -416,7 +416,7 @@ a {
     line-height: 1.6;
     opacity: 0.9;
     color: #555;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .explore-resources-button {
@@ -428,7 +428,7 @@ a {
     font-size: 16px;
     font-weight: 500;
     transition: all 0.3s ease;
-    border: 2px solid transparent; /* Set a transparent border for the initial state */
+    border: 2px solid transparent;
     border-radius: 25px;
     font-family: 'IBM Plex Sans', sans-serif;
 }
@@ -468,6 +468,7 @@ a {
     max-width: 60%;
     max-height: 60%;
     filter: invert(36%) sepia(87%) saturate(2250%) hue-rotate(200deg) brightness(96%) contrast(98%);
+    transition: transform 0.3s ease;
 }
 
 .resource-icon-text {
@@ -480,6 +481,44 @@ a {
     font-size: 0.9rem;
 }
 
+/* -------------------- Tooltip Styles (Updated) -------------------- */
+.tooltip {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    color: #002D5C;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    z-index: 10;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    pointer-events: none;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+    max-width: 200px;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+}
+
+.resource-icon-item:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
 /* -------------------- Footer Styles -------------------- */
 .footer {
     background-color: #0074E0;
@@ -488,7 +527,7 @@ a {
     margin-top: 50px;
     font-size: 0.9em;
     line-height: 1.6;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .footer-content {
@@ -541,7 +580,7 @@ a {
 
 .footer-section p {
     color: rgba(255, 255, 255, 0.8);
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .nsf-logo-container {
@@ -565,7 +604,7 @@ a {
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     color: rgba(255, 255, 255, 0.7);
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 /* -------------------- General Main Content Wrapper -------------------- */
@@ -603,7 +642,7 @@ h1 {
     line-height: 1.6;
     color: #555;
     text-align: left;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 /* Styles for general sections within the main content */
@@ -613,7 +652,7 @@ h1 {
 }
 
 .institute-details p {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
     margin-bottom: 15px;
 }
 
@@ -621,7 +660,7 @@ h1 {
     list-style-type: disc;
     margin-left: 20px;
     color: #555;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
     margin-bottom: 15px;
 }
 
@@ -637,7 +676,7 @@ h1 {
     border-top: none;
     text-align: center;
     overflow-x: auto;
-    white-space: nowrap;
+    white-space: normal;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -689,7 +728,7 @@ h1 {
     color: #666;
     margin-bottom: 60px;
     text-align: center;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .hdr-action-content {
@@ -755,7 +794,7 @@ h1 {
     color: #333;
     font-weight: 500;
     margin: 0 0 8px 0;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .event-location {
@@ -764,7 +803,7 @@ h1 {
     gap: 8px;
     font-size: 0.95rem;
     color: #666;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .location-icon {
@@ -806,7 +845,7 @@ h1 {
     font-size: 0.8rem;
     font-weight: 500;
     z-index: 2;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .news-image {
@@ -853,20 +892,12 @@ h1 {
     font-family: 'IBM Plex Sans', sans-serif;
 }
 
-.magazine-content h4 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 0 0 10px 0;
-    letter-spacing: 2px;
-    font-family: 'IBM Plex Sans', sans-serif;
-}
-
 .magazine-tagline {
     font-size: 0.8rem;
     font-weight: 500;
     opacity: 0.9;
     margin: 0;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 /* Conference Image Styling */
@@ -899,7 +930,7 @@ h1 {
     color: #666;
     line-height: 1.5;
     margin: 0;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 /* -------------------- Responsive Design -------------------- */
@@ -1085,7 +1116,7 @@ h1 {
     font-size: 1rem;
     color: #666;
     margin: 0;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 /* Responsive adjustments for smaller screens */
@@ -1132,5 +1163,324 @@ h1 {
     .related-institutes-grid {
         padding: 0 10px 10px 10px;
         gap: 10px;
+    }
+}
+
+/* -------------------- About Page Specific Styles -------------------- */
+.about-page {
+   
+}
+
+.gradient-banner {
+    position: relative;
+    width: 100%;
+    height: 250px; 
+    overflow: hidden;
+}
+
+.gradient-banner img {
+    width: 100%;
+    display: block;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.about-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 290px;
+    transform: translateY(-50%); 
+    color: #fff;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: left; 
+    white-space: nowrap;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.history-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.history-section h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 700;
+}
+
+.history-section p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+/* SVG map styling */
+svg {
+    color: #ffffff;
+    display: block;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+path {
+    fill: currentColor;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+a {
+    transition: color 1s;
+}
+
+a:hover {
+    color: #0074E0;
+    transition: color 0s;
+}
+
+/* Custom Tooltip for SVG Map */
+.svg-tooltip {
+    position: fixed;
+    display: none;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 1000;
+    white-space: nowrap;
+}
+
+/* Responsive styles for the about page */
+@media (max-width: 768px) {
+    .gradient-banner {
+        height: 150px; 
+    }
+    .about-text-overlay {
+        font-size: 2.5rem;
+    }
+    .history-section {
+        margin: 30px auto;
+        padding: 0 15px;
+    }
+    .history-section h2 {
+        font-size: 2rem;
+    }
+    .history-section p {
+        font-size: 1rem;
+    }
+}
+
+/* -------------------- Numbers Section -------------------- */
+.numbers-section {
+    padding: 30px 40px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.numbers-header h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 50px;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.numbers-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.number-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    max-width: 200px;
+}
+
+.number-icon {
+    width: 80px;
+    height: 80px;
+}
+
+.number-value {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.number-label {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .numbers-grid {
+        flex-wrap: wrap;
+        gap: 40px 20px;
+    }
+
+    .number-item {
+        max-width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .number-item {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .institute-card-link {
+        width: 180px;
+    }
+    .institutes-grid {
+        padding: 0 10px 10px 10px;
+        gap: 10px;
+    }
+    .institute-logo-area {
+        width: 70px;
+        height: 70px;
+    }
+    .prev, .next {
+        padding: 10px;
+        font-size: 16px;
+        margin-top: -25px;
+    }
+    .caption-container {
+        font-size: 0.8em;
+    }
+    .related-institutes-grid .institute-card-link {
+        width: 180px;
+    }
+    .related-institutes-grid {
+        padding: 0 10px 10px 10px;
+        gap: 10px;
+    }
+}
+
+/* -------------------- About Page Specific Styles -------------------- */
+.about-page {
+   
+}
+
+.gradient-banner {
+    position: relative;
+    width: 100%;
+    height: 250px; 
+    overflow: hidden;
+}
+
+.gradient-banner img {
+    width: 100%;
+    display: block;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.about-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 290px;
+    transform: translateY(-50%); 
+    color: #fff;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: left; 
+    white-space: nowrap;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.history-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.history-section h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 700;
+}
+
+.history-section p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+/* SVG map styling */
+svg {
+    color: #ffffff;
+    display: block;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+path {
+    fill: currentColor;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+a {
+    transition: color 1s;
+}
+
+a:hover {
+    color: #0074E0;
+    transition: color 0s;
+}
+
+/* Custom Tooltip for SVG Map */
+.svg-tooltip {
+    position: fixed;
+    display: none;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 1000;
+    white-space: nowrap;
+}
+
+/* Responsive styles for the about page */
+@media (max-width: 768px) {
+    .gradient-banner {
+        height: 150px; 
+    }
+    .about-text-overlay {
+        font-size: 2.5rem;
+    }
+    .history-section {
+        margin: 30px auto;
+        padding: 0 15px;
+    }
+    .history-section h2 {
+        font-size: 2rem;
+    }
+    .history-section p {
+        font-size: 1rem;
     }
 }
