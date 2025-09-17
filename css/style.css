@@ -4,10 +4,70 @@
     box-sizing: border-box;
 }
 
+/* Base font for all body text */
 body {
     margin: 0;
     font-family: 'Source Sans 3', sans-serif;
     background-color: #f5f5f5;
+}
+
+/* -------------------- Universal Font Style Groups -------------------- */
+/* IBM Plex Sans for all headings, titles, and prominent elements */
+h1, h2, h3, h4, h5, h6,
+.hero-title,
+.learn-more-btn,
+.section-title,
+.explore-resources-text h2,
+.explore-resources-button,
+.resource-icon-text,
+.footer-section h3,
+.section-header h3 a,
+.event-item h4,
+.news-item h4,
+.nsf-logo,
+.about-text-overlay,
+.history-section h2,
+.numbers-header h2,
+.number-value,
+.header-banner .header-title,
+.topics-covered h2,
+.topic-item h3,
+.resources-list-section h2,
+.types-of-resources h2,
+.resource-content h3,
+.news-and-updates h1 {
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+/* Source Sans 3 for all body text, descriptions, and other content */
+p,
+.nav-links li a,
+.dropdown-menu li a,
+.numbertext,
+.caption-container,
+.hero-description,
+.institute-card p,
+.footer-section,
+.footer-section p,
+.nsf-logo-container p,
+.footer-bottom,
+.event-date,
+.event-location,
+.news-date-badge,
+.magazine-tagline,
+.news-item p,
+.hdr-action-subtitle,
+.institute-page-hero p,
+.institute-details p,
+.institute-details ul li,
+.history-section p,
+.number-label,
+.introduction p,
+.topic-item ul li,
+.resources-list-section li,
+.resource-content p,
+.news-and-updates p {
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 /* -------------------- Universal Link Style -------------------- */
@@ -49,7 +109,7 @@ a {
 .nav-links li a {
     color: #000;
     font-weight: 500;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: bold;
     padding: 10px 0;
     display: block;
     transition: color 0.3s ease;
@@ -147,7 +207,6 @@ a {
     margin-bottom: 0;
     line-height: 1.1;
     max-width: 45%;
-    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .hero-description-container {
@@ -158,7 +217,6 @@ a {
     font-size: 1.1rem;
     line-height: 1.6;
     opacity: 0.9;
-    font-family: 'Source Sans 3', sans-serif;
 }
 
 .learn-more-btn {
@@ -171,7 +229,6 @@ a {
     font-weight: 500;
     transition: all 0.3s ease;
     background: transparent;
-    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .learn-more-btn:hover {
@@ -225,7 +282,6 @@ a {
     -webkit-user-select: none;
     background-color: rgba(0, 0, 0, 0.5);
     transition: background-color 0.3s ease;
-    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .next {
@@ -245,7 +301,6 @@ a {
     top: 0;
     background-color: rgba(0, 0, 0, 0.5);
     border-top-left-radius: 10px;
-    font-family: 'Source Sans 3', sans-serif;
 }
 
 .caption-container {
@@ -256,7 +311,6 @@ a {
     font-size: 1.1em;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    font-family: 'Source Sans 3', sans-serif;
 }
 
 .row:after {
@@ -296,7 +350,6 @@ a {
     font-weight: bold;
     color: #333;
     margin-bottom: 40px;
-    font-family: 'IBM Plex Sans', sans-serif;
     white-space: normal;
 }
 
@@ -367,7 +420,6 @@ a {
     color: #1a237e;
     margin: 0;
     text-align: center;
-    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .institute-card p {
@@ -375,7 +427,6 @@ a {
     color: #555;
     line-height: 1.4;
     text-align: center;
-    font-family: 'Source Sans 3', sans-serif;
     margin: 0;
 }
 
@@ -407,7 +458,6 @@ a {
     font-weight: bold;
     margin-bottom: 15px;
     line-height: 1.2;
-    font-family: 'IBM Plex Sans', sans-serif;
     color: #333;
 }
 
@@ -416,7 +466,6 @@ a {
     line-height: 1.6;
     opacity: 0.9;
     color: #555;
-    font-family: 'Source Sans 3', sans-serif;
 }
 
 .explore-resources-button {
@@ -430,7 +479,6 @@ a {
     transition: all 0.3s ease;
     border: 2px solid transparent;
     border-radius: 25px;
-    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .explore-resources-button:hover {
@@ -476,7 +524,6 @@ a {
     background-color: #C3DBFF;
     border-radius: 20px;
     color: #1A237E;
-    font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 500;
     font-size: 0.9rem;
 }
@@ -499,8 +546,8 @@ a {
     pointer-events: none;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    min-width: 150px;
-    max-width: 200px;
+    min-width: 200px;
+    max-width: 300px;
 }
 
 .tooltip::after {
@@ -524,10 +571,9 @@ a {
     background-color: #0074E0;
     color: white;
     padding: 40px 80px 20px;
-    margin-top: 50px;
+    margin-top: 0;
     font-size: 0.9em;
     line-height: 1.6;
-    font-family: 'Source Sans 3', sans-serif;
 }
 
 .footer-content {
@@ -553,7 +599,6 @@ a {
     color: #ffffff;
     margin-bottom: 15px;
     font-size: 1.2em;
-    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .footer-section p,
@@ -580,7 +625,6 @@ a {
 
 .footer-section p {
     color: rgba(255, 255, 255, 0.8);
-    font-family: 'Source Sans 3', sans-serif;
 }
 
 .nsf-logo-container {
@@ -604,7 +648,6 @@ a {
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     color: rgba(255, 255, 255, 0.7);
-    font-family: 'Source Sans 3', sans-serif;
 }
 
 /* -------------------- General Main Content Wrapper -------------------- */
@@ -626,10 +669,6 @@ a {
     padding-bottom: 20px;
 }
 
-h1 {
-    font-family: 'IBM Plex Sans', sans-serif;
-}
-
 .institute-page-hero h1 {
     font-size: 2.5rem;
     color: #333;
@@ -642,17 +681,14 @@ h1 {
     line-height: 1.6;
     color: #555;
     text-align: left;
-    font-family: 'Source Sans 3', sans-serif;
 }
 
 /* Styles for general sections within the main content */
 .institute-details h2 {
-    font-family: 'IBM Plex Sans', sans-serif;
     margin-bottom: 15px;
 }
 
 .institute-details p {
-    font-family: 'Source Sans 3', sans-serif;
     margin-bottom: 15px;
 }
 
@@ -660,7 +696,6 @@ h1 {
     list-style-type: disc;
     margin-left: 20px;
     color: #555;
-    font-family: 'Source Sans 3', sans-serif;
     margin-bottom: 15px;
 }
 
@@ -687,7 +722,6 @@ h1 {
     white-space: normal;
     padding: 0 20px;
     box-sizing: border-box;
-    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .related-institutes-grid {
@@ -720,7 +754,6 @@ h1 {
     color: #333;
     margin-bottom: 10px;
     text-align: center;
-    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .hdr-action-subtitle {
@@ -728,7 +761,6 @@ h1 {
     color: #666;
     margin-bottom: 60px;
     text-align: center;
-    font-family: 'Source Sans 3', sans-serif;
 }
 
 .hdr-action-content {
@@ -747,7 +779,6 @@ h1 {
     text-decoration: none;
     font-size: 2rem;
     font-weight: bold;
-    font-family: 'IBM Plex Sans', sans-serif;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -786,7 +817,6 @@ h1 {
     color: #333;
     margin: 0 0 8px 0;
     line-height: 1.4;
-    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .event-date {
@@ -794,7 +824,6 @@ h1 {
     color: #333;
     font-weight: 500;
     margin: 0 0 8px 0;
-    font-family: 'Source Sans 3', sans-serif;
 }
 
 .event-location {
@@ -803,7 +832,6 @@ h1 {
     gap: 8px;
     font-size: 0.95rem;
     color: #666;
-    font-family: 'Source Sans 3', sans-serif;
 }
 
 .location-icon {
@@ -845,7 +873,6 @@ h1 {
     font-size: 0.8rem;
     font-weight: 500;
     z-index: 2;
-    font-family: 'Source Sans 3', sans-serif;
 }
 
 .news-image {
@@ -889,7 +916,6 @@ h1 {
     font-weight: bold;
     font-size: 1rem;
     margin: 0 auto 15px;
-    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .magazine-tagline {
@@ -897,7 +923,6 @@ h1 {
     font-weight: 500;
     opacity: 0.9;
     margin: 0;
-    font-family: 'Source Sans 3', sans-serif;
 }
 
 /* Conference Image Styling */
@@ -922,7 +947,6 @@ h1 {
     color: #333;
     margin: 0 0 10px 0;
     line-height: 1.4;
-    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .news-item p {
@@ -930,7 +954,6 @@ h1 {
     color: #666;
     line-height: 1.5;
     margin: 0;
-    font-family: 'Source Sans 3', sans-serif;
 }
 
 /* -------------------- Responsive Design -------------------- */
@@ -1013,6 +1036,7 @@ h1 {
     }
     .institutes-section {
         padding: 30px 0;
+        overflow-x: hidden; /* <-- FIXED CODE: Hides horizontal scroll on mobile */
     }
     .section-title {
         font-size: 2rem;
@@ -1022,6 +1046,7 @@ h1 {
         padding: 0 15px 15px 15px;
         gap: 15px;
         justify-content: flex-start;
+        flex-wrap: wrap; /* <-- FIXED CODE: Allows cards to wrap on mobile */
     }
     .institute-card-link {
         width: 200px;
@@ -1079,7 +1104,6 @@ h1 {
     font-weight: bold;
     color: #333;
     margin-bottom: 50px;
-    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .numbers-grid {
@@ -1109,14 +1133,12 @@ h1 {
     font-weight: bold;
     color: #333;
     margin: 0;
-    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .number-label {
     font-size: 1rem;
     color: #666;
     margin: 0;
-    font-family: 'Source Sans 3', sans-serif;
 }
 
 /* Responsive adjustments for smaller screens */
@@ -1166,212 +1188,234 @@ h1 {
     }
 }
 
-/* -------------------- About Page Specific Styles -------------------- */
-.about-page {
-   
+/* --- Resources Page Styles --- */
+main {
+    padding-bottom: 50px;
 }
 
-.gradient-banner {
+/* Header banner section */
+.header-banner {
     position: relative;
     width: 100%;
-    height: 250px; 
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
 }
 
-.gradient-banner img {
-    width: 100%;
-    display: block;
-    height: 100%;
-    object-fit: cover; 
-}
-
-.about-text-overlay {
+/* Background image for the banner */
+.header-banner .background-image {
     position: absolute;
-    top: 50%;
-    left: 290px;
-    transform: translateY(-50%); 
-    color: #fff;
-    font-size: 3rem;
-    font-weight: bold;
-    text-align: left; 
-    white-space: nowrap;
-    font-family: 'IBM Plex Sans', sans-serif;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 
-.history-section {
+/* New: Box around the header title */
+.header-title-box {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px 60px;
+    border-radius: 10px;
+    width: 800px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    z-index: 1;
+    backdrop-filter: blur(5px);
+}
+
+/* Title within the box */
+.header-banner .header-title {
+    font-size: 3rem;
+    color: #333; 
+    font-weight: 700;
+    margin: 0; 
+}
+
+/* Introduction section */
+.introduction {
     max-width: 900px;
     margin: 40px auto;
     padding: 0 20px;
+}
+
+.introduction h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.introduction p {
+    font-size: 1.1rem;
     line-height: 1.6;
     color: #555;
 }
 
-.history-section h2 {
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 20px;
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 700;
+.introduction p a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-.history-section p {
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-    font-family: 'Source Sans 3', sans-serif;
-}
-
-/* SVG map styling */
-svg {
-    color: #ffffff;
-    display: block;
-    margin: 0 auto;
-    max-width: 1000px;
-}
-path {
-    fill: currentColor;
-    stroke: #000;
-    stroke-width: 1;
-}
-
-a {
-    transition: color 1s;
-}
-
-a:hover {
-    color: #0074E0;
-    transition: color 0s;
-}
-
-/* Custom Tooltip for SVG Map */
-.svg-tooltip {
-    position: fixed;
-    display: none;
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
-    border-radius: 5px;
-    font-size: 14px;
-    pointer-events: none;
-    z-index: 1000;
-    white-space: nowrap;
-}
-
-/* Responsive styles for the about page */
-@media (max-width: 768px) {
-    .gradient-banner {
-        height: 150px; 
-    }
-    .about-text-overlay {
-        font-size: 2.5rem;
-    }
-    .history-section {
-        margin: 30px auto;
-        padding: 0 15px;
-    }
-    .history-section h2 {
-        font-size: 2rem;
-    }
-    .history-section p {
-        font-size: 1rem;
-    }
-}
-
-/* -------------------- Numbers Section -------------------- */
-.numbers-section {
-    padding: 30px 40px;
-    background-color: #ffffff;
+/* New Topics Section Styles */
+.topics-covered {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
     text-align: center;
 }
 
-.numbers-header h2 {
+.topics-covered h2 {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #333;
-    margin-bottom: 50px;
-    font-family: 'IBM Plex Sans', sans-serif;
+    color: #000000;
+    margin-bottom: 40px;
 }
 
-.numbers-grid {
+.topics-container {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
-.number-item {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    max-width: 200px;
+.topic-item {
+    padding: 0;
+    flex: 1 1 200px; /* Flex-grow, flex-shrink, flex-basis */
+    max-width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.number-icon {
+.topic-item img {
     width: 80px;
     height: 80px;
+    margin-bottom: 15px;
+
 }
 
-.number-value {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #333;
+.topic-item h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #000000;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.topic-item ul {
+    list-style-type: none;
+    padding: 0;
     margin: 0;
-    font-family: 'IBM Plex Sans', sans-serif;
+    text-align: left;
 }
 
-.number-label {
+.topic-item ul li {
     font-size: 1rem;
-    color: #666;
-    margin: 0;
-    font-family: 'Source Sans 3', sans-serif;
+    color: #000000;
+    line-height: 1.5;
+    margin-bottom: 8px;
 }
 
-/* Responsive adjustments for smaller screens */
+/* Responsive styles for the new section */
+@media (max-width: 1200px) {
+    .topics-container {
+        gap: 20px;
+    }
+    .topic-item {
+        flex: 1 1 200px;
+    }
+}
+
 @media (max-width: 768px) {
-    .numbers-grid {
-        flex-wrap: wrap;
-        gap: 40px 20px;
+    .topics-covered h2 {
+        font-size: 2rem;
     }
-
-    .number-item {
-        max-width: 45%;
+    .topics-container {
+        flex-direction: column;
+        align-items: center;
     }
-}
-
-@media (max-width: 480px) {
-    .number-item {
+    .topic-item {
         max-width: 100%;
     }
 }
 
-@media (max-width: 480px) {
-    .institute-card-link {
-        width: 180px;
+
+.resources-list-section {
+    background-color: #f5f5f500; /* Light gray background to match the page */
+    padding: 50px 0;
+}
+
+.resources-list-section .list-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.resources-list-section .list-column {
+    flex: 1;
+    min-width: 0; /* Ensures columns shrink on smaller screens */
+}
+
+.resources-list-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.resources-list-section ul {
+    list-style-type: none; 
+    padding: 0;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.resources-list-section li {
+    font-size: 1.1rem;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+
+.resources-list-section li::before {
+    content: "•"; 
+    color: #000000;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em; 
+    margin-left: -1em;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .resources-list-section .list-container {
+        flex-direction: column;
+        gap: 30px;
+        padding: 0 20px;
     }
-    .institutes-grid {
-        padding: 0 10px 10px 10px;
-        gap: 10px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .header-banner {
+        height: 150px;
     }
-    .institute-logo-area {
-        width: 70px;
-        height: 70px;
+
+    .header-title-box {
+        padding: 15px 40px;
     }
-    .prev, .next {
-        padding: 10px;
-        font-size: 16px;
-        margin-top: -25px;
+
+    .header-banner .header-title {
+        font-size: 2rem;
     }
-    .caption-container {
-        font-size: 0.8em;
-    }
-    .related-institutes-grid .institute-card-link {
-        width: 180px;
-    }
-    .related-institutes-grid {
-        padding: 0 10px 10px 10px;
-        gap: 10px;
+
+    .introduction {
+        margin: 20px auto;
     }
 }
 
@@ -1404,7 +1448,6 @@ a:hover {
     font-weight: bold;
     text-align: left; 
     white-space: nowrap;
-    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .history-section {
@@ -1419,14 +1462,12 @@ a:hover {
     font-size: 2.5rem;
     color: #333;
     margin-bottom: 20px;
-    font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 700;
 }
 
 .history-section p {
     margin-bottom: 20px;
     font-size: 1.1rem;
-    font-family: 'Source Sans 3', sans-serif;
 }
 
 /* SVG map styling */
@@ -1449,6 +1490,88 @@ a {
 a:hover {
     color: #0074E0;
     transition: color 0s;
+}
+
+.about-us-section {
+    padding: 2rem;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.content-wrapper {
+    text-align: center;
+}
+
+.content-wrapper h2 {
+    font-size: 2.5rem;
+    color: #000000;
+    margin-bottom: 1rem;
+}
+
+.content-wrapper p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #000000;
+}
+
+.image-with-text-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.image-container {
+    flex: 1;
+    max-width: 50%;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.description-content {
+    flex: 1;
+    max-width: 50%;
+}
+
+.description-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #000000;
+    margin-bottom: 1rem;
+}
+
+
+
+@media (max-width: 768px) {
+    .image-with-text-wrapper {
+        flex-direction: column;
+    }
+
+    .image-container,
+    .description-content {
+        max-width: 100%;
+    }
+    
+    .content-wrapper h2 {
+        font-size: 2rem;
+    }
+    
+    .content-wrapper p {
+        font-size: 1rem;
+    }
+    
+    .description-content p {
+        font-size: 0.95rem;
+    }
 }
 
 /* Custom Tooltip for SVG Map */
@@ -1483,4 +1606,303 @@ a:hover {
     .history-section p {
         font-size: 1rem;
     }
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+}
+
+.jump-to-resources {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #007bff;
+    border-radius: 25px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.jump-to-resources:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Types of Resources Section */
+.types-of-resources {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.types-of-resources h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.resource-item {
+    display: flex;
+    align-items: stretch;
+    gap: 60px;
+    margin-bottom: 10px;
+    padding: 40px;
+    min-height: 400px;
+}
+
+.resource-content {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.resource-content h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+.resource-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #000000;
+    text-align: justify;
+}
+
+.resource-image {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+}
+
+.resource-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .types-of-resources {
+        padding: 40px 15px;
+    }
+
+    .types-of-resources h2 {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+
+    .resource-item {
+        flex-direction: column;
+        gap: 30px;
+        margin-bottom: 50px;
+    }
+
+    .resource-content {
+        max-width: 100%;
+    }
+
+    .resource-content h3 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .resource-content p {
+        font-size: 1rem;
+        text-align: left;
+    }
+
+    .resource-image {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .types-of-resources h2 {
+        font-size: 1.8rem;
+    }
+
+    .resource-content h3 {
+        font-size: 1.3rem;
+    }
+
+    .resource-content p {
+        font-size: 0.95rem;
+    }
+}
+
+.how-to-start {
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.how-to-start .content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.how-to-start h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 20px;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+/* News & Updates section styling */
+.news-and-updates {
+    line-height: 1.6;
+    color: #000000;
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.introduction {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.introduction h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.introduction p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.jump-to-publications {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #007bff;
+    border-radius: 25px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.jump-to-publications:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Publications-specific Topics Section */
+.publications-topics {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.publications-topics h2 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.publications-topics .topics-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.publications-topics .topic-item {
+    padding: 0;
+    flex: 1 1 200px;
+    max-width: 300px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.publications-topics .topic-item h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000000;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.publications-topics .topic-item p {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    color: #000000;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.publications-topics .topic-item img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    margin-top: auto;
+}
+
+@media (max-width: 1200px) {
+    .publications-topics .topics-container {
+        gap: 20px;
+    }
+    .publications-topics .topic-item {
+        flex: 1 1 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .publications-topics h2 {
+        font-size: 2rem;
+    }
+    .publications-topics .topics-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .publications-topics .topic-item {
+        max-width: 100%;
+        align-items: flex-start;
+    }
+}
+
+.news-and-updates h1 {
+    font-size: 2.5em;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.news-and-updates h1 strong {
+    font-weight: 700;
+}
+
+.news-and-updates p {
+    font-size: 1.1em;
+    color: #000000;
+    text-align: justify;
 }

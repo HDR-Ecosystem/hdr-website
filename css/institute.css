@@ -1,0 +1,406 @@
+/* General Body */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #ffffff;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+/* Main content area */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Full-width banner */
+.institute-header {
+    position: relative;
+    width: 100vw;
+    margin: 0;
+    overflow: hidden;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+.header-image-container {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    overflow: hidden;
+}
+
+.header-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Overlay text */
+.header-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 20px 30px;
+    border-radius: 10px;
+    max-width: 900px;
+    width: 80%;
+    text-align: center;
+}
+
+.header-text-overlay h1 {
+    margin: 0;
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #333;
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+/* Institute details */
+.institute-details-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.institute-details-container .institute-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.institute-info-box {
+    flex: 1;
+    min-width: 300px;
+}
+
+.institute-logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+}
+
+.institute-logo-container img {
+    max-width: 250px;
+    height: 150px;
+    position: static;
+}
+
+.institute-logo-container p {
+    font-style: italic;
+    color: #666;
+    margin-top: 10px;
+}
+
+.institute-info {
+    margin-bottom: 15px;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.institute-info strong {
+    color: #004d99;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #004d99;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background-color: #003366;
+}
+
+/* Content */
+.institute-content h2 {
+    font-size: 1.8em;
+    color: #004d99;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.institute-content p {
+    line-height: 1.6;
+    color: #444;
+}
+
+/* Mission and Vision Section */
+.mission-vision-container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+.mission-section, .vision-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 80px;
+    gap: 60px;
+}
+
+.vision-section {
+    flex-direction: row-reverse;
+}
+
+/* === HONEYCOMB HEXAGONS === */
+.hexagon {
+    height: 200px;
+    aspect-ratio: 1/cos(30deg);
+    clip-path: polygon(50% -50%, 100% 50%, 50% 150%, 0 50%);
+    background: #3B8686;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.hexagon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    clip-path: inherit;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.hexagon:hover {
+    transform: scale(1.05);
+}
+
+.hexagon:hover img {
+    filter: brightness(1.1);
+}
+
+/* Honeycomb container */
+.honeycomb {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: -30px;
+    margin: 0 auto;
+    width: max-content;
+    padding: 20px 0;
+}
+
+.honeycomb-row {
+    display: flex;
+    gap: 20px;
+}
+
+.honeycomb-row:nth-child(even) {
+    margin-left: calc(50% * 1/cos(30deg));
+}
+
+/* Mission and Vision Specific */
+.mission-hexagons, .vision-hexagons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+/* Content sections */
+.content-section {
+    flex: 1;
+    max-width: 450px;
+}
+
+.content-section h2 {
+    font-size: 2.5em;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+}
+
+.content-section p {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.7;
+    font-style: italic;
+}
+
+/* Areas of Work Section */
+.areas-of-work-container {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 65px;
+  padding: 0 20px;
+}
+
+.areas-of-work-container h2 {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.work-icons {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.work-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  text-align: center;
+}
+
+.work-item img {
+  width: 150px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.work-item p {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #555;
+  margin: 0;
+}
+
+/* Key Contributors Section */
+.key-contributors-container {
+  background-color: #218367;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  box-sizing: border-box;
+}
+
+.contributors-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.contributors-header h2 {
+  font-size: 2.5em;
+  color: #fff;
+  margin: 0;
+}
+
+.view-all-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.view-all-link img {
+  width: 14px;
+  height: 14px;
+}
+
+.view-all-link:hover {
+  color: #a6f0d6; 
+  text-decoration: none;
+}
+
+.contributors-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 1200px; 
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.contributor-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  width: 200px; 
+  transition: transform 0.3s ease;
+}
+
+.contributor-card:hover {
+  transform: translateY(-5px);
+}
+
+.contributor-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.contributor-info {
+  padding: 15px;
+}
+
+.contributor-info h3 {
+  font-size: 1.2em;
+  color: #333;
+  margin: 0 0 5px 0;
+}
+
+.contributor-info p {
+  font-size: 0.9em;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.publications-title {
+  font-size: 2rem;       
+  font-weight: bold;     
+  text-align: center;   
+  margin: 40px 0 20px;   /* Space around the text */
+  color: #000000;           /* Text color */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .institute-details-container { flex-direction: column; align-items: center; }
+    .institute-logo-container { align-items: center; text-align: center; margin-bottom: 20px; }
+    .institute-info-box { width: 100%; box-sizing:border-box; }
+    .header-text-overlay { width: 90%; font-size: 1em; padding: 15px; }
+    .header-text-overlay h1 { font-size: 1.4em; }
+    .mission-section, .vision-section { flex-direction: column; text-align: center; gap: 40px; }
+    .vision-section { flex-direction: column; }
+    .content-section h2 { font-size: 2em; }
+
+    .honeycomb, .honeycomb-row { flex-direction: column; margin-left: 0; gap: 15px; }
+}

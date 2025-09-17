@@ -10,7 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" />
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="css/carousel.css" />
+    <script src="js/script.js"></script>
+    <script src="js/carousel.js"></script>
 </head>
 <body>
     <header class="header">
@@ -24,7 +26,7 @@
             <ul class="nav-links">
                 <li><a href="html/about.html">About</a></li>
                 <li class="dropdown">
-                    <a href="#">Institutes</a>
+                    <a>Institutes</a>
                     <ul class="dropdown-menu">
                         <li><a href="html/institutes/a3d.html">A3D3</a></li>
                         <li><a href="html/institutes/id4.html">ID4</a></li>
@@ -46,7 +48,93 @@
         </div>
     </header>
 
+    <!-- HDR Showcase Carousel -->
+    <section class="hdr-carousel-section">
+        <div class="carousel-container">
+            
+            <button class="carousel-btn prev-btn" aria-label="Previous slide">
+                <span class="btn-icon">‹</span>
+            </button>
+            <button class="carousel-btn next-btn" aria-label="Next slide">
+                <span class="btn-icon">›</span>
+            </button>
 
+            <div class="carousel-wrapper">
+                <div class="carousel-slides">
+                    <div class="carousel-slide active">
+                        <div class="slide-image">
+                            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=600&fit=crop&crop=center" alt="AI and Machine Learning Research">
+                        </div>
+                        <div class="slide-content">
+                            <h3>AI-Driven Discovery</h3>
+                            <p>Accelerating scientific breakthroughs through advanced artificial intelligence and machine learning algorithms across multiple disciplines.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="slide-image">
+                            <img src="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=800&h=600&fit=crop&crop=center" alt="Data Visualization">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Data Visualization</h3>
+                            <p>Transforming complex datasets into intuitive visual representations that reveal hidden patterns and insights.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="slide-image">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop&crop=center" alt="Global Data Networks">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Global Collaboration</h3>
+                            <p>Connecting researchers worldwide through shared data platforms and collaborative research initiatives.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="slide-image">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&crop=center" alt="Climate Data Analysis">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Climate Science</h3>
+                            <p>Harnessing big data to understand climate patterns and drive environmental research forward.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="slide-image">
+                            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop&crop=center" alt="Biological Data Research">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Biological Insights</h3>
+                            <p>Analyzing biological data to unlock new understanding in genomics, ecology, and life sciences.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="slide-image">
+                            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=600&fit=crop&crop=center" alt="Educational Innovation">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Educational Innovation</h3>
+                            <p>Training the next generation of data scientists through innovative educational programs and resources.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-indicators">
+                <button class="indicator active" data-slide="0" aria-label="Go to slide 1"></button>
+                <button class="indicator" data-slide="1" aria-label="Go to slide 2"></button>
+                <button class="indicator" data-slide="2" aria-label="Go to slide 3"></button>
+                <button class="indicator" data-slide="3" aria-label="Go to slide 4"></button>
+                <button class="indicator" data-slide="4" aria-label="Go to slide 5"></button>
+                <button class="indicator" data-slide="5" aria-label="Go to slide 6"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-content">
             <h1 class="hero-title">NSF HDR<br>Community</h1>
@@ -59,6 +147,7 @@
         </div>
     </section>
 
+    <!-- Rest of your existing content -->
     <section class="institutes-section">
         <h2 class="section-title">Meet the Institutes</h2>
         <div class="institutes-grid">
@@ -128,12 +217,15 @@
                 <div class="resource-icon-item">
                     <div class="resource-icon-circle">
                         <img src="images/data.png" alt="Data Icon">
+                        <div class="tooltip">Explore curated datasets covering everything from geospatial records to biological imaging and public science archives.</div>
                     </div>
                     <div class="resource-icon-text">Data</div>
                 </div>
+                
                 <div class="resource-icon-item">
                     <div class="resource-icon-circle">
                         <img src="images/education.png" alt="Education Icon">
+                        <div class="tooltip">Discover learning materials including workshop slides, and STEM outreach content for classrooms and hands on labs.</div>
                     </div>
                     <div class="resource-icon-text">Education</div>
                 </div>
@@ -141,6 +233,7 @@
                 <div class="resource-icon-item">
                     <div class="resource-icon-circle">
                         <img src="images/code.png" alt="Code Icon">
+                        <div class="tooltip">Find open-source codebases, notebooks, and GitHub repositories designed to support data processing, and analysis.</div>
                     </div>
                     <div class="resource-icon-text">Code</div>
                 </div>
@@ -148,6 +241,7 @@
                 <div class="resource-icon-item">
                     <div class="resource-icon-circle">
                         <img src="images/models.png" alt="Models Icon">
+                        <div class="tooltip">Access computational models, Al frameworks, and simulations developed by HDR researchers for a range of topics.</div>
                     </div>
                     <div class="resource-icon-text">Models</div>
                 </div>
