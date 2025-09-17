@@ -157,7 +157,7 @@ main {
     display: flex;
     align-items: center;
     margin-bottom: 80px;
-    gap: 60px;
+    gap: 200px; /* Increased gap to match old layout spacing */
 }
 
 .vision-section {
@@ -166,14 +166,20 @@ main {
 
 /* === HONEYCOMB HEXAGONS === */
 .hexagon {
-    height: 200px;
-    aspect-ratio: 1/cos(30deg);
-    clip-path: polygon(50% -50%, 100% 50%, 50% 150%, 0 50%);
+    width: 200px;
+    height: 173px; /* regular flat-top hex: height ≈ width * 0.866 */
+    /* Flat top/bottom, points left/right */
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
     background: #3B8686;
     position: relative;
     text-align: center;
     overflow: hidden;
     transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.hexagon.large {
+    width: 200px;
+    height: 173px;
 }
 
 .hexagon img {
@@ -193,7 +199,51 @@ main {
     filter: brightness(1.1);
 }
 
-/* Honeycomb container */
+/* Honeycomb container for mission/vision */
+
+/* Column-based layout: one on left, two stacked on right (lr), mirrored for rl */
+.columns {
+    display: flex;
+    align-items: center;
+    gap: 0; /* minimal space between columns */
+}
+
+.columns .hex-col.left,
+.columns .hex-col.right { display: flex; flex-direction: column; align-items: center; }
+
+.columns.lr .hex-col.left { margin-top: 0; }
+.columns.lr .hex-col.right { gap: 10px; }
+.columns.lr .hex-col.left { margin-right: -40px; } /* bring single-left even closer */
+
+.columns.rl { flex-direction: row; }
+.columns.rl .hex-col.left { gap: 10px; }
+.columns.rl .hex-col.right { margin-left: -40px; } /* bring single-right even closer when mirrored */
+.columns.rl .hex-col.right { margin-top: 0; }
+
+/* Horizontal positioning to match legacy spacing between cluster and text */
+.mission-hexagons.columns.lr { transform: translateX(30px); }
+.vision-hexagons.columns.rl { transform: translateX(-30px); }
+
+.hexagon-row {
+    display: flex;
+    align-items: center;
+}
+
+.hexagon-row.single {
+    margin-bottom: -50px; /* Reduce overlap to add space above bottom row */
+    margin-left: 0; /* Center top hexagon over the middle of the bottom pair */
+}
+
+.hexagon-row:not(.single) {
+    gap: 0; /* Use explicit margins on children for precise spacing */
+}
+
+/* Symmetric spacing between bottom hexagons (keeps top centered) */
+.hexagon-row:not(.single) .hexagon { position: relative; }
+.hexagon-row:not(.single) .hexagon:first-child { left: -10px; }
+.hexagon-row:not(.single) .hexagon:last-child { left: 10px; }
+
+/* General honeycomb container (if needed elsewhere) */
 .honeycomb {
     display: flex;
     flex-wrap: wrap;
@@ -213,13 +263,6 @@ main {
     margin-left: calc(50% * 1/cos(30deg));
 }
 
-/* Mission and Vision Specific */
-.mission-hexagons, .vision-hexagons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-}
 
 /* Content sections */
 .content-section {
@@ -398,9 +441,37 @@ main {
     .institute-info-box { width: 100%; box-sizing:border-box; }
     .header-text-overlay { width: 90%; font-size: 1em; padding: 15px; }
     .header-text-overlay h1 { font-size: 1.4em; }
-    .mission-section, .vision-section { flex-direction: column; text-align: center; gap: 40px; }
-    .vision-section { flex-direction: column; }
+    .mission-section, .vision-section { 
+        flex-direction: row; /* Keep desktop layout on mobile */
+        text-align: left; 
+        gap: 100px; /* Smaller gap on mobile but still maintain spacing */
+    }
+    .vision-section { flex-direction: row-reverse; }
     .content-section h2 { font-size: 2em; }
+
+    /* Responsive honeycomb adjustments */
+    .hexagon {
+        width: 150px;
+        height: 173px;
+    }
+    
+    .hexagon.large {
+        width: 150px;
+        height: 173px;
+    }
+    
+    .hexagon-row.single {
+        margin-bottom: -43px; /* Adjusted for smaller hexagons */
+        margin-left: 38px; /* Adjusted offset for smaller hexagons */
+    }
+    
+    .hexagon-row:not(.single) {
+        gap: 0; /* Use explicit margins on children for precise spacing */
+    }
+
+    .hexagon-row:not(.single) .hexagon:last-child {
+        margin-left: 15px; /* Slightly smaller nudge on mobile */
+    }
 
     .honeycomb, .honeycomb-row { flex-direction: column; margin-left: 0; gap: 15px; }
 }
