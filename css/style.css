@@ -8,7 +8,7 @@
 body {
     margin: 0;
     font-family: 'Source Sans 3', sans-serif;
-    background-color: #f5f5f5;
+    background-color: #ffffff;
 }
 
 /* -------------------- Universal Font Style Groups -------------------- */
@@ -86,7 +86,7 @@ a {
     align-items: center;
     justify-content: space-between;
     padding: 10px 40px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .logo img {
@@ -107,7 +107,7 @@ a {
 }
 
 .nav-links li a {
-    color: #000;
+    color: #000000;
     font-weight: 500;
     font-weight: bold;
     padding: 10px 0;
@@ -134,7 +134,7 @@ a {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #fff;
+    background-color: #ffffff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     list-style: none;
     padding: 10px 0;
@@ -175,20 +175,16 @@ a {
     padding: 80px;
     text-align: left;
     overflow: hidden;
-    background-image: linear-gradient(135deg, #005F5F 0%, #1A237E 50%, #4B0082 100%);
 }
 
-.hero-section::before {
-    content: '';
+.hero-bg-image {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background-image:
-        radial-gradient(circle at 20% 80%, rgba(120, 219, 226, 0.4) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.4) 0%, transparent 50%);
-    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
 }
 
 .hero-content {
@@ -196,7 +192,7 @@ a {
     z-index: 2;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start; 
     max-width: 1200px;
     width: 100%;
 }
@@ -207,6 +203,7 @@ a {
     margin-bottom: 0;
     line-height: 1.1;
     max-width: 45%;
+    margin-left: 70px; /* Add this - adjust the number as needed */
 }
 
 .hero-description-container {
@@ -232,9 +229,11 @@ a {
 }
 
 .learn-more-btn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: white;
+    color: #0074E0;
     border-color: white;
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Add this */
 }
 
 .hero-section::after {
@@ -338,7 +337,7 @@ a {
 /* -------------------- Meet the Institutes Section -------------------- */
 .institutes-section {
     padding: 80px 40px;
-    background-color: #f5f5f5;
+    background-color: #ffffff;
     text-align: center;
     overflow-x: auto;
     white-space: normal;
@@ -348,7 +347,7 @@ a {
 .section-title {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #333;
+    color: #282828;
     margin-bottom: 40px;
     white-space: normal;
 }
@@ -357,7 +356,7 @@ a {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
-    gap: 30px;
+    gap: 25px;
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -365,8 +364,8 @@ a {
 .institute-card-link {
     display: block;
     flex-shrink: 0;
-    width: 250px;
-    height: 350px;
+    width: 240px;
+    height: 380px;
     border-radius: 15px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -390,13 +389,13 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 20px;
+    justify-content: flex-start;
+    padding: 20px 15px;
 }
 
 .institute-logo-area {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 180px;
     border-radius: 50%;
     margin-bottom: 15px;
     display: flex;
@@ -415,15 +414,19 @@ a {
 }
 
 .institute-card h3 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: bold;
-    color: #1a237e;
-    margin: 0;
+    color: #282828;
+    margin: 0 0 12px 0;
     text-align: center;
+    min-height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .institute-card p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #555;
     line-height: 1.4;
     text-align: center;
@@ -434,7 +437,6 @@ a {
 .explore-resources-section {
     background-color: #F8F4FD;
     padding: 60px 80px;
-    margin-top: 50px;
     display: flex;
     justify-content: center;
 }
@@ -473,16 +475,20 @@ a {
     display: inline-block;
     padding: 12px 30px;
     background-color: #9B63CE;
+    border: 2px solid #9B63CE;
+    border-radius: 25px;
     color: white;
     font-size: 16px;
     font-weight: 500;
     transition: all 0.3s ease;
-    border: 2px solid transparent;
-    border-radius: 25px;
 }
 
 .explore-resources-button:hover {
-    background-color: #834BB3;
+    background-color: white;
+    color: #9B63CE;
+    border-color: #9B63CE;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .explore-resources-icons {
@@ -578,12 +584,13 @@ a {
 
 .footer-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 30px;
     margin-bottom: 30px;
     max-width: 1200px;
     margin: 0 auto 30px;
+    padding-left: 100px; /* Add this - adjust the value as needed */
 }
 
 .footer-section {
@@ -592,7 +599,15 @@ a {
 }
 
 .footer-section.about {
-    max-width: 40%;
+    margin-left: 100px;
+}
+
+.footer-section.links {
+    margin-left: 80px;
+}
+
+.footer-section.institutes {
+    margin-left: -100px; 
 }
 
 .footer-section h3 {
@@ -635,7 +650,7 @@ a {
 }
 
 .nsf-logo-container img {
-    height: 50px;
+    height: 90px;
 }
 
 .nsf-logo-container p {
@@ -1095,6 +1110,8 @@ a {
 /* -------------------- HDR By The Numbers Section -------------------- */
 .numbers-section {
     padding: 30px 40px;
+    padding-bottom: 80px;
+    padding-top: 20px;
     background-color: #ffffff;
     text-align: center;
 }
@@ -1905,4 +1922,17 @@ a:hover {
     font-size: 1.1em;
     color: #000000;
     text-align: justify;
+}
+
+/* -------------------- Footer Hover Fix -------------------- */
+.footer a,
+.footer a:visited {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer a:hover,
+.footer a:focus {
+  color: #e6f0ff;
+  text-decoration: underline;
 }

@@ -8,7 +8,7 @@
     --secondary-color: #333; /* Used for headings */
     --accent-color: #218367; /* Used for the key contributors section */
     --highlight-color: #a6f0d6; /* Used for link hovers */
-    --text-color: #444; /* General paragraph text color */
+    --text-color: #282828; /* General paragraph text color */
 }
 
 /* A3D3 Institute Theme */
@@ -68,7 +68,7 @@
 
 
 /* Institute Page General Styles         */
-/* General Body */
+/* General Body - Background is white */
 body, html {
     margin: 0;
     padding: 0;
@@ -164,41 +164,81 @@ main {
 
 .institute-logo-container img {
     width: 200px;
-    height: 200px;
-    border-radius: 50%;
+    height: auto;
+    border-radius: 0;
     position: static;
+    object-fit: contain;
 }
+/*
+.institute-logo-container img:hover {
+    transform: scale(1.05);
+}
+*/
 
 .institute-logo-container p {
     font-style: italic;
     color: var(--text-color);
     margin-top: 10px;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .institute-info {
     margin-bottom: 15px;
     font-size: 1em;
     line-height: 1.5;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .institute-info strong {
     color: var(--primary-color);
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+/* Link styles for Award # and Contact Email */
+.institute-info a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.institute-info a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* Specific styling for award links */
+.award-link {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* Specific styling for email links */
+.email-link {
+    color: var(--primary-color);
+    font-weight: 500;
 }
 
 .button {
     display: inline-block;
-    padding: 12px 25px;
+    padding: 12px 30px;
+    border: 2px solid var(--primary-color);
+    border-radius: 25px;
+    color: white;
     background-color: var(--primary-color);
-    color: #fff;
     text-decoration: none;
-    border-radius: 50px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
     margin-top: 10px;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .button:hover {
-    background-color: var(--secondary-color);
+    background-color: white;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Content */
@@ -214,6 +254,7 @@ main {
 .institute-content p {
     line-height: 1.6;
     color: var(--text-color);
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 /* Mission and Vision Section */
@@ -369,7 +410,7 @@ main {
     font-weight: 600;
     color: var(--secondary-color);
     margin-bottom: 20px;
-    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .content-section p {
@@ -377,27 +418,29 @@ main {
     color: var(--text-color);
     line-height: 1.7;
     font-style: italic;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 /* Areas of Work Section */
 .areas-of-work-container {
     text-align: center;
-    margin-top: 40px;
-    margin-bottom: 65px;
+    margin-top: 110px; 
+    margin-bottom: 90px;  
     padding: 0 20px;
 }
 
 .areas-of-work-container h2 {
-    font-size: 2.5em;
+    font-size: 2.3em;
     color: var(--secondary-color);
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .work-icons {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 40px;
+    gap: 45px;
     flex-wrap: wrap;
 }
 
@@ -405,22 +448,25 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 200px;
+    width: 180px;
     text-align: center;
 }
 
 .work-item img {
-    width: 150px;
-    height: auto;
+    width: 145px;
+    height: 145px;
+    object-fit: contain;
     margin-bottom: 10px;
 }
 
 .work-item p {
-    font-size: 1.2em;
-    font-weight: 600;
-    color: var(--text-color);
+    font-size: 1.1em;
+    font-weight: 400;
+    color: #282828;
     margin: 0;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
+
 
 /* Key Contributors Section */
 .key-contributors-container {
@@ -448,6 +494,7 @@ main {
     font-size: 2.5em;
     color: #fff;
     margin: 0;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .view-all-link {
@@ -458,6 +505,7 @@ main {
     display: flex;
     align-items: center;
     gap: 5px;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .view-all-link img {
@@ -472,9 +520,9 @@ main {
 .contributors-grid {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 8px;
     flex-wrap: wrap;
-    max-width: 1200px;
+    max-width: 1300px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 20px;
@@ -487,13 +535,15 @@ main {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     text-align: center;
-    width: 200px;
+    width: 225px;
     transition: transform 0.3s ease;
 }
 
+/*
 .contributor-card:hover {
     transform: translateY(-5px);
 }
+*/
 
 .contributor-card img {
     width: 100%;
@@ -510,6 +560,10 @@ main {
     font-size: 1.2em;
     color: var(--secondary-color);
     margin: 0 0 5px 0;
+    font-family: 'IBM Plex Sans', sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .contributor-info p {
@@ -517,6 +571,7 @@ main {
     color: var(--text-color);
     margin: 0;
     line-height: 1.4;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .publications-title {
@@ -525,6 +580,7 @@ main {
     text-align: center;
     margin: 40px 0 20px;
     color: var(--secondary-color);
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 /* Responsive */
