@@ -11,10 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/carousel.css" />
-    <script src="js/script.js"></script>
-    <script src="js/carousel.js"></script>
+    <link rel="stylesheet" href="css/header-styles.css" />
 </head>
 <body>
+    <!-- ===== HEADER WITH HAMBURGER & SEARCH ===== -->
     <header class="header">
         <div class="logo">
             <a href="index.html">
@@ -42,9 +42,23 @@
                 <li><a href="html/events.html">Events</a></li>
             </ul>
         </nav>
-        
-        <div class="search-icon">
-            <a href="#"><img src="images/search.png" alt="Search" /></a>
+
+        <!-- Search Bar Container - Always Visible -->
+        <div class="search-container" id="searchContainer">
+            <button class="search-icon-btn" id="searchIconBtn" aria-label="Search">
+                <img src="images/search.png" alt="Search" />
+            </button>
+            <input type="text" class="search-bar" id="searchBar" placeholder="Search..." />
+            <div class="search-results" id="searchResults"></div>
+        </div>
+
+        <!-- Header Actions (Hamburger) -->
+        <div class="header-actions">
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </div>
     </header>
 
@@ -135,19 +149,19 @@
     </section>
 
     <section class="hero-section">
-    <img src="images/NSF HDR hero section.png" alt="NSF HDR Background" class="hero-bg-image">
-    <div class="hero-content">
-        <h1 class="hero-title">NSF HDR<br>Community</h1>
-        <div class="hero-description-container">
-            <p class="hero-description">
-                The National Science Foundation (NSF) Harnessing the Data Revolution (HDR) Institutes are an integrated fabric of interrelated institutes that aim to accelerate discovery and innovation in multiple areas of data-intensive science and engineering.
-            </p>
-            <a href="html/about.html" class="learn-more-btn">Learn about HDR</a>
+        <img src="images/NSF HDR hero section.png" alt="NSF HDR Background" class="hero-bg-image">
+        <div class="hero-content">
+            <h1 class="hero-title">NSF HDR<br>Community</h1>
+            <div class="hero-description-container">
+                <p class="hero-description">
+                    The National Science Foundation (NSF) Harnessing the Data Revolution (HDR) Institutes are an integrated fabric of interrelated institutes that aim to accelerate discovery and innovation in multiple areas of data-intensive science and engineering.
+                </p>
+                <a href="html/about.html" class="learn-more-btn">Learn about HDR</a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-    <!-- Rest of your existing content -->
+    <!-- Meet the Institutes -->
     <section class="institutes-section">
         <h2 class="section-title">Meet the Institutes</h2>
         <div class="institutes-grid">
@@ -156,8 +170,7 @@
                     <div class="institute-logo-area">
                         <img src="images/a3d.jpg" alt="A3D Logo" class="institute-logo-placeholder" />
                     </div>
-                    <h3>A3D3</h3>
-                    <p>Accelerated AI Algorithms <br>for Data-Driven Discovery</p>
+                    <h3>Accelerated AI Algorithms for Data-Driven Discovery</h3>
                 </div>
             </a>
             
@@ -166,8 +179,7 @@
                     <div class="institute-logo-area">
                         <img src="images/ID4_logo.png" alt="ID4 Logo" class="institute-logo-placeholder" />
                     </div>
-                    <h3>ID<sub>4</sub></h3>
-                    <p>Institute for Data Driven <br>Dynamical Design</p>
+                    <h3>Institute for Data Driven Dynamical Design</h3>
                 </div>
             </a>
             
@@ -176,8 +188,7 @@
                     <div class="institute-logo-area">
                         <img src="images/Iguide.png" alt="I-GUIDE Logo" class="institute-logo-placeholder" />
                     </div>
-                    <h3>I-GUIDE</h3>
-                    <p>Institute for Geospatial <br>Understanding through an <br>Integrative Discovery <br>Environment</p>
+                    <h3>Institute for Geospatial Understanding through an Integrative Discovery Environment</h3>
                 </div>
             </a>
             
@@ -186,8 +197,7 @@
                     <div class="institute-logo-area">
                         <img src="images/iharp-logo.jpg" alt="iHARP Logo" class="institute-logo-placeholder" />
                     </div>
-                    <h3>iHARP</h3>
-                    <p>Institute for Harnessing <br>Data and Model <br>Revolution in the Polar <br>Regions</p>
+                    <h3>Institute for Harnessing Data and Model Revolution in the Polar Regions</h3>
                 </div>
             </a>
             
@@ -196,8 +206,7 @@
                     <div class="institute-logo-area">
                         <img src="images/Imageomics-logo.png" alt="Imageomics Logo" class="institute-logo-placeholder" />
                     </div>
-                    <h3>Imageomics</h3>
-                    <p>Imageomics Institute</p>
+                    <h3>Imageomics Institute</h3>
                 </div>
             </a>
         </div>
@@ -260,30 +269,32 @@
                         <h3><a href="html/events.html">Events <span class="arrow">→</span></a></h3>
                     </div>
                     
-                    <div class="event-item">
-                        <h4>FuncaPalooza 2025 : Get Your Func-tionality On</h4>
-                        <p class="event-date">August 18–21, 2025</p>
-                        <div class="event-location">
-                            <span class="location-icon">📍</span>
-                            <span>The Ohio State University, Columbus OH</span>
+                    <div class="events-container">
+                        <div class="event-item">
+                            <h4>FuncaPalooza 2025 : Get Your Func-tionality On</h4>
+                            <p class="event-date">August 18–21, 2025</p>
+                            <div class="event-location">
+                                <img src="images/location icon.png" alt="Location" class="location-icon">
+                                <span>The Ohio State University, Columbus OH</span>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="event-item">
-                        <h4>FuncaPalooza 2025 : Get Your Func-tionality On</h4>
-                        <p class="event-date">August 18–21, 2025</p>
-                        <div class="event-location">
-                            <span class="location-icon">📍</span>
-                            <span>The Ohio State University, Columbus OH</span>
+                        
+                        <div class="event-item">
+                            <h4>FuncaPalooza 2025 : Get Your Func-tionality On</h4>
+                            <p class="event-date">August 18–21, 2025</p>
+                            <div class="event-location">
+                                <img src="images/location icon.png" alt="Location" class="location-icon">
+                                <span>The Ohio State University, Columbus OH</span>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="event-item">
-                        <h4>FuncaPalooza 2025 : Get Your Func-tionality On</h4>
-                        <p class="event-date">August 18–21, 2025</p>
-                        <div class="event-location">
-                            <span class="location-icon">📍</span>
-                            <span>The Ohio State University, Columbus OH</span>
+                        
+                        <div class="event-item">
+                            <h4>FuncaPalooza 2025 : Get Your Func-tionality On</h4>
+                            <p class="event-date">August 18–21, 2025</p>
+                            <div class="event-location">
+                                <img src="images/location icon.png" alt="Location" class="location-icon">
+                                <span>The Ohio State University, Columbus OH</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -293,27 +304,35 @@
                         <h3><a href="html/news.html">News <span class="arrow">→</span></a></h3>
                     </div>
                     
-                    <div class="news-grid">
-                        <div class="news-item large-news">
-                            <div class="news-date-badge">July 24th, 2025</div>
-                            <div class="news-image hdr-magazine">
-                                <div class="magazine-content">
-                                    <div class="nsf-logo">NSF</div>
-                                    <h4>HDR NEWS</h4>
-                                    <p class="magazine-tagline">TURNING COMPLEX DATA INTO REAL-WORLD SOLUTIONS</p>
-                                </div>
+                    <div style="display: flex; gap: 30px; align-items: flex-start;">
+                        <div class="news-card">
+                            <div style="position: relative;" class="news-image-wrapper">
+                                <a href="images/test 101.jpg">
+                                    <img src="images/test 101.jpg" alt="HDR Magazine, 2025" class="news-image">
+                                </a>
+                                <div class="news-date">July 24</div>
                             </div>
-                            <h4>HDR Magazine, 2025</h4>
-                            <p>The first magazine edition of the National Science Foundation's Harnessing the Data Revolution (HDR) celebrates our ecosystem. Get up to date on new research, the centers involved...</p>
+                            
+                            <div class="news-content">
+                                <h3 class="news-title">HDR Magazine, 2025</h3>
+                                <p class="news-description">
+                                    The first magazine edition of the National Science Foundation's Harnessing the Data Revolution (HDR) celebrates our ecosystem. Get up to date on new research, the centers involved...
+                                </p>
+                            </div>
                         </div>
                         
-                        <div class="news-item">
-                            <div class="news-date-badge">July 30th, 2025</div>
-                            <div class="news-image conference-image">
-                                <img src="https://via.placeholder.com/300x200/4A90E2/FFFFFF?text=A3D3+Conference" alt="A3D3 Conference">
+                        <div class="news-card">
+                            <div style="position: relative;" class="news-image-wrapper">
+                                <img src="images/test 100.jpg" alt="A3D3 Conference" class="news-image">
+                                <div class="news-overlay">
+                                    
+                                </div>
+                                <div class="news-date">July 30</div>
                             </div>
-                            <h4>A3D3 Attends the Transients from Space Conference</h4>
-                            <p>The 2025 Transients from Space conference featured the novel efforts of A3D3 members working in the domain of multi-messenger astronomy (MMA)...</p>
+                            <div class="news-content">
+                                <h3 class="news-title">A3D3 Attends the Transients from Space Conference</h3>
+                                <p class="news-description">The 2025 Transients from Space conference featured the novel efforts of A3D3 members working in the domain of multi-messenger astronomy (MMA)...</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -334,27 +353,27 @@
             </div>
             
             <div class="number-item">
-            <img src="images/colloborating-partners.png" alt="Collaboration icon" class="number-icon" />
-            <h3 class="number-value" data-target="42">0</h3>
-            <p class="number-label">Collaborating partners</p>
+                <img src="images/colloborating-partners.png" alt="Collaboration icon" class="number-icon" />
+                <h3 class="number-value" data-target="42">0</h3>
+                <p class="number-label">Collaborating partners</p>
+            </div>
+            <div class="number-item">
+                <img src="images/researchers.png" alt="Researcher icon" class="number-icon" />
+                <h3 class="number-value" data-target="78">0</h3>
+                <p class="number-label">Researchers</p>
+            </div>
+            <div class="number-item">
+                <img src="images/papers-published.png" alt="Papers icon" class="number-icon" />
+                <h3 class="number-value" data-target="89">0</h3>
+                <p class="number-label">Papers Published</p>
+            </div>
+            <div class="number-item">
+                <img src="images/students-trained.png" alt="Students icon" class="number-icon" />
+                <h3 class="number-value" data-target="63">0</h3>
+                <p class="number-label">Students Trained</p>
+            </div>
         </div>
-        <div class="number-item">
-            <img src="images/researchers.png" alt="Researcher icon" class="number-icon" />
-            <h3 class="number-value" data-target="78">0</h3>
-            <p class="number-label">Researchers</p>
-        </div>
-        <div class="number-item">
-            <img src="images/papers-published.png" alt="Papers icon" class="number-icon" />
-            <h3 class="number-value" data-target="89">0</h3>
-            <p class="number-label">Papers Published</p>
-        </div>
-        <div class="number-item">
-            <img src="images/students-trained.png" alt="Students icon" class="number-icon" />
-            <h3 class="number-value" data-target="63">0</h3>
-            <p class="number-label">Students Trained</p>
-        </div>
-    </div>
-</section>
+    </section>
     
     <footer class="footer">
         <div class="footer-content">
@@ -400,5 +419,11 @@
             <p>&copy; 2025 NSF HDR. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <!-- Scripts -->
+    <script src="js/search-index-dynamic.js"></script>
+    <script src="js/header-script-full-search.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/carousel.js"></script>
 </body>
 </html>

@@ -9,6 +9,7 @@
     <link rel="icon" href="../images/nsf-logo.png" />
 </head>
 <body>
+    <!-- ===== HEADER WITH HAMBURGER & SEARCH ===== -->
     <header class="header">
         <div class="logo">
             <a href="../index.html">
@@ -18,7 +19,7 @@
         
         <nav class="nav">
             <ul class="nav-links">
-                <li><a href="../html/about.html">About</a></li>
+                <li><a href="about.html">About</a></li>
                 <li class="dropdown">
                     <a>Institutes</a>
                     <ul class="dropdown-menu">
@@ -29,16 +30,30 @@
                         <li><a href="../html/institutes/imageomics.html">Imageomics</a></li>
                     </ul>
                 </li>
-                <li><a href="../html/resources.html">Resources</a></li>
-                <li><a href="../html/news.html">News</a></li>
-                <li><a href="../html/publications.html">Publications</a></li>
-                <li><a href="../html/mlchallenges.html">Challenges</a></li>
-                <li><a href="../html/events.html">Events</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="mlchallenges.html">Challenges</a></li>
+                <li><a href="events.html">Events</a></li>
             </ul>
         </nav>
-        
-        <div class="search-icon">
-            <a href="#"><img src="../images/search.png" alt="Search" /></a>
+
+        <!-- Search Bar Container - Always Visible -->
+        <div class="search-container" id="searchContainer">
+            <button class="search-icon-btn" id="searchIconBtn" aria-label="Search">
+                <img src="../images/search.png" alt="Search" />
+            </button>
+            <input type="text" class="search-bar" id="searchBar" placeholder="Search..." />
+            <div class="search-results" id="searchResults"></div>
+        </div>
+
+        <!-- Header Actions (Hamburger) -->
+        <div class="header-actions">
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </div>
     </header>
 
@@ -136,6 +151,7 @@
     </div>
      </body> -->
 
+    <script src="../js/script.js"></script>
     <script src="../js/news.js"></script>
 </body>
 </html>

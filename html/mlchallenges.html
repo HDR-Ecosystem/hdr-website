@@ -8,6 +8,7 @@
     <link rel="icon" href="../images/icon.png" />
 </head>
 <body>
+    <!-- ===== HEADER WITH HAMBURGER & SEARCH ===== -->
     <header class="header">
         <div class="logo">
             <a href="../index.html">
@@ -21,11 +22,11 @@
                 <li class="dropdown">
                     <a>Institutes</a>
                     <ul class="dropdown-menu">
-                        <li><a href="institutes/a3d3.html">A3D3</a></li>
-                        <li><a href="institutes/id4.html">ID4</a></li>
-                        <li><a href="institutes/iguide.html">I-GUIDE</a></li>
-                        <li><a href="institutes/iharp.html">iHARP</a></li>
-                        <li><a href="institutes/imageomics.html">Imageomics</a></li>
+                        <li><a href="../html/institutes/a3d3.html">A3D3</a></li>
+                        <li><a href="../html/institutes/id4.html">ID4</a></li>
+                        <li><a href="../html/institutes/iguide.html">I-GUIDE</a></li>
+                        <li><a href="../html/institutes/iharp.html">iHARP</a></li>
+                        <li><a href="../html/institutes/imageomics.html">Imageomics</a></li>
                     </ul>
                 </li>
                 <li><a href="resources.html">Resources</a></li>
@@ -35,9 +36,23 @@
                 <li><a href="events.html">Events</a></li>
             </ul>
         </nav>
-        
-        <div class="search-icon">
-            <a href="#"><img src="../images/search.png" alt="Search" /></a>
+
+        <!-- Search Bar Container - Always Visible -->
+        <div class="search-container" id="searchContainer">
+            <button class="search-icon-btn" id="searchIconBtn" aria-label="Search">
+                <img src="../images/search.png" alt="Search" />
+            </button>
+            <input type="text" class="search-bar" id="searchBar" placeholder="Search..." />
+            <div class="search-results" id="searchResults"></div>
+        </div>
+
+        <!-- Header Actions (Hamburger) -->
+        <div class="header-actions">
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </div>
     </header>
 
@@ -83,6 +98,8 @@
         <div class="footer-bottom">
             <p>&copy; 2025 NSF HDR. All Rights Reserved.</p>
         </div>
-    </footer> 
+    </footer>
+
+    <script src="../js/script.js"></script>
 </body>
 </html>

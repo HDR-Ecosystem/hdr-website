@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events</title>
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/events.css" />
     <link rel="icon" href="../images/icon.png" />
-    
 </head>
+
 <body>
+    <!-- ===== HEADER WITH HAMBURGER & SEARCH ===== -->
     <header class="header">
         <div class="logo">
             <a href="../index.html">
@@ -22,11 +24,11 @@
                 <li class="dropdown">
                     <a>Institutes</a>
                     <ul class="dropdown-menu">
-                        <li><a href="html/institutes/a3d3.html">A3D3</a></li>
-                        <li><a href="html/institutes/id4.html">ID4</a></li>
-                        <li><a href="html/institutes/iguide.html">I-GUIDE</a></li>
-                        <li><a href="html/institutes/iharp.html">iHARP</a></li>
-                        <li><a href="html/institutes/imageomics.html">Imageomics</a></li>
+                        <li><a href="../html/institutes/a3d3.html">A3D3</a></li>
+                        <li><a href="../html/institutes/id4.html">ID4</a></li>
+                        <li><a href="../html/institutes/iguide.html">I-GUIDE</a></li>
+                        <li><a href="../html/institutes/iharp.html">iHARP</a></li>
+                        <li><a href="../html/institutes/imageomics.html">Imageomics</a></li>
                     </ul>
                 </li>
                 <li><a href="resources.html">Resources</a></li>
@@ -36,18 +38,118 @@
                 <li><a href="events.html">Events</a></li>
             </ul>
         </nav>
-        
-        <div class="search-icon">
-            <a href="#"><img src="../images/search.png" alt="Search" /></a>
+
+        <!-- Search Bar Container - Always Visible -->
+        <div class="search-container" id="searchContainer">
+            <button class="search-icon-btn" id="searchIconBtn" aria-label="Search">
+                <img src="../images/search.png" alt="Search" />
+            </button>
+            <input type="text" class="search-bar" id="searchBar" placeholder="Search..." />
+            <div class="search-results" id="searchResults"></div>
+        </div>
+
+        <!-- Header Actions (Hamburger) -->
+        <div class="header-actions">
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </div>
     </header>
 
+    <main class="events-container">
+        <section class="events-intro">
+            <h1>Events</h1>
+            <p>This page provides information on upcoming events, including opportunities for participation and engagement, as well as an archive of past events that document the evolution of HDR research and its impact.</p>
+        </section>
+
+        <!-- ✅ Fixed this section -->
+        <div class="events-controls">
+            <div class="search-filter-wrapper">
+                <div class="search-box">
+                    <img src="../images/search.png" alt="Search" class="search-icon-img" />
+                    <input 
+                        type="text" 
+                        id="eventSearch" 
+                        class="search-input" 
+                        placeholder="Search events"
+                    />
+                </div>
+
+                <div class="filter-button-wrapper">
+                    <button class="filter-btn-main" id="filterToggle">
+                        <img src="../images/Vector.png" alt="Filter" />
+                        Filter
+                    </button>
+
+                    <div class="filter-dropdown hidden" id="filterDropdown">
+                        <div class="filter-options">
+                            <div class="filter-group-title">Event Type</div>
+                            <label class="filter-option">
+                                <input type="radio" name="eventFilter" value="all" checked />
+                                <span>All Events</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="radio" name="eventFilter" value="upcoming" />
+                                <span>Upcoming Events</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="radio" name="eventFilter" value="past" />
+                                <span>Past Events</span>
+                            </label>
+                            
+                            <div class="filter-group-title">Institute</div>
+                            <label class="filter-option">
+                                <input type="checkbox" name="instituteFilter" value="A3D3" />
+                                <span>A3D3</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="instituteFilter" value="I-GUIDE" />
+                                <span>I-GUIDE</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="instituteFilter" value="ID4" />
+                                <span>ID4</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="instituteFilter" value="iHARP" />
+                                <span>iHARP</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="instituteFilter" value="Imageomics" />
+                                <span>Imageomics</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ✅ Properly closed div now -->
+
+        <section class="events-list">
+            <div class="events-grid" id="eventsGrid">
+                <!-- Event cards will be populated here -->
+            </div>
+
+            <div class="no-events hidden" id="noEvents">
+                <p>No events found matching your search.</p>
+            </div>
+        </section>
+
+        <section class="pagination-section">
+            <div class="pagination" id="pagination">
+                <!-- Pagination controls will be generated here -->
+            </div>
+        </section>
+    </main>
 
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section about">
                 <h3>NSF HDR Community</h3>
-                <p> The Harnessing the Data Revolution (HDR) Ecosystem is supported by the National Science Foundation under Awards: 
+                <p>
+                    The Harnessing the Data Revolution (HDR) Ecosystem is supported by the National Science Foundation under Awards: 
                     <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118240&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118240</a>, 
                     <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118201&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118201</a>, 
                     <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118285&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118285</a>, 
@@ -60,31 +162,37 @@
                     <p>U.S. National Science Foundation</p>
                 </div>
             </div>
+
             <div class="footer-section links">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="resources.html">Resources</a></li>
-                    <li><a href="news.html">News</a></li>
-                    <li><a href="publications.html">Publications</a></li>
-                    <li><a href="mlchallenges.html">Challenges</a></li>
-                    <li><a href="events.html">Events</a></li>
+                    <li><a href="../html/resources.html">About</a></li>
+                    <li><a href="../html/resources.html">Resources</a></li>
+                    <li><a href="../html/news.html">News</a></li>
+                    <li><a href="../html/publications.html">Publications</a></li>
+                    <li><a href="../html/mlchallenges.html">Challenges</a></li>
+                    <li><a href="../html/events.html">Events</a></li>
                 </ul>
             </div>
+
             <div class="footer-section institutes">
                 <h3>Institutes</h3>
                 <ul>
-                    <li><a href="institutes/a3d3.html">A3D3</a></li>
-                    <li><a href="institutes/imageomics.html">Imageomics</a></li>
-                    <li><a href="institutes/id4.html">ID<sub>4</sub></a></li>
-                    <li><a href="institutes/iguide.html">I-GUIDE</a></li>
-                    <li><a href="institutes/iharp.html">iHARP</a></li>
+                    <li><a href="../html/institutes/a3d3.html">A3D3</a></li>
+                    <li><a href="../html/institutes/imageomics.html">Imageomics</a></li>
+                    <li><a href="../html/institutes/id4.html">ID<sub>4</sub></a></li>
+                    <li><a href="../html/institutes/iguide.html">I-GUIDE</a></li>
+                    <li><a href="../html/institutes/iharp.html">iHARP</a></li>
                 </ul>
             </div>
         </div>
+
         <div class="footer-bottom">
             <p>&copy; 2025 NSF HDR. All Rights Reserved.</p>
         </div>
-    </footer> 
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/events.js"></script>
 </body>
 </html>

@@ -1,0 +1,478 @@
+/* -------------------- Events Section -------------------- */
+.events-intro {
+    padding: 100px 20px 50px 20px;
+    text-align: center;
+}
+
+.events-intro h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.events-intro p {
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #333;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 500;
+}
+
+/* Search and Filter Controls */
+.events-controls {
+    padding: 0 20px 30px 20px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.search-filter-wrapper {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    flex: 1;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+.search-box:focus-within {
+    border-color: #0073e6;
+    background-color: #fff;
+}
+
+.search-icon-img {
+    width: 18px;
+    height: 18px;
+    margin-right: 0.75rem;
+    opacity: 0.6;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 0.95rem;
+    color: #333;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+.search-input::placeholder {
+    color: #999;
+}
+
+/* Filter Button */
+.filter-button-wrapper {
+    position: relative;
+}
+
+.filter-btn-main {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    border: 2px solid #e0e0e0;
+    background-color: #fff;
+    color: #666;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.filter-btn-main:hover {
+    border-color: #0073e6;
+    color: #0073e6;
+}
+
+.filter-btn-main img {
+    width: 16px;
+    height: 16px;
+}
+
+/* Filter Dropdown */
+.filter-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    background-color: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    min-width: 220px;
+}
+
+.filter-dropdown.hidden {
+    display: none;
+}
+
+.filter-options {
+    padding: 0.75rem 0;
+}
+
+.filter-group-title {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #0073e6;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    margin-top: 0.5rem;
+}
+
+.filter-group-title:first-child {
+    margin-top: 0;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 0.95rem;
+    color: #333;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.filter-option:hover {
+    background-color: #f9f9f9;
+}
+
+.filter-option input[type="radio"] {
+    cursor: pointer;
+}
+
+.filter-option span {
+    user-select: none;
+}
+
+/* -------------------- Events Grid (Matches News Layout) -------------------- */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 305px); /* fixed width identical to news cards */
+    gap: 30px;
+    justify-content: center;
+    justify-items: center;
+    margin: 0 auto;
+    max-width: calc(3 * 305px + 2 * 30px); /* total width matches 3 cards + gaps */
+}
+
+/* Responsive grid */
+@media (max-width: 992px) {
+    .events-grid {
+        grid-template-columns: repeat(2, 305px);
+        max-width: calc(2 * 305px + 1 * 30px);
+    }
+}
+
+@media (max-width: 600px) {
+    .events-grid {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+}
+
+/* -------------------- Event Card -------------------- */
+.event-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 305px;
+    height: 461px;
+    flex-shrink: 0;
+    text-decoration: none;
+    color: inherit;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.06);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    border: 2px solid #e0e0e0;
+}
+
+.event-card:hover {
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1), 0 2px 6px rgba(0,0,0,0.06);
+}
+
+/* Image */
+.event-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.event-card:hover .event-image {
+    transform: scale(1.05);
+}
+
+/* Content */
+.event-content {
+    padding: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: 1;
+}
+
+/* Title */
+.event-content h3 {
+    font-size: 1.3rem;
+    margin: 0 0 10px 0;
+    text-align: left;
+    font-weight: 700;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+    min-height: 54px;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.event-card:hover .event-content h3 {
+    color: #0073e6;
+}
+
+/* Date/Time */
+.event-datetime {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0 0 8px 0;
+    font-weight: 500;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+/* Type and Location */
+.event-type-info {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 0.75rem;
+    padding-top: 1rem;
+}
+
+.event-type-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #0073e6;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.event-type-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.event-location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #666;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 500;
+}
+
+.location-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    opacity: 1;
+}
+
+/* Description */
+.event-description {
+    font-size: 0.95rem;
+    color: #666;
+    text-align: left !important;
+    line-height: 1.6;
+    transition: color 0.3s ease;
+    letter-spacing: normal;
+    word-spacing: normal;
+    margin: 0;
+    font-family: 'Source Sans 3', sans-serif;
+    flex: 1;
+}
+
+.event-card:hover .event-description {
+    color: #333;
+}
+
+/* Learn More Link */
+.event-link {
+    color: #0073e6;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-block;
+    transition: color 0.3s ease;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.event-link:hover {
+    color: #0073e6;
+    text-decoration: underline;
+}
+
+/* No Events Message */
+.no-events {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #999;
+    font-size: 1.1rem;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+.no-events.hidden {
+    display: none;
+}
+
+/* Pagination */
+.pagination {
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-btn {
+    margin: 0;
+    padding: 0;
+    width: 45px;
+    height: 45px;
+    border: 2px solid #e0e0e0;
+    background-color: #fff;
+    color: #666;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-family: 'IBM Plex Sans', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.pagination-btn:hover {
+    border-color: #0073e6;
+    color: #0073e6;
+}
+
+.pagination-btn.active {
+    background-color: #0073e6;
+    border-color: #0073e6;
+    color: #fff;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-btn:disabled:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: #e0e0e0;
+    color: #666;
+}
+
+.pagination-section {
+    text-align: center;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination-text {
+    display: none;
+}
+
+
+/* -------------------- Responsive -------------------- */
+@media (max-width: 992px) {
+    .events-intro h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .events-intro {
+        padding: 80px 15px 40px 15px;
+    }
+
+    .events-intro h1 {
+        font-size: 1.8rem;
+    }
+
+    .events-controls {
+        padding: 0 15px 30px 15px;
+    }
+
+    .search-filter-wrapper {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .search-box {
+        max-width: 100%;
+    }
+
+    .filter-btn-main {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .event-card {
+        height: auto;
+        min-height: 420px;
+    }
+
+    .event-content h3 {
+        font-size: 1.2rem;
+        min-height: auto;
+    }
+
+    .event-description {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .events-intro h1 {
+        font-size: 1.5rem;
+    }
+}

@@ -7,15 +7,48 @@
   <link rel="icon" href="../../images/icon.png" />
   <link rel="stylesheet" href="../../css/style.css" />
   <link rel="stylesheet" href="../../css/institute.css" />
-  <script src="../../script.js"></script>
+  <script src="../../js/script.js"></script>
 </head>
 <body class="iguide-theme">
+  <!-- HEXAGON CAROUSEL LIGHTBOX MODAL -->
+  <div class="lightbox-overlay" id="lightboxOverlay">
+      <div class="lightbox-modal">
+          <!-- Close Button -->
+          <button class="lightbox-close" aria-label="Close">&times;</button>
+
+          <!-- Carousel Wrapper -->
+          <div class="lightbox-carousel-wrapper">
+              <!-- Slides Container -->
+              <div class="lightbox-carousel-slides">
+                  <!-- Populated by JavaScript -->
+              </div>
+          </div>
+
+          <!-- Navigation Buttons -->
+          <button class="lightbox-carousel-btn lightbox-prev-btn" aria-label="Previous image">‹</button>
+          <button class="lightbox-carousel-btn lightbox-next-btn" aria-label="Next image">›</button>
+
+          <!-- Caption and Credit Section -->
+          <div class="lightbox-caption-section">
+              <h3 class="lightbox-caption">Caption</h3>
+              <p class="lightbox-credit">Credit</p>
+          </div>
+
+          <!-- Indicator Dots -->
+          <div class="lightbox-indicators">
+              <!-- Populated by JavaScript -->
+          </div>
+      </div>
+  </div>
+
+  <!-- ===== HEADER WITH HAMBURGER & SEARCH ===== -->
   <header class="header">
     <div class="logo">
       <a href="../../index.html">
         <img src="../../images/nsf-logo.png" alt="NSF Logo" />
       </a>
     </div>
+    
     <nav class="nav">
       <ul class="nav-links">
         <li><a href="../about.html">About</a></li>
@@ -36,8 +69,23 @@
         <li><a href="../events.html">Events</a></li>
       </ul>
     </nav>
-    <div class="search-icon">
-      <a href="#"><img src="../../images/search.png" alt="Search" /></a>
+
+    <!-- Search Bar Container - Always Visible -->
+    <div class="search-container" id="searchContainer">
+        <button class="search-icon-btn" id="searchIconBtn" aria-label="Search">
+            <img src="../../images/search.png" alt="Search" />
+        </button>
+        <input type="text" class="search-bar" id="searchBar" placeholder="Search..." />
+        <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <!-- Header Actions (Hamburger) -->
+    <div class="header-actions">
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
     </div>
   </header>
 
@@ -71,9 +119,16 @@
       </p>
     </div>
 
-    <div style="padding: 10px; text-align: center; margin-top: 30px;">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/WqZf4D92Opo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="max-width: 100%; border-radius: 8px;"></iframe>
-      </div>
+    <div class="video-container">
+      <iframe 
+        width="560" 
+        height="315" 
+        src="https://www.youtube.com/embed/WqZf4D92Opo?modestbranding=1" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen
+        loading="lazy">
+      </iframe>
     </div>
 
 
@@ -82,22 +137,22 @@
         <div class="mission-hexagons columns lr">
           <div class="hex-col left">
             <div class="hexagon large">
-              <img src="../../images/iguide mission 1.jpg" alt="Satellite view of a dynamic weather system." />
+              <img class="hexagon-img" src="../../images/iguide mission 1.jpg" alt="Satellite view of a dynamic weather system." data-caption="Weather System" data-credit="Credit: [Add from OneDrive]" />
             </div>
           </div>
           <div class="hex-col right">
             <div class="hexagon">
-              <img src="../../images/iguide mission 2.jpg" alt="A researcher analyzing a complex geospatial map on a large screen." />
+              <img class="hexagon-img" src="../../images/iguide mission 2.jpg" alt="A researcher analyzing a complex geospatial map on a large screen." data-caption="Geospatial Analysis" data-credit="Credit: [Add from OneDrive]" />
             </div>
             <div class="hexagon">
-              <img src="../../images/iguide mission 3.jpg" alt="Top-down view of a river system in a rural landscape." />
+              <img class="hexagon-img" src="../../images/iguide mission 3.jpg" alt="Top-down view of a river system in a rural landscape." data-caption="River System" data-credit="Credit: [Add from OneDrive]" />
             </div>
           </div>
         </div>
 
         <div class="content-section">
           <h2>Mission</h2>
-          <p>“Advance convergence and geospatial sciences for holistic sustainability solutions”</p>
+          <p>"Advance convergence and geospatial sciences for holistic sustainability solutions"</p>
         </div>
       </div>
 
@@ -105,22 +160,22 @@
         <div class="vision-hexagons columns rl">
           <div class="hex-col left">
             <div class="hexagon">
-              <img src="../../images/iguide vision 1.jpg" alt="A smart city with interconnected data points." />
+              <img class="hexagon-img" src="../../images/iguide vision 1.jpg" alt="A smart city with interconnected data points." data-caption="Smart City" data-credit="Credit: [Add from OneDrive]" />
             </div>
             <div class="hexagon">
-              <img src="../../images/iguide vision 3.jpg" alt="A scientist in a lab working on data visualization models." />
+              <img class="hexagon-img" src="../../images/iguide vision 3.jpg" alt="A scientist in a lab working on data visualization models." data-caption="Data Visualization" data-credit="Credit: [Add from OneDrive]" />
             </div>
           </div>
           <div class="hex-col right">
             <div class="hexagon large">
-              <img src="../../images/iguide vision 2.jpg" alt="A lush forest landscape with digital data overlays." />
+              <img class="hexagon-img" src="../../images/iguide vision 2.jpg" alt="A lush forest landscape with digital data overlays." data-caption="Forest Landscape" data-credit="Credit: [Add from OneDrive]" />
             </div>
           </div>
         </div>
 
         <div class="content-section">
           <h2>Vision</h2>
-          <p>““Drive digital discovery and innovation by harnessing the geospatial data revolution"</p>
+          <p>""Drive digital discovery and innovation by harnessing the geospatial data revolution"</p>
         </div>
       </div>
     </div>
@@ -225,7 +280,7 @@
       <div class="footer-section links">
         <h3>Quick Links</h3>
         <ul>
-          <li><a href="../../about.html">About</a></li>
+          <li><a href="../about.html">About</a></li>
           <li><a href="../resources.html">Resources</a></li>
           <li><a href="../news.html">News</a></li>
           <li><a href="../publications.html">Publications</a></li>
@@ -248,5 +303,136 @@
       <p>&copy; 2025 NSF HDR. All Rights Reserved.</p>
     </div>
   </footer>
+
+  <!-- HEXAGON CAROUSEL LIGHTBOX JAVASCRIPT -->
+  <script>
+  class HexagonCarousel {
+      constructor(container) {
+          this.container = container;
+          this.overlay = container;
+          this.closeBtn = container.querySelector('.lightbox-close');
+          this.prevBtn = container.querySelector('.lightbox-prev-btn');
+          this.nextBtn = container.querySelector('.lightbox-next-btn');
+          this.slidesContainer = container.querySelector('.lightbox-carousel-slides');
+          this.indicatorsContainer = container.querySelector('.lightbox-indicators');
+          this.captionEl = container.querySelector('.lightbox-caption');
+          this.creditEl = container.querySelector('.lightbox-credit');
+          
+          this.currentSlide = 0;
+          this.hexagonImages = Array.from(document.querySelectorAll('.hexagon-img'));
+          this.slides = [];
+          this.indicators = [];
+          
+          this.init();
+      }
+
+      init() {
+          this.createSlides();
+
+          this.prevBtn.addEventListener('click', () => this.prevSlide());
+          this.nextBtn.addEventListener('click', () => this.nextSlide());
+          this.closeBtn.addEventListener('click', () => this.close());
+
+          this.indicators.forEach((indicator, index) => {
+              indicator.addEventListener('click', () => this.goToSlide(index));
+          });
+
+          this.overlay.addEventListener('click', (e) => {
+              if (e.target === this.overlay) this.close();
+          });
+
+          document.addEventListener('keydown', (e) => {
+              if (!this.overlay.classList.contains('active')) return;
+              if (e.key === 'ArrowLeft') this.prevSlide();
+              if (e.key === 'ArrowRight') this.nextSlide();
+              if (e.key === 'Escape') this.close();
+          });
+
+          this.hexagonImages.forEach((img, index) => {
+              img.addEventListener('click', () => this.openAtIndex(index));
+          });
+
+          this.updateSlideDisplay();
+      }
+
+      createSlides() {
+          this.slidesContainer.innerHTML = '';
+          this.indicatorsContainer.innerHTML = '';
+
+          this.hexagonImages.forEach((hexImg, index) => {
+              const slide = document.createElement('div');
+              slide.className = 'lightbox-carousel-slide' + (index === 0 ? ' active' : '');
+              
+              const slideImage = document.createElement('div');
+              slideImage.className = 'lightbox-slide-image';
+              
+              const img = document.createElement('img');
+              img.src = hexImg.src;
+              img.alt = hexImg.alt;
+              
+              slideImage.appendChild(img);
+              slide.appendChild(slideImage);
+              this.slidesContainer.appendChild(slide);
+              this.slides.push(slide);
+
+              const indicator = document.createElement('button');
+              indicator.className = 'lightbox-indicator' + (index === 0 ? ' active' : '');
+              indicator.setAttribute('aria-label', `Go to slide ${index + 1}`);
+              this.indicatorsContainer.appendChild(indicator);
+              this.indicators.push(indicator);
+
+              indicator.addEventListener('click', () => this.goToSlide(index));
+          });
+      }
+
+      nextSlide() {
+          this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+          this.updateSlideDisplay();
+      }
+
+      prevSlide() {
+          this.currentSlide = this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1;
+          this.updateSlideDisplay();
+      }
+
+      goToSlide(index) {
+          this.currentSlide = index;
+          this.updateSlideDisplay();
+      }
+
+      openAtIndex(index) {
+          this.currentSlide = index;
+          this.overlay.classList.add('active');
+          document.body.style.overflow = 'hidden';
+          this.updateSlideDisplay();
+      }
+
+      close() {
+          this.overlay.classList.remove('active');
+          document.body.style.overflow = 'auto';
+      }
+
+      updateSlideDisplay() {
+          this.slides.forEach((slide, i) => {
+              slide.classList.toggle('active', i === this.currentSlide);
+          });
+
+          this.indicators.forEach((indicator, i) => {
+              indicator.classList.toggle('active', i === this.currentSlide);
+          });
+
+          const imgData = this.hexagonImages[this.currentSlide];
+          this.captionEl.textContent = imgData.dataset.caption || 'Image';
+          this.creditEl.textContent = imgData.dataset.credit || 'Credit: Unknown';
+      }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+      const lightboxOverlay = document.querySelector('.lightbox-overlay');
+      if (lightboxOverlay) {
+          window.hexagonCarousel = new HexagonCarousel(lightboxOverlay);
+      }
+  });
+  </script>
 </body>
 </html>

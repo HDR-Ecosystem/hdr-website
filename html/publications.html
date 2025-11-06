@@ -8,6 +8,7 @@
     <link rel="icon" href="../images/icon.png" />
 </head>
 <body>
+    <!-- ===== HEADER WITH HAMBURGER & SEARCH ===== -->
     <header class="header">
         <div class="logo">
             <a href="../index.html">
@@ -35,9 +36,23 @@
                 <li><a href="events.html">Events</a></li>
             </ul>
         </nav>
-        
-        <div class="search-icon">
-            <a href="#"><img src="../images/search.png" alt="Search" /></a>
+
+        <!-- Search Bar Container - Always Visible -->
+        <div class="search-container" id="searchContainer">
+            <button class="search-icon-btn" id="searchIconBtn" aria-label="Search">
+                <img src="../images/search.png" alt="Search" />
+            </button>
+            <input type="text" class="search-bar" id="searchBar" placeholder="Search..." />
+            <div class="search-results" id="searchResults"></div>
+        </div>
+
+        <!-- Header Actions (Hamburger) -->
+        <div class="header-actions">
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </div>
     </header>
 
@@ -50,7 +65,7 @@
     <section class="introduction">
         <h2>Introduction</h2>
         <p>
-            The publications from HDR Institutes are organized in a searchable database so you can easily explore research across fields. From journal articles and conference papers to datasets and software, each institute shares work that reflects its mission. Not sure where to begin? Check out our Getting Started Guide for tips on navigating the database and finding what’s most relevant to you.
+            The publications from HDR Institutes are organized in a searchable database so you can easily explore research across fields. From journal articles and conference papers to datasets and software, each institute shares work that reflects its mission. Not sure where to begin? Check out our Getting Started Guide for tips on navigating the database and finding what's most relevant to you.
         </p>
         
         <div class="button-container">
@@ -139,6 +154,8 @@
         <div class="footer-bottom">
             <p>&copy; 2025 NSF HDR. All Rights Reserved.</p>
         </div>
-    </footer> 
- </body>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
 </html>
