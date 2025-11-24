@@ -11,8 +11,13 @@ body {
     background-color: #ffffff;
 }
 
-/* -------------------- Universal Font Style Groups -------------------- */
-/* IBM Plex Sans for all headings, titles, and prominent elements */
+/* -------------------- Universal Font Style - Source Sans 3 Everywhere -------------------- */
+/* Unified font family: Source Sans 3 for everything */
+* {
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+/* Ensure all headings, titles, and prominent elements use Source Sans 3 */
 h1, h2, h3, h4, h5, h6,
 .hero-title,
 .learn-more-btn,
@@ -34,11 +39,14 @@ h1, h2, h3, h4, h5, h6,
 .resources-list-section h2,
 .types-of-resources h2,
 .resource-content h3,
-.news-and-updates h1 {
-    font-family: 'IBM Plex Sans', sans-serif;
+.news-and-updates h1,
+.carousel-title,
+.carousel-subtitle,
+.slide-content h3 {
+    font-family: 'Source Sans 3', sans-serif;
 }
 
-/* Source Sans 3 for all body text, descriptions, and other content */
+/* All body text, descriptions, and other content */
 p,
 .nav-links li a,
 .dropdown-menu li a,
@@ -63,7 +71,16 @@ p,
 .topic-item ul li,
 .resources-list-section li,
 .resource-content p,
-.news-and-updates p {
+.news-and-updates p,
+.slide-content p,
+button,
+input,
+select,
+textarea,
+span,
+div,
+a,
+label {
     font-family: 'Source Sans 3', sans-serif;
 }
 
@@ -875,14 +892,14 @@ a {
 .hdr-action-title {
     font-size: 3rem;
     font-weight: bold;
-    color: #333;
+    color: #000000;
     margin-bottom: 10px;
     text-align: center;
 }
 
 .hdr-action-subtitle {
     font-size: 1.3rem;
-    color: #666;
+    color: #000000;
     margin-bottom: 60px;
     text-align: center;
 }
