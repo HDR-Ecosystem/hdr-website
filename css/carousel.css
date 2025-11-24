@@ -17,7 +17,7 @@
     font-weight: bold;
     color: #333;
     margin-bottom: 10px;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .carousel-subtitle {
@@ -115,7 +115,7 @@
     font-weight: bold;
     color: #0074E0;
     margin-bottom: 20px;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
     line-height: 1.2;
 }
 
@@ -144,7 +144,7 @@
     justify-content: center;
     transition: all 0.3s ease;
     z-index: 10;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .carousel-btn:hover {

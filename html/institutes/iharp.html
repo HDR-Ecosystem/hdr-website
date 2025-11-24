@@ -10,45 +10,24 @@
   <script src="../../js/script.js"></script>
 </head>
 <body class="iharp-theme">
-  <!-- STEP 2: HEXAGON CAROUSEL LIGHTBOX MODAL -->
   <div class="lightbox-overlay" id="lightboxOverlay">
       <div class="lightbox-modal">
-          <!-- Close Button -->
           <button class="lightbox-close" aria-label="Close">&times;</button>
-
-          <!-- Carousel Wrapper -->
-          <div class="lightbox-carousel-wrapper">
-              <!-- Slides Container -->
-              <div class="lightbox-carousel-slides">
-                  <!-- Populated by JavaScript -->
-              </div>
-          </div>
-
-          <!-- Navigation Buttons -->
+          <div class="lightbox-carousel-wrapper"><div class="lightbox-carousel-slides"></div></div>
           <button class="lightbox-carousel-btn lightbox-prev-btn" aria-label="Previous image">‹</button>
           <button class="lightbox-carousel-btn lightbox-next-btn" aria-label="Next image">›</button>
-
-          <!-- Caption and Credit Section -->
           <div class="lightbox-caption-section">
               <h3 class="lightbox-caption">Caption</h3>
               <p class="lightbox-credit">Credit</p>
           </div>
-
-          <!-- Indicator Dots -->
-          <div class="lightbox-indicators">
-              <!-- Populated by JavaScript -->
-          </div>
+          <div class="lightbox-indicators"></div>
       </div>
   </div>
 
-  <!-- ===== HEADER WITH HAMBURGER & SEARCH ===== -->
   <header class="header">
     <div class="logo">
-      <a href="../../index.html">
-        <img src="../../images/nsf-logo.png" alt="NSF Logo" />
-      </a>
+      <a href="../../index.html"><img src="../../images/nsf-logo.png" alt="NSF Logo" /></a>
     </div>
-    
     <nav class="nav">
       <ul class="nav-links">
         <li><a href="../about.html">About</a></li>
@@ -69,8 +48,6 @@
         <li><a href="../events.html">Events</a></li>
       </ul>
     </nav>
-
-    <!-- Search Bar Container - Always Visible -->
     <div class="search-container" id="searchContainer">
         <button class="search-icon-btn" id="searchIconBtn" aria-label="Search">
             <img src="../../images/search.png" alt="Search" />
@@ -78,13 +55,9 @@
         <input type="text" class="search-bar" id="searchBar" placeholder="Search..." />
         <div class="search-results" id="searchResults"></div>
     </div>
-
-    <!-- Header Actions (Hamburger) -->
     <div class="header-actions">
         <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
         </button>
     </div>
   </header>
@@ -92,44 +65,49 @@
   <main>
     <div class="institute-header">
       <div class="header-image-container">
-        <img src="../../images/iHARP banner.jpeg" alt="A scenic view of a polar landscape with icebergs and water." />
+        <img src="../../images/iharp images/iHARP banner.jpeg" alt="A scenic view of a polar landscape with icebergs and water." />
         <div class="header-text-overlay">
-          <h1>Institute for Harnessing Data and 
-          Model Revolution in the Polar Regions (iHARP)</h1>
+          <h1>Institute for Harnessing Data and Model Revolution in the Polar Regions (iHARP)</h1>
         </div>
       </div>
     </div>
 
     <div class="institute-details-container">
       <div class="institute-logo-container">
-        <img src="../../images/iharp-logo.jpg" alt="iHARP Logo" />
+        <img src="../../images/iharp images/iharp-logo.jpg" alt="iHARP Logo" />
         <p>"Where Polar Science Meets Data Innovation."</p>
       </div>
 
       <div class="institute-info-box">
-        <div class="institute-info"><strong>NSF Award #:</strong><a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118285&HistoricalAwards=false"class="award-link" target="_blank" rel="noopener noreferrer">2118285</a></div>
-        <div class="institute-info"><strong>Location:</strong> 900 Walker Avenue, Suite 140 <p>Catonsville, Maryland 21228</p> </div>
+        <div class="institute-info"><strong>NSF Award #:</strong><a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118285&HistoricalAwards=false" class="award-link" target="_blank" rel="noopener noreferrer">2118285</a></div>
+        <div class="institute-info"><strong>Location:</strong> 900 Walker Avenue, Suite 140, Catonsville, Maryland 21228</div>
         <div class="institute-info"><strong>Contact:</strong><a href="mailto:iharp@umbc.edu" class="email-link">iharp@umbc.edu</a></div>
-        <a href="https://iharp.umbc.edu/"target="_blank" rel="noopener noreferrer" class="button">Visit iHARP Website</a>
+        <a href="https://iharp.umbc.edu/" target="_blank" rel="noopener noreferrer" class="button">Visit iHARP Website</a>
       </div>
+    </div>
 
-
-    <div class="institute-content">
-      <h2>About</h2>
-      <p>
-        Headquartered at the University of Maryland, Baltimore County (UMBC), iHARP, short for the NSF HDR Institute for Harnessing Data and Model Revolution in the Polar Regions, brings together researchers from multiple institutions across the U.S. and internationally. The institute fosters interdisciplinary collaboration in climate modeling, remote sensing, and machine learning, and supports workforce development through training programs, student research opportunities, and open-access tools. iHARP's research plays a critical role in informing global policy and advancing our ability to predict and respond to changes in Earth's most vulnerable environments.
-      </p>
+    <!-- CONSISTENT ABOUT -->
+    <div class="about-section">
+      <h1>About</h1>
+      <div class="about-content-wrapper">
+        <div class="about-text">
+          <p>
+            Headquartered at the University of Maryland, Baltimore County (UMBC), iHARP, short for the NSF HDR Institute for Harnessing Data and Model Revolution in the Polar Regions, brings together researchers from multiple institutions across the U.S. and internationally. The institute fosters interdisciplinary collaboration in climate modeling, remote sensing, and machine learning, and supports workforce development through training programs, student research opportunities, and open-access tools. iHARP’s research plays a critical role in informing global policy and advancing our ability to predict and respond to changes in Earth’s most vulnerable environments.
+          </p>
+        </div>
+        <div class="about-image">
+          <img src="../../images/iharp images/iharp group.jpg" alt="iHARP polar data and modeling research" />
+        </div>
+      </div>
     </div>
     
     <div class="video-container">
       <iframe 
-        width="560" 
-        height="315" 
+        width="560" height="315" 
         src="https://www.youtube.com/embed/ok4HpiTxEqs?modestbranding=1" 
         frameborder="0" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        allowfullscreen
-        loading="lazy">
+        allowfullscreen loading="lazy">
       </iframe>
     </div>
 
@@ -138,34 +116,18 @@
         <div class="mission-hexagons columns lr">
           <div class="hex-col left">
             <div class="hexagon large">
-              <!-- STEP 3: Add hexagon-img class and data attributes -->
-              <img class="hexagon-img" 
-                   src="../../images/iharp mission 1.jpg" 
-                   alt="Research team group photo"
-                   data-caption="iHARP Research Team"
-                   data-credit="Credit: [Add from OneDrive]" />
+              <img class="hexagon-img" src="../../images/iharp images/iharp mission 1.jpg" alt="Research team group photo" data-caption="iHARP Research Team" data-credit="Credit: [Add from OneDrive]" />
             </div>
           </div>
           <div class="hex-col right">
             <div class="hexagon">
-              <!-- STEP 3: Add hexagon-img class and data attributes -->
-              <img class="hexagon-img" 
-                   src="../../images/iharp mission 2.jpg" 
-                   alt="Researcher presenting at conference"
-                   data-caption="Research Presentation"
-                   data-credit="Credit: [Add from OneDrive]" />
+              <img class="hexagon-img" src="../../images/iharp images/iharp mission 2.jpg" alt="Researcher presenting at conference" data-caption="Research Presentation" data-credit="Credit: [Add from OneDrive]" />
             </div>
             <div class="hexagon">
-              <!-- STEP 3: Add hexagon-img class and data attributes -->
-              <img class="hexagon-img" 
-                   src="../../images/researcher-polar.jpg" 
-                   alt="Researcher in polar environment"
-                   data-caption="Polar Research Field Work"
-                   data-credit="Credit: [Add from OneDrive]" />
+              <img class="hexagon-img" src="../../images/researcher-polar.jpg" alt="Researcher in polar environment" data-caption="Polar Research Field Work" data-credit="Credit: [Add from OneDrive]" />
             </div>
           </div>
         </div>
-        
         <div class="content-section">
           <h2>Mission</h2>
           <p>Advance our understanding of the response of polar regions to climate change and its global impacts by deeply integrating data science and polar science to spur physics-informed, data-driven discoveries.</p>
@@ -176,34 +138,18 @@
         <div class="vision-hexagons columns rl">
           <div class="hex-col left">
             <div class="hexagon">
-              <!-- STEP 3: Add hexagon-img class and data attributes -->
-              <img class="hexagon-img" 
-                   src="../../images/Group photo vision image 1.jpeg" 
-                   alt="Team meeting or conference"
-                   data-caption="Team Collaboration"
-                   data-credit="Credit: [Add from OneDrive]" />
+              <img class="hexagon-img" src="../../images/Group photo vision image 1.jpeg" alt="Team meeting or conference" data-caption="Team Collaboration" data-credit="Credit: [Add from OneDrive]" />
             </div>
             <div class="hexagon">
-              <!-- STEP 3: Add hexagon-img class and data attributes -->
-              <img class="hexagon-img" 
-                   src="../../images/Group photo vision image 3.jpeg" 
-                   alt="Arctic iceberg landscape"
-                   data-caption="Arctic Ice Landscape"
-                   data-credit="Credit: [Add from OneDrive]" />
+              <img class="hexagon-img" src="../../images/Group photo vision image 3.jpeg" alt="Arctic iceberg landscape" data-caption="Arctic Ice Landscape" data-credit="Credit: [Add from OneDrive]" />
             </div>
           </div>
           <div class="hex-col right">
             <div class="hexagon large">
-              <!-- STEP 3: Add hexagon-img class and data attributes -->
-              <img class="hexagon-img" 
-                   src="../../images/Group photo vision image 2.jpg" 
-                   alt="Polar bear on ice"
-                   data-caption="Polar Wildlife"
-                   data-credit="Credit: [Add from OneDrive]" />
+              <img class="hexagon-img" src="../../images/Group photo vision image 2.jpg" alt="Polar wildlife" data-caption="Polar Wildlife" data-credit="Credit: [Add from OneDrive]" />
             </div>
           </div>
         </div>
-        
         <div class="content-section">
           <h2>Vision</h2>
           <p>A future where integrated data and polar science drive discoveries that help society respond to polar climate change with resilience and precision.</p>
@@ -215,19 +161,19 @@
       <h2><strong>Areas of work</strong></h2>
       <div class="work-icons">
         <div class="work-item">
-          <img src="../../images/Polar Science Icon.png" alt="Polar Science" width="145" height="145"/>
+          <img src="../../images/iharp images/Polar Science Icon.png " alt="Polar Science" width="145" height="145"/>
           <p>Polar Science</p>
         </div>
         <div class="work-item">
-          <img src="../../images/Climate Science Icon.png" alt="Climate Science" width="145" height="145"/>
+          <img src="../../images/iharp images/Climate Science Icon.png" alt="Climate Science" width="145" height="145"/>
           <p>Climate Science</p>
         </div>
         <div class="work-item">
-          <img src="../../images/Atmospheric Science.png" alt="Atmospheric Science" width="145" height="145"/>
+          <img src="../../images/iharp images/Atmospheric Science.png" alt="Atmospheric Science" width="145" height="145"/>
           <p>Atmospheric Science</p>
         </div>
         <div class="work-item">
-          <img src="../../images/Ocean Science Icon.png" alt="Ocean Science" width="145" height="145"/>
+          <img src="../../images/iharp images/Ocean Science Icon.png " alt="Ocean Science" width="145" height="145"/>
           <p>Ocean Science</p>
         </div>
       </div>
@@ -235,51 +181,47 @@
 
     <div class="key-contributors-container">
       <div class="contributors-header">
-        <h2>Key Contributors</h2>
+        <h2>Principal Investigators</h2>
         <a href="https://iharp.umbc.edu/people/" class="view-all-link" target="_blank">
-          View all people
+          View full team
           <img src="../../images/share (1).png" alt="External link icon" />
         </a>
       </div>
       
       <div class="contributors-grid">
         <div class="contributor-card">
-          <img src="../../images/vandana-janeja.jpg" alt="Photo of Dr. Vandana Janeja" />
+          <img src="../../images/iharp images/vandana-janeja.jpg" alt="Photo of Dr. Vandana Janeja" />
           <div class="contributor-info">
             <h3>Vandana Janeja</h3>
-            <p>Director and Principal Investigator</p>
+            <p>Principal Investigator</p>
           </div>
         </div>
-        
         <div class="contributor-card">
-          <img src="../../images/Mathieu-Morlighem.png" alt="Photo of Dr. Mathieu Morlighem" />
+          <img src="../../images/iharp images/Mathieu-Morlighem.png" alt="Photo of Dr. Mathieu Morlighem" />
           <div class="contributor-info">
             <h3>Mathieu Morlighem</h3>
-            <p>Co-Director and Co-Principal Investigator</p>
+            <p>Co-PI</p>
           </div>
         </div>
-        
         <div class="contributor-card">
-          <img src="../../images/Shashi-Shekhar.jpg" alt="Photo of Dr. Shashi Shekhar" />
+          <img src="../../images/iharp images/Dr. Shashi Shekhar.png" alt="Photo of Dr. Shashi Shekhar" />
           <div class="contributor-info">
             <h3>Shashi Shekhar</h3>
-            <p>Co-Principal Investigator</p>
+            <p>Co-PI</p>
           </div>
         </div>
-        
         <div class="contributor-card">
-          <img src="../../images/jianwu-wang.jpg" alt="Photo of Dr. Jianwu Wang" />
+          <img src="../../images/iharp images/Jianwu-Wang.jpg" alt="Photo of Dr. Jianwu Wang" />
           <div class="contributor-info">
             <h3>Jianwu Wang</h3>
-            <p>Co-Principal Investigator</p>
+            <p>Co-PI</p>
           </div>
         </div>
-        
         <div class="contributor-card">
-          <img src="../../images/Dr. Aneesh Subramanian.png" alt="Photo of Dr. Aneesh Subramanian" />
+          <img src="../../images/iharp images/Dr. Aneesh Subramanian.png" alt="Photo of Dr. Aneesh Subramanian" />
           <div class="contributor-info">
             <h3>Aneesh Subramanian</h3>
-            <p>Co-Principal Investigator</p>
+            <p>Co-PI</p>
           </div>
         </div>
       </div>
@@ -290,19 +232,36 @@
     <h2>Publications</h2>
   </div>
 
+  <section class="social-connect">
+    <h2>Stay Connected</h2>
+    <div class="social-icons">
+      <a class="social-icon" href="://www.linkedin.com/company/iharp/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <img src="../../images/Social Media Icons/Linked In Logo.png" alt="LinkedIn logo" />
+      </a>
+      <a class="social-icon" href="https://www.youtube.com/@nsfiHARP" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+        <img src="../../images/Social Media Icons/Youtube Logo.png" alt="YouTube logo" />
+      </a>
+      <a class="social-icon" href="https://github.com/iharp-institute" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <img src="../../images/Social Media Icons/Github Logo.png" alt="GitHub logo" />
+      </a>
+      <a class="social-icon" href="https://zenodo.org/communities/iharp/records?q=&l=list&p=1&s=10&sort=newest" target="_blank" rel="noopener noreferrer" aria-label="Zenodo">
+        <img src="../../images/Social Media Icons/Zenodo Logo.png" alt="Zenodo logo" />
+      </a>
+    </div>
+  </section>
 
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-section about">
         <h3>NSF HDR Community</h3>
         <p> The Harnessing the Data Revolution (HDR) Ecosystem is supported by the National Science Foundation under Awards: 
-                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118240&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118240</a>, 
-                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118201&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118201</a>, 
-                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118285&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118285</a>, 
-                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118329&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118329</a>, 
-                    and <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2117997&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2117997</a>. 
-                    Any opinions, findings, conclusions, or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
-                </p>
+          <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118240&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118240</a>, 
+          <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118201&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118201</a>, 
+          <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118285&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118285</a>, 
+          <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118329&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118329</a>, 
+          and <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2117997&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2117997</a>. 
+          Any opinions, findings, conclusions, or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
+        </p>
         <div class="nsf-logo-container">
           <img src="../../images/nsf-logo.png" alt="NSF U.S. National Science Foundation Logo" />
           <p>U.S. National Science Foundation</p>
@@ -311,31 +270,28 @@
       <div class="footer-section links">
         <h3>Quick Links</h3>
         <ul>
-          <li><a href="../../about.html">About</a></li>
-          <li><a href="../../resources.html">Resources</a></li>
-          <li><a href="../../news.html">News</a></li>
-          <li><a href="../../publications.html">Publications</a></li>
-          <li><a href="../../mlchallenges.html">Challenges</a></li>
-          <li><a href="../../events.html">Events</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../news.html">News</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../mlchallenges.html">Challenges</a></li>
+          <li><a href="../events.html">Events</a></li>
         </ul>
       </div>
       <div class="footer-section institutes">
         <h3>Institutes</h3>
         <ul>
-          <li><a href="a3d3.html">A3D3</a></li>
-          <li><a href="imageomics.html">Imageomics</a></li>
-          <li><a href="id4.html">ID<sub>4</sub></a></li>
-          <li><a href="iguide.html">I-GUIDE</a></li>
-          <li><a href="iharp.html">iHARP</a></li>
+          <li><a href="../institutes/a3d3.html">A3D3</a></li>
+          <li><a href="../institutes/imageomics.html">Imageomics</a></li>
+          <li><a href="../institutes/id4.html">ID<sub>4</sub></a></li>
+          <li><a href="../institutes/iguide.html">I-GUIDE</a></li>
+          <li><a href="../institutes/iharp.html">iHARP</a></li>
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 NSF HDR. All Rights Reserved.</p>
-    </div>
+    <div class="footer-bottom"><p>&copy; 2025 NSF HDR. All Rights Reserved.</p></div>
   </footer>
 
-  <!-- STEP 4: HEXAGON CAROUSEL LIGHTBOX JAVASCRIPT -->
   <script>
   class HexagonCarousel {
       constructor(container) {
@@ -348,136 +304,63 @@
           this.indicatorsContainer = container.querySelector('.lightbox-indicators');
           this.captionEl = container.querySelector('.lightbox-caption');
           this.creditEl = container.querySelector('.lightbox-credit');
-          
           this.currentSlide = 0;
           this.hexagonImages = Array.from(document.querySelectorAll('.hexagon-img'));
           this.slides = [];
           this.indicators = [];
-          
           this.init();
       }
-
       init() {
-          // Create carousel slides from hexagon images
           this.createSlides();
-
-          // Navigation
           this.prevBtn.addEventListener('click', () => this.prevSlide());
           this.nextBtn.addEventListener('click', () => this.nextSlide());
           this.closeBtn.addEventListener('click', () => this.close());
-
-          // Indicators
-          this.indicators.forEach((indicator, index) => {
-              indicator.addEventListener('click', () => this.goToSlide(index));
-          });
-
-          // Click overlay to close
-          this.overlay.addEventListener('click', (e) => {
-              if (e.target === this.overlay) this.close();
-          });
-
-          // Keyboard navigation
+          this.indicators.forEach((indicator, index) => { indicator.addEventListener('click', () => this.goToSlide(index)); });
+          this.overlay.addEventListener('click', (e) => { if (e.target === this.overlay) this.close(); });
           document.addEventListener('keydown', (e) => {
               if (!this.overlay.classList.contains('active')) return;
-              
               if (e.key === 'ArrowLeft') this.prevSlide();
               if (e.key === 'ArrowRight') this.nextSlide();
               if (e.key === 'Escape') this.close();
           });
-
-          // Hexagon image click to open
-          this.hexagonImages.forEach((img, index) => {
-              img.addEventListener('click', () => this.openAtIndex(index));
-          });
-
+          this.hexagonImages.forEach((img, index) => { img.addEventListener('click', () => this.openAtIndex(index)); });
           this.updateSlideDisplay();
       }
-
       createSlides() {
-          // Clear containers
           this.slidesContainer.innerHTML = '';
           this.indicatorsContainer.innerHTML = '';
-
-          // Create a slide for each hexagon image
           this.hexagonImages.forEach((hexImg, index) => {
-              // Create slide
               const slide = document.createElement('div');
               slide.className = 'lightbox-carousel-slide' + (index === 0 ? ' active' : '');
-              
               const slideImage = document.createElement('div');
               slideImage.className = 'lightbox-slide-image';
-              
               const img = document.createElement('img');
-              img.src = hexImg.src;
-              img.alt = hexImg.alt;
-              
-              slideImage.appendChild(img);
-              slide.appendChild(slideImage);
-              this.slidesContainer.appendChild(slide);
-              this.slides.push(slide);
-
-              // Create indicator
+              img.src = hexImg.src; img.alt = hexImg.alt;
+              slideImage.appendChild(img); slide.appendChild(slideImage);
+              this.slidesContainer.appendChild(slide); this.slides.push(slide);
               const indicator = document.createElement('button');
               indicator.className = 'lightbox-indicator' + (index === 0 ? ' active' : '');
               indicator.setAttribute('aria-label', `Go to slide ${index + 1}`);
-              this.indicatorsContainer.appendChild(indicator);
-              this.indicators.push(indicator);
-
-              // Add click handler
+              this.indicatorsContainer.appendChild(indicator); this.indicators.push(indicator);
               indicator.addEventListener('click', () => this.goToSlide(index));
           });
       }
-
-      nextSlide() {
-          this.currentSlide = (this.currentSlide + 1) % this.slides.length;
-          this.updateSlideDisplay();
-      }
-
-      prevSlide() {
-          this.currentSlide = this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1;
-          this.updateSlideDisplay();
-      }
-
-      goToSlide(index) {
-          this.currentSlide = index;
-          this.updateSlideDisplay();
-      }
-
-      openAtIndex(index) {
-          this.currentSlide = index;
-          this.overlay.classList.add('active');
-          document.body.style.overflow = 'hidden';
-          this.updateSlideDisplay();
-      }
-
-      close() {
-          this.overlay.classList.remove('active');
-          document.body.style.overflow = 'auto';
-      }
-
+      nextSlide(){ this.currentSlide = (this.currentSlide + 1) % this.slides.length; this.updateSlideDisplay(); }
+      prevSlide(){ this.currentSlide = this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1; this.updateSlideDisplay(); }
+      goToSlide(i){ this.currentSlide = i; this.updateSlideDisplay(); }
+      openAtIndex(i){ this.currentSlide = i; this.overlay.classList.add('active'); document.body.style.overflow = 'hidden'; this.updateSlideDisplay(); }
+      close(){ this.overlay.classList.remove('active'); document.body.style.overflow = 'auto'; }
       updateSlideDisplay() {
-          // Update active slide
-          this.slides.forEach((slide, i) => {
-              slide.classList.toggle('active', i === this.currentSlide);
-          });
-
-          // Update active indicator
-          this.indicators.forEach((indicator, i) => {
-              indicator.classList.toggle('active', i === this.currentSlide);
-          });
-
-          // Update caption and credit from hexagon image data
+          this.slides.forEach((s, i) => s.classList.toggle('active', i === this.currentSlide));
+          this.indicators.forEach((d, i) => d.classList.toggle('active', i === this.currentSlide));
           const imgData = this.hexagonImages[this.currentSlide];
           this.captionEl.textContent = imgData.dataset.caption || 'Image';
           this.creditEl.textContent = imgData.dataset.credit || 'Credit: Unknown';
       }
   }
-
   document.addEventListener('DOMContentLoaded', () => {
       const lightboxOverlay = document.querySelector('.lightbox-overlay');
-      if (lightboxOverlay) {
-          window.hexagonCarousel = new HexagonCarousel(lightboxOverlay);
-      }
+      if (lightboxOverlay) { window.hexagonCarousel = new HexagonCarousel(lightboxOverlay); }
   });
   </script>
 </body>

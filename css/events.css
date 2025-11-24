@@ -1,6 +1,6 @@
 /* -------------------- Events Section -------------------- */
 .events-intro {
-    padding: 100px 20px 50px 20px;
+    padding: 60px 20px 40px 20px;
     text-align: center;
 }
 
@@ -94,7 +94,7 @@
     font-weight: 600;
     transition: all 0.3s ease;
     white-space: nowrap;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .filter-btn-main:hover {
@@ -152,7 +152,7 @@
     transition: background-color 0.2s ease;
     font-size: 0.95rem;
     color: #333;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .filter-option:hover {
@@ -282,7 +282,7 @@
     font-size: 0.85rem;
     font-weight: 600;
     color: #0073e6;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .event-type-icon {
@@ -334,7 +334,7 @@
     font-size: 0.95rem;
     display: inline-block;
     transition: color 0.3s ease;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .event-link:hover {
@@ -378,7 +378,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 600;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;

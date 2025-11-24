@@ -162,7 +162,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 600;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
 }
 
 .pagination button:hover {

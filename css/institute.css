@@ -1300,6 +1300,8 @@ main {
 .social-connect h2 {
     margin-bottom: 16px;
     color: var(--secondary-color);
+    font-size: 2rem; /* match publications title size */
+    font-weight: bold;
     letter-spacing: 0.5px;
 }
 
