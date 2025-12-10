@@ -9,8 +9,9 @@
   <link rel="stylesheet" href="../../css/institute.css" />
   <script src="../../js/script.js"></script>
 </head>
-<body class="iguide-theme">
-  <!-- HEXAGON CAROUSEL LIGHTBOX MODAL -->
+<body class="institute-theme has-construction-banner">
+  <div class="under-construction-banner">UNDER CONSTRUCTION</div>
+  
   <div class="lightbox-overlay" id="lightboxOverlay">
     <div class="lightbox-modal">
       <button class="lightbox-close" aria-label="Close">&times;</button>
@@ -25,6 +26,7 @@
       <div class="lightbox-caption-section">
         <h3 class="lightbox-caption">Caption</h3>
         <p class="lightbox-credit">Credit</p>
+        <a class="lightbox-link" href="#" target="_blank" rel="noopener noreferrer" style="display: none;">View link</a>
       </div>
 
       <div class="lightbox-indicators"></div>
@@ -145,15 +147,15 @@
         <div class="mission-hexagons columns lr">
           <div class="hex-col left">
             <div class="hexagon large">
-              <img class="hexagon-img" src="../../images/iguide mission 1.jpg" alt="Satellite view of a dynamic weather system." data-caption="Weather System" data-credit="Credit: [Add from OneDrive]" />
+              <img class="hexagon-img" src="../../images/i-guide images/shaowenwangforumpresentation.png" alt="Presentation" data-caption="I-GUIDE Principal Investigator, Shaowen Wang presenting at the 2025 I-GUIDE Forum, located in Chicago, Illinois." data-credit="Credit: I-GUIDE Leadership"/>
             </div>
           </div>
           <div class="hex-col right">
             <div class="hexagon">
-              <img class="hexagon-img" src="../../images/iguide mission 2.jpg" alt="A researcher analyzing a complex geospatial map on a large screen." data-caption="Geospatial Analysis" data-credit="Credit: [Add from OneDrive]" />
+              <img class="hexagon-img" src="../../images/i-guide images/4SummerSchoolTeamWorkv1.JPEG" alt="Summer school" data-caption="I‑GUIDE Summer School 2025 attendees engaging in the theme 'Spatial AI for Extreme Events and Disaster Resilience.'" data-credit="Credit: I-GUIDE Leadership" />
             </div>
             <div class="hexagon">
-              <img class="hexagon-img" src="../../images/iguide mission 3.jpg" alt="Top-down view of a river system in a rural landscape." data-caption="River System" data-credit="Credit: [Add from OneDrive]" />
+              <img class="hexagon-img" src="../../images/i-guide images/AAG 2024 iGUIDE.jpeg" alt="Conference" data-caption="GeoAI session at the I-GUIDE-sponsored AAG 2024 Symposium on Geospatial Data Science for Sustainability." data-credit="Credit: Song Gao" />
             </div>
           </div>
         </div>
@@ -168,22 +170,22 @@
         <div class="vision-hexagons columns rl">
           <div class="hex-col left">
             <div class="hexagon">
-              <img class="hexagon-img" src="../../images/iguide vision 1.jpg" alt="A smart city with interconnected data points." data-caption="Smart City" data-credit="Credit: [Add from OneDrive]" />
+              <img class="hexagon-img" src="../../images/i-guide images/Team3BioFuelGroup1.jpg" alt="summer school" data-caption="Team members of I-GUIDE's Summer School sharing their research updates and being recognized for their achievements." data-credit="Credit: I-GUIDE Leadership" />
             </div>
             <div class="hexagon">
-              <img class="hexagon-img" src="../../images/iguide vision 3.jpg" alt="A scientist in a lab working on data visualization models." data-caption="Data Visualization" data-credit="Credit: [Add from OneDrive]" />
+              <img class="hexagon-img" src="../../images/i-guide images/PosterForum2025.JPEG" alt="Poster" data-caption="Data Visualization" data-credit="Credit: I-GUIDE Leadership" />
             </div>
           </div>
           <div class="hex-col right">
             <div class="hexagon large">
-              <img class="hexagon-img" src="../../images/iguide vision 2.jpg" alt="A lush forest landscape with digital data overlays." data-caption="Forest Landscape" data-credit="Credit: [Add from OneDrive]" />
+              <img class="hexagon-img" src="../../images/i-guide images/Erik Shook Presentation.png" alt="Eric Shook" data-caption="Eric Shook presenting Plenary Talk 'Convergence Curriculum Powered by I-GUIDE' during the 2023 I-GUIDE Forum. Watch the recording" data-link="https://www.youtube.com/watch?v=2JV_tikDw9Q&t=279s" data-link-text="here" data-credit="Credit: I-GUIDE Leadership" />
             </div>
           </div>
         </div>
 
         <div class="content-section">
           <h2>Vision</h2>
-          <p>""Drive digital discovery and innovation by harnessing the geospatial data revolution"</p>
+          <p>"Drive digital discovery and innovation by harnessing the geospatial data revolution"</p>
         </div>
       </div>
     </div>
@@ -253,7 +255,7 @@
         </div>
 
         <div class="contributor-card">
-          <img src="../../images/i-guide images/Mohan Ramaburthy.jpg" alt="Photo of Mohan Ramaburthy" />
+          <img src="../../images/i-guide images/Mohan Ramaburthy.jpeg" alt="Photo of Mohan Ramaburthy" />
           <div class="contributor-info">
             <h3>Mohan Ramaburthy</h3>
             <p>Co-PI</p>
@@ -328,7 +330,7 @@
     </div>
   </footer>
 
-  <!-- HEXAGON CAROUSEL LIGHTBOX JAVASCRIPT -->
+  
   <script>
     class HexagonCarousel {
       constructor(container) {
@@ -442,7 +444,16 @@
         });
 
         const imgData = this.hexagonImages[this.currentSlide];
-        this.captionEl.textContent = imgData.dataset.caption || 'Image';
+        const captionText = imgData.dataset.caption || 'Image';
+        const linkUrl = imgData.dataset.link;
+        const linkLabel = imgData.dataset.linkText || 'here';
+
+        if (linkUrl) {
+          this.captionEl.innerHTML = `${captionText} <a href="${linkUrl}" target="_blank" rel="noopener noreferrer">${linkLabel}</a>`;
+        } else {
+          this.captionEl.textContent = captionText;
+        }
+
         this.creditEl.textContent = imgData.dataset.credit || 'Credit: Unknown';
       }
     }

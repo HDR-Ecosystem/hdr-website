@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News</title>
-    <link rel="stylesheet" href="../css/news.css" />
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/news.css" />
     <link rel="icon" href="../images/nsf-logo.png" />
 </head>
-<body>
-    <!-- ===== HEADER WITH HAMBURGER & SEARCH ===== -->
+<body class="has-construction-banner">
+    <div class="under-construction-banner">UNDER CONSTRUCTION</div>
+    
     <header class="header">
         <div class="logo">
             <a href="../index.html">
@@ -19,6 +20,7 @@
         
         <nav class="nav">
             <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li class="dropdown">
                     <a>Institutes</a>
@@ -38,7 +40,7 @@
             </ul>
         </nav>
 
-        <!-- Search Bar Container - Always Visible -->
+        
         <div class="search-container" id="searchContainer">
             <button class="search-icon-btn" id="searchIconBtn" aria-label="Search">
                 <img src="../images/search.png" alt="Search" />
@@ -47,7 +49,7 @@
             <div class="search-results" id="searchResults"></div>
         </div>
 
-        <!-- Header Actions (Hamburger) -->
+        
         <div class="header-actions">
             <button class="hamburger" id="hamburger" aria-label="Menu">
                 <span class="bar"></span>
@@ -63,13 +65,13 @@
             Stay connected with the latest from the community. Highlights recent breakthroughs, upcoming events, and stories from across our research community. Explore announcements, featured projects, and insights that showcase how we are harnessing data to drive discovery and impact.
         </p>
         <div class="news-container" id="news-container">
-            <!-- News cards will be injected here by JS -->
+            
         </div>
         <div class="pagination" id="pagination">
-            <!-- Pagination buttons will appear here -->
+            
         </div>
         
-        <!-- Submit News Section - MOVED INSIDE SECTION -->
+        
         <div class="submit-news-section">
             <p class="submit-news-text">
                 Have something exciting to share with the HDR community?  
@@ -79,7 +81,7 @@
         </div>
     </section>
 
-    <!-- Full NSF Footer -->
+    
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section about">
@@ -124,32 +126,7 @@
         </div>
     </footer>
 
-    <!-- Popup Form Modal - MOVED BEFORE
-    <div id="newsFormModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2>Submit Your News</h2>
-            <form id="newsForm">
-                <label>Title</label>
-                <input type="text" name="title" required>
-
-                <label>Date</label>
-                <input type="date" name="date" required>
-
-                <label>Upload Image</label>
-                <input type="file" name="image" accept="image/*" required>
-
-                <label>Link</label>
-                <input type="url" name="link" placeholder="https://example.com" required>
-
-                <label>Description</label>
-                <textarea name="description" rows="3" required></textarea>
-
-                <button type="submit" class="submit-btn">Submit</button>
-            </form>
-        </div>
-    </div>
-     </body> -->
+    
 
     <script src="../js/script.js"></script>
     <script src="../js/news.js"></script>

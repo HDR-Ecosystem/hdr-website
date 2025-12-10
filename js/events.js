@@ -1,4 +1,4 @@
-// Events Management with Search, Filter, and Pagination
+
 
 const EVENTS_PER_PAGE = 15; // Display 15 events per page (3x5 grid)
 
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function setupEventListeners() {
-    // Filter toggle
+
     const filterToggle = document.getElementById('filterToggle');
     const filterDropdown = document.getElementById('filterDropdown');
     
@@ -25,14 +25,12 @@ function setupEventListeners() {
         });
     }
 
-    // Close dropdown when clicking outside
     document.addEventListener('click', function(e) {
         if (!filterDropdown.contains(e.target) && !filterToggle.contains(e.target)) {
             filterDropdown.classList.add('hidden');
         }
     });
 
-    // Filter radio buttons (event type)
     const filterOptions = document.querySelectorAll('input[name="eventFilter"]');
     filterOptions.forEach(option => {
         option.addEventListener('change', function() {
@@ -42,7 +40,6 @@ function setupEventListeners() {
         });
     });
 
-    // Institute checkboxes
     const instituteCheckboxes = document.querySelectorAll('input[name="instituteFilter"]');
     instituteCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function() {
@@ -54,7 +51,6 @@ function setupEventListeners() {
         });
     });
 
-    // Search input
     const searchInput = document.getElementById('eventSearch');
     if (searchInput) {
         searchInput.addEventListener('input', function(e) {
@@ -65,7 +61,6 @@ function setupEventListeners() {
     }
 }
 
-// Determine if an event is upcoming or past
 function classifyEvent(eventDate) {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -76,7 +71,6 @@ function classifyEvent(eventDate) {
     return event >= today ? 'upcoming' : 'past';
 }
 
-// Format date to readable string (e.g., "August 15, 2025 2:00pm (CT)")
 function formatEventDateTime(dateString, timeString = '12:00pm', timezone = 'CT') {
     const date = new Date(dateString);
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -84,17 +78,16 @@ function formatEventDateTime(dateString, timeString = '12:00pm', timezone = 'CT'
     return `${formattedDate} ${timeString} (${timezone})`;
 }
 
-// Apply both filter and search
 function applyFiltersAndSearch() {
     filteredEvents = allEvents.filter(event => {
-        // Apply event type filter
+
         const typeMatch = currentFilter === 'all' || event.type === currentFilter;
         
-        // Apply institute filter (if no institutes selected, show all)
+
         const instituteMatch = selectedInstitutes.length === 0 || 
                               selectedInstitutes.includes(event.institute);
         
-        // Apply search filter
+
         const searchableText = event.searchable?.toLowerCase() || '';
         const searchMatch = searchQuery === '' || 
                            searchableText.includes(searchQuery) ||
@@ -109,7 +102,6 @@ function applyFiltersAndSearch() {
     renderPagination();
 }
 
-// Render events for current page
 function renderEvents() {
     const eventsGrid = document.getElementById('eventsGrid');
     const noEvents = document.getElementById('noEvents');
@@ -122,7 +114,6 @@ function renderEvents() {
 
     noEvents.classList.add('hidden');
 
-    // Calculate pagination
     const startIndex = (currentPage - 1) * EVENTS_PER_PAGE;
     const endIndex = startIndex + EVENTS_PER_PAGE;
     const pageEvents = filteredEvents.slice(startIndex, endIndex);
@@ -135,13 +126,11 @@ function renderEvents() {
     });
 }
 
-// Create an event card element
 function createEventCard(event) {
     const article = document.createElement('article');
     article.className = 'event-card';
     article.setAttribute('data-event-type', event.type);
 
-    // Build location/virtual section - show EITHER Virtual OR Location
     let eventTypeSection = '';
     if (event.eventType === 'virtual') {
         eventTypeSection = `
@@ -172,14 +161,12 @@ function createEventCard(event) {
             <p class="event-datetime">${event.dateTime}</p>
             <p class="event-description">${event.description}</p>
             ${eventTypeSection}
-            ${event.link ? `<a href="${event.link}" class="event-link">Learn More →</a>` : ''}
         </div>
     `;
 
     return article;
 }
 
-// Render pagination controls
 function renderPagination() {
     const pagination = document.getElementById('pagination');
     const totalPages = Math.ceil(filteredEvents.length / EVENTS_PER_PAGE);
@@ -188,7 +175,6 @@ function renderPagination() {
 
     if (totalPages <= 1) return;
 
-    // Previous button
     const prevBtn = document.createElement('button');
     prevBtn.className = 'pagination-btn';
     prevBtn.textContent = 'Prev';
@@ -203,7 +189,6 @@ function renderPagination() {
     });
     pagination.appendChild(prevBtn);
 
-    // Page numbers
     for (let i = 1; i <= totalPages; i++) {
         const pageBtn = document.createElement('button');
         pageBtn.className = `pagination-btn ${i === currentPage ? 'active' : ''}`;
@@ -217,7 +202,6 @@ function renderPagination() {
         pagination.appendChild(pageBtn);
     }
 
-    // Next button
     const nextBtn = document.createElement('button');
     nextBtn.className = 'pagination-btn';
     nextBtn.textContent = 'Next';
@@ -233,7 +217,6 @@ function renderPagination() {
     pagination.appendChild(nextBtn);
 }
 
-// Scroll to top of events section
 function scrollToTop() {
     const eventsList = document.querySelector('.events-list');
     if (eventsList) {
@@ -241,7 +224,6 @@ function scrollToTop() {
     }
 }
 
-// Populate events from data
 window.populateEvents = function(eventsData) {
     allEvents = eventsData.map(event => ({
         ...event,
@@ -257,7 +239,6 @@ window.populateEvents = function(eventsData) {
     applyFiltersAndSearch();
 };
 
-// Export for debugging
 window.getEventsData = function() {
     return {
         allEvents,
@@ -268,7 +249,6 @@ window.getEventsData = function() {
     };
 };
 
-// Initialize with sample events on page load
 document.addEventListener('DOMContentLoaded', function() {
     const sampleEvents = [
         {
@@ -277,7 +257,7 @@ document.addEventListener('DOMContentLoaded', function() {
             date: '2025-08-15',
             time: '2:00pm',
             timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=I-GUIDE+VCO',
+            image: 'https://via.placeholder.com/400x300?text=A3D3+Symposium',
             eventType: 'virtual',
             location: 'Online',
             institute: 'I-GUIDE',
@@ -465,6 +445,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     ];
 
-    // Populate events on page load
     window.populateEvents(sampleEvents);
 });

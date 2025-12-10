@@ -1,80 +1,40 @@
-/* ===================================== */
-/* Institute Color Themes                */
-/* ===================================== */
 
-/* Default/Fallback Colors */
+
 :root {
-    --primary-color: #004d99; /* Used for buttons, and other accent elements */
-    --secondary-color: #333; /* Used for headings */
-    --accent-color: #218367; /* Used for the key contributors section */
-    --highlight-color: #a6f0d6; /* Used for link hovers */
-    --text-color: #282828; /* General paragraph text color */
-    /* NEW VARIABLE FOR CONSISTENT VERTICAL SPACING */
+    --primary-color: #0074E0;      
+    --secondary-color: #282828;    
+    --accent-color: #0074E0;       
+    --highlight-color: #cde5ff;    
+    --text-color: #282828;         
     --section-spacing: 100px;
 }
 
-/* A3D3 Institute Theme */
-.a3d-theme {
-    --primary-color: #c95143;
-    --secondary-color: #c95143;
-    --accent-color: #721616;
-    --highlight-color: #f7a29a;
-    .institute-content h2 { color: var(--primary-color); }
-}
-
-/* ID4 Institute Theme */
-.id4-theme {
-    --primary-color: #9D55CE;
-    --secondary-color: #9D55CE;
-    --accent-color: #9D55CE;
-    --highlight-color: #D3B6E4;
-    .institute-content h2 { color: var(--primary-color); }
-}
-
-/* I-GUIDE Institute Theme */
-.iguide-theme {
-    --primary-color: #3f6844;
-    --secondary-color: #3f6844;
-    --accent-color: #5d9d66;
-    --highlight-color: #c6e0c9;
-    .institute-content h2 { color: var(--primary-color); }
-}
-
-/* iHARP Institute Theme */
-.iharp-theme {
-    --primary-color: #1a4f86;
-    --secondary-color: #1a4f86;
-    --accent-color: #1a4f86;
-    --highlight-color: #7da5d1;
-    .institute-content h2 { color: var(--primary-color); }
-}
-
-/* Imageomics Institute Theme */
+.institute-theme,
+.a3d-theme,
+.id4-theme,
+.iguide-theme,
+.iharp-theme,
 .imageomics-theme {
-    --primary-color: #008080;
-    --secondary-color: #008080;
-    --accent-color: #6a0dad;
-    --highlight-color: #afeeee;
-    .institute-content h2 { color: var(--primary-color); }
+    --primary-color: #0074E0;
+    --secondary-color: #282828;
+    --accent-color: #0074E0;
+    --highlight-color: #cde5ff;
 }
 
-/* Institute Page General Styles         */
-/* General Body - Background is white */
 body, html {
     margin: 0;
     padding: 0;
     width: 100%;
     background-color: #ffffff;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: var(--text-color);
 }
 
-/* Main content area */
 main {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Full-width banner */
 .institute-header {
     position: relative;
     width: 100vw;
@@ -100,7 +60,6 @@ main {
     display: block;
 }
 
-/* Overlay text */
 .header-text-overlay {
     position: absolute;
     top: 50%;
@@ -119,12 +78,11 @@ main {
     font-size: 2.2em;
     font-weight: bold;
     color: var(--secondary-color);
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
     line-height: 1.2;
     word-break: break-word;
 }
 
-/* Institute details */
 .institute-details-container {
     display: flex;
     justify-content: space-between;
@@ -160,52 +118,43 @@ main {
     position: static;
     object-fit: contain;
 }
-/*
-.institute-logo-container img:hover {
-    transform: scale(1.05);
-}
-*/
 
 .institute-logo-container p {
     font-style: italic;
     color: var(--text-color);
     margin-top: 10px;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .institute-info {
     margin-bottom: 15px;
     font-size: 1em;
     line-height: 1.5;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .institute-info strong {
-    color: var(--primary-color);
-    font-family: 'Source Sans 3', sans-serif;
+    color: var(--text-color);
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-/* Link styles for Award # and Contact Email */
 .institute-info a {
     color: var(--primary-color);
     text-decoration: none;
-    transition: color 0.3s ease;
 }
 
 .institute-info a:hover {
-    color: var(--secondary-color);
+    color: #0074E0;
     text-decoration: underline;
 }
 
-/* Specific styling for award links */
 .award-link {
-    color: var(--primary-color);
+    color: #0074E0;
     font-weight: 500;
 }
 
-/* Specific styling for email links */
 .email-link {
-    color: var(--primary-color);
+    color: #0074E0;
     font-weight: 500;
 }
 
@@ -221,7 +170,7 @@ main {
     font-weight: 500;
     transition: all 0.3s ease;
     margin-top: 10px;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .button:hover {
@@ -232,37 +181,32 @@ main {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Content */
 .institute-content h2 {
     font-size: 1.8em;
-    color: var(--primary-color);
+    color: var(--secondary-color);
     border-bottom: 2px solid #ddd;
     padding-bottom: 10px;
     margin-bottom: 20px;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .institute-content p {
     line-height: 1.6;
     color: var(--text-color);
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-/* ===================================== */
-/* About Section Styles                 */
-/* ===================================== */
-
 .about-section {
-  margin: 40px auto;
-  width: 85%;
-  max-width: 1000px;
+  margin: 30px auto;
+  width: 80%;
+  max-width: 900px;
 }
 
 .about-content-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 50px; 
+  gap: 32px; 
 }
 
 .about-text {
@@ -273,7 +217,7 @@ main {
 .about-text p {
   line-height: 1.6;
   color: var(--text-color);
-  font-family: 'Source Sans 3', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 1em;
   margin-top: 0; 
 }
@@ -291,13 +235,6 @@ main {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* .about-image img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
-*/
-
-/* YouTube Video Container - Centered */
 .video-container {
     display: flex;
     justify-content: center;
@@ -308,7 +245,7 @@ main {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    /* normalize vertical rhythm before Areas of Work */
+    
     margin-bottom: 40px;
 }
 
@@ -328,11 +265,10 @@ main {
     }
 }
 
-/* Mission and Vision Section */
 .mission-vision-container {
     max-width: 1200px;
     margin: 0 auto;
-    /* let Areas of Work own the following gap */
+    
     margin-bottom: 0;
     padding: 0 20px;
     position: relative;
@@ -348,7 +284,6 @@ main {
 
 .vision-section { flex-direction: row-reverse; }
 
-/* === HONEYCOMB HEXAGONS === */
 .hexagon {
     width: 220px;
     height: 190px;
@@ -379,7 +314,6 @@ main {
 .hexagon:hover { transform: scale(1.05); }
 .hexagon:hover img { filter: brightness(1.1); }
 
-/* Honeycomb container for mission/vision */
 .columns {
     display: flex;
     align-items: center;
@@ -402,7 +336,6 @@ main {
 .columns.rl .hex-col.right { margin-left: -40px; }
 .columns.rl .hex-col.right { margin-top: 0; }
 
-/* Horizontal positioning to match legacy spacing between cluster and text */
 .mission-hexagons.columns.lr { transform: translateX(30px); }
 .vision-hexagons.columns.rl { transform: translateX(-30px); }
 
@@ -421,7 +354,6 @@ main {
 .hexagon-row:not(.single) .hexagon:first-child { left: -10px; }
 .hexagon-row:not(.single) .hexagon:last-child { left: 10px; }
 
-/* General honeycomb container (if needed elsewhere) */
 .honeycomb {
     display: flex;
     flex-wrap: wrap;
@@ -435,7 +367,6 @@ main {
 .honeycomb-row { display: flex; gap: 20px; }
 .honeycomb-row:nth-child(even) { margin-left: calc(50% * 1/cos(30deg)); }
 
-/* Content sections */
 .content-section { flex: 1; max-width: 450px; }
 
 .content-section h2 {
@@ -443,24 +374,21 @@ main {
     font-weight: 600;
     color: var(--secondary-color);
     margin-bottom: 20px;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .content-section p {
     font-size: 1.1em;
-    color: #252525;
+    color: var(--text-color);
     line-height: 1.7;
     font-style: italic;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-/* =========================
-   AREAS OF WORK — OWNS GAP
-   ========================= */
 .areas-of-work-container {
-    /* old: margin-top: 60px; */
+    
     margin-top: 0;
-    padding-top: var(--section-spacing); /* prevents margin collapse */
+    padding-top: var(--section-spacing); 
     margin-bottom: var(--section-spacing);
     padding-left: 20px;
     padding-right: 20px;
@@ -472,11 +400,11 @@ main {
 }
 
 .areas-of-work-container h2 {
-    margin-top: 0; /* kill surprise top margin */
+    margin-top: 0; 
     font-size: 2.3em;
     color: var(--secondary-color);
     margin-bottom: 25px;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .work-icons {
@@ -507,14 +435,13 @@ main {
     font-weight: 400;
     color: #282828;
     margin: 0;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-/* Key Contributors Section */
 .key-contributors-container {
-    background-color: var(--accent-color);
-    padding-top: 40px;
-    padding-bottom: 80px;
+    background: linear-gradient(135deg, #218367 0%, #155442 100%);
+    padding-top: 60px;
+    padding-bottom: 60px;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
@@ -540,7 +467,7 @@ main {
     font-size: 2.5em;
     color: #fff;
     margin: 0;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .view-all-link {
@@ -551,7 +478,7 @@ main {
     display: flex;
     align-items: center;
     gap: 5px;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .view-all-link img { width: 14px; height: 14px; }
@@ -579,10 +506,6 @@ main {
     transition: transform 0.3s ease;
 }
 
-/*
-.contributor-card:hover { transform: translateY(-5px); }
-*/
-
 .contributor-card img {
     width: 100%;
     height: 250px;
@@ -607,7 +530,7 @@ main {
     font-size: 1.2em;
     color: var(--secondary-color);
     margin: 0 0 5px 0;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -618,7 +541,7 @@ main {
     color: var(--text-color);
     margin: 0;
     line-height: 1.4;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .publications-title {
@@ -627,16 +550,11 @@ main {
     text-align: center;
     margin: 40px 0 20px;
     color: var(--secondary-color);
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-/* ========================================== */
-/* RESPONSIVE MEDIA QUERIES - OPTIMIZED      */
-/* ========================================== */
-
-/* Tablet & Smaller Desktops */
 @media (max-width: 1024px) {
-    /* Mission/Vision - Better spacing on tablets */
+    
     .mission-section, .vision-section {
         gap: 60px;
         margin-bottom: 60px;
@@ -644,22 +562,22 @@ main {
     
     .content-section { max-width: 100%; }
 
-    /* Hexagons - Reduce size on tablets */
+    
     .hexagon { width: 160px; height: 138px; }
     .hexagon.large { width: 160px; height: 138px; }
 
-    /* Remove horizontal transforms on tablets */
+    
     .mission-hexagons.columns.lr { transform: translateX(0); }
     .vision-hexagons.columns.rl { transform: translateX(0); }
 
-    /* Adjust hexagon positioning */
+    
     .hexagon-row:not(.single) .hexagon:first-child { left: 0; }
     .hexagon-row:not(.single) .hexagon:last-child { left: 0; }
 
-    /* Work items - better spacing */
+    
     .work-icons { gap: 30px; }
 
-    /* About section - better spacing on tablets */
+    
     .about-content-wrapper {
         gap: 1.5rem;
     }
@@ -669,13 +587,12 @@ main {
     }
 }
 
-/* Mobile - 768px and below */
 @media (max-width: 768px) {
-    /* ===== GENERAL ===== */
+    
     body, html { overflow-x: hidden; }
     main { padding: 0 15px; }
 
-    /* ===== HEADER ===== */
+    
     .institute-details-container {
         flex-direction: column;
         align-items: center;
@@ -708,11 +625,11 @@ main {
         line-height: 1.3;
     }
 
-    /* ===== MISSION/VISION SECTION ===== */
+    
     .mission-vision-container {
         margin: 0 auto;
-        /* keep 0 to avoid fighting Areas of Work padding-top */
-        margin-bottom: 40px; /* tighten vertical space */
+        
+        margin-bottom: 40px; 
         padding: 0 15px;
         overflow: hidden;
     }
@@ -732,18 +649,18 @@ main {
     .content-section h2 { font-size: 1.6em; text-align: center; }
     .content-section p { font-size: 1em; text-align: center; }
 
-    /* ===== HEXAGONS - NO OVERLAP ===== */
+    
     .hexagon { width: 140px; height: 120px; }
     .hexagon.large { width: 140px; height: 120px; }
 
-    /* Remove all transforms that cause overlap */
+    
     .mission-hexagons.columns.lr { transform: none; }
     .vision-hexagons.columns.rl { transform: none; }
 
     .columns.lr .hex-col.left { margin-right: 0; }
     .columns.rl .hex-col.right { margin-left: 0; }
 
-    /* Fix hexagon row spacing */
+    
     .hexagon-row.single { margin-bottom: 0; margin-left: 0; }
 
     .hexagon-row:not(.single) {
@@ -759,11 +676,11 @@ main {
 
     .columns { justify-content: center; flex-direction: row; }
 
-    /* ===== AREAS OF WORK ===== */
+    
     .areas-of-work-container {
-        /* old: margin-top: 40px; margin-bottom: 60px; */
+        
         margin-top: 0;
-        padding-top: 60px;   /* mobile rhythm */
+        padding-top: 60px;   
         margin-bottom: 60px;
         padding-left: 15px;
         padding-right: 15px;
@@ -781,7 +698,7 @@ main {
     .work-item img { width: 120px; height: 120px; }
     .work-item p { font-size: 0.95em; }
 
-    /* ===== ABOUT SECTION (UPDATED) ===== */
+    
     .about-section {
         margin: 30px auto;
         width: 90%;
@@ -812,8 +729,8 @@ main {
         border-radius: 6px;
     }
 
-    /* ===== KEY CONTRIBUTORS ===== */
-    .key-contributors-container { padding-top: 30px; padding-bottom: 50px; }
+    
+    .key-contributors-container { padding-top: 40px; padding-bottom: 40px; }
 
     .contributors-header {
         flex-direction: column;
@@ -834,11 +751,11 @@ main {
     .contributor-info h3 { font-size: 1em; }
     .contributor-info p { font-size: 0.85em; }
 
-    /* ===== VIDEO CONTAINER ===== */
+    
     .video-container { padding: 20px 15px; }
     .video-container iframe { width: 100%; height: auto; aspect-ratio: 16 / 9; }
 
-    /* ===== GENERAL TYPOGRAPHY ===== */
+    
     .institute-content h2 { font-size: 1.4em; text-align: center; }
     .institute-content p { font-size: 0.95em; }
 
@@ -847,12 +764,11 @@ main {
     .button { padding: 10px 25px; font-size: 14px; }
 }
 
-/* Extra Small Devices - 480px and below */
 @media (max-width: 480px) {
-    /* ===== GENERAL ===== */
+    
     main { padding: 0 12px; }
 
-    /* ===== HEADER ===== */
+    
     .header-image-container { height: 40vh; }
 
     .header-text-overlay {
@@ -869,7 +785,7 @@ main {
     .institute-logo-container img { width: 130px; }
     .institute-info { font-size: 0.9em; }
 
-    /* ===== MISSION/VISION SECTION ===== */
+    
     .mission-vision-container {
         margin: 0 auto;
         margin-bottom: 35px;
@@ -882,11 +798,11 @@ main {
     .content-section h2 { font-size: 1.3em; margin-bottom: 15px; }
     .content-section p { font-size: 0.9em; line-height: 1.5; }
 
-    /* ===== HEXAGONS ===== */
+    
     .hexagon { width: 120px; height: 102px; }
     .hexagon.large { width: 120px; height: 102px; }
 
-    /* ===== ABOUT SECTION (UPDATED) ===== */
+    
     .about-section {
         margin: 20px auto;
         width: 95%;
@@ -907,9 +823,9 @@ main {
         border-radius: 4px;
     }
 
-    /* ===== AREAS OF WORK ===== */
+    
     .areas-of-work-container {
-        /* old: margin-top: 30px; margin-bottom: 50px; */
+        
         margin-top: 0;
         padding-top: 50px;
         margin-bottom: 50px;
@@ -929,8 +845,8 @@ main {
     .work-item img { width: 100px; height: 100px; margin-bottom: 8px; }
     .work-item p { font-size: 0.9em; }
 
-    /* ===== CONTRIBUTORS ===== */
-    .key-contributors-container { padding-top: 25px; padding-bottom: 40px; }
+    
+    .key-contributors-container { padding-top: 32px; padding-bottom: 32px; }
 
     .contributors-header { padding: 0 12px; gap: 10px; }
     .contributors-header h2 { font-size: 1.4em; }
@@ -944,7 +860,7 @@ main {
     .contributor-info h3 { font-size: 0.9em; margin-bottom: 3px; }
     .contributor-info p { font-size: 0.8em; }
 
-    /* ===== GENERAL ===== */
+    
     .institute-content h2 { font-size: 1.2em; }
     .institute-content p { font-size: 0.9em; }
 
@@ -953,11 +869,6 @@ main {
     .button { padding: 8px 20px; font-size: 13px; }
 }
 
-/* ===================================== */
-/* HEXAGON CAROUSEL LIGHTBOX            */
-/* ===================================== */
-
-/* Modal Overlay - Dimmed Background */
 .lightbox-overlay {
     display: none;
     position: fixed;
@@ -973,11 +884,10 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 90px 20px 90px; /* equal top/bottom with a bit more drop */
+    padding: 90px 20px 90px; 
     box-sizing: border-box;
 }
 
-/* Modal Container */
 .lightbox-modal {
     position: relative;
     background-color: white;
@@ -999,7 +909,6 @@ main {
     to { transform: translateY(0); opacity: 1; }
 }
 
-/* Close Button */
 .lightbox-close {
     position: absolute;
     top: 15px;
@@ -1024,7 +933,6 @@ main {
     transform: scale(1.1);
 }
 
-/* CAROUSEL WRAPPER */
 .lightbox-carousel-wrapper {
     position: relative;
     width: 100%;
@@ -1033,7 +941,6 @@ main {
     border-radius: 20px 20px 0 0;
 }
 
-/* CAROUSEL SLIDES */
 .lightbox-carousel-slides {
     position: relative;
     width: 100%;
@@ -1052,7 +959,6 @@ main {
 
 .lightbox-carousel-slide.active { opacity: 1; }
 
-/* SLIDE IMAGE */
 .lightbox-slide-image {
     width: 100%;
     height: 100%;
@@ -1077,7 +983,6 @@ main {
 
 .lightbox-slide-image:hover img { transform: scale(1.05); }
 
-/* Image overlay gradient */
 .lightbox-slide-image::before {
     content: '';
     position: absolute;
@@ -1090,7 +995,6 @@ main {
     pointer-events: none;
 }
 
-/* Navigation Arrows */
 .lightbox-carousel-btn {
     position: absolute;
     top: 50%;
@@ -1119,7 +1023,6 @@ main {
 .lightbox-prev-btn { left: -70px; }
 .lightbox-next-btn { right: -70px; }
 
-/* Caption and Credit Section */
 .lightbox-caption-section {
     padding: 30px 40px;
     background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
@@ -1142,7 +1045,7 @@ main {
     font-weight: bold;
     color: #0074E0;
     margin: 0 0 12px 0;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     line-height: 1.2;
 }
 
@@ -1159,13 +1062,25 @@ main {
 
 .lightbox-credit {
     font-size: 1em;
-    color: #000000;
+    color: var(--text-color);
     margin: 0;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     line-height: 1.6;
 }
 
-/* Indicator Dots */
+.lightbox-link {
+    display: inline;
+    margin-left: 6px;
+    color: #0074E0;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.lightbox-link:hover,
+.lightbox-link:focus-visible {
+    text-decoration-thickness: 2px;
+}
+
 .lightbox-indicators {
     display: flex;
     justify-content: center;
@@ -1198,11 +1113,9 @@ main {
     transform: scale(1.1);
 }
 
-/* Hexagon image cursor */
 .hexagon-img { cursor: pointer; transition: opacity 0.3s ease; }
 .hexagon-img:hover { opacity: 0.85; }
 
-/* Lightbox Responsive */
 @media (max-width: 1024px) {
     .lightbox-modal { max-width: 90%; }
     .lightbox-prev-btn { left: 10px; }
@@ -1247,29 +1160,26 @@ main {
     }
 }
 
-/* Accessibility */
 .lightbox-carousel-btn:focus,
 .lightbox-indicator:focus {
     outline: 2px solid #0074E0;
     outline-offset: 2px;
 }
 
-/* === SMALLER OVERALL CAROUSEL SIZE === */
 .lightbox-modal {
-    transform: scale(0.9);     /* makes the whole thing about 90% its current size */
-    transform-origin: center center; /* keeps it centered */
+    transform: scale(0.9);     
+    transform-origin: center center; 
 }
 
-/* ===== FIX DOTS OVER TEXT ON MOBILE ===== */
 @media (max-width: 768px) {
     .lightbox-indicators {
-        position: static;          /* remove absolute positioning */
-        margin-top: 10px;          /* small gap under the carousel */
+        position: static;          
+        margin-top: 10px;          
         transform: none;
         padding: 0;
     }
 
-    /* keep dots centered */
+    
     .lightbox-caption-section {
         display: flex;
         flex-direction: column;
@@ -1283,14 +1193,13 @@ main {
     }
 }
 
-/* ===== MOBILE DOT POSITION FIX  ===== */
 @media (max-width: 768px) {
     .lightbox-indicators {
         position: absolute;
-        bottom: 6px;                /* move dots closer to image bottom */
+        bottom: 6px;                
         left: 50%;
         transform: translateX(-50%);
-        padding: 0;                 /* remove vertical padding */
+        padding: 0;                 
         margin: 0;
         z-index: 10;
     }
@@ -1298,15 +1207,10 @@ main {
 
 @media (max-width: 480px) {
     .lightbox-indicators {
-        bottom: 4px;                /* a little tighter on small phones */
+        bottom: 4px;                
     }
 }
 
-/* ================================================================== */
-/* >>> ADDITIONS ONLY (kept at the very end so they override cleanly) */
-/* ================================================================== */
-
-/* Keep institute lightbox carousel fully visible on smaller viewports */
 .lightbox-modal {
     width: min(1000px, 94vw);
     max-height: 90vh;
@@ -1331,7 +1235,6 @@ main {
     }
 }
 
-/* Stay Connected section */
 .social-connect {
     text-align: center;
     margin: 60px auto 80px;
@@ -1340,7 +1243,7 @@ main {
 .social-connect h2 {
     margin-bottom: 16px;
     color: var(--secondary-color);
-    font-size: 2rem; /* match publications title size */
+    font-size: 2rem; 
     font-weight: bold;
     letter-spacing: 0.5px;
 }
@@ -1364,7 +1267,7 @@ main {
     height: 42px;
     object-fit: contain;
     filter: none;
-    transition: none; /* avoid odd in-between colors before blue hover */
+    transition: none; 
 }
 
 .social-icon:hover img,
@@ -1378,24 +1281,21 @@ main {
     outline: none;
 }
 
-/* Zenodo wordmark runs wide; let it breathe */
 .social-icon img[alt*="Zenodo"] {
     width: 48px;
     height: 48px;
 }
 
-/* Make About section title use H1 in theme color (since you swapped to <h1>) */
 .about-section h1 {
     font-size: 2em;
-    color: var(--primary-color);
+    color: var(--secondary-color);
     border-bottom: 2px solid #ddd;
     padding-bottom: 10px;
     margin-bottom: 20px;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-/* Force Mission & Vision headings to always use the page theme color */
 .mission-section .content-section h2,
 .vision-section .content-section h2 {
-    color: var(--primary-color) !important;
+    color: var(--secondary-color) !important;
 }

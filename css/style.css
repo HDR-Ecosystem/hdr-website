@@ -1,24 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&family=Source+Sans+3:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
 
 * {
     box-sizing: border-box;
 }
 
-/* Base font for all body text */
 body {
     margin: 0;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     background-color: #ffffff;
     color: #282828;
 }
 
-/* -------------------- Universal Font Style - Source Sans 3 Everywhere -------------------- */
-/* Unified font family: Source Sans 3 for everything */
 * {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-/* Ensure all headings, titles, and prominent elements use Source Sans 3 */
 h1, h2, h3, h4, h5, h6,
 .hero-title,
 .learn-more-btn,
@@ -48,7 +44,6 @@ h1, h2, h3, h4, h5, h6,
     font-family: 'IBM Plex Sans', sans-serif;
 }
 
-/* All body text, descriptions, and other content */
 p,
 .nav-links li a,
 .dropdown-menu li a,
@@ -82,24 +77,48 @@ span,
 div,
 a,
 label {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-/* -------------------- Universal Link Style -------------------- */
+.under-construction-banner {
+    background: #fff4c2;
+    color: #8a5a00;
+    text-align: center;
+    padding: 10px 20px;
+    font-weight: 700;
+    border-bottom: 1px solid #f0d778;
+    letter-spacing: 0.5px;
+}
+
+.has-construction-banner {
+    --banner-height: 44px;
+}
+
+.has-construction-banner .under-construction-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--banner-height);
+    padding: 0 20px;
+}
+
 a {
     color: inherit;
     text-decoration: none;
 }
 
-/* -------------------- Header and Navigation -------------------- */
-/* Converted to CSS Grid so the nav stays truly centered */
 .header {
     position: sticky;
     top: 0;
     z-index: 1000;
     background-color: white;
     display: grid;
-    grid-template-columns: auto 1fr auto; /* logo | nav | actions */
+    grid-template-columns: auto 1fr auto; 
     align-items: center;
     padding: 10px 40px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -116,7 +135,7 @@ a {
 }
 
 .nav {
-    justify-self: center; /* centers nav block within middle column */
+    justify-self: center; 
     white-space: nowrap;
 }
 
@@ -142,7 +161,6 @@ a {
     color: #007bff;
 }
 
-/* Dropdown specific styles */
 .dropdown {
     position: relative;
 }
@@ -181,7 +199,6 @@ a {
     display: block;
 }
 
-/* ===== NEW SEARCH BAR STYLES ===== */
 .search-container {
     display: flex;
     align-items: center;
@@ -223,7 +240,6 @@ a {
     color: #999;
 }
 
-/* Search Results Dropdown */
 .search-results {
     display: none;
     position: absolute;
@@ -285,16 +301,14 @@ a {
     font-size: 14px;
 }
 
-/* Header Actions - Hamburger and friends */
 .header-actions {
     display: flex;
     align-items: center;
     gap: 15px;
     flex-shrink: 0;
-    justify-self: end; /* pin to right column in grid */
+    justify-self: end; 
 }
 
-/* -------------------- Hero Section Styles -------------------- */
 .hero-section {
     position: relative;
     height: auto;
@@ -375,7 +389,6 @@ a {
     pointer-events: none;
 }
 
-/* -------------------- Slideshow Container -------------------- */
 .container {
     position: relative;
     max-width: 1000px;
@@ -461,7 +474,7 @@ a {
     opacity: 1;
 }
 
- /* -------------------- Meet the Institutes Section -------------------- */
+ 
 .institutes-section {
     padding: 80px 40px;
     background-color:#ffffff;
@@ -555,13 +568,12 @@ a {
 
 .institute-card p {
     font-size: 0.85rem;
-    color: #555;
+    color: #282828;
     line-height: 1.4;
     text-align: center;
     margin: 0;
 }
 
-/* -------------------- Explore Resources Section Styles -------------------- */
 .explore-resources-section {
     background-color: #F8F4FD;
     padding: 60px 80px;
@@ -595,7 +607,7 @@ a {
     font-size: 1.1rem;
     line-height: 1.6;
     opacity: 0.9;
-    color: #555;
+    color: #282828;
 }
 
 .explore-resources-button {
@@ -662,7 +674,6 @@ a {
     font-size: 0.9rem;
 }
 
-/* -------------------- Tooltip Styles (Updated) -------------------- */
 .tooltip {
     visibility: hidden;
     opacity: 0;
@@ -700,7 +711,6 @@ a {
     opacity: 1;
 }
 
-/* -------------------- Footer Styles -------------------- */
 .footer {
     background-color: #0074E0;
     color: white;
@@ -793,7 +803,6 @@ a {
     color: rgba(255, 255, 255, 0.7);
 }
 
-/* -------------------- General Main Content Wrapper -------------------- */
 .page-main-content {
     padding: 40px 0;
     background-color: #fff;
@@ -807,7 +816,6 @@ a {
     text-align: left;
 }
 
-/* Styles for page-specific content like Institute Page Hero */
 .institute-page-hero {
     padding-bottom: 20px;
 }
@@ -822,11 +830,10 @@ a {
 .institute-page-hero p {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #555;
+    color: #282828;
     text-align: left;
 }
 
-/* Styles for general sections within the main content */
 .institute-details h2 {
     margin-bottom: 15px;
 }
@@ -838,7 +845,7 @@ a {
 .institute-details ul {
     list-style-type: disc;
     margin-left: 20px;
-    color: #555;
+    color: #282828;
     margin-bottom: 15px;
 }
 
@@ -846,7 +853,6 @@ a {
     margin-bottom: 8px;
 }
 
-/* Related Institutes section (on individual institute pages) */
 .related-institutes-section {
     padding: 40px 0;
     margin-top: 50px;
@@ -879,7 +885,6 @@ a {
     margin: 0;
 }
 
-/* -------------------- HDR in Action Section -------------------- */
 .hdr-action-section {
     background-color: #ffffff;
     padding: 50px 40px;
@@ -916,12 +921,10 @@ a {
     justify-content: flex-start;
 }
 
-/* Section Headers */
 .section-header {
     margin-bottom: 30px;
 }
 
-/* Tighten the news header so its cards start higher, matching events */
 .hdr-action-section .news-section .section-header {
     margin-bottom: 18px;
 }
@@ -952,7 +955,6 @@ a {
     transform: translateX(6px);
 }
 
-/* Events Section */
 .events-section {
     flex: 0 1 305px;
     max-width: 305px;
@@ -969,7 +971,7 @@ a {
     border-radius: 20px;
     background: #FFF;
     box-shadow: none;
-    /*box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);*/
+    
     display: flex;
     width: 305px;
     height: auto;
@@ -984,7 +986,7 @@ a {
 
 .event-item:hover {
     box-shadow: none;
-    /*box-shaddow: 0 6px 12px rgba(0, 0, 0, 1);*/
+    
 }
 
 .event-item h4 {
@@ -1016,7 +1018,6 @@ a {
     object-fit: contain;
 }
 
-/* News Section */
 .news-section {
     flex: 2;
     display: flex;
@@ -1025,9 +1026,9 @@ a {
 }
 .news-section > div {
     display: flex;
-    gap: 18px !important;
+    gap: 18px;
     justify-content: flex-start;
-    margin-top: -8px; /* lift cards slightly to align with events */
+    margin-top: -8px; 
 }
 .news-section .section-header {
     width: 100%;
@@ -1035,7 +1036,6 @@ a {
     justify-content: flex-start;
 }
 
-/* -------------------- Responsive Design -------------------- */
 @media (max-width: 1024px) {
     .hdr-action-content {
         flex-direction: column;
@@ -1078,7 +1078,7 @@ a {
 @media (max-width: 768px) {
     .header {
         padding: 10px 20px;
-        grid-template-columns: auto 1fr auto; /* keeps layout on mobile */
+        grid-template-columns: auto 1fr auto; 
         gap: 10px;
     }
 
@@ -1090,7 +1090,7 @@ a {
         height: 50px;
     }
 
-    /* collapse nav into drawer on mobile */
+    
     .nav {
         display: none;
         position: absolute;
@@ -1109,7 +1109,7 @@ a {
         display: block;
     }
 
-    /* Hide full search bar on mobile, show only icon */
+    
     .search-container {
         flex: 0 0 auto;
         width: 40px;
@@ -1135,7 +1135,7 @@ a {
         justify-self: end;
     }
 
-    /* Show hamburger menu */
+    
     .hamburger {
         display: flex !important;
     }
@@ -1189,7 +1189,7 @@ a {
     .explore-resources-icons {
         justify-content: center;
         gap: 16px 20px;
-        flex-wrap: wrap;              /* prevent cut-off on small screens */
+        flex-wrap: wrap;              
     }
     .resource-icon-item { flex: 0 1 45%; max-width: 180px; }
     .resource-icon-circle { width: 80px; height: 80px; }
@@ -1345,7 +1345,6 @@ a {
     }
 }
 
-/* -------------------- HDR By The Numbers Section -------------------- */
 .numbers-section {
     padding: 30px 40px;
     padding-bottom: 80px;
@@ -1396,7 +1395,6 @@ a {
     margin: 0;
 }
 
-/* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
     .numbers-grid {
         flex-wrap: wrap;
@@ -1476,12 +1474,10 @@ a {
     }
 }
 
-/* --- Resources Page Styles --- */
 main {
     padding-bottom: 50px;
 }
 
-/* Header banner section */
 .header-banner {
     position: relative;
     width: 100%;
@@ -1492,7 +1488,6 @@ main {
     overflow: hidden;
 }
 
-/* Background image for the banner */
 .header-banner .background-image {
     position: absolute;
     top: 0;
@@ -1503,7 +1498,6 @@ main {
     z-index: -1;
 }
 
-/* New: Box around the header title */
 .header-title-box {
     background-color: rgba(255, 255, 255, 0.7);
     padding: 20px 60px;
@@ -1515,7 +1509,6 @@ main {
     backdrop-filter: blur(5px);
 }
 
-/* Title within the box */
 .header-banner .header-title {
     font-size: 3rem;
     color: #333; 
@@ -1523,7 +1516,6 @@ main {
     margin: 0; 
 }
 
-/* Introduction section */
 .introduction {
     max-width: 900px;
     margin: 40px auto;
@@ -1539,7 +1531,7 @@ main {
 .introduction p {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #555;
+    color: #282828;
 }
 
 .introduction p a {
@@ -1548,7 +1540,6 @@ main {
     font-weight: bold;
 }
 
-/* New Topics Section Styles */
 .topics-covered {
     max-width: 1200px;
     margin: 40px auto;
@@ -1606,7 +1597,6 @@ main {
     margin-bottom: 8px;
 }
 
-/* Responsive styles for the new section */
 @media (max-width: 1200px) {
     .topics-container {
         gap: 20px;
@@ -1676,7 +1666,6 @@ main {
     margin-left: -1em;
 }
 
-/* Responsive styles */
 @media (max-width: 768px) {
     .resources-list-section .list-container {
         flex-direction: column;
@@ -1685,7 +1674,6 @@ main {
     }
 }
 
-/* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
     .header-banner {
         height: 150px;
@@ -1704,7 +1692,6 @@ main {
     }
 }
 
-/* -------------------- About Page Specific Styles -------------------- */
 .about-page {
 }
 
@@ -1739,7 +1726,7 @@ main {
     margin: 40px auto;
     padding: 0 20px;
     line-height: 1.6;
-    color: #555;
+    color: #282828;
 }
 
 .history-section h2 {
@@ -1754,7 +1741,6 @@ main {
     font-size: 1.1rem;
 }
 
-/* SVG map styling */
 svg {
     color: #ffffff;
     display: block;
@@ -1856,7 +1842,6 @@ a:hover {
     }
 }
 
-/* Custom Tooltip for SVG Map */
 .svg-tooltip {
     position: fixed;
     display: none;
@@ -1870,7 +1855,6 @@ a:hover {
     white-space: nowrap;
 }
 
-/* Responsive styles for the about page */
 @media (max-width: 768px) {
     .gradient-banner {
         height: 150px; 
@@ -1913,7 +1897,6 @@ a:hover {
     color: white;
 }
 
-/* Map hover: highlight active states only */
 .history-section svg path {
     fill: #ffffff;
     transition: fill 0.2s ease;
@@ -1921,7 +1904,7 @@ a:hover {
 }
 
 .history-section svg path:hover {
-    fill: #ffffff; /* keep map white on hover */
+    fill: #ffffff; 
 }
 
 .history-section svg path[data-id="CO"]:hover,
@@ -1934,7 +1917,6 @@ a:hover {
     cursor: pointer;
 }
 
-/* Types of Resources Section */
 .types-of-resources {
     max-width: 1200px;
     margin: 0 auto;
@@ -1994,7 +1976,6 @@ a:hover {
     border-radius: 8px;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .types-of-resources {
         padding: 40px 15px;
@@ -2062,7 +2043,6 @@ a:hover {
     font-family: 'IBM Plex Sans', sans-serif;
 }
 
-/* News & Updates section styling */
 .news-and-updates {
     line-height: 1.6;
     color: #000000;
@@ -2087,8 +2067,8 @@ a:hover {
 .introduction p {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #555;
-    font-family: 'Source Sans 3', sans-serif;
+    color: #282828;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .button-container {
@@ -2114,7 +2094,6 @@ a:hover {
     color: white;
 }
 
-/* Publications-specific Topics Section */
 .publications-topics {
     max-width: 1200px;
     margin: 60px auto;
@@ -2157,7 +2136,7 @@ a:hover {
 }
 
 .publications-topics .topic-item p {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 1rem;
     color: #000000;
     line-height: 1.5;
@@ -2210,7 +2189,6 @@ a:hover {
     text-align: justify;
 }
 
-/* -------------------- News Card Styling -------------------- */
 .news-card {
     display: flex;
     flex-direction: column;
@@ -2236,7 +2214,7 @@ a:hover {
 
 .news-image {
     width: 100%;
-    height: 260px; /* extend image area */
+    height: 260px; 
     object-fit: cover;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
@@ -2276,10 +2254,10 @@ a:hover {
     position: absolute;
     top: 0;
     left: 0;
-    font-size: 0.8rem; /* smaller date text */
+    font-size: 0.8rem; 
     color: #FFFFFF !important;
     background: linear-gradient(135deg, #9D55CE, #9D55CE); 
-    padding: 6px 12px; /* tighter badge spacing */
+    padding: 6px 12px; 
     border-radius: 0 0 20px 0;
     text-align: center;
     font-weight: 600;
@@ -2331,7 +2309,6 @@ a:hover {
     color: #333;
 }
 
-/* HDR Magazine Styling */
 .hdr-magazine {
     background-size: cover;
     background-position: center;
@@ -2375,7 +2352,6 @@ a:hover {
     margin: 0;
 }
 
-/* -------------------- Footer Hover Fix -------------------- */
 .footer a,
 .footer a:visited {
   color: #ffffff;
@@ -2387,10 +2363,6 @@ a:hover {
   color: #e6f0ff;
   text-decoration: underline;
 }
-
-/* ===================================== */
-/* Hamburger Menu Styles                 */
-/* ===================================== */
 
 .hamburger {
     display: none;
@@ -2424,16 +2396,14 @@ a:hover {
 }
 
 @media (max-width: 768px) {
-    /* Always show hamburger on mobile */
+    
     .hamburger {
         display: flex !important;
     }
 }
 
-/* 1) Stop the horizontal scroll (caused by any wide child) */
 html, body { overflow-x: hidden; }
 
-/* 2) Header layout: logo | nav (flexes) | search | hamburger */
 .header {
   display: flex;
   align-items: center;
@@ -2441,74 +2411,64 @@ html, body { overflow-x: hidden; }
   width: 100%;
 }
 
-/* Nav owns the center and can shrink; prevents pushing page wide */
 .nav {
   flex: 1 1 auto;
-  min-width: 0;                /* critical to allow shrinking */
+  min-width: 0;                
 }
 .nav-links { justify-content: center; }
 
-/* 3) Right side order: search before hamburger, hamburger at far right */
 .search-container { order: 2; }
 .header-actions   { order: 3; }
 
-/* Push the right-side group to the edge:
-   Put auto margin on the *search* so both search and hamburger move right,
-   then keep a small gap before the hamburger. */
 .search-container {
-  margin-left: auto;           /* pins both search + hamburger to the right */
-  margin-right: 8px;           /* small gap before the hamburger */
+  margin-left: auto;           
+  margin-right: 8px;           
 }
 
-/* 4) Search sizing: shrinkable, never forces overflow */
 .search-container {
   display: flex;
   align-items: center;
-  flex: 0 1 clamp(200px, 28vw, 380px);  /* fluid but bounded */
-  min-width: 0;                          /* allow shrink */
-  overflow: hidden;                      /* avoid spill rounding */
+  flex: 0 1 clamp(200px, 28vw, 380px);  
+  min-width: 0;                          
+  overflow: hidden;                      
 }
 
 .search-bar {
   flex: 1 1 auto;
-  min-width: 0;                          /* input can shrink */
+  min-width: 0;                          
   width: 100%;
 }
 
-/* Keep dropdown within the box; don’t cause overflow */
 .search-results {
   width: 100%;
   max-width: 100%;
   left: 0;
   right: auto;
-  min-width: 0;                           /* kill previous 300px min that caused overflow */
+  min-width: 0;                           
 }
 
-/* Hamburger never collapses */
 .header-actions .hamburger { flex-shrink: 0; }
 
-/* 5) Mobile: keep search visible and next to hamburger */
 @media (max-width: 768px) {
-  .nav { display: none; }                 /* your menu drawer uses .nav.active elsewhere */
+  .nav { display: none; }                 
   .search-container {
     flex: 0 1 65%;
     min-width: 0;
-    margin-left: auto;                    /* still push to the right */
+    margin-left: auto;                    
     margin-right: 8px;
   }
 }
 
-/* ——— Make the input actually focusable/clickable ——— */
 .search-container {
-  position: relative;   /* creates a clean stacking context */
-  overflow: hidden;     /* keep, but we’ll ensure input is topmost */
+  position: relative;   
+  overflow: hidden;     
 }
 
 .search-bar {
   position: relative;
-  z-index: 2;           /* sit above icon and any overlays */
-  pointer-events: auto; /* accept clicks */
-  display: block;       /* ensure not hidden by earlier mobile rules */
+  z-index: 2;           
+  pointer-events: auto; 
+  display: block;       
   flex: 1 1 auto;
   min-width: 0;
   width: 100%;
@@ -2519,56 +2479,48 @@ html, body { overflow-x: hidden; }
   font-size: 14px;
 }
 
-/* Icon should never cover the input */
 .search-icon-btn {
   position: relative;
-  z-index: 3;           /* stays clickable but doesn’t overlay the field */
+  z-index: 3;           
   flex-shrink: 0;
   padding: 6px;
 }
 
-/* Results must not sit on top of the input when closed */
 .search-results {
   position: absolute;
   top: 100%;
   left: 0;
-  right: 0;             /* match container width */
-  z-index: 1;           /* below the input and icon */
+  right: 0;             
+  z-index: 1;           
   max-width: 100%;
 }
 
-/* If any earlier mobile rule hid the input, undo it */
 @media (max-width: 768px) {
   .search-bar { display: block; }
 }
 
-/* === Tighten search bar width === */
 .search-container {
-  flex: 0 1 250px;      /* tighter default size */
-  max-width: 260px;     /* hard cap to keep it short */
-  min-width: 160px;     /* still usable */
+  flex: 0 1 250px;      
+  max-width: 260px;     
+  min-width: 160px;     
   margin-left: 10px;
   overflow: hidden;
 }
 
-/* Make input fill the container but not overflow */
 .search-bar {
   width: 100%;
   min-width: 0;
   flex: 1;
 }
 
-/* Adjust for medium screens */
 @media (max-width: 1100px) {
   .search-container { max-width: 220px; }
 }
 
-/* Adjust for smaller desktops */
 @media (max-width: 900px) {
   .search-container { max-width: 190px; }
 }
 
-/* On mobile, use icon + smaller input */
 @media (max-width: 768px) {
   .search-container {
     flex: 0 1 60%;
@@ -2577,7 +2529,6 @@ html, body { overflow-x: hidden; }
   }
 }
 
-/* Pin hamburger to the far right; search sits just to its left */
 .header {
   display: flex;
   align-items: center;
@@ -2585,35 +2536,30 @@ html, body { overflow-x: hidden; }
   width: 100%;
 }
 
-/* Middle takes flexible space */
 .nav {
   flex: 1 1 auto;
   min-width: 0;
 }
 .nav-links { justify-content: center; }
 
-/* Order: logo | nav | search | hamburger (rightmost) */
 .search-container { order: 2; }
 .header-actions  { order: 3; }
 
-/* Push the right side to the edge using auto margin on the search */
 .search-container {
-  margin-left: auto;            /* moves search + hamburger to the right edge */
-  margin-right: 8px;            /* small gap before hamburger */
+  margin-left: auto;            
+  margin-right: 8px;            
 }
 
-/* Keep hamburger fixed at the edge, never pushed by search */
 .header-actions { flex: 0 0 auto; }
 .header-actions .hamburger { flex-shrink: 0; }
 
-/* Compact search width without shifting hamburger */
 .search-container {
   display: flex;
   align-items: center;
-  flex: 0 1 220px;              /* target size */
-  max-width: 240px;             /* hard cap */
-  min-width: 160px;             /* usable minimum */
-  overflow: hidden;             /* keep corners clean */
+  flex: 0 1 220px;              
+  max-width: 240px;             
+  min-width: 160px;             
+  overflow: hidden;             
 }
 
 .search-bar {
@@ -2621,22 +2567,20 @@ html, body { overflow-x: hidden; }
   min-width: 0;
   width: 100%;
   position: relative;
-  z-index: 2;                   /* ensure clickability */
+  z-index: 2;                   
 }
 
 .search-icon-btn { position: relative; z-index: 3; }
 
-/* Prevent dropdown from causing horizontal scroll */
 .search-results {
   position: absolute;
   top: 100%;
   left: 0;
-  right: 0;                     /* match container width */
+  right: 0;                     
   max-width: 100%;
-  z-index: 1;                   /* below input/icon */
+  z-index: 1;                   
 }
 
-/* Optional tighter caps at smaller widths; hamburger still anchored right */
 @media (max-width: 1100px) {
   .search-container { flex-basis: 200px; max-width: 210px; }
 }
@@ -2644,7 +2588,6 @@ html, body { overflow-x: hidden; }
   .search-container { flex-basis: 180px; max-width: 190px; }
 }
 
-/* === Center "Meet the Institutes" on mobile === */
 @media (max-width: 600px) {
   .institutes-section {
     display: flex;
@@ -2664,14 +2607,14 @@ html, body { overflow-x: hidden; }
   .institutes-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center !important;  /* keep centered */
+    justify-content: center !important;  
     gap: 18px;
     width: 100%;
   }
 
   .institute-card-link {
-    margin: 0 auto;       /* make sure cards center */
-    width: 200px;         /* slightly larger card on mobile */
+    margin: 0 auto;       
+    width: 200px;         
     height: 420px;
   }
 
@@ -2685,7 +2628,6 @@ html, body { overflow-x: hidden; }
   }
 }
 
-/* iPad/tablet sizing for Meet the Institutes */
 @media (max-width: 1024px) and (min-width: 601px) {
   .institutes-section {
     padding: 40px 20px;
@@ -2705,26 +2647,31 @@ html, body { overflow-x: hidden; }
   }
 }
 
-/* ===== Keep Navbar Visible While Scrolling ===== */
 .header {
-  position: fixed;        /* Locks it to the top */
+  position: fixed;        
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 2000;          /* Keeps it above all content */
+  z-index: 2000;          
   background-color: #ffffff;
 }
 
-/* Push down the rest of the page so it’s not hidden behind the header */
 body {
-  padding-top: 90px;      /* Adjust this to match your header’s height */
+  padding-top: 90px;      
 }
 
-/* Prevent the mobile nav dropdown from pushing content horizontally */
+.has-construction-banner .header {
+  top: var(--banner-height);
+}
+
+body.has-construction-banner {
+  padding-top: calc(90px + var(--banner-height));
+}
+
 @media (max-width: 768px) {
   .nav {
     position: fixed;
-    top: 70px;            /* Right below the fixed header */
+    top: 70px;            
     left: 0;
     right: 0;
     background-color: #fff;
@@ -2732,5 +2679,9 @@ body {
     z-index: 1999;
     max-height: 80vh;
     overflow-y: auto;
+  }
+
+  body.has-construction-banner .nav {
+    top: calc(70px + var(--banner-height));
   }
 }

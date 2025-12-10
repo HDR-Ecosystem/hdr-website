@@ -9,8 +9,9 @@
     <link rel="icon" href="../images/icon.png" />
 </head>
 
-<body>
-    <!-- ===== HEADER WITH HAMBURGER & SEARCH ===== -->
+<body class="has-construction-banner">
+    <div class="under-construction-banner">UNDER CONSTRUCTION</div>
+    
     <header class="header">
         <div class="logo">
             <a href="../index.html">
@@ -20,6 +21,7 @@
         
         <nav class="nav">
             <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li class="dropdown">
                     <a>Institutes</a>
@@ -39,7 +41,7 @@
             </ul>
         </nav>
 
-        <!-- Search Bar Container - Always Visible -->
+        
         <div class="search-container" id="searchContainer">
             <button class="search-icon-btn" id="searchIconBtn" aria-label="Search">
                 <img src="../images/search.png" alt="Search" />
@@ -48,7 +50,7 @@
             <div class="search-results" id="searchResults"></div>
         </div>
 
-        <!-- Header Actions (Hamburger) -->
+        
         <div class="header-actions">
             <button class="hamburger" id="hamburger" aria-label="Menu">
                 <span class="bar"></span>
@@ -64,7 +66,7 @@
             <p>This page provides information on upcoming events, including opportunities for participation and engagement, as well as an archive of past events that document the evolution of HDR research and its impact.</p>
         </section>
 
-        <!-- ✅ Fixed this section -->
+        
         <div class="events-controls">
             <div class="search-filter-wrapper">
                 <div class="search-box">
@@ -125,11 +127,11 @@
                 </div>
             </div>
         </div>
-        <!-- ✅ Properly closed div now -->
+        
 
         <section class="events-list">
             <div class="events-grid" id="eventsGrid">
-                <!-- Event cards will be populated here -->
+                
             </div>
 
             <div class="no-events hidden" id="noEvents">
@@ -139,7 +141,7 @@
 
         <section class="pagination-section">
             <div class="pagination" id="pagination">
-                <!-- Pagination controls will be generated here -->
+                
             </div>
         </section>
     </main>

@@ -1,9 +1,7 @@
-// existing hardcoded news data
 
-// template for news items;  {title: "title", date: "MONTH DAY, YEAR", img: "..."" link: "https://example.com/1", description: "text"},
-// Your news data - just add new items at the top of this array
+
 const newsData = [
-    {title: "HDR Workshop 2025", date: "Oct 1, 2025", img: "../images/DSC01840.jpeg", link: "https://example.com/1", description: "Highlights from the 2025 HDR workshop."},
+    {title: "HDR Workshop 2025", date: "Oct 1, 2025", img: "../images/news1.jpeg", link: "https://example.com/1", description: "Highlights from the 2025 HDR workshop."},
     {title: "New AI Research Published", date: "Sep 28, 2025", img: "../images/news2.jpg", link: "https://example.com/2", description: "Our team publishes groundbreaking AI research."},
     {title: "Data Science Seminar", date: "Sep 25, 2025", img: "../images/news3.jpg", link: "https://example.com/3", description: "Upcoming seminar on advanced data science techniques."},
     {title: "I-GUIDE Collaboration", date: "Sep 22, 2025", img: "../images/news4.jpg", link: "https://example.com/4", description: "I-GUIDE announces a new collaboration project."},
@@ -42,9 +40,11 @@ function displayNews(page) {
         card.target = "_blank";
         card.className = "news-card";
         card.innerHTML = `
-            <img src="${news.img}" alt="${news.title}" class="news-image">
+            <div class="news-image-wrapper">
+                <img src="${news.img}" alt="${news.title}" class="news-image">
+                <span class="news-date">${news.date}</span>
+            </div>
             <div class="news-content">
-                <p class="news-date">${news.date}</p>
                 <h2 class="news-title">${news.title}</h2>
                 <p class="news-description">${news.description}</p>
             </div>
@@ -96,5 +96,4 @@ function setupPagination() {
     pagination.appendChild(nextBtn);
 }
 
-// Initial load
 displayNews(currentPage);

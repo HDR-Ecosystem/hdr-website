@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // ===================================== 
-    // Number Animation
-    // =====================================
+
     
     const numbersSection = document.querySelector('.numbers-section');
     const numberItems = document.querySelectorAll('.number-value');
@@ -47,10 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(numbersSection);
     }
 
-    // ===================================== 
-    // Hamburger Menu Toggle
-    // =====================================
-
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.querySelector('.nav');
     
@@ -92,10 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-
-    // ===================================== 
-    // Search Index Building
-    // =====================================
 
     const pagesToIndex = [
         { title: "About", url: "html/about.html" },
@@ -188,10 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return results;
     }
 
-    // ===================================== 
-    // Search Bar Functionality
-    // =====================================
-
     const searchBar = document.getElementById('searchBar');
     const searchContainer = document.getElementById('searchContainer');
     const searchIconBtn = document.querySelector('.search-icon-btn');
@@ -271,6 +257,5 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsContainer.style.display = 'block';
     }
 
-    // Build the search index on page load
     buildSearchIndex();
 });

@@ -1,5 +1,3 @@
-// Basic UI interactions for ML Challenges page
-
 document.addEventListener('DOMContentLoaded', () => {
     const filterToggle = document.getElementById('challengeFilterToggle');
     const filterDropdown = document.getElementById('challengeFilterDropdown');

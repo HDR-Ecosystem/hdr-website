@@ -1,4 +1,4 @@
-/* -------------------- HDR Carousel Section -------------------- */
+
 .hdr-carousel-section {
     background-color: #ffffff;
     padding: 80px 40px;
@@ -17,14 +17,14 @@
     font-weight: bold;
     color: #333;
     margin-bottom: 10px;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .carousel-subtitle {
     font-size: 1.2rem;
     color: #666;
     margin-bottom: 50px;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .carousel-wrapper {
@@ -52,7 +52,7 @@
     display: flex;
     opacity: 0;
     transform: translateX(0);
-    transition: none; /* Disable animations */
+    transition: none; 
     background: white;
 }
 
@@ -115,7 +115,7 @@
     font-weight: bold;
     color: #0074E0;
     margin-bottom: 20px;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     line-height: 1.2;
 }
 
@@ -124,10 +124,9 @@
     color: #000000;
     line-height: 1.6;
     margin: 0;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-/* Carousel navigation buttons */
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -144,7 +143,7 @@
     justify-content: center;
     transition: all 0.3s ease;
     z-index: 10;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .carousel-btn:hover {
@@ -165,7 +164,6 @@
     font-weight: bold;
 }
 
-/* Carousel indicators */
 .carousel-indicators {
     display: flex;
     justify-content: center;
@@ -193,7 +191,6 @@
     transform: scale(1.1);
 }
 
-/* Responsive Design */
 @media (max-width: 1024px) {
     .hdr-carousel-section { padding: 60px 30px; }
     .carousel-title { font-size: 2.2rem; }
@@ -241,14 +238,12 @@
     .carousel-indicators { gap: 8px; margin-top: 25px; }
 }
 
-/* Focus states for accessibility */
 .carousel-btn:focus,
 .indicator:focus {
     outline: 2px solid #0074E0;
     outline-offset: 2px;
 }
 
-/* High contrast mode support */
 @media (prefers-contrast: high) {
     .carousel-btn { background: #000; border: 2px solid #fff; }
     .indicator { border: 1px solid #000; }
