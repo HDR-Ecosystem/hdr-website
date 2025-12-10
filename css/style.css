@@ -9,6 +9,7 @@ body {
     margin: 0;
     font-family: 'Source Sans 3', sans-serif;
     background-color: #ffffff;
+    color: #282828;
 }
 
 /* -------------------- Universal Font Style - Source Sans 3 Everywhere -------------------- */
@@ -42,7 +43,8 @@ h1, h2, h3, h4, h5, h6,
 .news-and-updates h1,
 .carousel-title,
 .carousel-subtitle,
-.slide-content h3 {
+.slide-content h3,
+.hdr-action-subtitle {
     font-family: 'IBM Plex Sans', sans-serif;
 }
 
@@ -61,7 +63,6 @@ p,
 .event-date,
 .event-location,
 .magazine-tagline,
-.hdr-action-subtitle,
 .institute-page-hero p,
 .institute-details p,
 .institute-details ul li,
@@ -482,15 +483,16 @@ a {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
-    gap: 25px;
-    max-width: 1000px;
+    gap: 20px;
+    max-width: none;
+    width: max-content;
     margin: 0 auto;
 }
 
 .institute-card-link {
     display: block;
     flex-shrink: 0;
-    width: 240px;
+    width: 230px;
     height: 400px;
     border-radius: 15px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
@@ -880,13 +882,16 @@ a {
 /* -------------------- HDR in Action Section -------------------- */
 .hdr-action-section {
     background-color: #ffffff;
-    padding: 80px 40px;
+    padding: 50px 40px;
     margin-top: 0;
 }
 
 .hdr-action-container {
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hdr-action-title {
@@ -900,14 +905,15 @@ a {
 .hdr-action-subtitle {
     font-size: 1.3rem;
     color: #000000;
-    margin-bottom: 60px;
+    margin-bottom: 28px;
     text-align: center;
 }
 
 .hdr-action-content {
     display: flex;
-    gap: 60px;
+    gap: 36px;
     align-items: flex-start;
+    justify-content: flex-start;
 }
 
 /* Section Headers */
@@ -915,31 +921,41 @@ a {
     margin-bottom: 30px;
 }
 
+/* Tighten the news header so its cards start higher, matching events */
+.hdr-action-section .news-section .section-header {
+    margin-bottom: 18px;
+}
+
 .section-header h3 a {
     color: inherit;
-    text-decoration: none;
     font-size: 2rem;
     font-weight: bold;
     display: flex;
     align-items: center;
     gap: 10px;
+    text-decoration: none;
 }
 
 .section-header h3 a:hover {
     color: #007bff;
-    text-decoration: underline;
 }
 
 .arrow {
     color: inherit;
     font-size: 1.5rem;
     font-weight: normal;
+    display: inline-block;
+    transition: transform 0.25s ease;
+}
+
+.section-header h3 a:hover .arrow {
+    transform: translateX(6px);
 }
 
 /* Events Section */
 .events-section {
-    flex: 01;
-    max-width: 350px;
+    flex: 0 1 305px;
+    max-width: 305px;
 }
 
 .events-container {
@@ -952,9 +968,10 @@ a {
 .event-item {
     border-radius: 20px;
     background: #FFF;
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: none;
+    /*box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);*/
     display: flex;
-    width: 280px;
+    width: 305px;
     height: auto;
     padding: 10px;
     flex-direction: column;
@@ -966,7 +983,8 @@ a {
 }
 
 .event-item:hover {
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    box-shadow: none;
+    /*box-shaddow: 0 6px 12px rgba(0, 0, 0, 1);*/
 }
 
 .event-item h4 {
@@ -978,7 +996,7 @@ a {
 }
 
 .event-date {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #666;
     margin: 0 0 10px 0;
 }
@@ -1001,6 +1019,20 @@ a {
 /* News Section */
 .news-section {
     flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.news-section > div {
+    display: flex;
+    gap: 18px !important;
+    justify-content: flex-start;
+    margin-top: -8px; /* lift cards slightly to align with events */
+}
+.news-section .section-header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
 }
 
 /* -------------------- Responsive Design -------------------- */
@@ -1156,8 +1188,12 @@ a {
     }
     .explore-resources-icons {
         justify-content: center;
-        gap: 20px;
+        gap: 16px 20px;
+        flex-wrap: wrap;              /* prevent cut-off on small screens */
     }
+    .resource-icon-item { flex: 0 1 45%; max-width: 180px; }
+    .resource-icon-circle { width: 80px; height: 80px; }
+    .resource-icon-text { font-size: 0.85rem; }
     .explore-resources-text h2 {
         font-size: 2rem;
     }
@@ -1877,6 +1913,27 @@ a:hover {
     color: white;
 }
 
+/* Map hover: highlight active states only */
+.history-section svg path {
+    fill: #ffffff;
+    transition: fill 0.2s ease;
+    cursor: default;
+}
+
+.history-section svg path:hover {
+    fill: #ffffff; /* keep map white on hover */
+}
+
+.history-section svg path[data-id="CO"]:hover,
+.history-section svg path[data-id="WA"]:hover,
+.history-section svg path[data-id="IL"]:hover,
+.history-section svg path[data-id="OH"]:hover,
+.history-section svg path[data-id="MD"]:hover {
+    fill: #4678ff;
+    stroke: #2f5fd1;
+    cursor: pointer;
+}
+
 /* Types of Resources Section */
 .types-of-resources {
     max-width: 1200px;
@@ -2160,7 +2217,7 @@ a:hover {
     justify-content: flex-start;
     align-items: stretch;
     width: 305px;
-    height: 461px;
+    height: auto;
     flex-shrink: 0;
     text-decoration: none;
     color: inherit;
@@ -2179,7 +2236,7 @@ a:hover {
 
 .news-image {
     width: 100%;
-    height: 200px;
+    height: 260px; /* extend image area */
     object-fit: cover;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
@@ -2195,22 +2252,7 @@ a:hover {
 }
 
 .news-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 3;
-}
-
-.news-image-wrapper:hover .news-overlay {
-    opacity: 1;
+    display: none;
 }
 
 .read-more-link {
@@ -2234,10 +2276,10 @@ a:hover {
     position: absolute;
     top: 0;
     left: 0;
-    font-size: 0.9rem;
+    font-size: 0.8rem; /* smaller date text */
     color: #FFFFFF !important;
     background: linear-gradient(135deg, #9D55CE, #9D55CE); 
-    padding: 8px 16px;
+    padding: 6px 12px; /* tighter badge spacing */
     border-radius: 0 0 20px 0;
     text-align: center;
     font-weight: 600;
@@ -2252,7 +2294,7 @@ a:hover {
 }
 
 .news-content {
-    padding: 20px;
+    padding: 18px;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -2262,22 +2304,23 @@ a:hover {
 }
 
 .news-title {
-    font-size: 1.3rem;
-    margin: 0 0 10px 0;
+    font-size: 1.25rem;
+    margin: 0 0 8px 0;
     text-align: left;
     font-weight: 700;
-    line-height: 1.4;
+    line-height: 1.3;
     transition: color 0.3s ease;
     min-height: 54px;
+    color: #282828;
 }
 
 .news-card:hover .news-title {
-    color: #0073e6;
+    color: #0059b3;
 }
 
 .news-description {
-    font-size: 0.95rem;
-    color: #666;
+    font-size: 0.94rem;
+    color: #282828;
     text-align: left !important;
     line-height: 1.6;
     transition: color 0.3s ease;
@@ -2602,7 +2645,7 @@ html, body { overflow-x: hidden; }
 }
 
 /* === Center "Meet the Institutes" on mobile === */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .institutes-section {
     display: flex;
     flex-direction: column;
@@ -2622,13 +2665,43 @@ html, body { overflow-x: hidden; }
     display: flex;
     flex-wrap: wrap;
     justify-content: center !important;  /* keep centered */
-    gap: 20px;
+    gap: 18px;
     width: 100%;
   }
 
   .institute-card-link {
     margin: 0 auto;       /* make sure cards center */
-    width: 200px;         /* keeps a nice size for mobile */
+    width: 200px;         /* slightly larger card on mobile */
+    height: 420px;
+  }
+
+  .institute-card {
+    padding: 18px 14px;
+  }
+
+  .institute-logo-area {
+    width: 170px;
+    height: 200px;
+  }
+}
+
+/* iPad/tablet sizing for Meet the Institutes */
+@media (max-width: 1024px) and (min-width: 601px) {
+  .institutes-section {
+    padding: 40px 20px;
+    overflow-x: hidden;
+  }
+
+  .institutes-grid {
+    flex-wrap: nowrap;
+    gap: 12px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .institute-card-link {
+    width: 170px;
+    height: 320px;
   }
 }
 

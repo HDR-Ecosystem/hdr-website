@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../../css/institute.css" />
   <script src="../../js/script.js"></script>
 </head>
-<body class="id4-theme">
+<body class="institute-theme">
   <!-- HEXAGON CAROUSEL LIGHTBOX MODAL -->
   <div class="lightbox-overlay" id="lightboxOverlay">
     <div class="lightbox-modal">
@@ -41,6 +41,7 @@
     
     <nav class="nav">
       <ul class="nav-links">
+        <li><a href="../../index.html">Home</a></li>
         <li><a href="../about.html">About</a></li>
         <li class="dropdown">
           <a>Institutes</a>
@@ -132,7 +133,7 @@
             <div class="hexagon">
               <img 
               class="hexagon-img" 
-              src="../../images/id4 images/kirigami_strata vision photo 2.jpg" alt="Akirigami_strata-scaled" data-caption="ID4 research group’s collaborative display, Kirigami Strata, combines AI with structural mechanics research, learn more here <a href='https://kirigami-strata.ai/' target='_blank'>https://kirigami-strata.ai/</a>" 
+              src="../../images/id4 images/kirigami_strata vision photo 2.jpg" alt="Kirigami_strata-scaled" data-caption="ID4 research group’s collaborative display, Kirigami Strata, combines AI with structural mechanics research." data-link="https://kirigami-strata.ai/"
               data-credit="Credit: Rafael Pastran"/>
             </div>
 
@@ -152,7 +153,7 @@
         <div class="vision-hexagons columns rl">
           <div class="hex-col left">
             <div class="hexagon">
-              <img class="hexagon-img" src="../../images/id4 images/id4 arch vision photo.jpg" alt="A team of researchers collaborating in a laboratory setting." data-caption=" Augmented reality guided construction on a self balancing arch based on a Rennaissance algorithm, directed by ID4 faculty. Learn more here, https://engineering.princeton.edu/news/2023/06/07/renaissance-algorithm-meets-augmented-reality-venice-biennale " data-credit="Credit: the Form Finding Lab" />
+              <img class="hexagon-img" src="../../images/id4 images/id4 arch vision photo.jpg" alt="Augmented reality guided construction of a self-balancing arch using a Renaissance algorithm, directed by ID4 faculty." data-caption="Augmented reality guided construction on a self balancing arch based on a Renaissance algorithm, directed by ID4 faculty." data-link="https://engineering.princeton.edu/news/2023/06/07/renaissance-algorithm-meets-augmented-reality-venice-biennale" data-credit="Credit: the Form Finding Lab" />
             </div>
             <div class="hexagon">
               <img class="hexagon-img" src="../../images/id4 images/Allhandscollaboration.jpg" alt="Students and postdocs presenting new project ideas and getting feedback at the ID4 All Hands Meeting" data-caption="Bertoldi lab at Harvard during dynamic testing experiments of flexible metamaterial" data-credit="Credit: Emily Freed"/>
@@ -410,7 +411,21 @@
         });
 
         const imgData = this.hexagonImages[this.currentSlide];
-        this.captionEl.textContent = imgData.dataset.caption || 'Image';
+        const captionText = imgData.dataset.caption || 'Image';
+        const captionLink = imgData.dataset.link;
+
+        if (captionLink) {
+          this.captionEl.textContent = '';
+          this.captionEl.append(document.createTextNode(captionText + ' '));
+          const linkEl = document.createElement('a');
+          linkEl.href = captionLink;
+          linkEl.target = '_blank';
+          linkEl.rel = 'noopener noreferrer';
+          linkEl.textContent = 'Learn more';
+          this.captionEl.appendChild(linkEl);
+        } else {
+          this.captionEl.textContent = captionText;
+        }
         this.creditEl.textContent = imgData.dataset.credit || 'Credit: Unknown';
       }
     }

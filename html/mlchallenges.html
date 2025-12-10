@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ML Challanges</title>
+    <title>ML Challenges</title>
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/mlchallenges.css"/>
     <link rel="icon" href="../images/icon.png" />
 </head>
 <body>
@@ -18,6 +19,7 @@
         
         <nav class="nav">
             <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li class="dropdown">
                     <a>Institutes</a>
@@ -55,6 +57,97 @@
             </button>
         </div>
     </header>
+
+    <div class="header-banner">
+        <img src="../images/gradient-1.png" alt="Gradient Background" class="background-image" />
+        <div class="header-title-box">
+            <h1 class="header-title">ML Challenges</h1>
+        </div>
+    </div>
+
+    <section class="introduction">
+        <p>HDR Machine Learning Challenges invite participants to tackle real-world scientific problems using machine learning. Each challenge focuses on cutting-edge areas, encouraging models to go beyond their training data and address critical, unsolved questions. Whether you’re an experienced researcher or an aspiring ML practitioner, these challenges offer the opportunity to innovate, contribute to science, and showcase your skills.</p>
+    </section>
+
+    <section class="challenges-controls">
+        <div class="search-filter-wrapper">
+            <div class="search-box">
+                <img src="../images/search.png" alt="Search" class="search-icon-img" />
+                <label class="visually-hidden" for="challenge-search">Search challenges</label>
+                <input 
+                    id="challenge-search" 
+                    type="search" 
+                    class="search-input" 
+                    placeholder="Search challenges" 
+                />
+            </div>
+
+            <div class="filter-button-wrapper">
+                <button class="filter-btn-main" type="button" id="challengeFilterToggle">
+                    <img src="../images/vector.png" alt="Filter" />
+                    Filter
+                </button>
+
+                <div class="filter-dropdown hidden" id="challengeFilterDropdown">
+                    <div class="filter-options">
+                        <div class="filter-group-title">Date</div>
+                        <label class="filter-option">
+                            <input type="checkbox" name="challengeYear" value="2025" />
+                            <span>2025</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="challengeYear" value="2024" />
+                            <span>2024</span>
+                        </label>
+
+                        <div class="filter-group-title">Status</div>
+                        <label class="filter-option">
+                            <input type="radio" name="challengeStatus" value="all" checked />
+                            <span>All statuses</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="challengeStatus" value="open" />
+                            <span>Open</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="challengeStatus" value="upcoming" />
+                            <span>Upcoming</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="challengeStatus" value="closed" />
+                            <span>Closed</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="challengeStatus" value="archived" />
+                            <span>Archived</span>
+                        </label>
+
+                        <div class="filter-group-title">Institute</div>
+                        <label class="filter-option">
+                            <input type="checkbox" name="challengeInstitute" value="A3D3" />
+                            <span>A3D3</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="challengeInstitute" value="ID4" />
+                            <span>ID4</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="challengeInstitute" value="I-GUIDE" />
+                            <span>I-GUIDE</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="challengeInstitute" value="iHARP" />
+                            <span>iHARP</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="challengeInstitute" value="Imageomics" />
+                            <span>Imageomics</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="footer-content">
@@ -101,5 +194,6 @@
     </footer>
 
     <script src="../js/script.js"></script>
+    <script src="../js/mlchallenges.js"></script>
 </body>
 </html>

@@ -342,27 +342,28 @@ main {
 .mission-section, .vision-section {
     display: flex;
     align-items: center;
-    margin-bottom: 80px;
-    gap: 200px;
+    margin-bottom: 60px;
+    gap: 120px;
 }
 
 .vision-section { flex-direction: row-reverse; }
 
 /* === HONEYCOMB HEXAGONS === */
 .hexagon {
-    width: 200px;
-    height: 173px;
+    width: 220px;
+    height: 190px;
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
     background: #3B8686;
     position: relative;
     text-align: center;
     overflow: hidden;
     transition: transform 0.3s ease, filter 0.3s ease;
+    border-radius: 20px;
 }
 
 .hexagon.large {
-    width: 200px;
-    height: 173px;
+    width: 220px;
+    height: 190px;
 }
 
 .hexagon img {
@@ -372,6 +373,7 @@ main {
     object-position: center;
     clip-path: inherit;
     transition: transform 0.3s ease, filter 0.3s ease;
+    border-radius: inherit;
 }
 
 .hexagon:hover { transform: scale(1.05); }
@@ -446,7 +448,7 @@ main {
 
 .content-section p {
     font-size: 1.1em;
-    color: var(--text-color);
+    color: #252525;
     line-height: 1.7;
     font-style: italic;
     font-family: 'Source Sans 3', sans-serif;
@@ -710,15 +712,15 @@ main {
     .mission-vision-container {
         margin: 0 auto;
         /* keep 0 to avoid fighting Areas of Work padding-top */
-        margin-bottom: 60px; /* inner spacing handled by mission/vision blocks */
+        margin-bottom: 40px; /* tighten vertical space */
         padding: 0 15px;
         overflow: hidden;
     }
 
     .mission-section, .vision-section {
         flex-direction: column;
-        gap: 40px;
-        margin-bottom: 50px;
+        gap: 16px;
+        margin-bottom: 28px;
         text-align: center;
         align-items: center;
     }
@@ -731,8 +733,8 @@ main {
     .content-section p { font-size: 1em; text-align: center; }
 
     /* ===== HEXAGONS - NO OVERLAP ===== */
-    .hexagon { width: 120px; height: 104px; }
-    .hexagon.large { width: 120px; height: 104px; }
+    .hexagon { width: 140px; height: 120px; }
+    .hexagon.large { width: 140px; height: 120px; }
 
     /* Remove all transforms that cause overlap */
     .mission-hexagons.columns.lr { transform: none; }
@@ -745,7 +747,7 @@ main {
     .hexagon-row.single { margin-bottom: 0; margin-left: 0; }
 
     .hexagon-row:not(.single) {
-        gap: 5px;
+        gap: 10px;
         justify-content: center;
     }
 
@@ -870,19 +872,19 @@ main {
     /* ===== MISSION/VISION SECTION ===== */
     .mission-vision-container {
         margin: 0 auto;
-        margin-bottom: 50px;
+        margin-bottom: 35px;
         padding: 0 12px;
         overflow: hidden;
     }
 
-    .mission-section, .vision-section { gap: 30px; margin-bottom: 40px; }
+    .mission-section, .vision-section { gap: 14px; margin-bottom: 24px; }
 
     .content-section h2 { font-size: 1.3em; margin-bottom: 15px; }
     .content-section p { font-size: 0.9em; line-height: 1.5; }
 
     /* ===== HEXAGONS ===== */
-    .hexagon { width: 100px; height: 87px; }
-    .hexagon.large { width: 100px; height: 87px; }
+    .hexagon { width: 120px; height: 102px; }
+    .hexagon.large { width: 120px; height: 102px; }
 
     /* ===== ABOUT SECTION (UPDATED) ===== */
     .about-section {
@@ -971,6 +973,8 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 90px 20px 90px; /* equal top/bottom with a bit more drop */
+    box-sizing: border-box;
 }
 
 /* Modal Container */
@@ -1142,6 +1146,17 @@ main {
     line-height: 1.2;
 }
 
+.lightbox-caption a {
+    color: #0074E0;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.lightbox-caption a:hover,
+.lightbox-caption a:focus-visible {
+    text-decoration: underline;
+}
+
 .lightbox-credit {
     font-size: 1em;
     color: #000000;
@@ -1290,6 +1305,31 @@ main {
 /* ================================================================== */
 /* >>> ADDITIONS ONLY (kept at the very end so they override cleanly) */
 /* ================================================================== */
+
+/* Keep institute lightbox carousel fully visible on smaller viewports */
+.lightbox-modal {
+    width: min(1000px, 94vw);
+    max-height: 90vh;
+    margin: auto;
+    align-self: center;
+    height: auto;
+    --carousel-height: clamp(260px, 55vh, 480px);
+}
+
+.lightbox-carousel-wrapper {
+    height: var(--carousel-height);
+}
+
+.lightbox-carousel-btn {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@media (max-width: 768px) {
+    .lightbox-modal {
+        --carousel-height: clamp(220px, 50vh, 360px);
+    }
+}
 
 /* Stay Connected section */
 .social-connect {
