@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ID4 Institute - NSF HDR Community</title>
+  <link rel="icon" href="../../images/icon.png" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/institute.css" />
+  <script src="../../js/script.js"></script>
+</head>
+<body class="institute-theme has-construction-banner">
+  <div class="under-construction-banner">UNDER CONSTRUCTION</div>
+  
+  <div class="lightbox-overlay" id="lightboxOverlay">
+    <div class="lightbox-modal">
+      <button class="lightbox-close" aria-label="Close">&times;</button>
+
+      <div class="lightbox-carousel-wrapper">
+        <div class="lightbox-carousel-slides"></div>
+      </div>
+
+      <button class="lightbox-carousel-btn lightbox-prev-btn" aria-label="Previous image">‹</button>
+      <button class="lightbox-carousel-btn lightbox-next-btn" aria-label="Next image">›</button>
+
+      <div class="lightbox-caption-section">
+        <h3 class="lightbox-caption">Caption</h3>
+        <p class="lightbox-credit">Credit</p>
+      </div>
+
+      <div class="lightbox-indicators"></div>
+    </div>
+  </div>
+
+  
+  <header class="header">
+    <div class="logo">
+      <a href="../../index.html">
+        <img src="../../images/nsf-logo.png" alt="NSF Logo" />
+      </a>
+    </div>
+    
+    <nav class="nav">
+      <ul class="nav-links">
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li class="dropdown">
+          <a>Institutes</a>
+          <ul class="dropdown-menu">
+            <li><a href="../institutes/a3d3.html">A3D3</a></li>
+            <li><a href="../institutes/id4.html">ID4</a></li>
+            <li><a href="../institutes/iguide.html">I-GUIDE</a></li>
+            <li><a href="../institutes/iharp.html">iHARP</a></li>
+            <li><a href="../institutes/imageomics.html">Imageomics</a></li>
+          </ul>
+        </li>
+        <li><a href="../resources.html">Resources</a></li>
+        <li><a href="../news.html">News</a></li>
+        <li><a href="../publications.html">Publications</a></li>
+        <li><a href="../mlchallenges.html">Challenges</a></li>
+        <li><a href="../events.html">Events</a></li>
+      </ul>
+    </nav>
+
+    <div class="search-container" id="searchContainer">
+      <button class="search-icon-btn" id="searchIconBtn" aria-label="Search">
+        <img src="../../images/search.png" alt="Search" />
+      </button>
+      <input type="text" class="search-bar" id="searchBar" placeholder="Search..." />
+      <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <div class="header-actions">
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="institute-header">
+      <div class="header-image-container">
+        <img src="../../images/id4 images/id4.jpg" alt="A collage of scientific data, materials, and designs." />
+        <div class="header-text-overlay">
+          <h1>Institute for Data Driven Dynamical Design (ID4)</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="institute-details-container">
+      <div class="institute-logo-container">
+        <img src="../../images/id4 images/ID4_logo.png" alt="ID4 Logo" />
+            <p>“Designing Materials, Driving Discovery”</p>
+      </div>
+      <div class="institute-info-box">
+        <div class="institute-info">
+          <strong>NSF Award #:</strong>
+          <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118201&HistoricalAwards=false" class="award-link" target="_blank" rel="noopener noreferrer"> 2118201</a>
+        </div>
+        <div class="institute-info">
+          <strong>Location:</strong>
+          <a href="https://maps.google.com/?q=1500+Illinois+St,+Golden,+CO+80401" target="_blank" rel="noopener noreferrer">
+            1500 Illinois St, Golden, CO 80401
+          </a>
+        </div>
+        <div class="institute-info"><strong>Contact:</strong> <a href="mailto:id4@mines.edu" class="email-link">id4@mines.edu</a></div>
+        <a href="https://id4.mines.edu/" target="_blank" rel="noopener noreferrer" class="button id4-button">Visit ID4 Website</a>
+      </div>
+    </div>
+
+    <div class="institute-content">
+      <div class="about-section institute-content"> 
+        <h1>About</h1>
+        <div class="about-content-wrapper">
+          <div class="about-text">
+            <p>
+              The Institute for Data-Driven Dynamical Design (ID4), based at the Colorado School of Mines, is an interdisciplinary research institute dedicated to transforming the design cycle of molecules, materials, and structures through the integration of human expertise and machine intelligence. By developing novel approaches to navigating complex design spaces, tailoring artificial intelligence for domain-specific simulations, and enabling knowledge distillation strategies, ID4 accelerates the discovery of new functional mechanisms across scales ranging from the atomic to the structural.
+            </p>
+          </div>
+          <div class="about-image">
+            <img src="../../images/id4 images/ID4 group photo.jpg" alt="ID4 Research" />
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="mission-vision-container">
+      <div class="mission-section">
+        <div class="mission-hexagons columns lr">
+          <div class="hex-col left">
+            <div class="hexagon large">
+              <img class="hexagon-img" src="../../images/id4 images/IMG_1926.png" alt="workshop" data-caption="ID4 workshop on Interactive Visualization and Analysis of High-Dimensional Scientific Data." data-credit="Credit: Jen Rogers" />
+            </div>
+          </div>
+          <div class="hex-col right">
+            <div class="hexagon">
+              <img 
+              class="hexagon-img" 
+              src="../../images/id4 images/kirigami_strata vision photo 2.jpg" alt="Kirigami_strata-scaled" data-caption="ID4 research group’s collaborative display, Kirigami Strata, combines AI with structural mechanics research." data-link="https://kirigami-strata.ai/"
+              data-credit="Credit: Rafael Pastran"/>
+            </div>
+
+            <div class="hexagon">
+              <img class="hexagon-img" src="../../images/id4 images/Poster award.jpg" alt="A close-up of a complex crystalline structure." data-caption="ID4 graduate student Menghang (David) Wang winning best poster award at the 2024 Materials Research Society Spring " data-credit="Credit: ID4 Leadership" />
+            </div>
+          </div>
+        </div>
+
+        <div class="content-section">
+          <h2>Mission</h2>
+          <p>"From chemistry to civil engineering, we seek to create platforms that accelerate the discovery of new mechanisms and dynamics through the complementary union of human and machine intelligence. We aspire to create the next generation of leaders in this transformative approach and to cultivate a vibrant, inclusive community committed to data-driven approaches."</p>
+        </div>
+      </div>
+
+      <div class="vision-section">
+        <div class="vision-hexagons columns rl">
+          <div class="hex-col left">
+            <div class="hexagon">
+              <img class="hexagon-img" src="../../images/id4 images/id4 arch vision photo.jpg" alt="Augmented reality guided construction of a self-balancing arch using a Renaissance algorithm, directed by ID4 faculty." data-caption="Augmented reality guided construction on a self balancing arch based on a Renaissance algorithm, directed by ID4 faculty." data-link="https://engineering.princeton.edu/news/2023/06/07/renaissance-algorithm-meets-augmented-reality-venice-biennale" data-credit="Credit: the Form Finding Lab" />
+            </div>
+            <div class="hexagon">
+              <img class="hexagon-img" src="../../images/id4 images/Allhandscollaboration.jpg" alt="Students and postdocs presenting new project ideas and getting feedback at the ID4 All Hands Meeting" data-caption="Students and postdocs presenting new project ideas and getting feedback at the ID4 All Hands Meeting." data-credit="Credit: Emily Freed"/>
+            </div>
+          </div>
+          <div class="hex-col right">
+            <div class="hexagon large">
+              <img class="hexagon-img" src="../../images/id4 images/Bertoldi lab at Harvard id4.jpg" alt="A close-up of a high-tech material surface." data-caption="Bertoldi lab at Harvard during dynamic testing experiments of flexible metamaterial" data-credit="Credit: Giovanni Bordiga" />
+            </div>
+          </div>
+        </div>
+
+        <div class="content-section">
+          <h2>Vision</h2>
+          <p>"By revolutionizing the design cycle of molecules, materials, and structures, ID4 aims to reveal new mechanisms for fabrication and function across length scales."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="areas-of-work-container">
+      <h2><strong>Areas of work</strong></h2>
+      <div class="work-icons">
+        <div class="work-item">
+          <img src="../../images/id4 images/Ion Transport.png" alt="Ion Transport" width="145" height="145"/>
+          <p>Ion Transport</p>
+        </div>
+        <div class="work-item">
+          <img src="../../images/id4 images/Structural Metamaterials.png" alt="Structural Metamaterials" width="145" height="145"/>
+          <p>Structural Metamaterials</p>
+        </div>
+        <div class="work-item">
+          <img src="../../images/id4 images/Photochemistry.png" alt="Photochemistry" width="145" height="145"/>
+          <p>Photochemistry</p>
+        </div>
+        <div class="work-item">
+          <img src="../../images/id4 images/Metal-organic Frameworks.png" alt="Metal-organic Frameworks" width="145" height="145"/>
+          <p>Metal-organic Frameworks</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-contributors-container">
+      <div class="contributors-header">
+        <h2>Principal Investigators</h2>
+        <a href="https://id4.mines.edu/people/" class="view-all-link" target="_blank" rel="noopener noreferrer">
+          View full team 
+          <img src="../../images/share (1).png" alt="External link icon" />
+        </a>
+      </div>
+
+      <div class="contributors-grid">
+        <div class="contributor-card">
+          <img src="../../images/id4 images/Dr. Eric Toberer.jpg" alt="Photo of Dr. Eric Toberer" />
+          <div class="contributor-info">
+            <h3>Eric S Toberer</h3>
+            <p>Principal Investigator</p>
+          </div>
+        </div>
+
+        <div class="contributor-card">
+          <img src="../../images/id4 images/Dr. Ryan P. Adams.jpg" alt="Photo of Dr. Ryan P. Adams" />
+          <div class="contributor-info">
+            <h3>Ryan P. Adams</h3>
+            <p>Co-PI</p>
+          </div>
+        </div>
+
+        <div class="contributor-card">
+          <img src="../../images/id4 images/Alvitta Ottley.jpg" alt="Placeholder image for Alvitta Ottley" />
+          <div class="contributor-info">
+            <h3>Alvitta Ottley</h3>
+            <p>Co-PI</p>
+          </div>
+        </div>
+
+        <div class="contributor-card">
+          <img src="../../images/id4 images/Steven Lopez.jpg" alt="Placeholder image for Steven A Lopez" />
+          <div class="contributor-info">
+            <h3>Steven A Lopez</h3>
+            <p>Co-PI</p>
+          </div>
+        </div>
+
+        <div class="contributor-card">
+          <img src="../../images/id4 images/Dr. Adji Bousso Dieng.jpg" alt="Photo of Dr. Adji Bousso Dieng" />
+          <div class="contributor-info">
+            <h3>Adji Bousso Dieng</h3>
+            <p>Co-PI</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="publications-title">
+    <h2>Publications</h2>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3>NSF HDR Community</h3>
+        <p>
+          The Harnessing the Data Revolution (HDR) Ecosystem is supported by the National Science Foundation under Awards: 
+          <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118240&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118240</a>, 
+          <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118201&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118201</a>, 
+          <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118285&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118285</a>, 
+          <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118329&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118329</a>, 
+          and <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2117997&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2117997</a>. 
+          Any opinions, findings, conclusions, or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
+        </p>
+        <div class="nsf-logo-container">
+          <img src="../../images/nsf-logo.png" alt="NSF U.S. National Science Foundation Logo" />
+          <p>U.S. National Science Foundation</p>
+        </div>
+      </div>
+      <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../resources.html">Resources</a></li>
+          <li><a href="../news.html">News</a></li>
+          <li><a href="../publications.html">Publications</a></li>
+          <li><a href="../mlchallenges.html">Challenges</a></li>
+          <li><a href="../events.html">Events</a></li>
+        </ul>
+      </div>
+      <div class="footer-section institutes">
+        <h3>Institutes</h3>
+        <ul>
+          <li><a href="../institutes/a3d3.html">A3D3</a></li>
+          <li><a href="../institutes/imageomics.html">Imageomics</a></li>
+          <li><a href="../institutes/id4.html">ID<sub>4</sub></a></li>
+          <li><a href="../institutes/iguide.html">I-GUIDE</a></li>
+          <li><a href="../institutes/iharp.html">iHARP</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 NSF HDR. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  
+  <script>
+    class HexagonCarousel {
+      constructor(container) {
+        this.container = container;
+        this.overlay = container;
+        this.closeBtn = container.querySelector('.lightbox-close');
+        this.prevBtn = container.querySelector('.lightbox-prev-btn');
+        this.nextBtn = container.querySelector('.lightbox-next-btn');
+        this.slidesContainer = container.querySelector('.lightbox-carousel-slides');
+        this.indicatorsContainer = container.querySelector('.lightbox-indicators');
+        this.captionEl = container.querySelector('.lightbox-caption');
+        this.creditEl = container.querySelector('.lightbox-credit');
+        
+        this.currentSlide = 0;
+        this.hexagonImages = Array.from(document.querySelectorAll('.hexagon-img'));
+        this.slides = [];
+        this.indicators = [];
+        
+        this.init();
+      }
+
+      init() {
+        this.createSlides();
+
+        this.prevBtn.addEventListener('click', () => this.prevSlide());
+        this.nextBtn.addEventListener('click', () => this.nextSlide());
+        this.closeBtn.addEventListener('click', () => this.close());
+
+        this.overlay.addEventListener('click', (e) => {
+          if (e.target === this.overlay) this.close();
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (!this.overlay.classList.contains('active')) return;
+          if (e.key === 'ArrowLeft') this.prevSlide();
+          if (e.key === 'ArrowRight') this.nextSlide();
+          if (e.key === 'Escape') this.close();
+        });
+
+        this.hexagonImages.forEach((img, index) => {
+          img.addEventListener('click', () => this.openAtIndex(index));
+        });
+
+        this.updateSlideDisplay();
+      }
+
+      createSlides() {
+        this.slidesContainer.innerHTML = '';
+        this.indicatorsContainer.innerHTML = '';
+
+        this.hexagonImages.forEach((hexImg, index) => {
+          const slide = document.createElement('div');
+          slide.className = 'lightbox-carousel-slide' + (index === 0 ? ' active' : '');
+          
+          const slideImage = document.createElement('div');
+          slideImage.className = 'lightbox-slide-image';
+          
+          const img = document.createElement('img');
+          img.src = hexImg.src;
+          img.alt = hexImg.alt;
+          
+          slideImage.appendChild(img);
+          slide.appendChild(slideImage);
+          this.slidesContainer.appendChild(slide);
+          this.slides.push(slide);
+
+          const indicator = document.createElement('button');
+          indicator.className = 'lightbox-indicator' + (index === 0 ? ' active' : '');
+          indicator.setAttribute('aria-label', `Go to slide ${index + 1}`);
+          this.indicatorsContainer.appendChild(indicator);
+          this.indicators.push(indicator);
+
+          indicator.addEventListener('click', () => this.goToSlide(index));
+        });
+      }
+
+      nextSlide() {
+        this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+        this.updateSlideDisplay();
+      }
+
+      prevSlide() {
+        this.currentSlide = this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1;
+        this.updateSlideDisplay();
+      }
+
+      goToSlide(index) {
+        this.currentSlide = index;
+        this.updateSlideDisplay();
+      }
+
+      openAtIndex(index) {
+        this.currentSlide = index;
+        this.overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        this.updateSlideDisplay();
+      }
+
+      close() {
+        this.overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+
+      updateSlideDisplay() {
+        this.slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === this.currentSlide);
+        });
+
+        this.indicators.forEach((indicator, i) => {
+          indicator.classList.toggle('active', i === this.currentSlide);
+        });
+
+        const imgData = this.hexagonImages[this.currentSlide];
+        const captionText = imgData.dataset.caption || 'Image';
+        const captionLink = imgData.dataset.link;
+
+        if (captionLink) {
+          this.captionEl.textContent = '';
+          this.captionEl.append(document.createTextNode(captionText + ' '));
+          const linkEl = document.createElement('a');
+          linkEl.href = captionLink;
+          linkEl.target = '_blank';
+          linkEl.rel = 'noopener noreferrer';
+          linkEl.textContent = 'Learn more here';
+          this.captionEl.appendChild(linkEl);
+        } else {
+          this.captionEl.textContent = captionText;
+        }
+        this.creditEl.textContent = imgData.dataset.credit || 'Credit: Unknown';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const lightboxOverlay = document.querySelector('.lightbox-overlay');
+      if (lightboxOverlay) {
+        window.hexagonCarousel = new HexagonCarousel(lightboxOverlay);
+      }
+    });
+  </script>
+</body>
+</html>

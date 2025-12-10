@@ -1,82 +1,429 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NSF HDR ML Challenge</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        .video-container {
-            margin-top: 20px; /* Adjust the value to control the space between button and video */
-            text-align: center; /* Optional: Center the video */
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>NSF HDR Community</title>
+    <link rel="icon" href="images/nsf-logo.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/carousel.css" />
+    <link rel="stylesheet" href="css/header-styles.css" />
 </head>
-<body>
+<body class="has-construction-banner">
+    <div class="under-construction-banner">UNDER CONSTRUCTION</div>
+    
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/nsf-logo.png" alt="NSF Logo" />
+            </a>
+        </div>
+        
+        <nav class="nav">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="html/about.html">About</a></li>
+                <li class="dropdown">
+                    <a>Institutes</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="html/institutes/a3d3.html">A3D3</a></li>
+                        <li><a href="html/institutes/id4.html">ID4</a></li>
+                        <li><a href="html/institutes/iguide.html">I-GUIDE</a></li>
+                        <li><a href="html/institutes/iharp.html">iHARP</a></li>
+                        <li><a href="html/institutes/imageomics.html">Imageomics</a></li>
+                    </ul>
+                </li>
+                <li><a href="html/resources.html">Resources</a></li>
+                <li><a href="html/news.html">News</a></li>
+                <li><a href="html/publications.html">Publications</a></li>
+                <li><a href="html/mlchallenges.html">Challenges</a></li>
+                <li><a href="html/events.html">Events</a></li>
+            </ul>
+        </nav>
 
-    <div id="header"></div>
-
-    <section class="hero">
-        <div id="logo"></div>
-        <div class="hero-content" id="leaderboard-content">
-        <h1>NSF HDR ML Challenge</h1>
-        <p1>Scientific discovery often involves finding an <b>inconsistent pattern</b> within our data. Data that behaves differently from what is expected can indicate that the underlying science is different. Different behavior can result from a number of effects, but ultimately this could imply that we have observed something <b>new</b> 🌟!
-            <br><br>
-         Depending on the scientific domain, a <b>new, unpredictable object/event</b> could have a profound impact. This could be a new type of material, the discovery of a <b>new astrophysical object</b> 🌌, the observation of <b>unusual climate behavior</b> 🌦️, or the discovery of a <b>new species</b> 🦋. The observation of something different, incongruous with the data, is what we call <b>anomaly detection</b> 🔍. Looking for anomalies is often quite different than other tasks since we do not know what exactly to look for, we just need to look for <b>something different</b>.
-         <br><br>
-        The challenge of scientific anomaly detection is one of the main focuses. <b>Using machine learning</b> to identify these anomalies 🤖
-        <br><br> </p1>
+        
+        <div class="search-container" id="searchContainer">
+            <button class="search-icon-btn" id="searchIconBtn" aria-label="Search">
+                <img src="images/search.png" alt="Search" />
+            </button>
+            <input type="text" class="search-bar" id="searchBar" placeholder="Search..." />
+            <div class="search-results" id="searchResults"></div>
         </div>
 
-    <!-- Embed the video below this section -->
-    <div class="video-container">
-        <iframe src="https://drive.google.com/file/d/1l8rJ5dkCOXAUgMJ7aOuduBYDOJeFKTbM/preview" width="640" height="340" allow="autoplay"></iframe>
-    </div>
+        
+        <div class="header-actions">
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
 
-    <div class="hero-button">
-        <a href="https://www.codabench.org/competitions/2626" target="_blank">Participate in the Anomaly Detection challenge</a>
-    </div>
+    
+    <section class="hdr-carousel-section">
+        <div class="carousel-container">
+            
+            <button class="carousel-btn prev-btn" aria-label="Previous slide">
+                <span class="btn-icon">‹</span>
+            </button>
+            <button class="carousel-btn next-btn" aria-label="Next slide">
+                <span class="btn-icon">›</span>
+            </button>
 
+            <div class="carousel-wrapper">
+                <div class="carousel-slides">
+                    <div class="carousel-slide active">
+                        <div class="slide-image">
+                            <img src="images/test 100.jpg" alt="AI and Machine Learning Research">
+                        </div>
+                        <div class="slide-content">
+                            <h3>AI-Driven Discovery</h3>
+                            <p>Accelerating scientific breakthroughs through advanced artificial intelligence and machine learning algorithms across multiple disciplines.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="slide-image">
+                            <img src="images/test 101.jpg" alt="Data Visualization">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Data Visualization</h3>
+                            <p>Transforming complex datasets into intuitive visual representations that reveal hidden patterns and insights.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="slide-image">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop&crop=center" alt="Global Data Networks">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Global Collaboration</h3>
+                            <p>Connecting researchers worldwide through shared data platforms and collaborative research initiatives.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="slide-image">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&crop=center" alt="Climate Data Analysis">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Climate Science</h3>
+                            <p>Harnessing big data to understand climate patterns and drive environmental research forward.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="slide-image">
+                            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=600&fit=crop&crop=center" alt="Biological Data Research">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Biological Insights</h3>
+                            <p>Analyzing biological data to unlock new understanding in genomics, ecology, and life sciences.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <div class="slide-image">
+                            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=600&fit=crop&crop=center" alt="Educational Innovation">
+                        </div>
+                        <div class="slide-content">
+                            <h3>Educational Innovation</h3>
+                            <p>Training the next generation of data scientists through innovative educational programs and resources.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-indicators">
+                <button class="indicator active" data-slide="0" aria-label="Go to slide 1"></button>
+                <button class="indicator" data-slide="1" aria-label="Go to slide 2"></button>
+                <button class="indicator" data-slide="2" aria-label="Go to slide 3"></button>
+                <button class="indicator" data-slide="3" aria-label="Go to slide 4"></button>
+                <button class="indicator" data-slide="4" aria-label="Go to slide 5"></button>
+                <button class="indicator" data-slide="5" aria-label="Go to slide 6"></button>
+            </div>
+        </div>
     </section>
 
-    <div class="image-row">
-        <a href="https://www.codabench.org/competitions/3764/" target="_blank" class="circle" id="circle1">
-            <img src="images/butterfly.jpg" alt="Butterfly">
-            <div class="hover-text" id="hover-text1">
-                Discovering hybrid butterfly species through pattern recognition in image datasets
+    <section class="hero-section">
+        <img src="images/NSF HDR hero section.png" alt="NSF HDR Background" class="hero-bg-image">
+        <div class="hero-content">
+            <h1 class="hero-title">NSF HDR<br>Community</h1>
+            <div class="hero-description-container">
+                <p class="hero-description">
+                    The National Science Foundation (NSF) Harnessing the Data Revolution (HDR) Institutes are an integrated fabric of interrelated institutes that aim to accelerate discovery and innovation in multiple areas of data-intensive science and engineering.
+                </p>
+                <a href="html/about.html" class="learn-more-btn">Learn about HDR</a>
             </div>
-        </a>
-        <a href="https://www.codabench.org/competitions/2626" target="_blank" class="circle" id="circle2">
-            <img src="images/gw.jpg" alt="GW">
-            <div class="hover-text" id="hover-text2">
-                Finding unmodeled gravitational wave events, such as potential supernovae, in detector data
+        </div>
+    </section>
+
+    
+    <section class="institutes-section">
+        <h2 class="section-title">Meet the Institutes</h2>
+        <div class="institutes-grid">
+            <a href="html/institutes/a3d3.html" class="institute-card-link">
+                <div class="institute-card">
+                    <div class="institute-logo-area">
+                        <img src="images/a3d3 images/a3d.jpg" alt="A3D Logo" class="institute-logo-placeholder" />
+                    </div>
+                    <h3>Accelerated AI Algorithms for Data-Driven Discovery</h3>
+                </div>
+            </a>
+            
+            <a href="html/institutes/id4.html" class="institute-card-link">
+                <div class="institute-card">
+                    <div class="institute-logo-area">
+                        <img src="images/id4 images/ID4_logo.png" alt="ID4 Logo" class="institute-logo-placeholder" />
+                    </div>
+                    <h3>Institute for Data Driven Dynamical Design</h3>
+                </div>
+            </a>
+            
+            <a href="html/institutes/iguide.html" class="institute-card-link">
+                <div class="institute-card">
+                    <div class="institute-logo-area">
+                        <img src="images/i-guide images/Iguide.png" alt="I-GUIDE Logo" class="institute-logo-placeholder" />
+                    </div>
+                    <h3>Institute for Geospatial Understanding through an Integrative Discovery Environment</h3>
+                </div>
+            </a>
+            
+            <a href="html/institutes/iharp.html" class="institute-card-link">
+                <div class="institute-card">
+                    <div class="institute-logo-area">
+                        <img src="images/iharp images/iharp-logo.jpg" alt="iHARP Logo" class="institute-logo-placeholder" />
+                    </div>
+                    <h3>Institute for Harnessing Data and Model Revolution in the Polar Regions</h3>
+                </div>
+            </a>
+            
+            <a href="html/institutes/imageomics.html" class="institute-card-link">
+                <div class="institute-card">
+                    <div class="institute-logo-area">
+                        <img src="images/Imageomics images/Imageomics-logo.png" alt="Imageomics Logo" class="institute-logo-placeholder" />
+                    </div>
+                    <h3>Imageomics Institute</h3>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="explore-resources-section">
+        <div class="explore-resources-content">
+            <div class="explore-resources-text">
+                <h2>Explore Resources</h2>
+                <p>
+                    The HDR Ecosystem hosts a repository of resources for educators, trainers, STEM outreach volunteers, and learners. Designed for everyone from PHD researchers to K–12 to the general public.
+                </p>
+                <a href="html/resources.html" class="explore-resources-button">View all resources</a>
             </div>
-        </a>
-        <a href="https://www.codabench.org/competitions/2626" target="_blank" class="circle" id="circle3">
-            <img src="images/water_levels.jpg" alt="Water Levels">
-            <div class="hover-text" id="hover-text3">
-                Identifying unusual fluctuations in water levels that do not correspond to known environmental factors or historical data patterns
+            
+            <div class="explore-resources-icons">
+                <div class="resource-icon-item">
+                    <div class="resource-icon-circle">
+                        <img src="images/data.png" alt="Data Icon">
+                        <div class="tooltip">Explore curated datasets covering everything from geospatial records to biological imaging and public science archives.</div>
+                    </div>
+                    <div class="resource-icon-text">Data</div>
+                </div>
+                
+                <div class="resource-icon-item">
+                    <div class="resource-icon-circle">
+                        <img src="images/education.png" alt="Education Icon">
+                        <div class="tooltip">Discover learning materials including workshop slides, and STEM outreach content for classrooms and hands on labs.</div>
+                    </div>
+                    <div class="resource-icon-text">Education</div>
+                </div>
+                
+                <div class="resource-icon-item">
+                    <div class="resource-icon-circle">
+                        <img src="images/code.png" alt="Code Icon">
+                        <div class="tooltip">Find open-source codebases, notebooks, and GitHub repositories designed to support data processing, and analysis.</div>
+                    </div>
+                    <div class="resource-icon-text">Code</div>
+                </div>
+                
+                <div class="resource-icon-item">
+                    <div class="resource-icon-circle">
+                        <img src="images/models.png" alt="Models Icon">
+                        <div class="tooltip">Access computational models, Al frameworks, and simulations developed by HDR researchers for a range of topics.</div>
+                    </div>
+                    <div class="resource-icon-text">Models</div>
+                </div>
             </div>
-        </a>
-    </div>
+        </div>
+    </section>
 
-    <div id="footer"></div>
+    <section class="hdr-action-section">
+        <div class="hdr-action-container">
+            <h2 class="hdr-action-title">HDR in Action</h2>
+            <p class="hdr-action-subtitle">Real-World Impact from Data-Driven Science</p>
+            
+            <div class="hdr-action-content">
+                <div class="events-section">
+                    <div class="section-header">
+                        <h3><a href="html/events.html">Events <span class="arrow">→</span></a></h3>
+                    </div>
+                    
+                    <div class="events-container">
+                        <div class="event-item">
+                            <h4>FuncaPalooza 2025 : Get Your Func-tionality On</h4>
+                            <p class="event-date">August 18–21, 2025</p>
+                            <div class="event-location">
+                                <img src="images/location icon.png" alt="Location" class="location-icon">
+                                <span>The Ohio State University, Columbus OH</span>
+                            </div>
+                        </div>
+                        
+                        <div class="event-item">
+                            <h4>FuncaPalooza 2025 : Get Your Func-tionality On</h4>
+                            <p class="event-date">August 18–21, 2025</p>
+                            <div class="event-location">
+                                <img src="images/location icon.png" alt="Location" class="location-icon">
+                                <span>The Ohio State University, Columbus OH</span>
+                            </div>
+                        </div>
+                        
+                        <div class="event-item">
+                            <h4>FuncaPalooza 2025 : Get Your Func-tionality On</h4>
+                            <p class="event-date">August 18–21, 2025</p>
+                            <div class="event-location">
+                                <img src="images/location icon.png" alt="Location" class="location-icon">
+                                <span>The Ohio State University, Columbus OH</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-section">
+                    <div class="section-header">
+                        <h3><a href="html/news.html">News <span class="arrow">→</span></a></h3>
+                    </div>
+                    
+                    <div style="display: flex; gap: 30px; align-items: flex-start;">
+                        <div class="news-card">
+                            <div style="position: relative;" class="news-image-wrapper">
+                                <img src="images/test 101.jpg" alt="HDR Magazine, 2025" class="news-image">
+                                <div class="news-date">July 24</div>
+                            </div>
+                            
+                            <div class="news-content">
+                                <h3 class="news-title">HDR Magazine, 2025</h3>
+                                <p class="news-description">
+                                    The first magazine edition of the National Science Foundation's Harnessing the Data Revolution (HDR) celebrates our ecosystem. Get up to date on new research, the centers involved...
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="news-card">
+                            <div style="position: relative;" class="news-image-wrapper">
+                                <img src="images/test 100.jpg" alt="A3D3 Conference" class="news-image">
+                                <div class="news-overlay">
+                                    
+                                </div>
+                                <div class="news-date">July 30</div>
+                            </div>
+                            <div class="news-content">
+                                <h3 class="news-title">A3D3 Attends the Transients from Space Conference</h3>
+                                <p class="news-description">The 2025 Transients from Space conference featured the novel efforts of A3D3 members working in the domain of multi-messenger astronomy (MMA)...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <script>
-        // Function to load external HTML into an element
-        function loadHTML(file, elementId) {
-            fetch(file)
-                .then(response => response.text())
-                .then(data => document.getElementById(elementId).innerHTML = data)
-                .catch(error => console.error('Error loading HTML:', error));
-        }
+    <section class="numbers-section">
+        <div class="numbers-header">
+            <h2>HDR By The Numbers</h2>
+        </div>
+        
+        <div class="numbers-grid">
+            <div class="number-item">
+                <img src="images/datasets.png" alt="Datasets icon" class="number-icon" />
+                <h3 class="number-value" data-target="91">0</h3>
+                <p class="number-label">Datasets</p>
+            </div>
+            
+            <div class="number-item">
+                <img src="images/colloborating-partners.png" alt="Collaboration icon" class="number-icon" />
+                <h3 class="number-value" data-target="42">0</h3>
+                <p class="number-label">Collaborating partners</p>
+            </div>
+            <div class="number-item">
+                <img src="images/researchers.png" alt="Researcher icon" class="number-icon" />
+                <h3 class="number-value" data-target="78">0</h3>
+                <p class="number-label">Researchers</p>
+            </div>
+            <div class="number-item">
+                <img src="images/papers-published.png" alt="Papers icon" class="number-icon" />
+                <h3 class="number-value" data-target="89">0</h3>
+                <p class="number-label">Papers Published</p>
+            </div>
+            <div class="number-item">
+                <img src="images/students-trained.png" alt="Students icon" class="number-icon" />
+                <h3 class="number-value" data-target="63">0</h3>
+                <p class="number-label">Students Trained</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>NSF HDR Community</h3>
+                <p> The Harnessing the Data Revolution (HDR) Ecosystem is supported by the National Science Foundation under Awards: 
+                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118240&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118240</a>, 
+                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118201&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118201</a>, 
+                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118285&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118285</a>, 
+                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118329&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118329</a>, 
+                    and <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2117997&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2117997</a>. 
+                    Any opinions, findings, conclusions, or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
+                </p>
 
-        // Load header, navigation, and footer
-        loadHTML('layout/header.html', 'header');
-        loadHTML('layout/logo.html', 'logo');
-        loadHTML('layout/footer.html', 'footer');
-    </script>
+                <div class="nsf-logo-container">
+                    <img src="images/nsf-logo.png" alt="NSF U.S. National Science Foundation Logo" />
+                    <p>U.S. National Science Foundation</p>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="html/about.html">About</a></li>
+                    <li><a href="html/resources.html">Resources</a></li>
+                    <li><a href="html/news.html">News</a></li>
+                    <li><a href="html/publications.html">Publications</a></li>
+                    <li><a href="html/mlchallenges.html">Challenges</a></li>
+                    <li><a href="html/events.html">Events</a></li>
+                </ul>
+            </div>
+            <div class="footer-section institutes">
+                <h3>Institutes</h3>
+                <ul>
+                    <li><a href="html/institutes/a3d3.html">A3D3</a></li>
+                    <li><a href="html/institutes/imageomics.html">Imageomics</a></li>
+                    <li><a href="html/institutes/id4.html">ID<sub>4</sub></a></li>
+                    <li><a href="html/institutes/iguide.html">I-GUIDE</a></li>
+                    <li><a href="html/institutes/iharp.html">iHARP</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 NSF HDR. All Rights Reserved.</p>
+        </div>
+    </footer>
 
+    
+    <script src="js/search-index-dynamic.js"></script>
+    <script src="js/header-script-full-search.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/carousel.js"></script>
 </body>
 </html>

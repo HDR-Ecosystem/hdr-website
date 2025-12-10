@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Challenges</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/mlchallenges.css"/>
+    <link rel="icon" href="../images/icon.png" />
+</head>
+<body class="has-construction-banner">
+    <div class="under-construction-banner">UNDER CONSTRUCTION</div>
+    
+    <header class="header">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../images/nsf-logo.png" alt="NSF Logo" />
+            </a>
+        </div>
+        
+        <nav class="nav">
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="dropdown">
+                    <a>Institutes</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../html/institutes/a3d3.html">A3D3</a></li>
+                        <li><a href="../html/institutes/id4.html">ID4</a></li>
+                        <li><a href="../html/institutes/iguide.html">I-GUIDE</a></li>
+                        <li><a href="../html/institutes/iharp.html">iHARP</a></li>
+                        <li><a href="../html/institutes/imageomics.html">Imageomics</a></li>
+                    </ul>
+                </li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="mlchallenges.html">Challenges</a></li>
+                <li><a href="events.html">Events</a></li>
+            </ul>
+        </nav>
+
+        
+        <div class="search-container" id="searchContainer">
+            <button class="search-icon-btn" id="searchIconBtn" aria-label="Search">
+                <img src="../images/search.png" alt="Search" />
+            </button>
+            <input type="text" class="search-bar" id="searchBar" placeholder="Search..." />
+            <div class="search-results" id="searchResults"></div>
+        </div>
+
+        
+        <div class="header-actions">
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="header-banner">
+        <img src="../images/gradient-1.png" alt="Gradient Background" class="background-image" />
+        <div class="header-title-box">
+            <h1 class="header-title">ML Challenges</h1>
+        </div>
+    </div>
+
+    <section class="introduction">
+        <p>HDR Machine Learning Challenges invite participants to tackle real-world scientific problems using machine learning. Each challenge focuses on cutting-edge areas, encouraging models to go beyond their training data and address critical, unsolved questions. Whether you’re an experienced researcher or an aspiring ML practitioner, these challenges offer the opportunity to innovate, contribute to science, and showcase your skills.</p>
+    </section>
+
+    <section class="challenges-controls">
+        <div class="search-filter-wrapper">
+            <div class="search-box">
+                <img src="../images/search.png" alt="Search" class="search-icon-img" />
+                <label class="visually-hidden" for="challenge-search">Search challenges</label>
+                <input 
+                    id="challenge-search" 
+                    type="search" 
+                    class="search-input" 
+                    placeholder="Search challenges" 
+                />
+            </div>
+
+            <div class="filter-button-wrapper">
+                <button class="filter-btn-main" type="button" id="challengeFilterToggle">
+                    <img src="../images/vector.png" alt="Filter" />
+                    Filter
+                </button>
+
+                <div class="filter-dropdown hidden" id="challengeFilterDropdown">
+                    <div class="filter-options">
+                        <div class="filter-group-title">Date</div>
+                        <label class="filter-option">
+                            <input type="checkbox" name="challengeYear" value="2025" />
+                            <span>2025</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="challengeYear" value="2024" />
+                            <span>2024</span>
+                        </label>
+
+                        <div class="filter-group-title">Status</div>
+                        <label class="filter-option">
+                            <input type="radio" name="challengeStatus" value="all" checked />
+                            <span>All statuses</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="challengeStatus" value="open" />
+                            <span>Open</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="challengeStatus" value="upcoming" />
+                            <span>Upcoming</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="challengeStatus" value="closed" />
+                            <span>Closed</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="challengeStatus" value="archived" />
+                            <span>Archived</span>
+                        </label>
+
+                        <div class="filter-group-title">Institute</div>
+                        <label class="filter-option">
+                            <input type="checkbox" name="challengeInstitute" value="A3D3" />
+                            <span>A3D3</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="challengeInstitute" value="ID4" />
+                            <span>ID4</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="challengeInstitute" value="I-GUIDE" />
+                            <span>I-GUIDE</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="challengeInstitute" value="iHARP" />
+                            <span>iHARP</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="challengeInstitute" value="Imageomics" />
+                            <span>Imageomics</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>NSF HDR Community</h3>
+                <p> The Harnessing the Data Revolution (HDR) Ecosystem is supported by the National Science Foundation under Awards: 
+                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118240&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118240</a>, 
+                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118201&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118201</a>, 
+                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118285&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118285</a>, 
+                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118329&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118329</a>, 
+                    and <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2117997&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2117997</a>. 
+                    Any opinions, findings, conclusions, or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
+                </p>
+                <div class="nsf-logo-container">
+                    <img src="../images/nsf-logo.png" alt="NSF U.S. National Science Foundation Logo" />
+                    <p>U.S. National Science Foundation</p>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="publications.html">Publications</a></li>
+                    <li><a href="mlchallenges.html">Challenges</a></li>
+                    <li><a href="events.html">Events</a></li>
+                </ul>
+            </div>
+            <div class="footer-section institutes">
+                <h3>Institutes</h3>
+                <ul>
+                    <li><a href="institutes/a3d3.html">A3D3</a></li>
+                    <li><a href="institutes/imageomics.html">Imageomics</a></li>
+                    <li><a href="institutes/id4.html">ID<sub>4</sub></a></li>
+                    <li><a href="institutes/iguide.html">I-GUIDE</a></li>
+                    <li><a href="institutes/iharp.html">iHARP</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 NSF HDR. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/mlchallenges.js"></script>
+</body>
+</html>
