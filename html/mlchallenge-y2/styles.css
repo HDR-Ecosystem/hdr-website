@@ -24,6 +24,7 @@
     font-size: 38px;
     font-weight: 700;
     margin: 0 0 16px;
+    text-align: center;
 }
 
 .y2-hero h2 {
@@ -57,12 +58,13 @@
 .y2-hero-img {
     display: flex;
     justify-content: center;
-    margin: 12px 0 24px;
+    margin: 12px 0 28px;
 }
 
 .y2-hero-img img {
     width: 100%;
-    max-width: 320px;
+    max-width: 540px;
+    max-height: 540px;
 }
 
 .y2-hero-cta {
@@ -170,8 +172,8 @@
 }
 
 .y2-circle {
-    width: 220px;
-    height: 220px;
+    width: clamp(240px, 28vw, 360px);
+    height: clamp(240px, 28vw, 360px);
     border-radius: 50%;
     overflow: hidden;
     position: relative;
@@ -329,12 +331,12 @@
 
 @media (max-width: 900px) {
     .y2-hero h1 { font-size: 30px; }
-    .y2-circle { width: 180px; height: 180px; }
+    .y2-circle { width: 210px; height: 210px; }
     .y2-hover-text { font-size: 16px; padding: 12px; }
 }
 
 @media (max-width: 600px) {
     .y2-content { padding: 28px 16px 60px; }
     .y2-hero { padding: 22px; }
-    .y2-circle { width: 160px; height: 160px; }
+    .y2-circle { width: 190px; height: 190px; }
 }

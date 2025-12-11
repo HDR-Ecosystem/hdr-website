@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
             eventType: 'virtual',
             location: 'Online',
             institute: 'I-GUIDE',
-            link: '#'
+            link: 'https://i-guide.io/i-guide-vco/pursuing-ethical-geospatial-data-science-and-ai-the-i-guide-data-ethics-toolkit/'
         },
         {
             title: 'HDR ML Challenge Online Hackathon',
@@ -313,7 +313,7 @@ document.addEventListener('DOMContentLoaded', function() {
             eventType: 'Virtual',
             location: 'Online',
             institute: 'A3D3',
-            link: '#'
+            link: 'https://indico.cern.ch/event/1607943/'
         },
         {
             title: 'FAIR in ML, AI Readiness, & Reproducibility (FARR) Workshop',
@@ -321,7 +321,7 @@ document.addEventListener('DOMContentLoaded', function() {
             startDate: '2026-04-08',
             endDate: '2026-04-09',
             timezone: 'ET',
-            image: '../images/events page images/Frame 3.png',
+            image: '../images/events page images/Farr workshop.png',
             eventType: 'in-person',
             location: 'Washington DC',
             institute: 'Community',

@@ -1805,6 +1805,8 @@ a:hover {
 .image-container img {
     width: 100%;
     height: auto;
+    max-height: 520px;
+    object-fit: cover;
     display: block;
 }
 

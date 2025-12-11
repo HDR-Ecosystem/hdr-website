@@ -204,11 +204,16 @@ function applyFilters() {
 
     cards.forEach((card) => {
         const cardYear = card.dataset.year;
-        const cardInstitute = card.dataset.institute;
+        const cardInstitutes = (card.dataset.institute || '')
+            .split(',')
+            .map((v) => v.trim())
+            .filter(Boolean);
         const cardStatus = card.dataset.currentStatus || card.dataset.status || 'open';
 
         const yearMatch = yearValues.length ? yearValues.includes(cardYear) : true;
-        const instituteMatch = instituteValues.length ? instituteValues.includes(cardInstitute) : true;
+        const instituteMatch = instituteValues.length
+            ? cardInstitutes.some((inst) => instituteValues.includes(inst))
+            : true;
         const statusMatch = statusValue === 'all' ? true : statusValue === cardStatus;
 
         const visible = yearMatch && instituteMatch && statusMatch;

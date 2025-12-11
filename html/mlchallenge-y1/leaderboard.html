@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard — ML Challenge Year 1</title>
+    <link rel="icon" href="../../images/icon.png" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="y1-page y2-page">
+
+    <div id="header"></div>
+
+    <div class="header-banner">
+        <img src="../../images/gradient-1.png" alt="Gradient Background" class="background-image" />
+        <div class="header-title-box">
+            <h1 class="header-title">Leaderboard</h1>
+            <p class="header-subtitle">Year 1 challenge winners and archived scores</p>
+        </div>
+    </div>
+
+    <main class="y1-content y2-content">
+        <nav class="y1-subnav y2-subnav">
+            <a href="index.html">Home</a>
+            <a href="rules.html">Rules</a>
+            <a href="datasets.html">Datasets</a>
+            <a href="leaderboard.html" aria-current="page">Leaderboard</a>
+            <a href="aaai-workshop2024.html">AAAI Workshop</a>
+            <a href="terms.html">Terms</a>
+        </nav>
+
+        <section class="hero y2-hero">
+            <h1>Competition winners</h1>
+            <p class="y2-large-text">Archived standings across the three Year 1 anomaly detection tracks.</p>
+
+            <div class="y2-text-grid">
+                <div class="y2-card">
+                    <h3>Overall Competition</h3>
+                    <ol class="emoji-list">
+                        <li class="tooltip"
+                            data-tooltip="Team: &#10;Bo-Kai Ruan (National Yang Ming Chiao Tung University), &#10;Yi-Zeng Fang (National Yang Ming Chiao Tung University)">
+                            joycefang(NCTUForever)</li>
+                        <li class="tooltip"
+                            data-tooltip="Team: &#10;Chi-Wei Lee (National Tsing Hua University), &#10;Jia-Cheng Pan (National Tsing Hua University), &#10;Zih-Chen Ciou (National Tsing Hua University), &#10;Yi-Chun Chang (National Yang Ming Chiao Tung University), &#10;Chen-Yu Mao (National Yang Ming Chiao Tung University), &#10;An-Kai Chen (National Tsing Hua University)">
+                            20iterations</li>
+                    </ol>
+                </div>
+
+                <div class="y2-card">
+                    <h3>Imageomics Butterfly</h3>
+                    <ol class="emoji-list">
+                        <li class="tooltip"
+                            data-tooltip="Team: &#10;Keng-Yi Liao (National Taiwan University), &#10;Justinas Rumbutis (National Taiwan University), &#10;Shaocheng Lee (National Taiwan University)">
+                            einbein4</li>
+                        <li class="tooltip" data-tooltip="Team: &#10;Mirco Huennefeld (University of Wisconsin-Madison)">novice/mhuennefeld</li>
+                        <li class="tooltip" data-tooltip="Team: &#10;Ying Zhao (Ricoh Software Research Center)">nessaea1obrinus</li>
+                    </ol>
+                </div>
+
+                <div class="y2-card">
+                    <h3>A3D3 GW</h3>
+                    <ol class="emoji-list">
+                        <li class="tooltip"
+                            data-tooltip="Team: &#10;Jianqi Yan (The University of Hong Kong), &#10;Zhiyuan Pei (Macau University of Science and Technology), &#10;Alex Po Leung (The University of Hong Kong), &#10;David Hui (Chungnam National University), &#10;Sangin Kim (Chungnam National University)">
+                            easonyan123</li>
+                        <li class="tooltip"
+                            data-tooltip="Team: &#10;Chi-Wei Lee (National Tsing Hua University), &#10;Jia-Cheng Pan (National Tsing Hua University), &#10;Zih-Chen Ciou (National Tsing Hua University), &#10;Yi-Chun Chang (National Yang Ming Chiao Tung University), &#10;Chen-Yu Mao (National Yang Ming Chiao Tung University), &#10;An-Kai Chen (National Tsing Hua University)">
+                            20iterations</li>
+                        <li class="tooltip"
+                            data-tooltip="Team: &#10;Marta Babicz (University of Zürich), &#10;Saul Alonso-Monsalve (ETH Zurich) ">
+                            salonsom(Team one)</li>
+                    </ol>
+                </div>
+
+                <div class="y2-card">
+                    <h3>iHarp Sea Level</h3>
+                    <ol class="emoji-list">
+                        <li class="tooltip" data-tooltip="Team: &#10; Cheng-Han Tsai (National Tsinghua University)">tsaichenghan</li>
+                        <li class="tooltip" data-tooltip="Team: &#10; Motoki Saitama (KBC Bank)">motoki</li>
+                        <li class="tooltip"
+                            data-tooltip="Team: &#10;Bo-Kai Ruan (National Yang Ming Chiao Tung University), &#10;Yi-Zeng Fang (National Yang Ming Chiao Tung University)">
+                            joycefang(NCTUForever)</li>
+                    </ol>
+                </div>
+            </div>
+
+            <p>The selection of winners was determined by scores achieved during the final phase. Non-compliance with the terms and conditions resulted in disqualification, as stipulated therein. The overall challenge ranking considers teams that participated in all three challenges.</p>
+        </section>
+
+        <section class="y1-embed">
+            <div class="y1-embed-header">
+                <div>
+                    <h2>Aggregated leaderboard</h2>
+                    <p>Scores below pull from the archived JSON exports for each track.</p>
+                </div>
+                <span class="y1-badge">Archived</span>
+            </div>
+            <div id="leaderboard-content"></div>
+        </section>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="../../js/script.js"></script>
+    <script src="js/leaderboard.js"></script>
+    <script>
+        function loadHTML(file, elementId) {
+            fetch(file)
+                .then(response => response.text())
+                .then(data => document.getElementById(elementId).innerHTML = data)
+                .catch(error => console.error('Error loading HTML:', error));
+        }
+
+        loadHTML('layout/header.html', 'header');
+        loadHTML('layout/logo.html', 'logo');
+        loadHTML('layout/footer.html', 'footer');
+    </script>
+
+</body>
+</html>
