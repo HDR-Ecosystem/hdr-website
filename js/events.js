@@ -65,17 +65,40 @@ function classifyEvent(eventDate) {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     
-    const event = new Date(eventDate);
+    const event = parseLocalDate(eventDate);
     event.setHours(0, 0, 0, 0);
     
     return event >= today ? 'upcoming' : 'past';
 }
 
-function formatEventDateTime(dateString, timeString = '12:00pm', timezone = 'CT') {
-    const date = new Date(dateString);
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const formattedDate = date.toLocaleDateString('en-US', options);
-    return `${formattedDate} ${timeString} (${timezone})`;
+function formatEventDateTime(startDateString, endDateString, timeString = '12:00pm', timezone = 'CT') {
+    const startDate = parseLocalDate(startDateString);
+    const endDate = endDateString ? parseLocalDate(endDateString) : startDate;
+
+    const startOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    const endOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+
+    const sameDay = startDate.getTime() === endDate.getTime();
+    let dateText;
+
+    if (sameDay) {
+        dateText = startDate.toLocaleDateString('en-US', startOptions);
+    } else if (startDate.getFullYear() === endDate.getFullYear() &&
+               startDate.getMonth() === endDate.getMonth()) {
+        // Same month/year: April 8–9, 2026
+        const monthYear = startDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+        dateText = `${monthYear} ${startDate.getDate()}–${endDate.getDate()}`;
+    } else {
+        // Different month/year: April 30, 2026 – May 2, 2026
+        dateText = `${startDate.toLocaleDateString('en-US', startOptions)} – ${endDate.toLocaleDateString('en-US', endOptions)}`;
+    }
+
+    return `${dateText} ${timeString} (${timezone})`;
+}
+
+function parseLocalDate(dateString) {
+    const [year, month, day] = dateString.split('-').map(Number);
+    return new Date(year, month - 1, day);
 }
 
 function applyFiltersAndSearch() {
@@ -130,6 +153,9 @@ function createEventCard(event) {
     const article = document.createElement('article');
     article.className = 'event-card';
     article.setAttribute('data-event-type', event.type);
+    if (event.link) {
+        article.classList.add('event-card-linked');
+    }
 
     let eventTypeSection = '';
     if (event.eventType === 'virtual') {
@@ -155,6 +181,11 @@ function createEventCard(event) {
     article.innerHTML = `
         <div class="event-image">
             <img src="${event.image}" alt="${event.title}" />
+            ${event.link ? `
+                <a class="event-image-overlay" href="${event.link}" target="_blank" rel="noopener noreferrer">
+                    <span>Read more on external site →</span>
+                </a>
+            ` : ''}
         </div>
         <div class="event-content">
             <h3>${event.title}</h3>
@@ -225,12 +256,21 @@ function scrollToTop() {
 }
 
 window.populateEvents = function(eventsData) {
-    allEvents = eventsData.map(event => ({
-        ...event,
-        type: classifyEvent(event.date),
-        dateTime: formatEventDateTime(event.date, event.time, event.timezone),
-        searchable: `${event.title} ${event.description} ${event.institute || ''}`.toLowerCase()
-    }));
+    allEvents = eventsData.map(event => {
+        const startDate = event.startDate || event.date;
+        const endDate = event.endDate || event.date;
+        const time = event.time || '12:00pm';
+        const timezone = event.timezone || 'CT';
+
+        return {
+            ...event,
+            startDate,
+            endDate,
+            type: classifyEvent(startDate),
+            dateTime: formatEventDateTime(startDate, endDate, time, timezone),
+            searchable: `${event.title} ${event.description} ${event.institute || ''}`.toLowerCase()
+        };
+    });
 
     currentFilter = 'all';
     currentPage = 1;
@@ -252,197 +292,41 @@ window.getEventsData = function() {
 document.addEventListener('DOMContentLoaded', function() {
     const sampleEvents = [
         {
-            title: 'I-GUIDE VCO: Visualization and Story Telling',
-            description: 'Webinar talk on data visualization approaches with emphasis on storytelling and broader context.',
-            date: '2025-08-15',
-            time: '2:00pm',
-            timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=A3D3+Symposium',
-            eventType: 'virtual',
-            location: 'Online',
-            institute: 'I-GUIDE',
-            link: '#'
-        },
-        {
-            title: 'A3D3 Annual Symposium',
-            description: 'Join us for our annual symposium featuring keynote speakers and research presentations from across the institute.',
-            date: '2025-09-20',
-            time: '10:00am',
-            timezone: 'ET',
-            image: 'https://via.placeholder.com/400x300?text=A3D3+Symposium',
-            eventType: 'in-person',
-            location: 'Columbus, OH',
-            institute: 'A3D3',
-            link: '#'
-        },
-        {
-            title: 'HDR Community Meetup',
-            description: 'Networking event for HDR institute members and researchers to share ideas and collaborate.',
-            date: '2025-10-10',
-            time: '1:00pm',
-            timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=HDR+Community',
-            eventType: 'in-person',
-            location: 'Chicago, IL',
-            institute: 'Community',
-            link: '#'
-        },
-        {
-            title: 'Imageomics Workshop Series',
-            description: 'Hands-on workshop covering advanced image analysis techniques and machine learning applications.',
-            date: '2025-11-05',
-            time: '3:00pm',
-            timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=Imageomics',
-            eventType: 'hybrid',
-            location: 'Austin, TX',
-            institute: 'Imageomics',
-            link: '#'
-        },
-        {
-            title: 'iHARP Data Harmonization Webinar',
-            description: 'Learn about best practices for data harmonization across diverse sources and institutes.',
-            date: '2025-12-01',
+            title: 'I-GUIDE VCO: The I-GUIDE Data Ethics Toolkit',
+            description: 'This hands-on session will allow you to explore tools from the I-GUIDE Data Ethics Toolkit.',
+            date: '2025-12-17',
             time: '11:00am',
-            timezone: 'ET',
-            image: 'https://via.placeholder.com/400x300?text=iHARP',
-            eventType: 'virtual',
-            location: 'Online',
-            institute: 'iHARP',
-            link: '#'
-        },
-        {
-            title: 'ID4 Summit 2025',
-            description: 'Annual summit bringing together experts to discuss the latest in inclusive data science.',
-            date: '2025-09-15',
-            time: '9:00am',
-            timezone: 'PT',
-            image: 'https://via.placeholder.com/400x300?text=ID4+Summit',
-            eventType: 'in-person',
-            location: 'Seattle, WA',
-            institute: 'ID4',
-            link: '#'
-        },
-        {
-            title: 'Machine Learning Fundamentals Workshop',
-            description: 'Comprehensive training on ML fundamentals with practical applications in data science.',
-            date: '2024-12-10',
-            time: '2:00pm',
             timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=ML+Workshop',
-            eventType: 'in-person',
-            location: 'Denver, CO',
-            institute: 'A3D3',
-            link: '#'
-        },
-        {
-            title: 'Data Visualization Best Practices',
-            description: 'Learn how to create compelling visualizations that tell your data story effectively.',
-            date: '2024-11-20',
-            time: '1:00pm',
-            timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=Visualization',
+            image: '../images/i-guide images/iGUIDE banner.jpeg',
             eventType: 'virtual',
             location: 'Online',
             institute: 'I-GUIDE',
             link: '#'
         },
         {
-            title: 'HDR Research Symposium',
-            description: 'Showcase of cutting-edge research from all five HDR institutes with networking opportunities.',
-            date: '2024-10-15',
-            time: '8:30am',
-            timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=HDR+Research',
-            eventType: 'in-person',
-            location: 'Washington, DC',
-            institute: 'Community',
-            link: '#'
-        },
-        {
-            title: 'Advanced Data Science Certification',
-            description: 'Professional certification program covering advanced topics in data science and analytics.',
-            date: '2025-01-15',
-            time: '9:00am',
-            timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=Certification',
-            eventType: 'virtual',
-            location: 'Online',
-            institute: 'A3D3',
-            link: '#'
-        },
-        {
-            title: 'Big Data Processing Bootcamp',
-            description: 'Intensive bootcamp on processing large-scale datasets using modern distributed computing frameworks.',
-            date: '2025-02-01',
-            time: '10:00am',
-            timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=Big+Data',
-            eventType: 'in-person',
-            location: 'San Francisco, CA',
-            institute: 'Imageomics',
-            link: '#'
-        },
-        {
-            title: 'Research Ethics in Data Science',
-            description: 'Discussion on ethical considerations and best practices when working with sensitive research data.',
-            date: '2025-03-10',
+            title: 'HDR ML Challenge Online Hackathon',
+            description: 'Introduction to Codabench,  presentations on the challenges, team formation, and Q&A with organizers.',
+            date: '2025-12-18',
             time: '2:00pm',
             timezone: 'ET',
-            image: 'https://via.placeholder.com/400x300?text=Ethics',
-            eventType: 'virtual',
-            location: 'Online',
-            institute: 'ID4',
-            link: '#'
-        },
-        {
-            title: 'Cloud Computing for Research',
-            description: 'Learn to leverage cloud platforms for scalable research computing and data analysis.',
-            date: '2025-04-05',
-            time: '1:00pm',
-            timezone: 'PT',
-            image: 'https://via.placeholder.com/400x300?text=Cloud',
-            eventType: 'hybrid',
-            location: 'Portland, OR',
-            institute: 'iHARP',
-            link: '#'
-        },
-        {
-            title: 'AI and Machine Learning Summit',
-            description: 'Conference featuring industry leaders discussing the future of AI and machine learning applications.',
-            date: '2025-05-20',
-            time: '8:00am',
-            timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=AI+Summit',
-            eventType: 'in-person',
-            location: 'Boston, MA',
-            institute: 'Community',
-            link: '#'
-        },
-        {
-            title: 'Statistical Methods for Modern Data',
-            description: 'Advanced statistical techniques tailored for high-dimensional and complex modern datasets.',
-            date: '2024-09-01',
-            time: '3:00pm',
-            timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=Statistics',
-            eventType: 'virtual',
+            image: '../images/events page images/Frame 2.png',
+            eventType: 'Virtual',
             location: 'Online',
             institute: 'A3D3',
             link: '#'
         },
         {
-            title: 'Network Analysis Workshop',
-            description: 'Hands-on workshop exploring graph theory and network analysis techniques for complex systems.',
-            date: '2024-08-15',
-            time: '2:00pm',
-            timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=Networks',
+            title: 'FAIR in ML, AI Readiness, & Reproducibility (FARR) Workshop',
+            description: 'Focusing on the areas of AI Readiness, AI Reproducibility, and the intersection of the FAIR Principles and ML.',
+            startDate: '2026-04-08',
+            endDate: '2026-04-09',
+            timezone: 'ET',
+            image: '../images/events page images/Frame 3.png',
             eventType: 'in-person',
-            location: 'Miami, FL',
-            institute: 'I-GUIDE',
-            link: '#'
-        }
+            location: 'Washington DC',
+            institute: 'Community',
+            link: 'https://www.farr-rcn.org/workshop26'
+        },
     ];
 
     window.populateEvents(sampleEvents);

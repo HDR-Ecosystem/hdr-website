@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ML Challenge Y2 - Datasets</title>
+    <link rel="icon" href="../../images/icon.png" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+</head>
+<body class="y2-page">
+    <header class="header">
+        <div class="logo">
+            <a href="../../index.html">
+                <img src="../../images/nsf-logo.png" alt="NSF Logo" />
+            </a>
+        </div>
+
+        <nav class="nav">
+            <ul class="nav-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li class="dropdown">
+                    <a>Institutes</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../institutes/a3d3.html">A3D3</a></li>
+                        <li><a href="../institutes/id4.html">ID4</a></li>
+                        <li><a href="../institutes/iguide.html">I-GUIDE</a></li>
+                        <li><a href="../institutes/iharp.html">iHARP</a></li>
+                        <li><a href="../institutes/imageomics.html">Imageomics</a></li>
+                    </ul>
+                </li>
+                <li><a href="../resources.html">Resources</a></li>
+                <li><a href="../news.html">News</a></li>
+                <li><a href="../publications.html">Publications</a></li>
+                <li><a href="../mlchallenges.html">Challenges</a></li>
+                <li><a href="../events.html">Events</a></li>
+            </ul>
+        </nav>
+
+        <div class="search-container" id="searchContainer">
+            <button class="search-icon-btn" id="searchIconBtn" aria-label="Search">
+                <img src="../../images/search.png" alt="Search" />
+            </button>
+            <input type="text" class="search-bar" id="searchBar" placeholder="Search..." />
+            <div class="search-results" id="searchResults"></div>
+        </div>
+
+        <div class="header-actions">
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="header-banner">
+        <img src="../../images/gradient-1.png" alt="Gradient Background" class="background-image" />
+        <div class="header-title-box">
+            <h1 class="header-title">ML Challenge Y2 Datasets</h1>
+        </div>
+    </div>
+
+    <main class="y2-content">
+        <nav class="y2-subnav y2-subnav-top">
+            <a href="index.html">Challenge Home</a>
+            <a href="rules.html">Rules</a>
+            <a href="datasets.html">Datasets</a>
+            <a href="events.html">Events</a>
+            <a href="terms.html">Terms</a>
+        </nav>
+
+        <section class="y2-hero">
+            <h1>Datasets</h1>
+
+            <h2>Training datasets</h2>
+            <p>
+                Labeled datasets to train algorithms, provided to get comfortable with the format and processing. Targets are included for training, but the full parameter space in the final datasets is incomplete. The goal is to learn the behavior and prepare for extrapolation.
+            </p>
+
+            <h2>Validation/evaluation datasets</h2>
+            <p>
+                A private validation dataset lets participants test models before final submission. Evaluation metrics match the final scoring. Validation and inference run on the Codabench server (A10s on SDSC’s NSF National Research Platform).
+            </p>
+
+            <h2>Final Challenge datasets</h2>
+            <p>
+                Performance on the final challenge datasets determines scores. Each sub-challenge provides scoring code in its GitHub repository. After the competition, these datasets will be public. Scoring is performed on Codabench (A10s on SDSC’s NSF National Research Platform).
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>NSF HDR Community</h3>
+                <p> The Harnessing the Data Revolution (HDR) Community is supported by the National Science Foundation under Awards:
+                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118240&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118240</a>,
+                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118201&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118201</a>,
+                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118285&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118285</a>,
+                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118329&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118329</a>,
+                    and <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2117997&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2117997</a>.
+                    Any opinions, findings, conclusions, or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
+                </p>
+                <div class="nsf-logo-container">
+                    <img src="../../images/nsf-logo.png" alt="NSF U.S. National Science Foundation Logo" />
+                    <p>U.S. National Science Foundation</p>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../resources.html">Resources</a></li>
+                    <li><a href="../news.html">News</a></li>
+                    <li><a href="../publications.html">Publications</a></li>
+                    <li><a href="../mlchallenges.html">Challenges</a></li>
+                    <li><a href="../events.html">Events</a></li>
+                </ul>
+            </div>
+            <div class="footer-section institutes">
+                <h3>Institutes</h3>
+                <ul>
+                    <li><a href="../institutes/a3d3.html">A3D3</a></li>
+                    <li><a href="../institutes/imageomics.html">Imageomics</a></li>
+                    <li><a href="../institutes/id4.html">ID<sub>4</sub></a></li>
+                    <li><a href="../institutes/iguide.html">I-GUIDE</a></li>
+                    <li><a href="../institutes/iharp.html">iHARP</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 NSF HDR. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../js/script.js"></script>
+</body>
+</html>

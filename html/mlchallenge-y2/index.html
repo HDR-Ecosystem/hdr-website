@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ML Challenge Y2</title>
+    <link rel="icon" href="../../images/icon.png" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+</head>
+<body class="y2-page">
+    <header class="header">
+        <div class="logo">
+            <a href="../../index.html">
+                <img src="../../images/nsf-logo.png" alt="NSF Logo" />
+            </a>
+        </div>
+
+        <nav class="nav">
+            <ul class="nav-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li class="dropdown">
+                    <a>Institutes</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../institutes/a3d3.html">A3D3</a></li>
+                        <li><a href="../institutes/id4.html">ID4</a></li>
+                        <li><a href="../institutes/iguide.html">I-GUIDE</a></li>
+                        <li><a href="../institutes/iharp.html">iHARP</a></li>
+                        <li><a href="../institutes/imageomics.html">Imageomics</a></li>
+                    </ul>
+                </li>
+                <li><a href="../resources.html">Resources</a></li>
+                <li><a href="../news.html">News</a></li>
+                <li><a href="../publications.html">Publications</a></li>
+                <li><a href="../mlchallenges.html">Challenges</a></li>
+                <li><a href="../events.html">Events</a></li>
+            </ul>
+        </nav>
+
+        <div class="search-container" id="searchContainer">
+            <button class="search-icon-btn" id="searchIconBtn" aria-label="Search">
+                <img src="../../images/search.png" alt="Search" />
+            </button>
+            <input type="text" class="search-bar" id="searchBar" placeholder="Search..." />
+            <div class="search-results" id="searchResults"></div>
+        </div>
+
+        <div class="header-actions">
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="header-banner">
+        <img src="../../images/gradient-1.png" alt="Gradient Background" class="background-image" />
+        <div class="header-title-box">
+            <h1 class="header-title">Scientific-Mood ML Challenge</h1>
+        </div>
+    </div>
+
+    <main class="y2-content">
+        <nav class="y2-subnav y2-subnav-top">
+            <a href="index.html">Challenge Home</a>
+            <a href="rules.html">Rules</a>
+            <a href="datasets.html">Datasets</a>
+            <a href="events.html">Events</a>
+            <a href="terms.html">Terms</a>
+        </nav>
+
+        <section class="y2-hero">
+            <div class="y2-hero-img">
+                <img src="../../images/ML Challenges images/challenge-logo.png" alt="Scientific-MOOD FAIR Challenge logo" />
+            </div>
+
+            <h1>Scientific Modeling out of Distribution (Scientific-Mood) ML Challenge</h1>
+
+            <p>
+                The HDR ML Challenge program is hosting its second FAIR challenge, presenting three scientific
+                benchmarks for modeling out of distribution in critical areas: Neural Forecasting, Climate Prediction
+                using Ecological Data, and Coastal Flooding Prediction over time.
+            </p>
+            <p>
+                Machine learning models excel at interpolating across training datasets. In this challenge, we ask
+                models to extend beyond their training by performing out-of-domain extrapolation on practical, critical
+                scientific processes that have not yet been well studied.
+            </p>
+            <p>
+                As with the first challenge, we are hosting three distinct sub-challenges and one combined challenge.
+                Our focus:
+            </p>
+            <ul>
+                <li><strong>Neural Forecasting:</strong> Forecast activations of a cluster of neurons from prior
+                    signals&mdash;vital for brain-chip interfaces and artificial limb control.</li>
+                <li><strong>Climate prediction using ecological data:</strong> Predict drought conditions over multiple
+                    timescales using images of ecological indicator organisms (ground beetles).</li>
+                <li><strong>Coastal flooding prediction over time:</strong> Model sea levels at multiple sites across
+                    decades to predict coastal floods driven by climate change.</li>
+            </ul>
+
+            <span class="y2-large-text">The ML Challenge launched on September 18, 2025 and runs through January 31, 2026.</span>
+
+            <div class="y2-hero-cta">
+                <a class="y2-cta-btn" href="rules.html">Join the Challenge</a>
+            </div>
+
+            <h2>Challenge Organizers</h2>
+            <div class="y2-text-grid">
+                <div class="y2-card">
+                    <h3>Imageomics</h3>
+                    <ul>
+                        <li>Elizabeth G. Campolongo</li>
+                        <li>Wei-Lun Chao</li>
+                        <li>Chandra Earl (NEON)</li>
+                        <li>Hilmar Lapp</li>
+                        <li>Kayla Perry</li>
+                        <li>Sydne Record</li>
+                        <li>Eric Sokol (NEON)</li>
+                    </ul>
+                </div>
+                <div class="y2-card">
+                    <h3>A3D3</h3>
+                    <ul>
+                        <li>Yuan-Tang Chou</li>
+                        <li>Ekaterina Govorkova</li>
+                        <li>Philip Harris</li>
+                        <li>Shih-Chieh Hsu</li>
+                        <li>Mark S. Neubauer</li>
+                        <li>Amy Orsborn</li>
+                        <li>Leo Scholl</li>
+                        <li>Eli Shlizerman</li>
+                    </ul>
+                </div>
+                <div class="y2-card">
+                    <h3>iHARP</h3>
+                    <ul>
+                        <li>Ratnaksha Lele</li>
+                        <li>Aneesh Subramanian</li>
+                        <li>Josephine Namayanja</li>
+                        <li>Bayu Tama</li>
+                        <li>Vandana Janeja</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>Student Organizers</h2>
+            <div class="y2-text-grid">
+                <div class="y2-card">
+                    <h3>Imageomics</h3>
+                    <ul>
+                        <li>David E. Carlyn</li>
+                        <li>Alyson East</li>
+                        <li>Connor Kilrain</li>
+                        <li>Fangxun Liu</li>
+                        <li>Zheda Mai</li>
+                        <li>S M Rayeed</li>
+                        <li>Jiaman Wu</li>
+                    </ul>
+                </div>
+                <div class="y2-card">
+                    <h3>A3D3</h3>
+                    <ul>
+                        <li>Jingyuan Li</li>
+                    </ul>
+                </div>
+                <div class="y2-card">
+                    <h3>iHARP</h3>
+                    <ul>
+                        <li>Subhankar Ghosh</li>
+                        <li>Sai Vikas Amaraneni</li>
+                        <li>Maloy Kumar Devnath</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="y2-image-row">
+            <a href="https://www.codabench.org/competitions/9854/" target="_blank" class="y2-circle" id="circle1" rel="noopener noreferrer">
+                <img src="../../images/ML Challenges images/beetles.png" alt="Beetles" />
+                <div class="y2-hover-text" id="hover-text1">Beetles as Sentinel Taxa</div>
+            </a>
+            <a href="https://www.codabench.org/competitions/9806/" target="_blank" class="y2-circle" id="circle2" rel="noopener noreferrer">
+                <img src="../../images/ML Challenges images/neural_new.png" alt="Neural forecasting" />
+                <div class="y2-hover-text" id="hover-text2">Forecasting Monkey Motor Neuron Behavior</div>
+            </a>
+            <a href="https://www.codabench.org/competitions/10801/" target="_blank" class="y2-circle" id="circle3" rel="noopener noreferrer">
+                <img src="../../images/ML Challenges images/flooding.png" alt="Coastal flooding" />
+                <div class="y2-hover-text" id="hover-text3">Predicting Coastal Flooding Events</div>
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>NSF HDR Community</h3>
+                <p> The Harnessing the Data Revolution (HDR) Community is supported by the National Science Foundation under Awards:
+                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118240&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118240</a>,
+                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118201&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118201</a>,
+                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118285&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118285</a>,
+                    <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118329&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118329</a>,
+                    and <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2117997&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2117997</a>.
+                    Any opinions, findings, conclusions, or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
+                </p>
+                <div class="nsf-logo-container">
+                    <img src="../../images/nsf-logo.png" alt="NSF U.S. National Science Foundation Logo" />
+                    <p>U.S. National Science Foundation</p>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../resources.html">Resources</a></li>
+                    <li><a href="../news.html">News</a></li>
+                    <li><a href="../publications.html">Publications</a></li>
+                    <li><a href="../mlchallenges.html">Challenges</a></li>
+                    <li><a href="../events.html">Events</a></li>
+                </ul>
+            </div>
+            <div class="footer-section institutes">
+                <h3>Institutes</h3>
+                <ul>
+                    <li><a href="../institutes/a3d3.html">A3D3</a></li>
+                    <li><a href="../institutes/imageomics.html">Imageomics</a></li>
+                    <li><a href="../institutes/id4.html">ID<sub>4</sub></a></li>
+                    <li><a href="../institutes/iguide.html">I-GUIDE</a></li>
+                    <li><a href="../institutes/iharp.html">iHARP</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 NSF HDR. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../../js/script.js"></script>
+</body>
+</html>

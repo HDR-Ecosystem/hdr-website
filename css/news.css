@@ -80,10 +80,6 @@
     position: relative;
 }
 
-.news-card:hover .news-image {
-    transform: scale(1.05);
-}
-
 .news-date {
     position: absolute;
     top: 0;
@@ -104,6 +100,34 @@
 .news-card:hover .news-date {
     background: linear-gradient(135deg, #9D55CE, #B277F2);
     transform: scale(1.05);
+}
+
+.news-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    padding: 12px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    z-index: 1;
+}
+
+.news-card-linked:hover .news-image-overlay {
+    opacity: 1;
+}
+
+.news-card-linked:hover .news-image {
+    transform: scale(1.05);
+    filter: brightness(0.8);
 }
 
 .news-content {

@@ -1001,6 +1001,7 @@ a {
     font-size: 1rem;
     color: #666;
     margin: 0 0 10px 0;
+    font-style: italic;
 }
 
 .event-location {
@@ -2214,14 +2215,10 @@ a:hover {
 
 .news-image {
     width: 100%;
-    height: 260px; 
+    height: 320px; 
     object-fit: cover;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-}
-
-.news-card:hover .news-image {
-    transform: scale(1.05);
 }
 
 .news-image-wrapper {
@@ -2231,6 +2228,44 @@ a:hover {
 
 .news-overlay {
     display: none;
+}
+
+.news-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    padding: 12px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    z-index: 1;
+}
+
+.news-card.news-card-linked:hover .news-image-overlay {
+    opacity: 1;
+}
+
+.news-card.news-card-linked:hover .news-image {
+    transform: scale(1.05);
+    filter: brightness(0.8);
+}
+
+.news-card.news-card-linked .news-date {
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.news-card.news-card-linked:hover .news-date {
+    background: linear-gradient(135deg, #9D55CE, #B277F2);
+    transform: scale(1.05);
 }
 
 .read-more-link {
@@ -2657,7 +2692,7 @@ html, body { overflow-x: hidden; }
 }
 
 body {
-  padding-top: 90px;      
+  padding-top: 80px;      /* match the fixed header height to remove extra gap before banners */
 }
 
 .has-construction-banner .header {
@@ -2665,7 +2700,7 @@ body {
 }
 
 body.has-construction-banner {
-  padding-top: calc(90px + var(--banner-height));
+  padding-top: calc(80px + var(--banner-height));
 }
 
 @media (max-width: 768px) {

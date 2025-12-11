@@ -99,7 +99,7 @@
       <div class="about-content-wrapper">
         <div class="about-text">
           <p>
-            The Imageomics Institute, headquartered at The Ohio State University, is pioneering a new field of science at the intersection of biology and data. By harnessing advances in machine learning and vast collections of biological images, Imageomics transforms pictures of organisms into computable traits that deepen our understanding of life's diversity. From unlocking the secrets of species' form and function to building open tools and resources for the global research community, the institute trains the next generation of scientists and sustains a collaborative ecosystem where biology and data science converge to drive discovery.
+            The Imageomics Institute establishes a new scientific field called “Imageomics”, in which machine learning algorithms are used to analyze vast image data to study biology. They work to characterize patterns and gain novel insights in all areas of biology to expand our understanding of the rules of life on Earth and how it evolves. Imageomics harnesses image data because it is the most abundant source of documentation of life on the planet. They focus on extracting and analyzing biological traits, making them computable at scale. Additionally, they educate the next generation of scientists and engage the broader public in scientific inquiry and knowledge discovery to transform and democratize science for public good.
           </p>
         </div>
         <div class="about-image">
@@ -127,15 +127,15 @@
         <div class="mission-hexagons columns lr">
           <div class="hex-col left">
             <div class="hexagon large">
-              <img class="hexagon-img" src="../../images/imageomics mission 1.jpg" alt="A scientist examining a biological specimen under a microscope." data-caption="Microscope Analysis" data-credit="Credit: [Add from OneDrive]" />
+              <img class="hexagon-img" src="../../images/Imageomics images/Tanya-Berger-Wolf-imageomics presentation mission photo 2.jpg" alt="Tanya" data-caption="Imageomics Director, Tanya Berger-Wolf, presenting on mimicry traits of butterflies." data-credit="Credit: Jodi Miller"/>
             </div>
           </div>
           <div class="hex-col right">
             <div class="hexagon">
-              <img class="hexagon-img" src="../../images/imageomics mission 2.jpg" alt="A detailed satellite image of a forest canopy." data-caption="Forest Canopy" data-credit="Credit: [Add from OneDrive]" />
+              <img class="hexagon-img" src="../../images/Imageomics images/Funcapalooza25.jpg" alt="FuncaPalooza 2025" data-caption="FuncaPalooza 2025, a workshop hosted by Imageomics, using Play-Doh models to explore trait extraction of organisms" data-credit="Credit: Ryan Horn" />
             </div>
             <div class="hexagon">
-              <img class="hexagon-img" src="../../images/imageomics mission 3.jpg" alt="A researcher using machine vision to identify species." data-caption="Machine Vision Species ID" data-credit="Credit: [Add from OneDrive]" />
+              <img class="hexagon-img" src="../../images/Imageomics images/Kenya Research.JPG" alt="A researcher using machine vision to identify species." data-caption="Imageomics students and faculty at Mpala Research Centre in Kenya conducting biological field research." data-link="https://imageomics.osu.edu/news/2023/01/imageomics-embarks-kenya-research-experience" data-credit="Credit: Tanya Berger-Wolf" />
             </div>
           </div>
         </div>
@@ -150,15 +150,17 @@
         <div class="vision-hexagons columns rl">
           <div class="hex-col left">
             <div class="hexagon">
-              <img class="hexagon-img" src="../../images/imageomics vision 1.jpg" alt="A diverse set of biological images in a grid." data-caption="Biological Image Collection" data-credit="Credit: [Add from OneDrive]" />
+              <img class="hexagon-img" src="../../images/Imageomics images/Grandparents day.jpg" alt="Grandparents." data-caption="Grandparents Day, at Imageomics, kids and their grandparents sorting animals by traits." data-credit="Credit: Ryan Horn" />
             </div>
             <div class="hexagon">
-              <img class="hexagon-img" src="../../images/imageomics vision 3.jpg" alt="A phylogenetic tree with associated images of organisms." data-caption="Phylogenetic Tree" data-credit="Credit: [Add from OneDrive]" />
+              <img class="hexagon-img" src="../../images/Imageomics images/the wilds data collection.jpeg" alt="A phylogenetic tree with associated images of organisms." data-caption="Imageomics crew collecting data at The Wilds nature preserve to launch the Smart NatureLab project." data-link="https://imageomics.osu.edu/news/2025/07/sensor-and-sensibility-imageomics-takes-tech-wilds" data-credit="Credit: Jenna Kline" />
             </div>
           </div>
           <div class="hex-col right">
             <div class="hexagon large">
-              <img class="hexagon-img" src="../../images/imageomics vision 2.jpg" alt="A high-resolution image of a plant cell." data-caption="Plant Cell" data-credit="Credit: [Add from OneDrive]" />
+              <img class="hexagon-img" src="../../images/Imageomics images/IMG_2409.jpg" alt="BioCLIP" data-caption="BioCLIP, a vision foundation model, won 2025 CSE Graduate Research Poster Award" 
+              data-link="https://imageomics.osu.edu/news/2025/04/bioclip-wins-2025-cse-graduate-research-poster-award "
+              data-credit="Credit: Imageomics Leadership" />
             </div>
           </div>
         </div>
@@ -276,7 +278,7 @@
     <div class="footer-content">
       <div class="footer-section about">
         <h3>NSF HDR Community</h3>
-        <p> The Harnessing the Data Revolution (HDR) Ecosystem is supported by the National Science Foundation under Awards: 
+        <p> The Harnessing the Data Revolution (HDR) Community is supported by the National Science Foundation under Awards: 
           <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118240&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118240</a>, 
           <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118201&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118201</a>, 
           <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118285&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118285</a>, 
@@ -376,7 +378,21 @@
           this.slides.forEach((s, i) => s.classList.toggle('active', i === this.currentSlide));
           this.indicators.forEach((d, i) => d.classList.toggle('active', i === this.currentSlide));
           const imgData = this.hexagonImages[this.currentSlide];
-          this.captionEl.textContent = imgData.dataset.caption || 'Image';
+          const captionText = imgData.dataset.caption || 'Image';
+          const captionLink = imgData.dataset.link;
+
+          if (captionLink) {
+              this.captionEl.textContent = '';
+              this.captionEl.append(document.createTextNode(captionText + ' '));
+              const linkEl = document.createElement('a');
+              linkEl.href = captionLink;
+              linkEl.target = '_blank';
+              linkEl.rel = 'noopener noreferrer';
+              linkEl.textContent = 'Learn more here';
+              this.captionEl.appendChild(linkEl);
+          } else {
+              this.captionEl.textContent = captionText;
+          }
           this.creditEl.textContent = imgData.dataset.credit || 'Credit: Unknown';
       }
   }
