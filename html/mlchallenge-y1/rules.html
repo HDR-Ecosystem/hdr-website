@@ -17,12 +17,12 @@
         <img src="../../images/gradient-1.png" alt="Gradient Background" class="background-image" />
         <div class="header-title-box">
             <h1 class="header-title">Rules</h1>
-            <p class="header-subtitle">Anomaly Detection Challenge (Year 1)</p>
         </div>
     </div>
 
     <main class="y1-content y2-content">
         <nav class="y1-subnav y2-subnav">
+            <a href="../mlchallenges.html">← Challenges Home</a>
             <a href="index.html">Home</a>
             <a href="rules.html" aria-current="page">Rules</a>
             <a href="datasets.html">Datasets</a>
@@ -68,14 +68,17 @@
 
     <script src="../../js/script.js"></script>
     <script>
-        function loadHTML(file, elementId) {
+        function loadHTML(file, elementId, callback) {
             fetch(file)
                 .then(response => response.text())
-                .then(data => document.getElementById(elementId).innerHTML = data)
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                    if (typeof callback === 'function') callback();
+                })
                 .catch(error => console.error('Error loading HTML:', error));
         }
 
-        loadHTML('layout/header.html', 'header');
+        loadHTML('layout/header.html', 'header', () => { if (window.initHamburger) window.initHamburger(); });
         loadHTML('layout/logo.html', 'logo');
         loadHTML('layout/footer.html', 'footer');
     </script>

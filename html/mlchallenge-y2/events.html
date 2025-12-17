@@ -64,12 +64,13 @@
   </div>
 
   <main class="y2-content">
-    <nav class="y2-subnav y2-subnav-top">
-      <a href="index.html">Challenge Home</a>
-      <a href="rules.html">Rules</a>
-      <a href="datasets.html">Datasets</a>
-      <a href="events.html">Events</a>
-      <a href="terms.html">Terms</a>
+        <nav class="y2-subnav y2-subnav-top">
+            <a href="../mlchallenges.html">← Challenges Home</a>
+            <a href="index.html">Challenge Home</a>
+            <a href="rules.html">Rules</a>
+            <a href="datasets.html">Datasets</a>
+            <a href="events.html">Events</a>
+            <a href="terms.html">Terms</a>
     </nav>
 
     <section class="y2-hero">
@@ -162,18 +163,39 @@
   <script src="../../js/script.js"></script>
   <script>
     function parseEventDate(dateText) {
-      if (dateText.includes('TBD')) return null;
-      const dateMatch = dateText.match(/Date:\s*(.+)/);
-      if (!dateMatch) return null;
+      if (!dateText || dateText.includes('TBD')) return null;
 
-      let dateStr = dateMatch[1].trim();
-      if (dateStr.includes('&')) {
-        const pieces = dateStr.split(',');
-        const firstPart = dateStr.split('&')[0].trim();
-        dateStr = `${firstPart}, ${pieces[1] || ''}`.trim();
+      // Strip the "Date:" label and anything after a parenthesis (time/timezone)
+      const match = dateText.match(/Date:\s*([^()]+)/i);
+      if (!match) return null;
+      let raw = match[1].trim();
+
+      // Extract year if present
+      const yearMatch = raw.match(/\b(\d{4})\b/);
+      const year = yearMatch ? yearMatch[1] : '';
+
+      // Handle ranges with ampersand (e.g., "December 12 & 15, 2025" or "April 8 & 9, 2026")
+      if (raw.includes('&')) {
+        const month = raw.split(' ')[0];
+        const lastPart = raw.split('&').pop().trim();
+        const lastDayMatch = lastPart.match(/\d+/);
+        const lastDay = lastDayMatch ? lastDayMatch[0] : '';
+        raw = `${month} ${lastDay}, ${year}`;
       }
 
-      const date = new Date(dateStr);
+      // Handle dash ranges (e.g., "April 8-9, 2026" or "April 30 – May 2, 2026")
+      if (raw.includes('–') || raw.includes('—') || raw.includes('-')) {
+        const dashSplit = raw.split(/–|—|-/);
+        const lastSegment = dashSplit.pop().trim();
+        // If last segment contains a month, use it; otherwise reuse the first month
+        const monthMatch = lastSegment.match(/[A-Za-z]+/);
+        const month = monthMatch ? monthMatch[0] : raw.split(' ')[0];
+        const dayMatch = lastSegment.match(/\d+/);
+        const day = dayMatch ? dayMatch[0] : '';
+        raw = `${month} ${day}, ${year}`;
+      }
+
+      const date = new Date(raw);
       return isNaN(date.getTime()) ? null : date;
     }
 

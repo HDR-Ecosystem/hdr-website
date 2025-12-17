@@ -17,12 +17,12 @@
         <img src="../../images/gradient-1.png" alt="Gradient Background" class="background-image" />
         <div class="header-title-box">
             <h1 class="header-title">ML Challenge Year 1 Archive</h1>
-            <p class="header-subtitle">Anomaly Detection Challenge (2024)</p>
         </div>
     </div>
 
     <main class="y1-content y2-content">
         <nav class="y1-subnav y2-subnav">
+            <a href="../mlchallenges.html">← Challenges Home</a>
             <a href="index.html" aria-current="page">Home</a>
             <a href="rules.html">Rules</a>
             <a href="datasets.html">Datasets</a>
@@ -40,27 +40,21 @@
             <h1>Anomaly Detection Challenge — ML Challenge 2024 (Year 1)</h1>
 
             <p>
-                Scientific discovery often involves finding an <strong>inconsistent pattern</strong> within data. Those differences can signal new science—a <strong>new astrophysical object</strong> 🌌, <strong>unusual climate behavior</strong> 🌦️, or a <strong>new species</strong> 🦋. The observation of something incongruous is what we call <strong>anomaly detection</strong> 🔍.
+                Scientific discovery often involves finding an <strong>inconsistent pattern</strong> within our data. Data that behaves differently from what is expected can indicate that the underlying science is different. Different behavior can result from a number of effects,but ultimately this could imply that we have observed something <strong>new</strong>🌟!
             </p>
             <p>
-                This first HDR ML Challenge asked teams to tackle anomaly detection across three scientific domains. Models needed to adapt across modalities and remain FAIR and reproducible.
+                Depending on the scientific domain, a <strong>new, unpredictable object/event</strong> could have a profound impact. This could be a new type of material, the discovery of a <strong>new astrophysical object 🌌</strong>, the observation of <strong>unusual climate behavior 🌦️</strong>, or the discovery of a <strong>new species</strong> 🦋. The observation of something different, incongruous with the data, is what we call <strong>anomaly detection 🔍</strong>. Looking for anomalies is often quite different than other tasks since we do not know what exactly to look for, we just need to look for <strong>something different.</strong>
             </p>
 
-            <ul>
-                <li><strong>Butterflies (Imageomics):</strong> Identify hybrid butterfly species in image data.</li>
-                <li><strong>Gravitational waves (A3D3):</strong> Find unmodeled astrophysical events.</li>
-                <li><strong>Sea level (iHARP):</strong> Spot irregular coastal water-level patterns.</li>
-            </ul>
+            <p>
+                The main focus of this challenge is the application of <strong>machine learning</strong> to scientific anomaly detection 🤖.
+            </p>
 
             <span class="y2-large-text">Ran through January 31, 2025 — now archived for reference.</span>
 
-            <div class="highlight-block">
-                <strong>Extension:</strong> The ML Challenge was extended to run through January 31, 2025.
-            </div>
-
             <div class="y2-hero-cta">
                 <a class="y2-cta-btn" href="rules.html">View rules</a>
-                <a class="y2-cta-btn ghost" href="https://www.nsfhdr.org/mlchallenge" target="_blank" rel="noopener noreferrer">Open original site</a>
+                <a class="y2-cta-btn" href="https://www.nsfhdr.org/mlchallenge" target="_blank" rel="noopener noreferrer">Open original site</a>
             </div>
 
             <div class="video-container">
@@ -152,14 +146,17 @@
 
     <script src="../../js/script.js"></script>
     <script>
-        function loadHTML(file, elementId) {
+        function loadHTML(file, elementId, callback) {
             fetch(file)
                 .then(response => response.text())
-                .then(data => document.getElementById(elementId).innerHTML = data)
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                    if (typeof callback === 'function') callback();
+                })
                 .catch(error => console.error('Error loading HTML:', error));
         }
 
-        loadHTML('layout/header.html', 'header');
+        loadHTML('layout/header.html', 'header', () => { if (window.initHamburger) window.initHamburger(); });
         loadHTML('layout/logo.html', 'logo');
         loadHTML('layout/footer.html', 'footer');
     </script>

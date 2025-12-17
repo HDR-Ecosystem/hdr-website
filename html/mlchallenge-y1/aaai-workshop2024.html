@@ -19,12 +19,12 @@
         <img src="../../images/gradient-1.png" alt="Gradient Background" class="background-image" />
         <div class="header-title-box">
             <h1 class="header-title">AAAI Workshop 2024</h1>
-            <p class="header-subtitle">Anomaly Detection in Scientific Domains</p>
         </div>
     </div>
 
     <main class="y1-content y2-content">
         <nav class="y1-subnav y2-subnav">
+            <a href="../mlchallenges.html">← Challenges Home</a>
             <a href="index.html">Home</a>
             <a href="rules.html">Rules</a>
             <a href="datasets.html">Datasets</a>
@@ -53,31 +53,7 @@
         <p>
             The intended audience includes (a) AI/ML/data science researchers working on anomaly detection, OOD detection, open world recognition, scientific discovery, and FAIR/reproducible workflows; (b) domain scientists working on data-driven scientific discovery.
         </p>
-    </section>
 
-    <div class="y2-image-row">
-        <a href="https://www.codabench.org/competitions/3764/" target="_blank" class="y2-circle" id="circle1">
-            <img src="../../images/ML Challenges images/butterfly.jpg" alt="Butterfly">
-            <div class="y2-hover-text" id="hover-text1">
-                Discovering hybrid butterfly species through pattern recognition in image datasets
-            </div>
-        </a>
-        <a href="https://www.codabench.org/competitions/2626" target="_blank" class="y2-circle" id="circle2">
-            <img src="../../images/ML Challenges images/gw.jpg" alt="GW">
-            <div class="y2-hover-text" id="hover-text2">
-                Finding unmodeled gravitational wave events, such as potential supernovae, in detector data
-            </div>
-        </a>
-        <a href="https://www.codabench.org/competitions/3223" target="_blank" class="y2-circle" id="circle3">
-            <img src="../../images/ML Challenges images/water_levels.jpg" alt="Water Levels">
-            <div class="y2-hover-text" id="hover-text3">
-                Identifying unusual fluctuations in water levels that do not correspond to known environmental
-                factors or historical data patterns
-            </div>
-        </a>
-    </div>
-
-    <section class="hero y2-hero">
         <h2>Workshop Program</h2>
         <div id="schedule">
             <p><b>9:00 - 9:10am</b>: Opening Remarks</p>
@@ -212,10 +188,10 @@
                 <p><b>3:30 - 4:00pm</b>: Coffee Break</p>
                 <p><b>4:00 - 4:40pm</b>: Sea Level Rise Challenge Talk</p>
                 <p><b>4:40 - 5:00pm</b>: Overall Challenge Talk</p>
-                <p><b>5:00 - 5:30pm</b>: Closing Remarks and Discussion of Next Challenge</p>
-            </div>
+        <p><b>5:00 - 5:30pm</b>: Closing Remarks and Discussion of Next Challenge</p>
+    </div>
 
-            <hr>
+    <hr>
 
             <div style="color:#6a1b9a" id="papers-posters">
                 <h1>Accepted Papers</h1>
@@ -381,18 +357,43 @@
     </section>
     </main>
 
+    <div class="y2-image-row">
+        <a href="https://www.codabench.org/competitions/3764/" target="_blank" class="y2-circle" id="circle1">
+            <img src="../../images/ML Challenges images/butterfly.jpg" alt="Butterfly">
+            <div class="y2-hover-text" id="hover-text1">
+                Discovering hybrid butterfly species through pattern recognition in image datasets
+            </div>
+        </a>
+        <a href="https://www.codabench.org/competitions/2626" target="_blank" class="y2-circle" id="circle2">
+            <img src="../../images/ML Challenges images/gw.jpg" alt="GW">
+            <div class="y2-hover-text" id="hover-text2">
+                Finding unmodeled gravitational wave events, such as potential supernovae, in detector data
+            </div>
+        </a>
+        <a href="https://www.codabench.org/competitions/3223" target="_blank" class="y2-circle" id="circle3">
+            <img src="../../images/ML Challenges images/water_levels.jpg" alt="Water Levels">
+            <div class="y2-hover-text" id="hover-text3">
+                Identifying unusual fluctuations in water levels that do not correspond to known environmental
+                factors or historical data patterns
+            </div>
+        </a>
+    </div>
+
     <div id="footer"></div>
 
     <script src="../../js/script.js"></script>
     <script>
-        function loadHTML(file, elementId) {
+        function loadHTML(file, elementId, callback) {
             fetch(file)
                 .then(response => response.text())
-                .then(data => document.getElementById(elementId).innerHTML = data)
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                    if (typeof callback === 'function') callback();
+                })
                 .catch(error => console.error('Error loading HTML:', error));
         }
 
-        loadHTML('layout/header.html', 'header');
+        loadHTML('layout/header.html', 'header', () => { if (window.initHamburger) window.initHamburger(); });
         loadHTML('layout/logo.html', 'logo');
         loadHTML('layout/footer.html', 'footer');
     </script>

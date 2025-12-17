@@ -5,7 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const numberItems = document.querySelectorAll('.number-value');
 
     const animateCount = (element) => {
-        const target = +element.getAttribute('data-target');
+        const targetAttr = element.getAttribute('data-target') || '0';
+        const hasPlus = targetAttr.trim().endsWith('+');
+        const target = parseInt(targetAttr.replace(/[^0-9]/g, ''), 10) || 0;
         const duration = 2000;
         let startTime = null;
 
@@ -14,10 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const elapsedTime = currentTime - startTime;
             const progress = Math.min(elapsedTime / duration, 1);
             const currentValue = Math.floor(progress * target);
-            element.textContent = currentValue;
+            const displayValue = hasPlus ? `${currentValue}+` : `${currentValue}`;
+            element.textContent = displayValue;
 
             if (progress < 1) {
                 requestAnimationFrame(animate);
+            } else {
+                element.textContent = hasPlus ? `${target}+` : `${target}`;
             }
         };
 
@@ -45,10 +50,16 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(numbersSection);
     }
 
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.querySelector('.nav');
-    
-    if (hamburger && navMenu) {
+    window.initHamburger = function initHamburger() {
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.querySelector('.nav');
+        
+        if (!hamburger || !navMenu || hamburger.dataset.bound === 'true') {
+            return;
+        }
+
+        hamburger.dataset.bound = 'true';
+
         hamburger.addEventListener('click', function() {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
@@ -85,23 +96,47 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-    }
+    };
+
+    window.initHamburger();
 
     const pagesToIndex = [
-        { title: "About", url: "html/about.html" },
-        { title: "Resources", url: "html/resources.html" },
-        { title: "News", url: "html/news.html" },
-        { title: "Publications", url: "html/publications.html" },
-        { title: "Challenges", url: "html/mlchallenges.html" },
-        { title: "Events", url: "html/events.html" },
-        { title: "A3D3", url: "html/institutes/a3d3.html" },
-        { title: "ID4", url: "html/institutes/id4.html" },
-        { title: "I-GUIDE", url: "html/institutes/iguide.html" },
-        { title: "iHARP", url: "html/institutes/iharp.html" },
-        { title: "Imageomics", url: "html/institutes/imageomics.html" }
+        { title: "Home", url: "index.html", keywords: "HDR community home institutes events news resources publications challenges" },
+        { title: "About", url: "html/about.html", keywords: "About HDR mission institutes data revolution overview" },
+        { title: "Resources", url: "html/resources.html", keywords: "data education code models datasets training materials" },
+        { title: "News", url: "html/news.html", keywords: "news articles updates press releases" },
+        { title: "Publications", url: "html/publications.html", keywords: "publications papers research articles" },
+        { title: "Challenges", url: "html/mlchallenges.html", keywords: "machine learning challenges competitions leaderboard datasets" },
+        { title: "Events", url: "html/events.html", keywords: "events workshops conferences hackathons webinars" },
+        { title: "A3D3", url: "html/institutes/a3d3.html", keywords: "A3D3 accelerated AI algorithms data driven discovery" },
+        { title: "ID4", url: "html/institutes/id4.html", keywords: "ID4 institute for data driven dynamical design materials science" },
+        { title: "I-GUIDE", url: "html/institutes/iguide.html", keywords: "I-GUIDE geospatial data integrative discovery environment" },
+        { title: "iHARP", url: "html/institutes/iharp.html", keywords: "iHARP polar science climate modeling data revolution" },
+        { title: "Imageomics", url: "html/institutes/imageomics.html", keywords: "Imageomics AI biodiversity biology computer vision" },
+        { title: "ML Challenge Year 1", url: "html/mlchallenge-y1/index.html", keywords: "machine learning challenge year 1 rules datasets leaderboard" },
+        { title: "ML Challenge Year 2", url: "html/mlchallenge-y2/index.html", keywords: "machine learning challenge year 2 rules datasets leaderboard" },
+        { title: "AAAI Workshop 2024", url: "html/mlchallenge-y1/aaai-workshop2024.html", keywords: "AAAI workshop 2024 HDR machine learning" }
     ];
 
+    const currentHref = window.location.href;
+    const siteBaseHref = (() => {
+        if (currentHref.includes('/html/')) {
+            return currentHref.split('/html/')[0] + '/';
+        }
+        if (currentHref.endsWith('/')) {
+            return currentHref;
+        }
+        return currentHref.replace(/[^/]*$/, '');
+    })();
+
+    const resolveToAbsolute = (relativePath) => new URL(relativePath, siteBaseHref).href;
+
     let searchIndexData = [];
+    let isIndexBuilt = false;
+    let pendingQuery = '';
+    const searchResultsPageContainer = document.getElementById('searchResultsPage');
+    const searchQueryText = document.getElementById('searchQueryText');
+    const initialPageQuery = new URLSearchParams(window.location.search).get('q') || '';
 
     function extractTextFromHtml(html) {
         const temp = document.createElement('div');
@@ -109,6 +144,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const scripts = temp.querySelectorAll('script, style');
         scripts.forEach(script => script.remove());
+
+        const chrome = temp.querySelectorAll('header, nav, footer, .header, .nav, .footer');
+        chrome.forEach(el => el.remove());
         
         let text = temp.textContent || temp.innerText || '';
         text = text.replace(/\s+/g, ' ').trim();
@@ -120,27 +158,57 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Building search index...');
         
         for (const page of pagesToIndex) {
+            const resolvedUrl = resolveToAbsolute(page.url);
             try {
-                const response = await fetch(page.url);
+                const response = await fetch(resolvedUrl);
                 if (response.ok) {
                     const html = await response.text();
                     const textContent = extractTextFromHtml(html);
                     
                     searchIndexData.push({
                         title: page.title,
-                        url: page.url,
-                        content: textContent,
-                        contentLower: textContent.toLowerCase()
+                        url: resolvedUrl,
+                        content: `${page.keywords || ''} ${textContent}`.trim(),
+                        contentLower: `${page.keywords || ''} ${textContent}`.toLowerCase().trim()
                     });
                     
                     console.log(`Indexed: ${page.title}`);
+                } else {
+                    searchIndexData.push({
+                        title: page.title,
+                        url: resolvedUrl,
+                        content: page.keywords || page.title,
+                        contentLower: (page.keywords || page.title).toLowerCase()
+                    });
+                    console.log(`Fallback indexed (response ${response.status}): ${page.title}`);
                 }
             } catch (error) {
                 console.log(`Could not index ${page.title}:`, error);
+                searchIndexData.push({
+                    title: page.title,
+                    url: resolvedUrl,
+                    content: page.keywords || page.title,
+                    contentLower: (page.keywords || page.title).toLowerCase()
+                });
             }
         }
         
+        isIndexBuilt = true;
         console.log('Search index complete. Pages indexed:', searchIndexData.length);
+
+        if (pendingQuery && pendingQuery.length >= 2 && searchBar) {
+            const results = performFullTextSearch(pendingQuery);
+            displayResults(results, pendingQuery);
+        }
+
+        if (searchResultsPageContainer) {
+            const seedQuery = (searchBar && searchBar.value) || initialPageQuery || pendingQuery;
+            if (seedQuery) {
+                runPageSearch(seedQuery);
+            } else {
+                showPageMessage('Type a search term and press Enter.');
+            }
+        }
     }
 
     function performFullTextSearch(query) {
@@ -182,54 +250,95 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchContainer = document.getElementById('searchContainer');
     const searchIconBtn = document.querySelector('.search-icon-btn');
     const resultsContainer = document.getElementById('searchResults');
+    const searchPagePath = 'html/search.html';
 
-    if (searchIconBtn) {
-        searchIconBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            
-            if (window.innerWidth <= 768) {
-                searchContainer.classList.toggle('mobile-active');
-                if (searchContainer.classList.contains('mobile-active')) {
-                    searchBar.focus();
-                }
-            }
-        });
+    function showPageMessage(message) {
+        if (searchResultsPageContainer) {
+            searchResultsPageContainer.innerHTML = '<div class="search-results-page-message">' + message + '</div>';
+        }
     }
 
-    document.addEventListener('click', (e) => {
-        if (!searchBar.contains(e.target) && !resultsContainer.contains(e.target) && e.target !== searchIconBtn) {
-            resultsContainer.innerHTML = '';
-            resultsContainer.style.display = 'none';
-            if (window.innerWidth <= 768) {
-                searchContainer.classList.remove('mobile-active');
-            }
+    function setPageQueryText(query) {
+        if (searchQueryText) {
+            searchQueryText.textContent = query || '';
         }
-    });
+    }
 
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            resultsContainer.innerHTML = '';
-            resultsContainer.style.display = 'none';
-            if (window.innerWidth <= 768) {
-                searchContainer.classList.remove('mobile-active');
-            }
-        }
-    });
-
-    searchBar.addEventListener('input', (e) => {
-        const query = e.target.value.trim();
-        
-        if (query.length < 2) {
-            resultsContainer.innerHTML = '';
-            resultsContainer.style.display = 'none';
+    function renderPageResults(results, query) {
+        if (!searchResultsPageContainer) {
             return;
         }
+
+        setPageQueryText(query);
+
+        if (!query) {
+            showPageMessage('Type a search term and press Enter.');
+            return;
+        }
+
+        if (!isIndexBuilt) {
+            showPageMessage('Building search index...');
+            return;
+        }
+
+        if (results.length === 0) {
+            showPageMessage('No results found for "' + query + '".');
+            return;
+        }
+
+        let html = '<div class="search-results-page-list">';
         
-        const results = performFullTextSearch(query);
-        displayResults(results, query);
-    });
+        results.forEach(result => {
+            const highlightedSnippet = result.snippet.replace(
+                new RegExp(query, 'gi'),
+                '<strong>$&</strong>'
+            );
+            
+            html += `
+                <a href="${result.url}" class="search-result-item search-result-item-page">
+                    <div class="search-result-title">${result.title}</div>
+                    <div class="search-result-snippet">${highlightedSnippet}</div>
+                </a>
+            `;
+        });
+        
+        html += '</div>';
+        searchResultsPageContainer.innerHTML = html;
+    }
+
+    function runPageSearch(query) {
+        if (!searchResultsPageContainer) {
+            return;
+        }
+
+        const trimmedQuery = (query || '').trim();
+        pendingQuery = trimmedQuery;
+        setPageQueryText(trimmedQuery);
+
+        if (!trimmedQuery) {
+            showPageMessage('Type a search term and press Enter.');
+            return;
+        }
+
+        if (!isIndexBuilt) {
+            showPageMessage('Building search index...');
+            return;
+        }
+
+        const results = performFullTextSearch(trimmedQuery);
+        renderPageResults(results, trimmedQuery);
+
+        if (window.location.pathname.endsWith('/html/search.html') || window.location.pathname.endsWith('search.html')) {
+            const newQuery = '?q=' + encodeURIComponent(trimmedQuery);
+            window.history.replaceState({}, '', newQuery);
+        }
+    }
 
     function displayResults(results, query) {
+        if (!resultsContainer) {
+            return;
+        }
+
         if (results.length === 0) {
             resultsContainer.innerHTML = '<div class="search-no-results">No results found for "' + query + '"</div>';
             resultsContainer.style.display = 'block';
@@ -255,6 +364,98 @@ document.addEventListener('DOMContentLoaded', () => {
         html += '</div>';
         resultsContainer.innerHTML = html;
         resultsContainer.style.display = 'block';
+    }
+
+    if (searchBar && searchContainer && resultsContainer) {
+        if (searchIconBtn) {
+            searchIconBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                
+                if (window.innerWidth <= 768) {
+                    searchContainer.classList.toggle('mobile-active');
+                    if (searchContainer.classList.contains('mobile-active')) {
+                        searchBar.focus();
+                    }
+                }
+            });
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!searchBar.contains(e.target) && !resultsContainer.contains(e.target) && e.target !== searchIconBtn) {
+                resultsContainer.innerHTML = '';
+                resultsContainer.style.display = 'none';
+                if (window.innerWidth <= 768) {
+                    searchContainer.classList.remove('mobile-active');
+                }
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                resultsContainer.innerHTML = '';
+                resultsContainer.style.display = 'none';
+                if (window.innerWidth <= 768) {
+                    searchContainer.classList.remove('mobile-active');
+                }
+            }
+        });
+
+        searchBar.addEventListener('input', (e) => {
+            const query = e.target.value.trim();
+            pendingQuery = query;
+            
+            if (query.length < 2) {
+                resultsContainer.innerHTML = '';
+                resultsContainer.style.display = 'none';
+                return;
+            }
+
+            if (!isIndexBuilt) {
+                resultsContainer.innerHTML = '<div class="search-no-results">Building search index...</div>';
+                resultsContainer.style.display = 'block';
+                return;
+            }
+            
+            const results = performFullTextSearch(query);
+            displayResults(results, query);
+        });
+
+        searchBar.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const query = searchBar.value.trim();
+                pendingQuery = query;
+
+                if (query.length < 2) {
+                    resultsContainer.innerHTML = '<div class="search-no-results">Type at least 2 characters to search.</div>';
+                    resultsContainer.style.display = 'block';
+                    return;
+                }
+
+                if (searchResultsPageContainer) {
+                    runPageSearch(query);
+                    return;
+                }
+
+                const targetUrl = resolveToAbsolute(searchPagePath + '?q=' + encodeURIComponent(query));
+                window.location.href = targetUrl;
+            }
+        });
+
+        if (initialPageQuery && searchBar.value.trim() === '') {
+            searchBar.value = initialPageQuery;
+        }
+    }
+
+    if (searchResultsPageContainer) {
+        if (initialPageQuery) {
+            if (searchBar && searchBar.value.trim() === '') {
+                searchBar.value = initialPageQuery;
+            }
+            runPageSearch(initialPageQuery);
+        } else {
+            showPageMessage('Type a search term and press Enter.');
+        }
     }
 
     buildSearchIndex();

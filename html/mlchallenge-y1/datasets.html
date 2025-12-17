@@ -17,12 +17,12 @@
         <img src="../../images/gradient-1.png" alt="Gradient Background" class="background-image" />
         <div class="header-title-box">
             <h1 class="header-title">Datasets</h1>
-            <p class="header-subtitle">Access the resources used during the Year 1 challenge.</p>
         </div>
     </div>
 
     <main class="y1-content y2-content">
         <nav class="y1-subnav y2-subnav">
+            <a href="../mlchallenges.html">← Challenges Home</a>
             <a href="index.html">Home</a>
             <a href="rules.html">Rules</a>
             <a href="datasets.html" aria-current="page">Datasets</a>
@@ -32,10 +32,6 @@
         </nav>
 
         <section class="hero y2-hero">
-            <h1>Training and evaluation data (archived)</h1>
-            <p>Below are the original CodaBench challenge pages where teams retrieved data, scoring code, and submission formats. Links remain active for reference.</p>
-            <p class="y2-large-text">Use these to review formats, sample submissions, and scoring pipelines.</p>
-
             <h2>Training datasets</h2>
             <p>These are labeled datasets that allow the proponents to train their algorithms. The datasets can be labeled with background and possible anomalies. That being said, the example anomalies do not need to be exactly the same as the test dataset. Moreover, the training dataset need not have the same exact background as the final problem. The goal here is to provide some comfort with the dataset format and how to process the information.</p>
 
@@ -72,14 +68,17 @@
 
     <script src="../../js/script.js"></script>
     <script>
-        function loadHTML(file, elementId) {
+        function loadHTML(file, elementId, callback) {
             fetch(file)
                 .then(response => response.text())
-                .then(data => document.getElementById(elementId).innerHTML = data)
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                    if (typeof callback === 'function') callback();
+                })
                 .catch(error => console.error('Error loading HTML:', error));
         }
 
-        loadHTML('layout/header.html', 'header');
+        loadHTML('layout/header.html', 'header', () => { if (window.initHamburger) window.initHamburger(); });
         loadHTML('layout/logo.html', 'logo');
         loadHTML('layout/footer.html', 'footer');
     </script>
