@@ -133,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let searchIndexData = [];
     let isIndexBuilt = false;
+    let buildIndexPromise = null;
     let pendingQuery = '';
     const searchResultsPageContainer = document.getElementById('searchResultsPage');
     const searchQueryText = document.getElementById('searchQueryText');
@@ -209,6 +210,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 showPageMessage('Type a search term and press Enter.');
             }
         }
+    }
+
+    function ensureSearchIndex() {
+        if (!buildIndexPromise) {
+            buildIndexPromise = buildSearchIndex().catch((error) => {
+                console.error('Failed to build search index', error);
+                isIndexBuilt = true;
+            });
+        }
+        return buildIndexPromise;
     }
 
     function performFullTextSearch(query) {
@@ -306,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
         searchResultsPageContainer.innerHTML = html;
     }
 
-    function runPageSearch(query) {
+    async function runPageSearch(query) {
         if (!searchResultsPageContainer) {
             return;
         }
@@ -320,10 +331,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        if (!isIndexBuilt) {
-            showPageMessage('Building search index...');
-            return;
-        }
+        showPageMessage(isIndexBuilt ? 'Searching...' : 'Building search index...');
+        await ensureSearchIndex();
 
         const results = performFullTextSearch(trimmedQuery);
         renderPageResults(results, trimmedQuery);
@@ -400,6 +409,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        searchBar.addEventListener('focus', () => {
+            ensureSearchIndex();
+        });
+
         searchBar.addEventListener('input', (e) => {
             const query = e.target.value.trim();
             pendingQuery = query;
@@ -410,14 +423,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            if (!isIndexBuilt) {
-                resultsContainer.innerHTML = '<div class="search-no-results">Building search index...</div>';
-                resultsContainer.style.display = 'block';
-                return;
-            }
-            
-            const results = performFullTextSearch(query);
-            displayResults(results, query);
+            resultsContainer.innerHTML = '<div class="search-no-results">Building search index...</div>';
+            resultsContainer.style.display = 'block';
+
+            ensureSearchIndex().then(() => {
+                if (pendingQuery !== query) return;
+                const results = performFullTextSearch(query);
+                displayResults(results, query);
+            });
         });
 
         searchBar.addEventListener('keydown', (e) => {
@@ -457,6 +470,4 @@ document.addEventListener('DOMContentLoaded', () => {
             showPageMessage('Type a search term and press Enter.');
         }
     }
-
-    buildSearchIndex();
 });

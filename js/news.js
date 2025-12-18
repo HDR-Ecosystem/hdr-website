@@ -8,7 +8,7 @@ const newsData = [
     {title: "A3D3 team attends Fast Machine Learning for Science conference", date: "September 18, 2025", img: "../images/news page images/a3d3fastmlcarasoul.webp", link: "https://a3d3.ai a3d3-accelerates-real-time-ai-for-scientific-discovery-at-fastml-2025/", description: "A3D3 scientists and engineers presented talks and posters at the conference, including a poster that received a best poster award."},
     {title: "The HDR Ecosystem announce’s second ML Challenge", date: "September 17, 2025", img: "../images/news page images/mlchallengeimagecircles.png", link: "https://www.farr-rcn.org/workshop26", description: "The HDR ML Challenge program is hosting its second FAIR challenge, this year presenting three scientific benchmarks for modeling. Join now!"},
     {title: "I-GUIDE launches Spatial AI Challenge 2025-26", date: "September 15, 2025", img: "../images/news page images/iguidespatialai.png", link: "https://i-guide.io/spatial-ai-challenge-2025-26/", description: "The challenge is about leveraging the  spatial data and AI to solve real-world issues. With a focus on fostering FAIR data and open science practices. "},
-    {title: "ID4 co-creates display using AI and structural mechanics research", date: "May 10, 2025", img: "../images/news page images/id4aiexhibit.jpg", link: "https://kirigami-strata.ai/", description: "Titled “Kirigami Strata”, the display was featured as part of the European Cultural Centre’s Time Space Existence architecture exhibition in Venice, Italy."},
+    {title: "ID4 co-creates display using AI and structural mechanics research", date: "May 10, 2025", img: "../images/news page images/id4aiexhibit.webp", link: "https://kirigami-strata.ai/", description: "Titled “Kirigami Strata”, the display was featured as part of the European Cultural Centre’s Time Space Existence architecture exhibition in Venice, Italy."},
 ];
 
 const newsPerPage = 15;
@@ -30,7 +30,7 @@ function displayNews(page) {
         card.className = "news-card news-card-linked";
         card.innerHTML = `
             <div class="news-image-wrapper">
-                <img src="${news.img}" alt="${news.title}" class="news-image">
+                <img src="${news.img}" alt="${news.title}" class="news-image" loading="lazy">
                 <div class="news-image-overlay">Read more on external site →</div>
                 <span class="news-date">${news.date}</span>
             </div>

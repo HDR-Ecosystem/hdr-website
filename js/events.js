@@ -6,6 +6,7 @@ let allEvents = [];
 let filteredEvents = [];
 let currentPage = 1;
 let currentFilter = 'all';
+let currentFormat = 'all';
 let selectedInstitutes = [];
 let searchQuery = '';
 const initialSearchQuery = new URLSearchParams(window.location.search).get('search')?.toLowerCase() || '';
@@ -36,6 +37,15 @@ function setupEventListeners() {
     filterOptions.forEach(option => {
         option.addEventListener('change', function() {
             currentFilter = this.value;
+            currentPage = 1;
+            applyFiltersAndSearch();
+        });
+    });
+
+    const formatOptions = document.querySelectorAll('input[name="eventFormat"]');
+    formatOptions.forEach(option => {
+        option.addEventListener('change', function() {
+            currentFormat = this.value;
             currentPage = 1;
             applyFiltersAndSearch();
         });
@@ -108,6 +118,7 @@ function applyFiltersAndSearch() {
     const nextFiltered = allEvents.filter(event => {
 
         const typeMatch = currentFilter === 'all' || event.type === currentFilter;
+        const formatMatch = currentFormat === 'all' || event.eventType === currentFormat;
 
         const eventInstitutes = (event.institute || '')
             .split(',')
@@ -125,7 +136,7 @@ function applyFiltersAndSearch() {
                            event.title.toLowerCase().includes(searchQuery) ||
                            event.description.toLowerCase().includes(searchQuery);
         
-        return typeMatch && instituteMatch && searchMatch;
+        return typeMatch && formatMatch && instituteMatch && searchMatch;
     });
 
     const unchanged = filteredEvents.length === nextFiltered.length &&
@@ -195,7 +206,7 @@ function createEventCard(event) {
 
     article.innerHTML = `
         <div class="event-image">
-            <img src="${event.image}" alt="${event.title}" />
+            <img src="${event.image}" alt="${event.title}" loading="lazy" />
             ${event.link ? `
                 <a class="event-image-overlay" href="${event.link}" target="_blank" rel="noopener noreferrer">
                     <span>Read more on external site →</span>
@@ -276,9 +287,11 @@ window.populateEvents = function(eventsData) {
         const endDate = event.endDate || event.date;
         const time = event.time || '12:00pm';
         const timezone = event.timezone || 'CT';
+        const normalizedEventType = (event.eventType || '').toLowerCase();
 
         return {
             ...event,
+            eventType: normalizedEventType,
             startDate,
             endDate,
             type: classifyEvent(startDate),
@@ -292,6 +305,7 @@ window.populateEvents = function(eventsData) {
     });
 
     currentFilter = 'all';
+    currentFormat = 'all';
     currentPage = 1;
     searchQuery = initialSearchQuery;
 
@@ -321,7 +335,7 @@ document.addEventListener('DOMContentLoaded', function() {
             date: '2025-12-17',
             time: '11:00am',
             timezone: 'CT',
-            image: '../images/i-guide images/iGUIDE banner.jpeg',
+            image: '../images/i-guide images/iGUIDE banner.webp',
             eventType: 'virtual',
             location: 'Online',
             institute: 'I-GUIDE',
@@ -335,8 +349,8 @@ document.addEventListener('DOMContentLoaded', function() {
             timezone: 'ET',
             image: '../images/events page images/Frame 2.png',
             eventType: 'Virtual',
-            location: 'Online',
-            institute: 'A3D3',
+            location: 'Virtual',
+            institute: 'A3D3, Imageomics, iHARP',
             link: 'https://indico.cern.ch/event/1607943/'
         },
         {
@@ -348,7 +362,7 @@ document.addEventListener('DOMContentLoaded', function() {
             image: '../images/events page images/Farr workshop.png',
             eventType: 'in-person',
             location: 'Washington DC',
-            institute: 'Community',
+            institute: 'A3D3, Imageomics, iHARP',
             link: 'https://www.farr-rcn.org/workshop26'
         },
         {
@@ -361,7 +375,7 @@ document.addEventListener('DOMContentLoaded', function() {
             image: '../images/events page images/NEONESIIL Hackathon.jpeg',
             eventType: 'in-person',
             location: 'Boulder, CO',
-            institute: 'A3D3, I-HARP, Imageomics',
+            institute: 'A3D3, Imageomics, iHARP',
             customDateText: 'December 12 & 15, 2025 • 8:00am - 5:00pm (MST)',
             link: 'https://docs.google.com/forms/d/e/1FAIpQLSd-K2hu1g4xxc3Fxj0qPoGDOVt_T-sWw7TSgEtEkPZUlAA6Cg/viewform'
         },
@@ -374,7 +388,7 @@ document.addEventListener('DOMContentLoaded', function() {
             image: '../images/events page images/hdr hackathon taiwan.png',
             eventType: 'virtual',
             location: 'Taiwan',
-            institute: 'A3D3, I-HARP, Imageomics',
+            institute: 'A3D3, Imageomics, iHARP',
             customDateText: 'December 19, 2025 • 12:00pm (CST - 台湾时间) / 11:00pm (ET)',
             link: 'https://indico.cern.ch/event/1610056/'
         },
@@ -388,7 +402,7 @@ document.addEventListener('DOMContentLoaded', function() {
             image: '../images/events page images/UW A3D3 & NSF HDR Challenge  Hackathon.jpg',
             eventType: 'in-person',
             location: 'Seattle, WA',
-            institute: 'A3D3, I-HARP, Imageomics',
+            institute: 'A3D3, Imageomics, iHARP',
             customDateText: 'January 10, 2026 • 9:00am - 7:00pm (PST)',
             link: 'https://indico.cern.ch/event/1604685/overview'
         },
@@ -425,7 +439,7 @@ document.addEventListener('DOMContentLoaded', function() {
             image: '../images/events page images/ML Challenge Online Hackathon  & Organizer Training Workshop.png',
             eventType: 'virtual',
             location: 'Virtual',
-            institute: 'A3D3, I-HARP, Imageomics',
+            institute: 'A3D3, Imageomics, iHARP',
             customDateText: 'October 31, 2025 • 12:00pm - 5:00pm (ET)',
             link: 'https://indico.cern.ch/event/1607943/'
         },
