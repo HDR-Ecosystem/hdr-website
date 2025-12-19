@@ -1,5 +1,3 @@
-
-
 .challenges-controls {
     padding: 0;
     text-align: center;
@@ -148,5 +146,359 @@
     .search-filter-wrapper {
         flex-direction: column;
         align-items: stretch;
+    }
+}
+
+/* ===== ML Challenge Section ===== */
+
+.challenges-list {
+    width: 100%;
+    padding: 60px 40px;
+    box-sizing: border-box;
+}
+
+/* Card */
+.challenge-card {
+    max-width: 1100px;
+    margin: 0 auto 50px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 35px;
+}
+
+/* Banner Image */
+.challenge-image-banner {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 14px;
+    position: relative;
+    height: min(260px, 38vh);
+    max-height: 260px;
+}
+
+.challenge-image-banner img {
+    width: 100%;
+    height: 100%;
+    max-height: 260px;
+    display: block;
+    object-fit: cover;
+}
+
+.countdown-timer {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    padding: 8px 14px;
+    background: #0074e0;
+    color: #fff;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.countdown-timer.is-closed {
+    background: #0f0f0f;
+    color: #fff;
+}
+
+/* Title */
+.challenge-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.challenge-card h2 {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border: 2px solid transparent;
+}
+
+.status-open {
+    color: #0b7a50;
+    background: #e8f5ee;
+    border-color: #b6e3c9;
+}
+
+.status-closed {
+    color: #0f0f0f;
+    background: #f0f0f0;
+    border-color: #0f0f0f;
+}
+
+/* Timeline */
+.challenge-timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 25px;
+    gap: 20px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.challenge-timeline [data-step] {
+    padding: 12px 10px;
+    border-radius: 12px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.challenge-timeline strong {
+    display: block;
+    font-weight: bold;
+}
+
+.challenge-timeline span {
+    display: inline-block;
+    font-style: italic;
+    margin-top: 5px;
+    white-space: nowrap;
+}
+
+.challenge-timeline.single-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.challenge-timeline.single-row div {
+    width: auto;
+    white-space: nowrap;
+}
+
+.challenge-timeline.single-row strong {
+    display: inline;
+}
+
+.challenge-timeline.single-row span {
+    margin-top: 0;
+    display: inline;
+}
+
+
+.challenge-timeline [data-step].is-active {
+    background: #e6f2ff;
+}
+
+/* Progress Bar */
+.challenge-progress {
+    margin: 30px 0 10px;
+}
+
+.progress-bar {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 0;
+    counter-reset: step;
+    position: relative;
+}
+
+.progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 0;
+    height: 3px;
+    width: var(--progress-fill, 0%);
+    background: #0074e0;
+    transition: width 0.5s ease;
+    z-index: 1;
+}
+
+.progress-bar li {
+    flex: 1;
+    position: relative;
+    text-align: center;
+    padding-top: 28px;
+    font-size: 0.9rem;
+    color: #4a5568;
+}
+
+.progress-bar li::before {
+    counter-increment: step;
+    content: '';
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 3px solid #cfd8e3;
+    background: #fff;
+    display: block;
+    margin: 0 auto 8px;
+    transition: all 0.3s ease;
+}
+
+.progress-bar li::after {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    width: 100%;
+    height: 3px;
+    background: #e0e6ee;
+    z-index: 0;
+    transform: translateX(0);
+}
+
+.progress-bar li:last-child::after {
+    display: none;
+}
+
+.progress-bar li span {
+    display: block;
+    font-weight: 700;
+}
+
+.progress-bar li.is-complete::before {
+    background: #0074e0;
+    border-color: #0074e0;
+}
+
+.progress-bar li.is-complete::after {
+    background: #0074e0;
+}
+
+.progress-bar li.is-active::before {
+    border-color: #00a9ff;
+    background: #fff;
+    box-shadow: 0 0 0 6px rgba(0, 169, 255, 0.18);
+}
+
+/* Description */
+.challenge-description {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #333;
+}
+
+/* Join Link */
+.challenge-link {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 18px;
+    color: #1c7c6c;
+    text-decoration: none;
+}
+
+.challenge-link:hover {
+    text-decoration: underline;
+}
+
+.challenge-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.challenge-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 700;
+    border: 2px solid #0b7a50;
+    color: #0b7a50;
+    background: #fff;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.challenge-btn:hover {
+    background: #0b7a50;
+    color: #fff;
+    border-color: #0b7a50;
+}
+
+.challenge-btn.ghost {
+    color: #0b7a50;
+    background: #fff;
+}
+
+.challenge-btn.ghost:hover {
+    color: #fff;
+    background: #0b7a50;
+    border-color: #0b7a50;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .challenge-timeline {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .challenges-list {
+        padding: 40px 20px;
+    }
+
+    .challenge-card {
+        padding: 25px;
+    }
+
+    .challenge-timeline {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .challenge-card {
+        width: 100%;
+        padding: 22px;
+        margin: 0 0 28px 0;
+    }
+
+    .challenge-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .challenge-card h2 {
+        font-size: 24px;
+    }
+
+    .countdown-timer {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+    }
+
+    .progress-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .progress-bar::before {
+        display: none;
+    }
+
+    .progress-bar li {
+        text-align: left;
+        padding-top: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .progress-bar li::after {
+        display: none;
+    }
+
+    .progress-bar li::before {
+        margin: 0;
     }
 }

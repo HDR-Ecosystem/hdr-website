@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datasets — ML Challenge Year 1</title>
+    <link rel="icon" href="../../images/icon.png" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="y1-page y2-page">
+
+    <div id="header"></div>
+
+    <div class="header-banner">
+        <img src="../../images/gradient-1.png" alt="Gradient Background" class="background-image" />
+        <div class="header-title-box">
+            <h1 class="header-title">Datasets</h1>
+        </div>
+    </div>
+
+    <main class="y1-content y2-content">
+        <nav class="y1-subnav y2-subnav">
+            <a href="../mlchallenges.html">← Challenges Home</a>
+            <a href="index.html">Overview</a>
+            <a href="rules.html">Rules</a>
+            <a href="datasets.html" aria-current="page">Datasets</a>
+            <a href="leaderboard.html">Leaderboard</a>
+            <a href="aaai-workshop2024.html">AAAI Workshop</a>
+            <a href="terms.html">Terms</a>
+        </nav>
+
+        <section class="hero y2-hero">
+            <h2>Training datasets</h2>
+            <p>These are labeled datasets that allow the proponents to train their algorithms. The datasets can be labeled with background and possible anomalies. That being said, the example anomalies do not need to be exactly the same as the test dataset. Moreover, the training dataset need not have the same exact background as the final problem. The goal here is to provide some comfort with the dataset format and how to process the information.</p>
+
+            <h2>Testing/evaluation datasets</h2>
+            <p>We provide a private testing dataset to allow the participants to test their model for submission. The private dataset will include additional background events and pre-hidden anomalies. The anomaly detection evaluation metric is the false positive rate (FPR) at a specified true positive rate (TPR), which is the same as the overall evaluation for the test dataset.</p>
+
+            <h2>Evaluation datasets</h2>
+            <p>The evaluation metric is the false positive rate (FPR) at a specified true positive rate (TPR) when detecting anomalies. Please see the individual challenges for more details on the evaluation. Submission scoring code is provided on each challenge's GitHub repository as well. The evaluation of the models will be performed with resources at the NSERC computing center at Lawrence Berkeley labs. This means that submission results will not be immediately available, as submissions must be reviewed prior to being run (this may take a day or two). The leaderboard will be updated on a few day timescale to accommodate the possible compute required to assess the leaderboard.</p>
+        </section>
+
+        <div class="y2-image-row">
+            <a href="https://www.codabench.org/competitions/3764/" target="_blank" class="y2-circle" id="circle1" rel="noopener noreferrer">
+                <img src="../../images/ML Challenges images/butterfly.jpg" alt="Butterfly">
+                <div class="y2-hover-text" id="hover-text1">
+                    Hybrid butterfly anomaly detection
+                </div>
+            </a>
+            <a href="https://www.codabench.org/competitions/2626" target="_blank" class="y2-circle" id="circle2" rel="noopener noreferrer">
+                <img src="../../images/ML Challenges images/gw.jpg" alt="GW">
+                <div class="y2-hover-text" id="hover-text2">
+                    Gravitational wave anomaly detection
+                </div>
+            </a>
+            <a href="https://www.codabench.org/competitions/3223" target="_blank" class="y2-circle" id="circle3" rel="noopener noreferrer">
+                <img src="../../images/ML Challenges images/water_levels.jpg" alt="Water Levels">
+                <div class="y2-hover-text" id="hover-text3">
+                    Sea level anomaly detection
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="../../js/script.js"></script>
+    <script>
+        function loadHTML(file, elementId, callback) {
+            fetch(file)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                    if (typeof callback === 'function') callback();
+                })
+                .catch(error => console.error('Error loading HTML:', error));
+        }
+
+        loadHTML('layout/header.html', 'header', () => { if (window.initHamburger) window.initHamburger(); });
+        loadHTML('layout/logo.html', 'logo');
+        loadHTML('layout/footer.html', 'footer');
+    </script>
+
+</body>
+</html>

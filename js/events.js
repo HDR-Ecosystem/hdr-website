@@ -6,8 +6,10 @@ let allEvents = [];
 let filteredEvents = [];
 let currentPage = 1;
 let currentFilter = 'all';
+let currentFormat = 'all';
 let selectedInstitutes = [];
 let searchQuery = '';
+const initialSearchQuery = new URLSearchParams(window.location.search).get('search')?.toLowerCase() || '';
 
 document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
@@ -40,6 +42,15 @@ function setupEventListeners() {
         });
     });
 
+    const formatOptions = document.querySelectorAll('input[name="eventFormat"]');
+    formatOptions.forEach(option => {
+        option.addEventListener('change', function() {
+            currentFormat = this.value;
+            currentPage = 1;
+            applyFiltersAndSearch();
+        });
+    });
+
     const instituteCheckboxes = document.querySelectorAll('input[name="instituteFilter"]');
     instituteCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function() {
@@ -65,28 +76,59 @@ function classifyEvent(eventDate) {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     
-    const event = new Date(eventDate);
+    const event = parseLocalDate(eventDate);
     event.setHours(0, 0, 0, 0);
     
     return event >= today ? 'upcoming' : 'past';
 }
 
-function formatEventDateTime(dateString, timeString = '12:00pm', timezone = 'CT') {
-    const date = new Date(dateString);
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const formattedDate = date.toLocaleDateString('en-US', options);
-    return `${formattedDate} ${timeString} (${timezone})`;
+function formatEventDateTime(startDateString, endDateString, timeString = '12:00pm', timezone = 'CT') {
+    const startDate = parseLocalDate(startDateString);
+    const endDate = endDateString ? parseLocalDate(endDateString) : startDate;
+
+    const startOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    const endOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+
+    const sameDay = startDate.getTime() === endDate.getTime();
+    let dateText;
+
+    if (sameDay) {
+        dateText = startDate.toLocaleDateString('en-US', startOptions);
+    } else if (startDate.getFullYear() === endDate.getFullYear() &&
+               startDate.getMonth() === endDate.getMonth()) {
+        // Same month/year: April 8–9, 2026
+        const monthYear = startDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+        dateText = `${monthYear} ${startDate.getDate()}–${endDate.getDate()}`;
+    } else {
+        // Different month/year: April 30, 2026 – May 2, 2026
+        dateText = `${startDate.toLocaleDateString('en-US', startOptions)} – ${endDate.toLocaleDateString('en-US', endOptions)}`;
+    }
+
+    return `${dateText} ${timeString} (${timezone})`;
+}
+
+function parseLocalDate(dateString) {
+    const [year, month, day] = dateString.split('-').map(Number);
+    return new Date(year, month - 1, day);
 }
 
 function applyFiltersAndSearch() {
-    filteredEvents = allEvents.filter(event => {
+    const selectedLower = selectedInstitutes.map(i => i.toLowerCase());
+
+    const nextFiltered = allEvents.filter(event => {
 
         const typeMatch = currentFilter === 'all' || event.type === currentFilter;
-        
+        const formatMatch = currentFormat === 'all' || event.eventType === currentFormat;
 
-        const instituteMatch = selectedInstitutes.length === 0 || 
-                              selectedInstitutes.includes(event.institute);
-        
+        const eventInstitutes = (event.institute || '')
+            .split(',')
+            .map(i => i.trim().toLowerCase())
+            .filter(Boolean);
+        const isCommunity = eventInstitutes.includes('community');
+        const instituteMatch = isCommunity
+            ? true
+            : selectedLower.length === 0 ||
+              eventInstitutes.some(inst => selectedLower.includes(inst));
 
         const searchableText = event.searchable?.toLowerCase() || '';
         const searchMatch = searchQuery === '' || 
@@ -94,8 +136,15 @@ function applyFiltersAndSearch() {
                            event.title.toLowerCase().includes(searchQuery) ||
                            event.description.toLowerCase().includes(searchQuery);
         
-        return typeMatch && instituteMatch && searchMatch;
+        return typeMatch && formatMatch && instituteMatch && searchMatch;
     });
+
+    const unchanged = filteredEvents.length === nextFiltered.length &&
+        filteredEvents.every((evt, idx) => evt === nextFiltered[idx]);
+
+    filteredEvents = nextFiltered;
+
+    if (unchanged) return;
 
     currentPage = 1;
     renderEvents();
@@ -130,6 +179,9 @@ function createEventCard(event) {
     const article = document.createElement('article');
     article.className = 'event-card';
     article.setAttribute('data-event-type', event.type);
+    if (event.link) {
+        article.classList.add('event-card-linked');
+    }
 
     let eventTypeSection = '';
     if (event.eventType === 'virtual') {
@@ -154,7 +206,12 @@ function createEventCard(event) {
 
     article.innerHTML = `
         <div class="event-image">
-            <img src="${event.image}" alt="${event.title}" />
+            <img src="${event.image}" alt="${event.title}" loading="lazy" />
+            ${event.link ? `
+                <a class="event-image-overlay" href="${event.link}" target="_blank" rel="noopener noreferrer">
+                    <span>Read more on external site →</span>
+                </a>
+            ` : ''}
         </div>
         <div class="event-content">
             <h3>${event.title}</h3>
@@ -225,16 +282,37 @@ function scrollToTop() {
 }
 
 window.populateEvents = function(eventsData) {
-    allEvents = eventsData.map(event => ({
-        ...event,
-        type: classifyEvent(event.date),
-        dateTime: formatEventDateTime(event.date, event.time, event.timezone),
-        searchable: `${event.title} ${event.description} ${event.institute || ''}`.toLowerCase()
-    }));
+    allEvents = eventsData.map(event => {
+        const startDate = event.startDate || event.date;
+        const endDate = event.endDate || event.date;
+        const time = event.time || '12:00pm';
+        const timezone = event.timezone || 'CT';
+        const normalizedEventType = (event.eventType || '').toLowerCase();
+
+        return {
+            ...event,
+            eventType: normalizedEventType,
+            startDate,
+            endDate,
+            type: classifyEvent(startDate),
+            dateTime: event.customDateText || formatEventDateTime(startDate, endDate, time, timezone),
+            searchable: `${event.title} ${event.description} ${event.institute || ''} ${event.location || ''}`.toLowerCase()
+        };
+    }).sort((a, b) => {
+        const aDate = a.startDate ? parseLocalDate(a.startDate).getTime() : 0;
+        const bDate = b.startDate ? parseLocalDate(b.startDate).getTime() : 0;
+        return bDate - aDate; // newest first
+    });
 
     currentFilter = 'all';
+    currentFormat = 'all';
     currentPage = 1;
-    searchQuery = '';
+    searchQuery = initialSearchQuery;
+
+    const searchInput = document.getElementById('eventSearch');
+    if (searchInput && initialSearchQuery) {
+        searchInput.value = initialSearchQuery;
+    }
     
     applyFiltersAndSearch();
 };
@@ -252,196 +330,215 @@ window.getEventsData = function() {
 document.addEventListener('DOMContentLoaded', function() {
     const sampleEvents = [
         {
-            title: 'I-GUIDE VCO: Visualization and Story Telling',
-            description: 'Webinar talk on data visualization approaches with emphasis on storytelling and broader context.',
-            date: '2025-08-15',
-            time: '2:00pm',
+            title: 'I-GUIDE VCO: The I-GUIDE Data Ethics Toolkit',
+            description: 'This hands-on session will allow you to explore tools from the I-GUIDE Data Ethics Toolkit.',
+            date: '2025-12-17',
+            time: '11:00am',
             timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=A3D3+Symposium',
+            image: '../images/i-guide images/iGUIDE banner.webp',
             eventType: 'virtual',
             location: 'Online',
             institute: 'I-GUIDE',
-            link: '#'
+            link: 'https://i-guide.io/i-guide-vco/pursuing-ethical-geospatial-data-science-and-ai-the-i-guide-data-ethics-toolkit/'
         },
         {
-            title: 'A3D3 Annual Symposium',
-            description: 'Join us for our annual symposium featuring keynote speakers and research presentations from across the institute.',
-            date: '2025-09-20',
-            time: '10:00am',
+            title: 'HDR ML Challenge Online Hackathon',
+            description: 'Introduction to Codabench,  presentations on the challenges, team formation, and Q&A with organizers.',
+            date: '2025-12-18',
+            time: '2:00pm',
             timezone: 'ET',
-            image: 'https://via.placeholder.com/400x300?text=A3D3+Symposium',
-            eventType: 'in-person',
-            location: 'Columbus, OH',
-            institute: 'A3D3',
-            link: '#'
+            image: '../images/events page images/Frame 2.png',
+            eventType: 'Virtual',
+            location: 'Virtual',
+            institute: 'A3D3, Imageomics, iHARP',
+            link: 'https://indico.cern.ch/event/1607943/'
         },
         {
-            title: 'HDR Community Meetup',
-            description: 'Networking event for HDR institute members and researchers to share ideas and collaborate.',
-            date: '2025-10-10',
-            time: '1:00pm',
-            timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=HDR+Community',
-            eventType: 'in-person',
-            location: 'Chicago, IL',
-            institute: 'Community',
-            link: '#'
-        },
-        {
-            title: 'Imageomics Workshop Series',
-            description: 'Hands-on workshop covering advanced image analysis techniques and machine learning applications.',
-            date: '2025-11-05',
-            time: '3:00pm',
-            timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=Imageomics',
-            eventType: 'hybrid',
-            location: 'Austin, TX',
-            institute: 'Imageomics',
-            link: '#'
-        },
-        {
-            title: 'iHARP Data Harmonization Webinar',
-            description: 'Learn about best practices for data harmonization across diverse sources and institutes.',
-            date: '2025-12-01',
-            time: '11:00am',
+            title: 'FAIR in ML, AI Readiness, & Reproducibility (FARR) Workshop',
+            description: 'Focusing on the areas of AI Readiness, AI Reproducibility, and the intersection of the FAIR Principles and ML.',
+            startDate: '2026-04-08',
+            endDate: '2026-04-09',
             timezone: 'ET',
-            image: 'https://via.placeholder.com/400x300?text=iHARP',
+            image: '../images/events page images/Farr workshop.png',
+            eventType: 'in-person',
+            location: 'Washington DC',
+            institute: 'A3D3, Imageomics, iHARP',
+            link: 'https://www.farr-rcn.org/workshop26'
+        },
+        {
+            title: 'NEON/ESIIL Hackathon ',
+            description: 'This event will provide an introduction to the NSF Harnessing the Data Revolution (HDR) ML Challenge.',
+            startDate: '2025-12-12',
+            endDate: '2025-12-15',
+            time: '8:00am - 5:00pm',
+            timezone: 'MST',
+            image: '../images/events page images/NEONESIIL Hackathon.jpeg',
+            eventType: 'in-person',
+            location: 'Boulder, CO',
+            institute: 'A3D3, Imageomics, iHARP',
+            customDateText: 'December 12 & 15, 2025 • 8:00am - 5:00pm (MST)',
+            link: 'https://docs.google.com/forms/d/e/1FAIpQLSd-K2hu1g4xxc3Fxj0qPoGDOVt_T-sWw7TSgEtEkPZUlAA6Cg/viewform'
+        },
+        {
+            title: 'HDR Hackathon Taiwan',
+            description: 'This online briefing will provide participants in Taiwan with an overview of the 2025 NSF HDR Hackathon.',
+            date: '2025-12-19',
+            time: '12:00pm',
+            timezone: 'CST (台湾时间) / 11:00pm ET',
+            image: '../images/events page images/hdr hackathon taiwan.png',
             eventType: 'virtual',
-            location: 'Online',
-            institute: 'iHARP',
-            link: '#'
+            location: 'Taiwan',
+            institute: 'A3D3, Imageomics, iHARP',
+            customDateText: 'December 19, 2025 • 12:00pm (CST - 台湾时间) / 11:00pm (ET)',
+            link: 'https://indico.cern.ch/event/1610056/'
         },
         {
-            title: 'ID4 Summit 2025',
-            description: 'Annual summit bringing together experts to discuss the latest in inclusive data science.',
-            date: '2025-09-15',
-            time: '9:00am',
-            timezone: 'PT',
-            image: 'https://via.placeholder.com/400x300?text=ID4+Summit',
+            title: 'UW A3D3 & NSF HDR Hackathon',
+            description: 'Work with teams and expert consultants to complete a submission for one of the challenges.',
+            startDate: '2026-01-10',
+            endDate: '2026-01-10',
+            time: '9:00am - 7:00pm',
+            timezone: 'PST',
+            image: '../images/events page images/UW A3D3 & NSF HDR Challenge  Hackathon.jpg',
             eventType: 'in-person',
             location: 'Seattle, WA',
-            institute: 'ID4',
-            link: '#'
+            institute: 'A3D3, Imageomics, iHARP',
+            customDateText: 'January 10, 2026 • 9:00am - 7:00pm (PST)',
+            link: 'https://indico.cern.ch/event/1604685/overview'
         },
         {
-            title: 'Machine Learning Fundamentals Workshop',
-            description: 'Comprehensive training on ML fundamentals with practical applications in data science.',
-            date: '2024-12-10',
-            time: '2:00pm',
-            timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=ML+Workshop',
+            title: 'AAG 2026 Symposium',
+            description: 'American Association of Geographers 2026 Symposium on Spatial AI and Data Science: Frontiers and Applications, will be hosted and sponsored by I-GUIDE.',
+            startDate: '2026-03-24',
+            endDate: '2026-03-28',
+            image: '../images/events page images/AAG-Globe-Meridian-SpaceAAG 2026 Symposium on Spatial AI and Data Science Frontiers and Applications-AAG2024-1.jpg',
+            eventType: 'in-person',
+            location: 'San Fransciso, CA',
+            institute: 'I-GUIDE',
+            customDateText: 'March 24–28, 2026',
+            link: 'https://i-guide.io/aag-2026-symposium-on-spatial-ai-data-science-frontiers-and-applications/'
+        },
+        {
+            title: 'I-GUIDE Forum 2026 & HDR Ecosystem Conference',
+            description: 'This joint conference will bring together  researchers to shape the future of AI and data-intensive sciences.',
+            startDate: '2026-08-03',
+            endDate: '2026-08-07',
+            image: '../images/events page images/I-GUIDE Forum 2026 & HDR  Community Conference.jpg',
+            eventType: 'in-person',
+            location: 'Chicago, IL',
+            institute: 'community',
+            customDateText: 'August 3–7, 2026',
+            link: 'https://i-guide.io/forum/forum-2026/'
+        },
+        {
+            title: 'ML Challenge Online Hackathon & Organizer Training Workshop',
+            description: 'How to host a successful hackathon + Q&A and challenge introductions.',
+            date: '2025-10-31',
+            time: '12:00pm - 5:00pm',
+            timezone: 'ET',
+            image: '../images/events page images/ML Challenge Online Hackathon  & Organizer Training Workshop.png',
+            eventType: 'virtual',
+            location: 'Virtual',
+            institute: 'A3D3, Imageomics, iHARP',
+            customDateText: 'October 31, 2025 • 12:00pm - 5:00pm (ET)',
+            link: 'https://indico.cern.ch/event/1607943/'
+        },
+        {
+            title: 'HDR Ecosystem Conference 2025',
+            description: '2025 marked a pivotal convergence in uniting researchers, practitioners, and students to share breakthroughs and chart a bold, data-rich future.', 
+            startDate: '2025-09-16',
+            endDate: '2025-09-19',
+            image: '../images/events page images/hdr ecosystem conference 2025.jpg',
+            eventType: 'in-person',
+            location: 'Columbus, OH',
+            institute: 'community',
+            customDateText: 'September 16–19, 2025',
+            link: 'https://www.nsfhdr.org/events/upcoming-events/hdr-ecosystem-conference'
+        },
+        {
+            title: 'AAAI Workshop',
+            description: '1-day workshop that included keynote talks, paper presentations, a poster session, a discussion, and presentations by the ML challenge winner.',
+            date: '2025-03-04',
+            time: '9:00am - 6:00pm',
+            timezone: 'ET',
+            image: '../images/events page images/AAAI Workshop.png',
+            eventType: 'in-person',
+            location: 'Philadelphia, PA',
+            institute: 'community',
+            customDateText: 'March 4, 2025 • 9:00am - 6:00pm (ET)',
+            link: '/html/mlchallenge-y1/aaai-workshop2024.html'
+        },
+        {
+            title: '2024 National Diversity in STEM Conference (SACNAS)',
+            description: 'The SACNAS Annual Conference is the leading multidisciplinary and multicultural STEM conference',
+            startDate: '2024-10-31',
+            endDate: '2024-11-02',
+            image: '../images/events page images/2024 National Diversity in STEM  Conference (SACNAS).jpeg',
+            eventType: 'in-person',
+            location: 'Phoenix, AZ',
+            institute: 'community',
+            customDateText: 'October 31 – November 2, 2024',
+            link: 'https://www.sacnas.org/ndistem2024'
+        },
+        {
+            title: 'HDR Ecosystem Conference 2024',
+            description: 'The conference worked to share the accomplishments, goals and plans of HDR ecosystem entities, while discussing how to sustain and grow.',
+            startDate: '2024-09-09',
+            endDate: '2024-09-12',
+            image: '../images/events page images/HDR Ecosystem Conference 2024.jpg',
+            eventType: 'in-person',
+            location: 'Champaign, IL',
+            institute: 'community',
+            customDateText: 'September 9–12, 2024',
+            link: 'https://hdr-ecosystem.github.io/hdr2024/'
+        },
+        {
+            title: '2023 National Diversity in STEM Conference (SACNAS) ',
+            description: 'SACNAS celebrated their 50th Anniversary with a record breaking over 6,000 people from all STEM disciplines.',
+            startDate: '2023-10-26',
+            endDate: '2023-10-28',
+            image: '../images/events page images/2023 NDiSTEM Conference.png',
+            eventType: 'in-person',
+            location: 'Portland, OR',
+            institute: 'community',
+            customDateText: 'October 26–28, 2023',
+            link: 'https://www.sacnas.org/ndistem2023'
+        },
+        {
+            title: '2023 HDR Ecosystem Conference ',
+            description: 'The Conference built community, reflected on progress, shared best practices, and addressed shared data-intensive research challenges.',
+            startDate: '2023-10-16',
+            endDate: '2023-10-18',
+            image: '../images/events page images/2023 HDR Ecosystem Conference.jpeg',
             eventType: 'in-person',
             location: 'Denver, CO',
-            institute: 'A3D3',
-            link: '#'
+            institute: 'community',
+            customDateText: 'October 16–18, 2023',
+            link: 'https://id4.mines.edu/hdr-conference/'
         },
         {
-            title: 'Data Visualization Best Practices',
-            description: 'Learn how to create compelling visualizations that tell your data story effectively.',
-            date: '2024-11-20',
-            time: '1:00pm',
-            timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=Visualization',
-            eventType: 'virtual',
-            location: 'Online',
-            institute: 'I-GUIDE',
-            link: '#'
-        },
-        {
-            title: 'HDR Research Symposium',
-            description: 'Showcase of cutting-edge research from all five HDR institutes with networking opportunities.',
-            date: '2024-10-15',
-            time: '8:30am',
-            timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=HDR+Research',
+            title: '2023 HDR Postbaccalaureate Workshop',
+            description: 'This workshop brought together HDR postbaccalaureate fellows to present, and learn about data science research.',
+            startDate: '2023-06-20',
+            endDate: '2023-06-21',
+            image: '../images/events page images/2023 HDR Postbaccalaureate  Workshop.jpg',
             eventType: 'in-person',
-            location: 'Washington, DC',
-            institute: 'Community',
-            link: '#'
+            location: 'San Diego, CA',
+            institute: 'community',
+            customDateText: 'June 20–21, 2023',
+            link: 'https://indico.cern.ch/event/1253923/'
         },
         {
-            title: 'Advanced Data Science Certification',
-            description: 'Professional certification program covering advanced topics in data science and analytics.',
-            date: '2025-01-15',
-            time: '9:00am',
-            timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=Certification',
-            eventType: 'virtual',
-            location: 'Online',
-            institute: 'A3D3',
-            link: '#'
-        },
-        {
-            title: 'Big Data Processing Bootcamp',
-            description: 'Intensive bootcamp on processing large-scale datasets using modern distributed computing frameworks.',
-            date: '2025-02-01',
-            time: '10:00am',
-            timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=Big+Data',
+            title: '2022 HDR² From Harnessing to Harvesting the Data Revolution',
+            description: 'The first HDR Principal Investigator meetings, were the members of the NSF HDR community were assembled.',
+            startDate: '2022-10-26',
+            endDate: '2022-10-27',
+            image: '../images/events page images/2022 HDR² From Harnessing to  Harvesting  the Data Revolution.png',
             eventType: 'in-person',
-            location: 'San Francisco, CA',
-            institute: 'Imageomics',
-            link: '#'
-        },
-        {
-            title: 'Research Ethics in Data Science',
-            description: 'Discussion on ethical considerations and best practices when working with sensitive research data.',
-            date: '2025-03-10',
-            time: '2:00pm',
-            timezone: 'ET',
-            image: 'https://via.placeholder.com/400x300?text=Ethics',
-            eventType: 'virtual',
-            location: 'Online',
-            institute: 'ID4',
-            link: '#'
-        },
-        {
-            title: 'Cloud Computing for Research',
-            description: 'Learn to leverage cloud platforms for scalable research computing and data analysis.',
-            date: '2025-04-05',
-            time: '1:00pm',
-            timezone: 'PT',
-            image: 'https://via.placeholder.com/400x300?text=Cloud',
-            eventType: 'hybrid',
-            location: 'Portland, OR',
-            institute: 'iHARP',
-            link: '#'
-        },
-        {
-            title: 'AI and Machine Learning Summit',
-            description: 'Conference featuring industry leaders discussing the future of AI and machine learning applications.',
-            date: '2025-05-20',
-            time: '8:00am',
-            timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=AI+Summit',
-            eventType: 'in-person',
-            location: 'Boston, MA',
-            institute: 'Community',
-            link: '#'
-        },
-        {
-            title: 'Statistical Methods for Modern Data',
-            description: 'Advanced statistical techniques tailored for high-dimensional and complex modern datasets.',
-            date: '2024-09-01',
-            time: '3:00pm',
-            timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=Statistics',
-            eventType: 'virtual',
-            location: 'Online',
-            institute: 'A3D3',
-            link: '#'
-        },
-        {
-            title: 'Network Analysis Workshop',
-            description: 'Hands-on workshop exploring graph theory and network analysis techniques for complex systems.',
-            date: '2024-08-15',
-            time: '2:00pm',
-            timezone: 'CT',
-            image: 'https://via.placeholder.com/400x300?text=Networks',
-            eventType: 'in-person',
-            location: 'Miami, FL',
-            institute: 'I-GUIDE',
-            link: '#'
+            location: 'Alexandria, VA',
+            institute: 'community',
+            customDateText: 'October 26–27, 2022',
+            link: 'https://indico.cern.ch/event/1174814/overview'
         }
     ];
 

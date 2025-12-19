@@ -1,29 +1,18 @@
-
+// new entries should be added to the top of the array latest at the top
 
 const newsData = [
-    {title: "HDR Workshop 2025", date: "Oct 1, 2025", img: "../images/news1.jpeg", link: "https://example.com/1", description: "Highlights from the 2025 HDR workshop."},
-    {title: "New AI Research Published", date: "Sep 28, 2025", img: "../images/news2.jpg", link: "https://example.com/2", description: "Our team publishes groundbreaking AI research."},
-    {title: "Data Science Seminar", date: "Sep 25, 2025", img: "../images/news3.jpg", link: "https://example.com/3", description: "Upcoming seminar on advanced data science techniques."},
-    {title: "I-GUIDE Collaboration", date: "Sep 22, 2025", img: "../images/news4.jpg", link: "https://example.com/4", description: "I-GUIDE announces a new collaboration project."},
-    {title: "iHARP Update", date: "Sep 20, 2025", img: "../images/news5.jpg", link: "https://example.com/5", description: "Latest progress report from the iHARP institute."},
-    {title: "Imageomics Breakthrough", date: "Sep 18, 2025", img: "../images/news6.jpg", link: "https://example.com/6", description: "New findings published in imageomics research."},
-    {title: "NSF Grant Awarded", date: "Sep 15, 2025", img: "../images/news7.jpg", link: "https://example.com/7", description: "NSF awards new grant for HDR research."},
-    {title: "Community Spotlight", date: "Sep 12, 2025", img: "../images/news8.jpg", link: "https://example.com/8", description: "Highlighting community achievements this month."},
-    {title: "AI Ethics Panel", date: "Sep 10, 2025", img: "../images/news9.jpg", link: "https://example.com/9", description: "Panel discussion on AI ethics in research."},
-    {title: "HDR Newsletter October", date: "Sep 8, 2025", img: "../images/news10.jpg", link: "https://example.com/10", description: "October edition of the HDR newsletter is out."},
-    {title: "Research Showcase", date: "Sep 5, 2025", img: "../images/news11.jpg", link: "https://example.com/11", description: "Showcase of recent breakthroughs from institutes."},
-    {title: "Student Internship Program", date: "Sep 3, 2025", img: "../images/news12.jpg", link: "https://example.com/12", description: "Applications now open for HDR student internships."},
-    {title: "Data Management Workshop", date: "Sep 1, 2025", img: "../images/news13.jpg", link: "https://example.com/13", description: "Workshop on best practices for data management."},
-    {title: "HDR Research Awards", date: "Aug 28, 2025", img: "../images/news14.jpg", link: "https://example.com/14", description: "Announcing recipients of HDR research awards."},
-    {title: "AI in Healthcare", date: "Aug 25, 2025", img: "../images/news15.jpg", link: "https://example.com/15", description: "How AI is transforming healthcare research."},
-    {title: "New Machine Learning Tool", date: "Aug 22, 2025", img: "../images/news16.jpg", link: "https://example.com/16", description: "Introducing a new ML tool for HDR projects."},
-    {title: "Collaborative Data Project", date: "Aug 20, 2025", img: "../images/news17.jpg", link: "https://example.com/17", description: "A multi-institute data project launches this fall."},
-    {title: "HDR Conference 2025", date: "Aug 18, 2025", img: "../images/news18.jpg", link: "https://example.com/18", description: "Conference schedule announced for HDR 2025."},
-    {title: "Open Data Initiative", date: "Aug 15, 2025", img: "../images/news19.jpg", link: "https://example.com/19", description: "New open data initiative supporting research."},
-    {title: "NSF HDR Milestones", date: "Aug 12, 2025", img: "../images/news20.jpg", link: "https://example.com/20", description: "Celebrating key milestones in the HDR program."}
+    {title: "Imageomics Launches New Catalog for Open Science Resources", date: "December 10, 2025", img: "../images/news page images/imageomicscatalog.png", link: "https://imageomics.osu.edu/news/2025/12/imageomics-launches-new-catalog-showcasing-open-science-resources-ai-and-nature", description: "The Imageomics Catalog is now live, bringing together a collection of public code, datasets, models, and spaces, all in one easy-to-explore hub."},
+    {title: "I-GUIDE Ph.D. candidate’s focus on accessible geospatial resources ", date: "December 5, 2025", img: "../images/news page images/NathanIguide.jpg", link: "https://i-guide.io/news_events/user-centered-designs-that-improve-accessibility-for-geospatial-resources-is-hallmark-of-jaroenchais-work/", description: "Nathan’s work centers on designing clear user experiences and developing features that help researchers navigate complex geospatial workflows."},
+    {title: "iHARP member, Tolulope Ale defends his PhD Dissertation", date: "November 20, 2025", img: "../images/news page images/iharpalephd.jpg", link: "https://iharp.umbc.edu/news/post/154736/", description: "Tolu's contributions have made him an invaluable member of the iHARP community. His dissertation was about anomaly detection in climate data."},
+    {title: "Issue 1: HDR Community Magazine", date: "October 21, 2025", img: "../images/news page images/hdrcommunitymagazine.png", link: "https://www.canva.com/design/DAGnMuxnGdU/E-9X1AGmHzcnSlQstiOzfg/view?utm_content=DAGnMuxnGdU&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h5b67d1db3e", description: "Read the HDR Community’s first magazine edition which celebrates our ecosystem. Get up to date on new research, the centers involved, events, and people."},
+    {title: "A3D3 team attends Fast Machine Learning for Science conference", date: "September 18, 2025", img: "../images/news page images/a3d3fastmlcarasoul.webp", link: "https://a3d3.ai a3d3-accelerates-real-time-ai-for-scientific-discovery-at-fastml-2025/", description: "A3D3 scientists and engineers presented talks and posters at the conference, including a poster that received a best poster award."},
+    {title: "The HDR Ecosystem announce’s second ML Challenge", date: "September 17, 2025",img: "../images/events page images/Frame 2.png", link: "../html/mlchallenge-y2/index.html", description: "The HDR ML Challenge program is hosting its second FAIR challenge, this year presenting three scientific benchmarks for modeling. Join now!"},
+    {title: "I-GUIDE launches Spatial AI Challenge 2025-26", date: "September 15, 2025", img: "../images/news page images/iguidespatialai.png", link: "https://i-guide.io/spatial-ai-challenge-2025-26/", description: "The challenge is about leveraging the  spatial data and AI to solve real-world issues. With a focus on fostering FAIR data and open science practices. "},
+    {title: "ID4 co-creates display using AI and structural mechanics research", date: "May 10, 2025", img: "../images/news page images/id4aiexhibit.webp", link: "https://kirigami-strata.ai/", description: "Titled “Kirigami Strata”, the display was featured as part of the European Cultural Centre’s Time Space Existence architecture exhibition in Venice, Italy."},
 ];
 
 const newsPerPage = 15;
+const limitedNews = newsData;
 let currentPage = 1;
 
 function displayNews(page) {
@@ -32,16 +21,17 @@ function displayNews(page) {
 
     const start = (page - 1) * newsPerPage;
     const end = start + newsPerPage;
-    const paginatedNews = newsData.slice(start, end);
+    const paginatedNews = limitedNews.slice(start, end);
 
     paginatedNews.forEach(news => {
         const card = document.createElement("a");
         card.href = news.link;
         card.target = "_blank";
-        card.className = "news-card";
+        card.className = "news-card news-card-linked";
         card.innerHTML = `
             <div class="news-image-wrapper">
-                <img src="${news.img}" alt="${news.title}" class="news-image">
+                <img src="${news.img}" alt="${news.title}" class="news-image" loading="lazy">
+                <div class="news-image-overlay">Read more on external site →</div>
                 <span class="news-date">${news.date}</span>
             </div>
             <div class="news-content">
@@ -60,7 +50,7 @@ function setupPagination() {
     const pagination = document.getElementById("pagination");
     pagination.innerHTML = "";
 
-    const pageCount = Math.ceil(newsData.length / newsPerPage);
+    const pageCount = Math.ceil(limitedNews.length / newsPerPage);
 
     const prevBtn = document.createElement("button");
     prevBtn.innerText = "Prev";

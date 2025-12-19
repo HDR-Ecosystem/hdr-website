@@ -39,7 +39,7 @@
 
 .carousel-slides {
     position: relative;
-    height: 500px;
+    height: min(500px, 70vh);
     overflow: hidden;
 }
 
@@ -54,22 +54,28 @@
     transform: translateX(0);
     transition: none; 
     background: white;
+    text-decoration: none;
+    color: inherit;
+    pointer-events: none;
 }
 
 .carousel-slide.active {
     opacity: 1;
+    pointer-events: auto;
 }
 
 .slide-image {
-    flex: 1;
+    flex: 1.1;
     position: relative;
     overflow: hidden;
+    aspect-ratio: 16 / 9;
 }
 
 .slide-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     transition: transform 0.3s ease;
     opacity: 1;
 }
@@ -90,7 +96,7 @@
 }
 
 .slide-content {
-    flex: 1;
+    flex: 0.9;
     padding: 60px 40px;
     display: flex;
     flex-direction: column;
@@ -195,7 +201,7 @@
     .hdr-carousel-section { padding: 60px 30px; }
     .carousel-title { font-size: 2.2rem; }
     .carousel-subtitle { font-size: 1.1rem; }
-    .slide-content { padding: 40px 30px; }
+    .slide-content { padding: 40px 30px; flex: 1; }
     .slide-content h3 { font-size: 1.8rem; }
     .slide-content p { font-size: 1rem; }
 }
@@ -216,6 +222,7 @@
         padding: 30px 25px;
         text-align: center;
         height: auto;
+        flex: 1;
     }
     .slide-content::before { width: 100%; height: 4px; top: 0; left: 0; }
     .slide-content h3 { font-size: 1.6rem; margin-bottom: 15px; }
