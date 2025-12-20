@@ -197,7 +197,7 @@ function createEventCard(event) {
         eventTypeSection = `
             <div class="event-type-info">
                 <span class="event-location">
-                    <img src="../images/location icon.png" alt="Location" class="location-icon" />
+                    <img src="../images/Location icon.png" alt="Location" class="location-icon" />
                     <span class="location-text">${event.location}</span>
                 </span>
             </div>
@@ -206,7 +206,7 @@ function createEventCard(event) {
 
     article.innerHTML = `
         <div class="event-image">
-            <img src="${event.image}" alt="${event.title}" loading="lazy" />
+            <img src="${event.image}" alt="${event.title}" />
             ${event.link ? `
                 <a class="event-image-overlay" href="${event.link}" target="_blank" rel="noopener noreferrer">
                     <span>Read more on external site →</span>
@@ -335,7 +335,7 @@ document.addEventListener('DOMContentLoaded', function() {
             date: '2025-12-17',
             time: '11:00am',
             timezone: 'CT',
-            image: '../images/i-guide images/iGUIDE banner.webp',
+            image: '../images/i-guide images/iGUIDE banner.jpeg',
             eventType: 'virtual',
             location: 'Online',
             institute: 'I-GUIDE',
@@ -359,7 +359,7 @@ document.addEventListener('DOMContentLoaded', function() {
             startDate: '2026-04-08',
             endDate: '2026-04-09',
             timezone: 'ET',
-            image: '../images/events page images/Farr workshop.png',
+            image: '../images/events page images/FARR Workshop.png',
             eventType: 'in-person',
             location: 'Washington DC',
             institute: 'A3D3, Imageomics, iHARP',
@@ -385,7 +385,7 @@ document.addEventListener('DOMContentLoaded', function() {
             date: '2025-12-19',
             time: '12:00pm',
             timezone: 'CST (台湾时间) / 11:00pm ET',
-            image: '../images/events page images/hdr hackathon taiwan.png',
+            image: '../images/events page images/HDR Hackathon Taiwan.png',
             eventType: 'virtual',
             location: 'Taiwan',
             institute: 'A3D3, Imageomics, iHARP',
@@ -448,7 +448,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: '2025 marked a pivotal convergence in uniting researchers, practitioners, and students to share breakthroughs and chart a bold, data-rich future.', 
             startDate: '2025-09-16',
             endDate: '2025-09-19',
-            image: '../images/events page images/hdr ecosystem conference 2025.jpg',
+            image: '../images/events page images/HDR Ecosystem Conference 2025.jpg',
             eventType: 'in-person',
             location: 'Columbus, OH',
             institute: 'community',
