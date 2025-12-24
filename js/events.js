@@ -1,5 +1,4 @@
 
-
 const EVENTS_PER_PAGE = 15; // Display 15 events per page (3x5 grid)
 
 let allEvents = [];
@@ -14,6 +13,17 @@ const initialSearchQuery = new URLSearchParams(window.location.search).get('sear
 document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
 });
+
+function isExternalLink(url) {
+    if (!url) return false;
+    if (url.startsWith('mailto:') || url.startsWith('tel:')) return true;
+    try {
+        const resolved = new URL(url, window.location.href);
+        return resolved.origin !== window.location.origin;
+    } catch (err) {
+        return url.startsWith('http://') || url.startsWith('https://');
+    }
+}
 
 function setupEventListeners() {
 
@@ -204,12 +214,16 @@ function createEventCard(event) {
         `;
     }
 
+    const isExternal = isExternalLink(event.link);
+    const overlayText = isExternal ? 'Read more on external site →' : 'Read more →';
+    const linkAttrs = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
+
     article.innerHTML = `
         <div class="event-image">
             <img src="${event.image}" alt="${event.title}" />
             ${event.link ? `
-                <a class="event-image-overlay" href="${event.link}" target="_blank" rel="noopener noreferrer">
-                    <span>Read more on external site →</span>
+                <a class="event-image-overlay" href="${event.link}" ${linkAttrs}>
+                    <span>${overlayText}</span>
                 </a>
             ` : ''}
         </div>
