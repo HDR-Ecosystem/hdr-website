@@ -44,7 +44,7 @@
     padding-left: 24px;
 }
 
-.y2-hero li + li {
+.y2-hero li+li {
     margin-top: 10px;
 }
 
@@ -227,6 +227,62 @@
     margin-top: 24px;
 }
 
+.y2-subsection h2 {
+    font-size: 24px;
+    margin: 0 0 16px;
+    color: #0b1d46;
+}
+
+.rules-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.rules-list li {
+    position: relative;
+    padding: 16px 16px 16px 44px;
+    margin-bottom: 12px;
+    background: #f7f9ff;
+    border-radius: 12px;
+    border-left: 4px solid #78206e;
+    line-height: 1.7;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rules-list li:hover {
+    transform: translateX(4px);
+    box-shadow: 0 6px 16px rgba(120, 32, 110, 0.12);
+}
+
+.rules-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    width: 20px;
+    height: 20px;
+    background: #78206e;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.rules-list li strong {
+    color: #78206e;
+    font-weight: 700;
+}
+
+.rules-list li em {
+    font-style: italic;
+    color: #0b1d46;
+    font-weight: 600;
+}
+
 .y2-page table {
     margin-top: 20px;
     width: 100%;
@@ -325,18 +381,46 @@
 }
 
 @keyframes flash-event {
-    0%, 50%, 100% { background-color: transparent; }
-    25%, 75% { background-color: rgba(255, 0, 0, 0.16); }
+
+    0%,
+    50%,
+    100% {
+        background-color: transparent;
+    }
+
+    25%,
+    75% {
+        background-color: rgba(255, 0, 0, 0.16);
+    }
 }
 
 @media (max-width: 900px) {
-    .y2-hero h1 { font-size: 30px; }
-    .y2-circle { width: 210px; height: 210px; }
-    .y2-hover-text { font-size: 16px; padding: 12px; }
+    .y2-hero h1 {
+        font-size: 30px;
+    }
+
+    .y2-circle {
+        width: 210px;
+        height: 210px;
+    }
+
+    .y2-hover-text {
+        font-size: 16px;
+        padding: 12px;
+    }
 }
 
 @media (max-width: 600px) {
-    .y2-content { padding: 28px 16px 60px; }
-    .y2-hero { padding: 22px; }
-    .y2-circle { width: 190px; height: 190px; }
+    .y2-content {
+        padding: 28px 16px 60px;
+    }
+
+    .y2-hero {
+        padding: 22px;
+    }
+
+    .y2-circle {
+        width: 190px;
+        height: 190px;
+    }
 }
