@@ -469,13 +469,25 @@
 
 @media (max-width: 600px) {
     .event-card {
-        height: auto;
-        min-height: 420px;
+        flex-direction: row;
+        width: 100%;
+        min-height: 0;
+    }
+
+    .event-image {
+        flex: 0 0 40%;
+        height: 100%;
+        min-height: 160px;
+    }
+
+    .event-content {
+        flex: 1;
+        padding: 12px 12px 14px;
     }
 
     .event-content h3 {
-        font-size: 1.2rem;
-        min-height: auto;
+        font-size: 1rem;
+        min-height: 0;
     }
 
     .event-description {
