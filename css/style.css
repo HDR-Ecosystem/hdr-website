@@ -1040,8 +1040,11 @@ a {
     flex-direction: column;
     align-items: flex-start;
 }
-.news-section > .home-news-grid {
-    margin-top: -8px;
+.news-section > div {
+    display: flex;
+    gap: 18px;
+    justify-content: flex-start;
+    margin-top: -8px; 
 }
 .news-section .section-header {
     width: 100%;
@@ -1049,45 +1052,7 @@ a {
     justify-content: flex-start;
 }
 
-.home-news-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
-.home-news-grid .news-card {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-}
-
-.home-news-grid .news-image-wrapper {
-    flex: 0 0 200px;
-    aspect-ratio: 4 / 3;
-    height: auto;
-    background: #f3f5f7;
-}
-
-.home-news-grid .news-image {
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-    display: block;
-}
-
-.home-news-grid .news-image-overlay {
-    display: none;
-}
-
-.home-news-grid .news-title {
-}
-
-.home-news-grid .news-description {
-}
-
-@media (max-width: 1366px) {
+@media (max-width: 1024px) {
     .hdr-action-content {
         flex-direction: column;
         gap: 40px;
@@ -1555,8 +1520,7 @@ main {
     background-color: rgba(255, 255, 255, 0.7);
     padding: 20px 60px;
     border-radius: 10px;
-    width: calc(100% - 80px);
-    max-width: 800px;
+    width: 800px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
     z-index: 1;
@@ -1587,7 +1551,6 @@ main {
     font-size: 1.1rem;
     line-height: 1.6;
     color: #282828;
-    text-align: left;
 }
 
 .introduction p a {
@@ -1737,7 +1700,6 @@ main {
 
     .header-title-box {
         padding: 15px 40px;
-        width: calc(100% - 60px);
     }
 
     .header-banner .header-title {
@@ -1914,32 +1876,12 @@ a:hover {
     white-space: nowrap;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     .gradient-banner {
         height: 150px; 
     }
     .about-text-overlay {
         font-size: 2.5rem;
-    }
-    .introduction,
-    .topics-covered,
-    .types-of-resources,
-    .publications-topics,
-    .resources-list-section .list-container,
-    .how-to-start .content-wrapper,
-    .publications-how-to-start .content-wrapper,
-    .resources-baserow .content-wrapper,
-    .publications-resources-baserow .content-wrapper {
-        max-width: 820px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .introduction {
-        text-align: center;
-    }
-    .introduction p {
-        margin-left: auto;
-        margin-right: auto;
     }
     .history-section {
         margin: 30px auto;
@@ -1949,38 +1891,6 @@ a:hover {
         font-size: 2rem;
     }
     .history-section p {
-        font-size: 1rem;
-    }
-
-    .history-section svg path {
-        pointer-events: none;
-    }
-
-    .history-section svg a {
-        pointer-events: none;
-    }
-
-    .history-section svg a.state-link {
-        pointer-events: auto;
-    }
-
-    .history-section svg path[data-id="CO"],
-    .history-section svg path[data-id="WA"],
-    .history-section svg path[data-id="IL"],
-    .history-section svg path[data-id="OH"],
-    .history-section svg path[data-id="MD"] {
-        fill: #5f84ff;
-        stroke: #2f5fd1;
-        filter: drop-shadow(0 0 4px rgba(95, 132, 255, 0.6));
-        pointer-events: auto;
-    }
-
-    .introduction p,
-    .topic-item ul li,
-    .resource-content p,
-    .resources-list-section li,
-    .publications-topics .topic-item p,
-    .news-and-updates p {
         font-size: 1rem;
     }
 }
@@ -2071,7 +1981,7 @@ a:hover {
     font-size: 1.1rem;
     line-height: 1.8;
     color: #000000;
-    text-align: left;
+    text-align: justify;
 }
 
 .resource-image {
@@ -2114,7 +2024,7 @@ a:hover {
 
     .resource-content p {
         font-size: 1rem;
-        text-align: center;
+        text-align: left;
     }
 
     .resource-image {
@@ -2252,7 +2162,6 @@ a:hover {
     color: #000000;
     line-height: 1.5;
     margin-bottom: 20px;
-    text-align: left;
 }
 
 .publications-topics .topic-item img {
@@ -2281,22 +2190,7 @@ a:hover {
     }
     .publications-topics .topic-item {
         max-width: 100%;
-        align-items: center;
-        text-align: center;
-    }
-}
-
-@media (max-width: 768px) {
-    .introduction,
-    .topics-covered,
-    .types-of-resources,
-    .publications-topics,
-    .resources-list-section .list-container,
-    .how-to-start .content-wrapper,
-    .publications-how-to-start .content-wrapper,
-    .resources-baserow .content-wrapper,
-    .publications-resources-baserow .content-wrapper {
-        max-width: 640px;
+        align-items: flex-start;
     }
 }
 
@@ -2690,49 +2584,6 @@ html, body { overflow-x: hidden; }
   }
 }
 
-@media (max-width: 1024px) and (orientation: portrait) {
-  .nav {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #fff;
-    border-bottom: 1px solid #ddd;
-    padding: 20px;
-    width: 100%;
-    z-index: 999;
-    justify-self: stretch;
-  }
-
-  .nav.active {
-    display: block;
-  }
-
-  .hamburger {
-    display: flex !important;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    gap: 15px;
-    padding: 0;
-  }
-
-  .dropdown-menu {
-    display: none;
-    position: static;
-    box-shadow: none;
-    margin-top: 10px;
-    padding-left: 20px;
-    background: #f9f9f9;
-  }
-
-  .dropdown.active .dropdown-menu {
-    display: block;
-  }
-}
-
 .header {
   display: flex;
   align-items: center;
@@ -2811,61 +2662,24 @@ html, body { overflow-x: hidden; }
   .institutes-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center !important;
-    gap: 12px;
+    justify-content: center !important;  
+    gap: 18px;
     width: 100%;
-    padding: 0 4px 8px;
   }
 
   .institute-card-link {
-    margin: 0;
-    width: 100%;
-    max-width: 600px;
-    height: auto;
+    margin: 0 auto;       
+    width: 200px;         
+    height: 420px;
   }
 
   .institute-card {
-    padding: 18px 16px;
-    flex-direction: row;
-    align-items: center;
-    text-align: left;
-    gap: 18px;
+    padding: 18px 14px;
   }
 
   .institute-logo-area {
-    width: 96px;
-    height: 96px;
-    margin-bottom: 0;
-  }
-
-  .institute-card h3 {
-    font-size: 1.1rem;
-    min-height: 0;
-    text-align: left;
-  }
-
-  .home-news-grid {
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .home-news-grid .news-image-wrapper {
-    flex-basis: 140px;
-    aspect-ratio: 4 / 3;
-    height: auto;
-    background: #f3f5f7;
-  }
-
-  .home-news-grid .news-card {
-    flex-direction: row;
-  }
-
-  .home-news-grid .news-content {
-    padding: 14px 14px 16px;
-  }
-
-  .home-news-grid .news-title {
-    font-size: 1.05rem;
+    width: 170px;
+    height: 200px;
   }
 }
 
@@ -2993,17 +2807,4 @@ body.has-construction-banner {
   .search-results-page-header h1 {
     font-size: 26px;
   }
-}
-*:focus,
-*:focus-visible {
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-a,
-button,
-input,
-textarea,
-select {
-    -webkit-tap-highlight-color: transparent;
 }
