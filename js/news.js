@@ -1,19 +1,16 @@
-// new entries should be added to the top of the array latest at the top
+const newsData = window.newsData || [];
 
-const newsData = [
-    {title: "Imageomics Launches New Catalog for Open Science Resources", date: "December 10, 2025", img: "../images/news_page_images/imageomicscatalog.png", link: "https://imageomics.osu.edu/news/2025/12/imageomics-launches-new-catalog-showcasing-open-science-resources-ai-and-nature", description: "The Imageomics Catalog is now live, bringing together a collection of public code, datasets, models, and spaces, all in one easy-to-explore hub."},
-    {title: "I-GUIDE Ph.D. candidate’s focus on accessible geospatial resources ", date: "December 5, 2025", img: "../images/news_page_images/NathanIguide.jpg", link: "https://i-guide.io/news_events/user-centered-designs-that-improve-accessibility-for-geospatial-resources-is-hallmark-of-jaroenchais-work/", description: "Nathan’s work centers on designing clear user experiences and developing features that help researchers navigate complex geospatial workflows."},
-    {title: "iHARP member, Tolulope Ale defends his PhD Dissertation", date: "November 20, 2025", img: "../images/news_page_images/iharpalephd.jpg", link: "https://iharp.umbc.edu/news/post/154736/", description: "Tolu's contributions have made him an invaluable member of the iHARP community. His dissertation was about anomaly detection in climate data."},
-    {title: "Issue 1: HDR Community Magazine", date: "October 21, 2025", img: "../images/news_page_images/hdrcommunitymagazine.png", link: "https://www.canva.com/design/DAGnMuxnGdU/E-9X1AGmHzcnSlQstiOzfg/view?utm_content=DAGnMuxnGdU&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h5b67d1db3e", description: "Read the HDR Community’s first magazine edition which celebrates our ecosystem. Get up to date on new research, the centers involved, events, and people."},
-    {title: "A3D3 team attends Fast Machine Learning for Science conference", date: "September 18, 2025", img: "../images/news_page_images/a3d3fastmlcarasoul.jpg", link: "https://a3d3.ai/a3d3-accelerates-real-time-ai-for-scientific-discovery-at-fastml-2025/", description: "A3D3 scientists and engineers presented talks and posters at the conference, including a poster that received a best poster award."},
-    {title: "The HDR Ecosystem announce’s second ML Challenge", date: "September 17, 2025",img: "../images/events_page_images/Frame_2.png", link: "../html/mlchallenge-y2/index.html", description: "The HDR ML Challenge program is hosting its second FAIR challenge, this year presenting three scientific benchmarks for modeling. Join now!"},
-    {title: "I-GUIDE launches Spatial AI Challenge 2025-26", date: "September 15, 2025", img: "../images/news_page_images/iguidespatialai.png", link: "https://i-guide.io/spatial-ai-challenge-2025-26/", description: "The challenge is about leveraging the  spatial data and AI to solve real-world issues. With a focus on fostering FAIR data and open science practices. "},
-    {title: "ID4 co-creates display using AI and structural mechanics research", date: "May 10, 2025", img: "../images/news_page_images/id4aiexhibit.jpg", link: "https://kirigami-strata.ai/", description: "Titled “Kirigami Strata”, the display was featured as part of the European Cultural Centre’s Time Space Existence architecture exhibition in Venice, Italy."},
-];
-
-const newsPerPage = 15;
+const NEWS_PER_PAGE = 15; // Desktop default
+const MOBILE_NEWS_PER_PAGE = 6; // Mobile-only pagination
+let newsPerPage = getNewsPerPage();
 const limitedNews = newsData;
 let currentPage = 1;
+
+function getNewsPerPage() {
+    return window.matchMedia('(max-width: 600px)').matches
+        ? MOBILE_NEWS_PER_PAGE
+        : NEWS_PER_PAGE;
+}
 
 function isExternalLink(url) {
     if (!url) return false;
@@ -103,3 +100,12 @@ function setupPagination() {
 }
 
 displayNews(currentPage);
+
+window.addEventListener('resize', () => {
+    const nextPerPage = getNewsPerPage();
+    if (nextPerPage !== newsPerPage) {
+        newsPerPage = nextPerPage;
+        currentPage = 1;
+        displayNews(currentPage);
+    }
+});

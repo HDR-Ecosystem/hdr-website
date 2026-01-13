@@ -365,7 +365,17 @@
 }
 
 @media (max-width: 600px) {
+    .news-and-updates {
+        padding: 50px 24px;
+    }
+
+    .news-container {
+        padding: 0;
+    }
+
     .news-card {
+        width: 92%;
+        margin: 0 auto;
         height: auto;
         min-height: 420px;
     }

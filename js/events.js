@@ -1,5 +1,6 @@
 
-const EVENTS_PER_PAGE = 15; // Display 15 events per page (3x5 grid)
+const EVENTS_PER_PAGE = 15; // Desktop default
+const MOBILE_EVENTS_PER_PAGE = 6; // Mobile-only pagination
 
 let allEvents = [];
 let filteredEvents = [];
@@ -9,10 +10,17 @@ let currentFormat = 'all';
 let selectedInstitutes = [];
 let searchQuery = '';
 const initialSearchQuery = new URLSearchParams(window.location.search).get('search')?.toLowerCase() || '';
+let eventsPerPage = getEventsPerPage();
 
 document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
 });
+
+function getEventsPerPage() {
+    return window.matchMedia('(max-width: 600px)').matches
+        ? MOBILE_EVENTS_PER_PAGE
+        : EVENTS_PER_PAGE;
+}
 
 function isExternalLink(url) {
     if (!url) return false;
@@ -80,6 +88,16 @@ function setupEventListeners() {
             applyFiltersAndSearch();
         });
     }
+
+    window.addEventListener('resize', () => {
+        const nextPerPage = getEventsPerPage();
+        if (nextPerPage !== eventsPerPage) {
+            eventsPerPage = nextPerPage;
+            currentPage = 1;
+            renderEvents();
+            renderPagination();
+        }
+    });
 }
 
 function classifyEvent(eventDate) {
@@ -173,8 +191,8 @@ function renderEvents() {
 
     noEvents.classList.add('hidden');
 
-    const startIndex = (currentPage - 1) * EVENTS_PER_PAGE;
-    const endIndex = startIndex + EVENTS_PER_PAGE;
+    const startIndex = (currentPage - 1) * eventsPerPage;
+    const endIndex = startIndex + eventsPerPage;
     const pageEvents = filteredEvents.slice(startIndex, endIndex);
 
     eventsGrid.innerHTML = '';
@@ -189,9 +207,6 @@ function createEventCard(event) {
     const article = document.createElement('article');
     article.className = 'event-card';
     article.setAttribute('data-event-type', event.type);
-    if (event.link) {
-        article.classList.add('event-card-linked');
-    }
 
     let eventTypeSection = '';
     if (event.eventType === 'virtual') {
@@ -215,20 +230,22 @@ function createEventCard(event) {
     }
 
     const isExternal = isExternalLink(event.link);
-    const overlayText = isExternal ? 'Read more on external site →' : 'Read more →';
     const linkAttrs = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
+    const titleMarkup = event.link
+        ? `<a class="event-title-link" href="${event.link}" ${linkAttrs}>${event.title}</a>`
+        : `${event.title}`;
+    const imageMarkup = event.link
+        ? `<a class="event-image-link" href="${event.link}" ${linkAttrs} aria-label="Open event details for ${event.title}">
+                <img src="${event.image}" alt="${event.title}" />
+           </a>`
+        : `<img src="${event.image}" alt="${event.title}" />`;
 
     article.innerHTML = `
         <div class="event-image">
-            <img src="${event.image}" alt="${event.title}" />
-            ${event.link ? `
-                <a class="event-image-overlay" href="${event.link}" ${linkAttrs}>
-                    <span>${overlayText}</span>
-                </a>
-            ` : ''}
+            ${imageMarkup}
         </div>
         <div class="event-content">
-            <h3>${event.title}</h3>
+            <h3>${titleMarkup}</h3>
             <p class="event-datetime">${event.dateTime}</p>
             <p class="event-description">${event.description}</p>
             ${eventTypeSection}
@@ -240,7 +257,7 @@ function createEventCard(event) {
 
 function renderPagination() {
     const pagination = document.getElementById('pagination');
-    const totalPages = Math.ceil(filteredEvents.length / EVENTS_PER_PAGE);
+    const totalPages = Math.ceil(filteredEvents.length / eventsPerPage);
 
     pagination.innerHTML = '';
 
