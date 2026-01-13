@@ -185,6 +185,9 @@
     background: rgba(26, 35, 126, 0.3);
     cursor: pointer;
     transition: all 0.3s ease;
+    padding: 0;
+    flex: 0 0 auto;
+    aspect-ratio: 1 / 1;
 }
 
 .indicator.active {
@@ -241,7 +244,7 @@
     .slide-content p { font-size: 0.9rem; }
     .carousel-btn { width: 40px; height: 40px; }
     .btn-icon { font-size: 1.2rem; }
-    .indicator { width: 10px; height: 10px; }
+    .indicator { width: 10px; height: 10px; aspect-ratio: 1 / 1; }
     .carousel-indicators { gap: 8px; margin-top: 25px; }
 }
 

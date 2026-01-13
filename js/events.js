@@ -1,5 +1,6 @@
 
-const EVENTS_PER_PAGE = 15; // Display 15 events per page (3x5 grid)
+const EVENTS_PER_PAGE = 15; // Desktop default
+const MOBILE_EVENTS_PER_PAGE = 6; // Mobile-only pagination
 
 let allEvents = [];
 let filteredEvents = [];
@@ -9,10 +10,17 @@ let currentFormat = 'all';
 let selectedInstitutes = [];
 let searchQuery = '';
 const initialSearchQuery = new URLSearchParams(window.location.search).get('search')?.toLowerCase() || '';
+let eventsPerPage = getEventsPerPage();
 
 document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
 });
+
+function getEventsPerPage() {
+    return window.matchMedia('(max-width: 600px)').matches
+        ? MOBILE_EVENTS_PER_PAGE
+        : EVENTS_PER_PAGE;
+}
 
 function isExternalLink(url) {
     if (!url) return false;
@@ -80,6 +88,16 @@ function setupEventListeners() {
             applyFiltersAndSearch();
         });
     }
+
+    window.addEventListener('resize', () => {
+        const nextPerPage = getEventsPerPage();
+        if (nextPerPage !== eventsPerPage) {
+            eventsPerPage = nextPerPage;
+            currentPage = 1;
+            renderEvents();
+            renderPagination();
+        }
+    });
 }
 
 function classifyEvent(eventDate) {
@@ -173,8 +191,8 @@ function renderEvents() {
 
     noEvents.classList.add('hidden');
 
-    const startIndex = (currentPage - 1) * EVENTS_PER_PAGE;
-    const endIndex = startIndex + EVENTS_PER_PAGE;
+    const startIndex = (currentPage - 1) * eventsPerPage;
+    const endIndex = startIndex + eventsPerPage;
     const pageEvents = filteredEvents.slice(startIndex, endIndex);
 
     eventsGrid.innerHTML = '';
@@ -189,9 +207,6 @@ function createEventCard(event) {
     const article = document.createElement('article');
     article.className = 'event-card';
     article.setAttribute('data-event-type', event.type);
-    if (event.link) {
-        article.classList.add('event-card-linked');
-    }
 
     let eventTypeSection = '';
     if (event.eventType === 'virtual') {
@@ -207,7 +222,7 @@ function createEventCard(event) {
         eventTypeSection = `
             <div class="event-type-info">
                 <span class="event-location">
-                    <img src="../images/Location icon.png" alt="Location" class="location-icon" />
+                    <img src="../images/Location_icon.png" alt="Location" class="location-icon" />
                     <span class="location-text">${event.location}</span>
                 </span>
             </div>
@@ -215,20 +230,22 @@ function createEventCard(event) {
     }
 
     const isExternal = isExternalLink(event.link);
-    const overlayText = isExternal ? 'Read more on external site →' : 'Read more →';
     const linkAttrs = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
+    const titleMarkup = event.link
+        ? `<a class="event-title-link" href="${event.link}" ${linkAttrs}>${event.title}</a>`
+        : `${event.title}`;
+    const imageMarkup = event.link
+        ? `<a class="event-image-link" href="${event.link}" ${linkAttrs} aria-label="Open event details for ${event.title}">
+                <img src="${event.image}" alt="${event.title}" />
+           </a>`
+        : `<img src="${event.image}" alt="${event.title}" />`;
 
     article.innerHTML = `
         <div class="event-image">
-            <img src="${event.image}" alt="${event.title}" />
-            ${event.link ? `
-                <a class="event-image-overlay" href="${event.link}" ${linkAttrs}>
-                    <span>${overlayText}</span>
-                </a>
-            ` : ''}
+            ${imageMarkup}
         </div>
         <div class="event-content">
-            <h3>${event.title}</h3>
+            <h3>${titleMarkup}</h3>
             <p class="event-datetime">${event.dateTime}</p>
             <p class="event-description">${event.description}</p>
             ${eventTypeSection}
@@ -240,7 +257,7 @@ function createEventCard(event) {
 
 function renderPagination() {
     const pagination = document.getElementById('pagination');
-    const totalPages = Math.ceil(filteredEvents.length / EVENTS_PER_PAGE);
+    const totalPages = Math.ceil(filteredEvents.length / eventsPerPage);
 
     pagination.innerHTML = '';
 
@@ -349,7 +366,7 @@ document.addEventListener('DOMContentLoaded', function() {
             date: '2025-12-17',
             time: '11:00am',
             timezone: 'CT',
-            image: '../images/i-guide images/iGUIDE banner.jpeg',
+            image: '../images/i-guide_images/iGUIDE_banner.jpeg',
             eventType: 'virtual',
             location: 'Online',
             institute: 'I-GUIDE',
@@ -361,7 +378,7 @@ document.addEventListener('DOMContentLoaded', function() {
             date: '2025-12-18',
             time: '2:00pm',
             timezone: 'ET',
-            image: '../images/events page images/Frame 2.png',
+            image: '../images/events_page_images/Frame_2.png',
             eventType: 'Virtual',
             location: 'Virtual',
             institute: 'A3D3, Imageomics, iHARP',
@@ -373,7 +390,7 @@ document.addEventListener('DOMContentLoaded', function() {
             startDate: '2026-04-08',
             endDate: '2026-04-09',
             timezone: 'ET',
-            image: '../images/events page images/FARR Workshop.png',
+            image: '../images/events_page_images/FARR_Workshop.png',
             eventType: 'in-person',
             location: 'Washington DC',
             institute: 'A3D3, Imageomics, iHARP',
@@ -386,7 +403,7 @@ document.addEventListener('DOMContentLoaded', function() {
             endDate: '2025-12-15',
             time: '8:00am - 5:00pm',
             timezone: 'MST',
-            image: '../images/events page images/NEONESIIL Hackathon.jpeg',
+            image: '../images/events_page_images/NEONESIIL_Hackathon.jpeg',
             eventType: 'in-person',
             location: 'Boulder, CO',
             institute: 'A3D3, Imageomics, iHARP',
@@ -399,7 +416,7 @@ document.addEventListener('DOMContentLoaded', function() {
             date: '2025-12-19',
             time: '12:00pm',
             timezone: 'CST (台湾时间) / 11:00pm ET',
-            image: '../images/events page images/HDR Hackathon Taiwan.png',
+            image: '../images/events_page_images/HDR_Hackathon_Taiwan.png',
             eventType: 'virtual',
             location: 'Taiwan',
             institute: 'A3D3, Imageomics, iHARP',
@@ -413,7 +430,7 @@ document.addEventListener('DOMContentLoaded', function() {
             endDate: '2026-01-10',
             time: '9:00am - 7:00pm',
             timezone: 'PST',
-            image: '../images/events page images/UW A3D3 & NSF HDR Challenge  Hackathon.jpg',
+            image: '../images/events_page_images/UW_A3D3_&_NSF_HDR_Challenge_Hackathon.jpg',
             eventType: 'in-person',
             location: 'Seattle, WA',
             institute: 'A3D3, Imageomics, iHARP',
@@ -425,7 +442,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'American Association of Geographers 2026 Symposium on Spatial AI and Data Science: Frontiers and Applications, will be hosted and sponsored by I-GUIDE.',
             startDate: '2026-03-24',
             endDate: '2026-03-28',
-            image: '../images/events page images/AAG-Globe-Meridian-SpaceAAG 2026 Symposium on Spatial AI and Data Science Frontiers and Applications-AAG2024-1.jpg',
+            image: '../images/events_page_images/AAG-Globe-Meridian-SpaceAAG_2026_Symposium_on_Spatial_AI_and_Data_Science_Frontiers_and_Applications-AAG2024-1.jpg',
             eventType: 'in-person',
             location: 'San Fransciso, CA',
             institute: 'I-GUIDE',
@@ -437,7 +454,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'This joint conference will bring together  researchers to shape the future of AI and data-intensive sciences.',
             startDate: '2026-08-03',
             endDate: '2026-08-07',
-            image: '../images/events page images/I-GUIDE Forum 2026 & HDR  Community Conference.jpg',
+            image: '../images/events_page_images/I-GUIDE_Forum_2026_&_HDR_Community_Conference.jpg',
             eventType: 'in-person',
             location: 'Chicago, IL',
             institute: 'community',
@@ -450,7 +467,7 @@ document.addEventListener('DOMContentLoaded', function() {
             date: '2025-10-31',
             time: '12:00pm - 5:00pm',
             timezone: 'ET',
-            image: '../images/events page images/ML Challenge Online Hackathon  & Organizer Training Workshop.png',
+            image: '../images/events_page_images/ML_Challenge_Online_Hackathon_&_Organizer_Training_Workshop.png',
             eventType: 'virtual',
             location: 'Virtual',
             institute: 'A3D3, Imageomics, iHARP',
@@ -462,7 +479,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: '2025 marked a pivotal convergence in uniting researchers, practitioners, and students to share breakthroughs and chart a bold, data-rich future.', 
             startDate: '2025-09-16',
             endDate: '2025-09-19',
-            image: '../images/events page images/HDR Ecosystem Conference 2025.jpg',
+            image: '../images/events_page_images/HDR_Ecosystem_Conference_2025.jpg',
             eventType: 'in-person',
             location: 'Columbus, OH',
             institute: 'community',
@@ -475,7 +492,7 @@ document.addEventListener('DOMContentLoaded', function() {
             date: '2025-03-04',
             time: '9:00am - 6:00pm',
             timezone: 'ET',
-            image: '../images/events page images/AAAI Workshop.png',
+            image: '../images/events_page_images/AAAI_Workshop.png',
             eventType: 'in-person',
             location: 'Philadelphia, PA',
             institute: 'community',
@@ -487,7 +504,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'The SACNAS Annual Conference is the leading multidisciplinary and multicultural STEM conference',
             startDate: '2024-10-31',
             endDate: '2024-11-02',
-            image: '../images/events page images/2024 National Diversity in STEM  Conference (SACNAS).jpeg',
+            image: '../images/events_page_images/2024_National_Diversity_in_STEM_Conference_(SACNAS).jpeg',
             eventType: 'in-person',
             location: 'Phoenix, AZ',
             institute: 'community',
@@ -499,7 +516,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'The conference worked to share the accomplishments, goals and plans of HDR ecosystem entities, while discussing how to sustain and grow.',
             startDate: '2024-09-09',
             endDate: '2024-09-12',
-            image: '../images/events page images/HDR Ecosystem Conference 2024.jpg',
+            image: '../images/events_page_images/HDR_Ecosystem_Conference_2024.jpg',
             eventType: 'in-person',
             location: 'Champaign, IL',
             institute: 'community',
@@ -511,7 +528,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'SACNAS celebrated their 50th Anniversary with a record breaking over 6,000 people from all STEM disciplines.',
             startDate: '2023-10-26',
             endDate: '2023-10-28',
-            image: '../images/events page images/2023 NDiSTEM Conference.png',
+            image: '../images/events_page_images/2023_NDiSTEM_Conference.png',
             eventType: 'in-person',
             location: 'Portland, OR',
             institute: 'community',
@@ -523,7 +540,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'The Conference built community, reflected on progress, shared best practices, and addressed shared data-intensive research challenges.',
             startDate: '2023-10-16',
             endDate: '2023-10-18',
-            image: '../images/events page images/2023 HDR Ecosystem Conference.jpeg',
+            image: '../images/events_page_images/2023_HDR_Ecosystem_Conference.jpeg',
             eventType: 'in-person',
             location: 'Denver, CO',
             institute: 'community',
@@ -535,7 +552,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'This workshop brought together HDR postbaccalaureate fellows to present, and learn about data science research.',
             startDate: '2023-06-20',
             endDate: '2023-06-21',
-            image: '../images/events page images/2023 HDR Postbaccalaureate  Workshop.jpg',
+            image: '../images/events_page_images/2023_HDR_Postbaccalaureate_Workshop.jpg',
             eventType: 'in-person',
             location: 'San Diego, CA',
             institute: 'community',
@@ -547,7 +564,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'The first HDR Principal Investigator meetings, were the members of the NSF HDR community were assembled.',
             startDate: '2022-10-26',
             endDate: '2022-10-27',
-            image: '../images/events page images/2022 HDR² From Harnessing to  Harvesting  the Data Revolution.png',
+            image: '../images/events_page_images/2022_HDR²_From_Harnessing_to_Harvesting_the_Data_Revolution.png',
             eventType: 'in-person',
             location: 'Alexandria, VA',
             institute: 'community',
