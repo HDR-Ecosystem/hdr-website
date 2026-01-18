@@ -439,7 +439,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             title: 'AAG 2026 Symposium',
-            description: 'American Association of Geographers 2026 Symposium on Spatial AI and Data Science: Frontiers and Applications, will be hosted and sponsored by I-GUIDE.',
+            description: 'AAG 2026 Symposium on Spatial  AI and Data Science: Frontiers and Applications, will be hosted by I-GUIDE.',
             startDate: '2026-03-24',
             endDate: '2026-03-28',
             image: '../images/events_page_images/AAG-Globe-Meridian-SpaceAAG_2026_Symposium_on_Spatial_AI_and_Data_Science_Frontiers_and_Applications-AAG2024-1.jpg',
@@ -476,7 +476,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             title: 'HDR Ecosystem Conference 2025',
-            description: '2025 marked a pivotal convergence in uniting researchers, practitioners, and students to share breakthroughs and chart a bold, data-rich future.', 
+            description: 'This conference united researchers, and students to share breakthroughs and chart a bold data-rich future.', 
             startDate: '2025-09-16',
             endDate: '2025-09-19',
             image: '../images/events_page_images/HDR_Ecosystem_Conference_2025.jpg',
@@ -488,7 +488,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             title: 'AAAI Workshop',
-            description: '1-day workshop that included keynote talks, paper presentations, a poster session, a discussion, and presentations by the ML challenge winner.',
+            description: 'Anomaly detection workshop serving as the award ceremony for the 1st HDR Interdisciplinary ML Challenge.',
             date: '2025-03-04',
             time: '9:00am - 6:00pm',
             timezone: 'ET',
@@ -513,7 +513,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             title: 'HDR Ecosystem Conference 2024',
-            description: 'The conference worked to share the accomplishments, goals and plans of HDR ecosystem entities, while discussing how to sustain and grow.',
+            description: 'This conference showcased goals, plans, accomplishments and opportunities of the HDR ecosystem.',
             startDate: '2024-09-09',
             endDate: '2024-09-12',
             image: '../images/events_page_images/HDR_Ecosystem_Conference_2024.jpg',
@@ -536,8 +536,8 @@ document.addEventListener('DOMContentLoaded', function() {
             link: 'https://www.sacnas.org/ndistem2023'
         },
         {
-            title: '2023 HDR Ecosystem Conference ',
-            description: 'The Conference built community, reflected on progress, shared best practices, and addressed shared data-intensive research challenges.',
+            title: 'HDR Ecosystem Conference 2023 ',
+            description: 'The conference reflected on progress, shared best practices, and addressed data-intensive research challenges.',
             startDate: '2023-10-16',
             endDate: '2023-10-18',
             image: '../images/events_page_images/2023_HDR_Ecosystem_Conference.jpeg',
@@ -560,8 +560,8 @@ document.addEventListener('DOMContentLoaded', function() {
             link: 'https://indico.cern.ch/event/1253923/'
         },
         {
-            title: '2022 HDR² From Harnessing to Harvesting the Data Revolution',
-            description: 'The first HDR Principal Investigator meetings, were the members of the NSF HDR community were assembled.',
+            title: '2022 HDR From Harnessing to Harvesting the Data Revolution',
+            description: 'The first HDR Principal Investigator meetings, were the members of the NSF HDR ecosystem were assembled.',
             startDate: '2022-10-26',
             endDate: '2022-10-27',
             image: '../images/events_page_images/2022_HDR²_From_Harnessing_to_Harvesting_the_Data_Revolution.png',

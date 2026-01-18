@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>iHARP Institute - NSF HDR Community</title>
+  <title>iHARP Institute - NSF HDR Ecosystem</title>
   <link rel="icon" href="../../images/icon.png" />
   <link rel="stylesheet" href="../../css/style.css" />
   <link rel="stylesheet" href="../../css/institute.css" />
@@ -245,14 +245,14 @@
   <section class="social-connect">
     <h2>Stay Connected</h2>
     <div class="social-icons">
+      <a class="social-icon" href="https://github.com/iharp-institute" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <img src="../../images/Social_Media_Icons/Github_Logo.png" alt="GitHub logo" />
+      </a>
       <a class="social-icon" href="https://www.linkedin.com/company/iharp/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
         <img src="../../images/Social_Media_Icons/LinkedIn_Logo.png" alt="LinkedIn logo" />
       </a>
       <a class="social-icon" href="https://www.youtube.com/@nsfiHARP" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
         <img src="../../images/Social_Media_Icons/Youtube_Logo.png" alt="YouTube logo" />
-      </a>
-      <a class="social-icon" href="https://github.com/iharp-institute" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-        <img src="../../images/Social_Media_Icons/Github_Logo.png" alt="GitHub logo" />
       </a>
       <a class="social-icon" href="https://zenodo.org/communities/iharp/records?q=&l=list&p=1&s=10&sort=newest" target="_blank" rel="noopener noreferrer" aria-label="Zenodo">
         <img src="../../images/Social_Media_Icons/Zenodo_Logo.png" alt="Zenodo logo" />
@@ -263,8 +263,8 @@
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-section about">
-        <h3>NSF HDR Community</h3>
-        <p> The Harnessing the Data Revolution (HDR) Community is supported by the National Science Foundation under Awards: 
+        <h3>NSF HDR Ecosystem</h3>
+        <p> The Harnessing the Data Revolution (HDR) Ecosystem is supported by the National Science Foundation under Awards: 
           <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118240&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118240</a>, 
           <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118201&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118201</a>, 
           <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118285&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118285</a>, 
@@ -366,7 +366,8 @@
           const imgData = this.hexagonImages[this.currentSlide];
           const captionText = imgData.dataset.caption || 'Image';
           const linkUrl = imgData.dataset.link;
-          const linkText = imgData.dataset.linkText || 'Learn more here';
+          const rawLinkText = imgData.dataset.linkText || 'Learn more here.';
+          const linkText = rawLinkText === 'Learn more here' ? 'Learn more here.' : rawLinkText;
 
           if (linkUrl) {
               this.captionEl.innerHTML = `${captionText} <a href="${linkUrl}" target="_blank" rel="noopener noreferrer">${linkText}</a>`;

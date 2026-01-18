@@ -485,7 +485,7 @@ a {
 
  
 .institutes-section {
-    padding: 80px 40px;
+    padding: 80px 40px 140px;
     background-color:#ffffff;
     text-align: center;
     overflow-x: auto;
@@ -505,42 +505,154 @@ a {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
+    align-items: flex-start;
     gap: 20px;
     max-width: none;
     width: max-content;
     margin: 0 auto;
+    padding-bottom: 40px;
 }
 
-.institute-card-link {
-    display: block;
+.resources-institute-list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.resources-baserow {
+    padding-bottom: 80px;
+}
+
+.resources-institute-item {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 24px 0;
+}
+
+.resources-institute-item.divider {
+    border-top: 1px solid #d6d6d6;
+    margin-top: 4px;
+    padding-top: 32px;
+}
+
+.resources-institute-logo {
+    width: 140px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+}
+
+.resources-institute-logo img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.resources-institute-content {
+    flex: 1;
+    text-align: center;
+}
+
+.resources-institute-content h3 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+}
+
+.resources-institute-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #1f1f1f;
+    margin: 0;
+    text-align: left;
+}
+
+.resources-institute-action {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+.resources-institute-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 22px;
+    width: 142px;
+    height: 104px;
+    border-radius: 18px;
+    clip-path: polygon(6% 0, 100% 0, 100% 88%, 94% 100%, 0 100%, 0 12%);
+    background-color: #ffffff;
+    border: 2px solid #218367;
+    color: #218367;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    box-shadow: 0 10px 20px rgba(33, 131, 103, 0.15);
+}
+
+.resources-institute-button:hover {
+    transform: translateY(-2px);
+    background-color: #218367;
+    color: #ffffff;
+    box-shadow: 0 12px 24px rgba(33, 131, 103, 0.28);
+}
+
+
+@media (max-width: 900px) {
+    .resources-institute-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .resources-institute-action {
+        width: 100%;
+    }
+
+    .resources-institute-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.institute-card {
+    display: flex;
     flex-shrink: 0;
     width: 230px;
-    height: 400px;
+    height: auto;
     border-radius: 15px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background-color: #fff;
     overflow: hidden;
-    display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
 }
 
-.institute-card-link:hover {
+.institute-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-.institute-card {
+.institute-card-link {
     width: 100%;
-    height: 100%;
     box-sizing: border-box;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 20px 15px;
+    padding: 20px 15px 8px;
+    text-decoration: none;
+    color: inherit;
+    height: 300px;
+    flex: 0 0 auto;
 }
 
 .institute-logo-area {
@@ -581,6 +693,50 @@ a {
     line-height: 1.4;
     text-align: center;
     margin: 0;
+}
+
+.institute-card-toggle {
+    width: 100%;
+    border: none;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 12px;
+    cursor: default;
+}
+
+.institute-card-toggle-icon {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.2s ease;
+}
+
+.institute-card-details {
+    width: 100%;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 16px;
+    background: #f7f7f7;
+    border-radius: 0 0 15px 15px;
+    transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+    text-align: center;
+}
+
+.institute-card:hover .institute-card-details {
+    max-height: 420px;
+    opacity: 1;
+    padding: 10px 16px 16px;
+}
+
+.institute-card-details p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.institute-card:hover .institute-card-toggle-icon {
+    transform: rotate(180deg);
 }
 
 .explore-resources-section {
@@ -1278,7 +1434,7 @@ a {
         justify-content: flex-start;
         flex-wrap: wrap;
     }
-    .institute-card-link {
+    .institute-card {
         width: 200px;
     }
     .institute-card h3 {
@@ -1464,7 +1620,7 @@ a {
         max-width: 100%;
     }
 
-    .institute-card-link {
+    .institute-card {
         width: 180px;
     }
     .institutes-grid {
@@ -1750,6 +1906,15 @@ main {
 }
 
 .about-page {
+}
+
+.about-page a {
+    text-decoration: underline;
+}
+
+.about-page a:hover {
+    color: #0074E0;
+    text-decoration: underline;
 }
 
 .gradient-banner {
@@ -2817,19 +2982,20 @@ html, body { overflow-x: hidden; }
     padding: 0 4px 8px;
   }
 
-  .institute-card-link {
+  .institute-card {
     margin: 0;
     width: 100%;
     max-width: 600px;
     height: auto;
   }
 
-  .institute-card {
+  .institute-card-link {
     padding: 18px 16px;
     flex-direction: row;
     align-items: center;
     text-align: left;
     gap: 18px;
+    height: auto;
   }
 
   .institute-logo-area {
@@ -2842,6 +3008,15 @@ html, body { overflow-x: hidden; }
     font-size: 1.1rem;
     min-height: 0;
     text-align: left;
+  }
+
+  .institute-card-details {
+    text-align: left;
+    display: none;
+  }
+
+  .institute-card-toggle {
+    display: none;
   }
 
   .home-news-grid {
@@ -2896,9 +3071,12 @@ html, body { overflow-x: hidden; }
     width: 100%;
   }
 
-  .institute-card-link {
+  .institute-card {
     width: 170px;
-    height: 320px;
+  }
+
+  .institute-card-link {
+    height: 260px;
   }
 }
 

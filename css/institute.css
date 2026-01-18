@@ -1064,13 +1064,17 @@ main {
 
 .lightbox-caption a {
     color: #0074E0;
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
     font-weight: 700;
+    transition: color 0.2s ease;
 }
 
 .lightbox-caption a:hover,
 .lightbox-caption a:focus-visible {
-    text-decoration: underline;
+    color: #1a8cff;
+    font-weight: 800;
 }
 
 .lightbox-credit {
