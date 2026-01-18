@@ -636,8 +636,8 @@ main {
 
     .mission-section, .vision-section {
         flex-direction: column;
-        gap: 16px;
-        margin-bottom: 28px;
+        gap: 12px;
+        margin-bottom: 24px;
         text-align: center;
         align-items: center;
     }
@@ -661,10 +661,10 @@ main {
     .columns.rl .hex-col.right { margin-left: 0; }
 
     
-    .hexagon-row.single { margin-bottom: 0; margin-left: 0; }
+    .hexagon-row.single { margin-bottom: -52px; margin-left: 0; }
 
     .hexagon-row:not(.single) {
-        gap: 10px;
+        gap: 6px;
         justify-content: center;
     }
 
@@ -793,7 +793,7 @@ main {
         overflow: hidden;
     }
 
-    .mission-section, .vision-section { gap: 14px; margin-bottom: 24px; }
+    .mission-section, .vision-section { gap: 10px; margin-bottom: 20px; }
 
     .content-section h2 { font-size: 1.3em; margin-bottom: 15px; }
     .content-section p { font-size: 0.9em; line-height: 1.5; }
@@ -801,6 +801,9 @@ main {
     
     .hexagon { width: 120px; height: 102px; }
     .hexagon.large { width: 120px; height: 102px; }
+
+    .hexagon-row.single { margin-bottom: -44px; }
+    .hexagon-row:not(.single) { gap: 4px; }
 
     
     .about-section {
@@ -1106,11 +1109,18 @@ main {
 .lightbox-indicator {
     width: 12px;
     height: 12px;
+    min-width: 12px;
+    min-height: 12px;
+    padding: 0;
+    display: block;
+    aspect-ratio: 1 / 1;
+    box-sizing: border-box;
     border-radius: 50%;
     border: none;
     background: rgba(26, 35, 126, 0.3);
     cursor: pointer;
     transition: all 0.3s ease;
+    appearance: none;
 }
 
 .lightbox-indicator.active {
@@ -1133,45 +1143,56 @@ main {
 }
 
 @media (max-width: 768px) {
-    .lightbox-modal { max-height: 85vh; width: 95%; }
-    .lightbox-carousel-wrapper {
-        height: var(--carousel-height, 350px);
-        min-height: 260px;
-        max-height: 420px;
+    .lightbox-modal {
+        max-height: 92vh;
+        width: 96%;
+        border-radius: 16px;
     }
-    .lightbox-carousel-btn { width: 45px; height: 45px; font-size: 20px; }
+    .lightbox-slide-image {
+        background-color: #0b1220;
+    }
+    .lightbox-carousel-wrapper {
+        height: auto;
+        min-height: 220px;
+        max-height: none;
+        aspect-ratio: 4 / 3;
+    }
+    .lightbox-carousel-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 20px;
+        background: rgba(0, 116, 224, 0.9);
+        box-shadow: 0 6px 16px rgba(10, 15, 30, 0.25);
+        backdrop-filter: blur(6px);
+    }
     .lightbox-prev-btn { left: 8px; }
     .lightbox-next-btn { right: 8px; }
-    .lightbox-caption-section { padding: 25px 30px; }
-    .lightbox-caption { font-size: 1.4em; margin-bottom: 10px; }
-    .lightbox-credit { font-size: 0.95em; }
-
-    .lightbox-indicators {
-        position: absolute;
-        bottom: 6px;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 0;
-        margin: 0;
-        z-index: 10;
-    }
+    .lightbox-caption-section { padding: 18px 20px 24px; }
+    .lightbox-caption { font-size: 1.15em; margin-bottom: 8px; }
+    .lightbox-credit { font-size: 0.9em; }
 }
 
 @media (max-width: 480px) {
-    .lightbox-modal { max-height: 80vh; width: 98%; border-radius: 15px; }
+    .lightbox-modal { max-height: 90vh; width: 98%; border-radius: 14px; }
     .lightbox-carousel-wrapper {
-        height: var(--carousel-height, 250px);
-        min-height: 220px;
-        max-height: 340px;
+        height: auto;
+        min-height: 200px;
+        max-height: none;
+        aspect-ratio: 4 / 3;
     }
-    .lightbox-carousel-btn { width: 40px; height: 40px; font-size: 18px; }
+    .lightbox-carousel-btn { width: 38px; height: 38px; font-size: 18px; }
     .lightbox-prev-btn { left: 5px; }
     .lightbox-next-btn { right: 5px; }
-    .lightbox-caption-section { padding: 20px 20px; }
-    .lightbox-caption { font-size: 1.2em; }
-    .lightbox-credit { font-size: 0.9em; }
+    .lightbox-caption-section { padding: 16px 16px 28px; }
+    .lightbox-caption { font-size: 1.05em; }
+    .lightbox-credit { font-size: 0.85em; }
     .lightbox-close { width: 36px; height: 36px; font-size: 24px; }
-    .lightbox-indicator { width: 8px; height: 8px; }
+    .lightbox-indicator {
+        width: 8px;
+        height: 8px;
+        min-width: 8px;
+        min-height: 8px;
+    }
 
     .lightbox-indicators {
         bottom: 4px;
@@ -1265,7 +1286,7 @@ main {
 }
 
 .social-connect h2 {
-    margin-bottom: 16px;
+        margin-bottom: 22px;
     color: var(--secondary-color);
     font-size: 2rem; 
     font-weight: bold;
@@ -1322,4 +1343,54 @@ main {
 .mission-section .content-section h2,
 .vision-section .content-section h2 {
     color: var(--secondary-color) !important;
+}
+
+@media (max-width: 768px) {
+  .mission-hexagons.columns,
+  .vision-hexagons.columns {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .columns {
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+  }
+
+  .columns.lr .hex-col.left {
+    margin-right: -28px;
+  }
+
+  .columns.rl .hex-col.right {
+    margin-left: -28px;
+  }
+
+  .columns.lr .hex-col.right,
+  .columns.rl .hex-col.left {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mission-hexagons.columns,
+  .vision-hexagons.columns {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .columns.lr .hex-col.left {
+    margin-right: -22px;
+  }
+
+  .columns.rl .hex-col.right {
+    margin-left: -22px;
+  }
+
+  .columns.lr .hex-col.right,
+  .columns.rl .hex-col.left {
+    gap: 6px;
+  }
 }

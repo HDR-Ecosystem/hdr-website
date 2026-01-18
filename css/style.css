@@ -2869,6 +2869,20 @@ html, body { overflow-x: hidden; }
   }
 }
 
+@media (min-width: 601px) {
+  .home-news-grid {
+    flex-direction: row;
+    gap: 30px;
+    align-items: flex-start;
+  }
+
+  .home-news-grid .news-card {
+    flex-direction: column;
+    width: 305px;
+    max-width: 305px;
+  }
+}
+
 @media (max-width: 1024px) and (min-width: 601px) {
   .institutes-section {
     padding: 40px 20px;
