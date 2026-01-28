@@ -231,12 +231,17 @@ function createEventCard(event) {
 
     const isExternal = isExternalLink(event.link);
     const linkAttrs = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
+    const readMoreLabel = isExternal ? 'Read more on external site \u2192' : 'Read more \u2192';
+    const readMoreMarkup = event.link
+        ? `<span class="event-read-more-overlay" aria-hidden="true">${readMoreLabel}</span>`
+        : '';
     const titleMarkup = event.link
         ? `<a class="event-title-link" href="${event.link}" ${linkAttrs}>${event.title}</a>`
         : `${event.title}`;
     const imageMarkup = event.link
         ? `<a class="event-image-link" href="${event.link}" ${linkAttrs} aria-label="Open event details for ${event.title}">
                 <img src="${event.image}" alt="${event.title}" />
+                ${readMoreMarkup}
            </a>`
         : `<img src="${event.image}" alt="${event.title}" />`;
 
@@ -484,7 +489,7 @@ document.addEventListener('DOMContentLoaded', function() {
             location: 'Columbus, OH',
             institute: 'community',
             customDateText: 'September 16–19, 2025',
-            link: 'https://www.nsfhdr.org/events/upcoming-events/hdr-ecosystem-conference'
+            link: '/html/2025-hdr-conference.html'
         },
         {
             title: 'AAAI Workshop',

@@ -240,10 +240,41 @@
     display: block;
     width: 100%;
     height: 100%;
+    position: relative;
 }
 
 .event-card:hover .event-image img {
     transform: scale(1.05);
+}
+
+.event-read-more-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    padding: 12px;
+    pointer-events: none;
+    font-family: 'IBM Plex Sans', sans-serif;
+    z-index: 1;
+}
+
+.event-card:hover .event-read-more-overlay,
+.event-card:focus-within .event-read-more-overlay {
+    opacity: 1;
+}
+
+.event-card:hover .event-image img,
+.event-card:focus-within .event-image img {
+    filter: brightness(0.8);
 }
 
 .event-content {

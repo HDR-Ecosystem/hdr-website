@@ -179,7 +179,7 @@
           </div>
           <div class="hex-col right">
             <div class="hexagon large">
-              <img class="hexagon-img" src="../../images/i-guide_images/Erik_Shook_Presentation.png" alt="Eric Shook" data-caption="Eric Shook presenting Plenary Talk 'Convergence Curriculum Powered by I-GUIDE' during the 2023 I-GUIDE Forum. Watch the recording." data-link="https://www.youtube.com/watch?v=2JV_tikDw9Q&t=279s" data-link-text="here" data-credit="Credit: I-GUIDE Leadership" />
+              <img class="hexagon-img" src="../../images/i-guide_images/Erik_Shook_Presentation.png" alt="Eric Shook" data-caption="Eric Shook presenting Plenary Talk 'Convergence Curriculum Powered by I-GUIDE' during the 2023 I-GUIDE Forum." data-link="https://www.youtube.com/watch?v=2JV_tikDw9Q&t=279s" data-link-text="Watch the recording here." data-credit="Credit: I-GUIDE Leadership" />
             </div>
           </div>
         </div>
@@ -452,7 +452,10 @@
         const imgData = this.hexagonImages[this.currentSlide];
         const captionText = imgData.dataset.caption || 'Image';
         const linkUrl = imgData.dataset.link;
-        const linkLabel = imgData.dataset.linkText || 'here';
+        let linkLabel = imgData.dataset.linkText || 'here';
+        if (!linkLabel.endsWith('.')) {
+          linkLabel = `${linkLabel}.`;
+        }
 
         if (linkUrl) {
           this.captionEl.innerHTML = `${captionText} <a href="${linkUrl}" target="_blank" rel="noopener noreferrer">${linkLabel}</a>`;

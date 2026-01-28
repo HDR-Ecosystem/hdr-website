@@ -1,0 +1,635 @@
+.conference-intro {
+    max-width: 1100px;
+    margin: 40px auto 60px;
+    padding: 0 20px;
+    display: flex;
+    gap: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.conference-intro-left {
+    flex: 0 1 520px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.conference-button-container {
+    margin-top: 8px;
+    text-align: center;
+}
+
+.conference-agenda-link {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #007bff;
+    border-radius: 25px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.conference-agenda-link:hover {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.conference-detail {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.conference-detail-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+}
+
+.conference-location-icon svg {
+    width: 48px;
+    height: 48px;
+    fill: #1f4e79;
+}
+
+.conference-detail-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.conference-detail-label {
+    margin: 0;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #4a4a4a;
+    font-weight: 600;
+}
+
+.conference-date {
+    font-size: 1.2rem;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    color: #1f1f1f;
+    font-weight: 700;
+}
+
+.conference-detail-value {
+    margin: 0;
+    font-size: 1rem;
+    color: #1f1f1f;
+    font-weight: 400;
+}
+
+.conference-label {
+    font-weight: 700;
+}
+
+.conference-intro-right {
+    flex: 0 1 520px;
+    display: flex;
+    justify-content: center;
+}
+
+.conference-promo-image {
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: none;
+}
+
+.conference-about {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 36px;
+    align-items: flex-start;
+}
+
+.conference-about-text {
+    flex: 1 1 45%;
+}
+
+.conference-about-text h1 {
+    margin: 0 0 20px;
+    font-size: 2.2rem;
+}
+
+.conference-about-title {
+    white-space: nowrap;
+}
+
+.conference-about-text p {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #282828;
+}
+
+.conference-theme {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.conference-theme h1 {
+    margin: 0 0 20px;
+    font-size: 2.2rem;
+}
+
+.conference-theme p {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #282828;
+}
+
+.conference-why {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.conference-why h1 {
+    margin: 0 0 20px;
+    font-size: 2.2rem;
+}
+
+.conference-why p {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #282828;
+}
+
+.conference-registration {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.conference-registration h1 {
+    margin: 0 0 20px;
+    font-size: 2.2rem;
+}
+
+.conference-registration h2 {
+    margin: 24px 0 12px;
+    font-size: 1.4rem;
+}
+
+.conference-registration-row {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+}
+
+.conference-registration-text {
+    flex: 1 1 60%;
+}
+
+.conference-registration-image {
+    flex: 1 1 40%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.conference-registration-image img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    border-radius: 12px;
+}
+
+.conference-registration-row + h2 {
+    margin-top: 32px;
+}
+
+.conference-registration p {
+    margin: 0 0 12px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #282828;
+}
+
+.conference-registration ul {
+    margin: 0 0 20px;
+    padding-left: 20px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #282828;
+}
+
+.conference-venue {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.conference-venue h1 {
+    margin: 0 0 20px;
+    font-size: 2.2rem;
+}
+
+.conference-venue p {
+    margin: 0 0 16px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #282828;
+}
+
+.conference-venue-link {
+    color: #282828;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.conference-venue-link:hover {
+    color: #007bff;
+}
+
+.conference-committee {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.conference-committee h1 {
+    margin: 0 0 20px;
+    font-size: 2.2rem;
+}
+
+.conference-committee ul {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #282828;
+}
+
+.conference-committee a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.conference-committee a:hover {
+    color: #007bff;
+}
+
+.conference-why-list {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+    align-items: stretch;
+}
+
+.conference-why-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    width: 100%;
+    justify-self: stretch;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.conference-why-icon {
+    width: 145px;
+    height: 145px;
+    object-fit: contain;
+    flex: 0 0 145px;
+    align-self: center;
+}
+
+.conference-why-item h2 {
+    margin: 0 0 8px;
+    font-size: 1.1rem;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.conference-why-item p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #282828;
+    text-align: left;
+}
+
+.conference-subthemes {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.conference-subtheme h2 {
+    margin: 0 0 12px;
+    font-size: 1.3rem;
+}
+
+.conference-subtheme p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #282828;
+}
+
+.conference-about-carousel {
+    flex: 1 1 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin-top: calc(2.2rem + 20px);
+}
+
+.conference-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.conference-carousel-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.conference-carousel-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.conference-carousel-slide.active {
+    opacity: 1;
+}
+
+.conference-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid #ffffff;
+    background: rgba(0, 0, 0, 0.35);
+    color: #ffffff;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.conference-carousel-btn.prev-btn {
+    left: 12px;
+}
+
+.conference-carousel-btn.next-btn {
+    right: 12px;
+}
+
+.conference-carousel-indicators {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.conference-carousel-indicators .indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #c9c9c9;
+    border: none;
+    cursor: pointer;
+}
+
+.conference-carousel-indicators .indicator.active {
+    background: #333333;
+}
+
+.conference-photos-button {
+    text-align: center;
+}
+
+.conference-photos-link {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #007bff;
+    border-radius: 25px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.conference-photos-link:hover {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+@media (max-width: 900px) {
+    .conference-why-list {
+        grid-template-columns: 1fr;
+    }
+
+    .conference-registration-row {
+        flex-direction: column;
+    }
+
+    .conference-registration-image {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 900px) {
+    .conference-subthemes {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .conference-about {
+        align-items: stretch;
+    }
+
+    .conference-about-text {
+        text-align: left;
+    }
+}
+
+@media (max-width: 900px) {
+    .conference-intro {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .conference-detail {
+        justify-content: center;
+    }
+
+    .conference-intro-right {
+        width: 100%;
+    }
+}
+
+@media (max-width: 700px) {
+    .header-banner .header-title.no-wrap {
+        white-space: normal;
+    }
+
+    .header-title-box {
+        padding: 16px 20px;
+        width: calc(100% - 32px);
+    }
+
+    .conference-intro {
+        margin: 24px auto 40px;
+        padding: 0 16px;
+        gap: 0;
+    }
+
+    .conference-detail {
+        text-align: left;
+    }
+
+    .conference-detail-icon {
+        width: 40px;
+        height: 40px;
+        flex: 0 0 40px;
+    }
+
+    .conference-detail-label {
+        font-size: 0.85rem;
+    }
+
+    .conference-date {
+        font-size: 1.05rem;
+    }
+
+    .conference-detail-value {
+        font-size: 0.95rem;
+    }
+
+    .conference-agenda-link {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .conference-button-container {
+        margin-top: 0;
+    }
+
+    .conference-intro-right {
+        margin-top: -140px;
+    }
+
+    .conference-promo-image {
+        max-width: 90%;
+    }
+
+    .conference-about {
+        flex-direction: column;
+        gap: 24px;
+        margin: 32px auto;
+        padding: 0 16px;
+    }
+
+    .conference-about-text {
+        text-align: center;
+    }
+
+    .conference-about-title {
+        white-space: normal;
+    }
+
+    .conference-about-text h1,
+    .conference-theme h1,
+    .conference-why h1,
+    .conference-registration h1,
+    .conference-venue h1,
+    .conference-committee h1 {
+        font-size: 1.7rem;
+    }
+
+    .conference-about-text p,
+    .conference-theme p,
+    .conference-why p,
+    .conference-registration p,
+    .conference-registration ul,
+    .conference-venue p,
+    .conference-committee ul {
+        font-size: 1rem;
+    }
+
+    .conference-theme,
+    .conference-why,
+    .conference-registration,
+    .conference-venue,
+    .conference-committee {
+        text-align: left;
+    }
+
+    .conference-about-text h1,
+    .conference-theme h1,
+    .conference-why h1,
+    .conference-registration h1,
+    .conference-venue h1,
+    .conference-committee h1 {
+        text-align: center;
+    }
+
+    .conference-registration ul,
+    .conference-committee ul {
+        text-align: left;
+        list-style-position: outside;
+        padding-left: 20px;
+    }
+
+    .conference-about-carousel {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .conference-carousel {
+        max-width: 100%;
+        height: 220px;
+    }
+
+    .conference-why-item h2 {
+        white-space: normal;
+    }
+
+    .conference-why-icon {
+        width: 110px;
+        height: 110px;
+        flex: 0 0 110px;
+    }
+
+    .conference-registration-row {
+        gap: 20px;
+    }
+
+    .conference-registration-image img {
+        max-width: 100%;
+    }
+}
