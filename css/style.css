@@ -488,6 +488,8 @@ a {
     padding: 80px 40px 140px;
     background-color:#ffffff;
     text-align: center;
+    overflow-x: auto;
+    overflow-y: visible;
     white-space: normal;
     -webkit-overflow-scrolling: touch;
     position: relative;
@@ -512,7 +514,6 @@ a {
     width: max-content;
     margin: 0 auto;
     padding-bottom: 40px;
-    overflow-x: auto;
 }
 
 .resources-institute-list {
