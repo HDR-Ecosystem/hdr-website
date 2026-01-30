@@ -492,8 +492,6 @@ a {
     overflow-y: visible;
     white-space: normal;
     -webkit-overflow-scrolling: touch;
-    position: relative;
-    z-index: 1;
 }
 
 .section-title {
@@ -732,12 +730,12 @@ a {
     border-radius: 0 0 15px 15px;
     transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
     text-align: center;
-    z-index: 100;
+    z-index: 10;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .institute-card:hover .institute-card-details {
-    max-height: 600px;
+    max-height: 420px;
     opacity: 1;
     padding: 10px 16px 16px;
 }
