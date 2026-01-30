@@ -489,6 +489,7 @@ a {
     background-color:#ffffff;
     text-align: center;
     overflow-x: auto;
+    overflow-y: visible;
     white-space: normal;
     -webkit-overflow-scrolling: touch;
 }
