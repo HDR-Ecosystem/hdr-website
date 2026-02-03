@@ -1,6 +1,8 @@
 
 const EVENTS_PER_PAGE = 15; // Desktop default
 const MOBILE_EVENTS_PER_PAGE = 6; // Mobile-only pagination
+const HOME_EVENTS_LIMIT = 3;
+const Y2_EVENTS_PAGE_PATH = 'html/mlchallenge-y2/events.html';
 
 let allEvents = [];
 let filteredEvents = [];
@@ -13,6 +15,8 @@ const initialSearchQuery = new URLSearchParams(window.location.search).get('sear
 let eventsPerPage = getEventsPerPage();
 
 document.addEventListener('DOMContentLoaded', function() {
+    const eventsGrid = document.getElementById('eventsGrid');
+    if (!eventsGrid) return;
     setupEventListeners();
 });
 
@@ -33,6 +37,192 @@ function isExternalLink(url) {
     }
 }
 
+function formatHomeEventDateRange(startDateString, endDateString) {
+    const startDate = parseLocalDate(startDateString);
+    const endDate = endDateString ? parseLocalDate(endDateString) : startDate;
+
+    const startOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    const endOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+
+    const sameDay = startDate.getTime() === endDate.getTime();
+
+    if (sameDay) {
+        return startDate.toLocaleDateString('en-US', startOptions);
+    }
+
+    if (startDate.getFullYear() === endDate.getFullYear() &&
+        startDate.getMonth() === endDate.getMonth()) {
+        const monthYear = startDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+        return `${monthYear} ${startDate.getDate()}–${endDate.getDate()}`;
+    }
+
+    return `${startDate.toLocaleDateString('en-US', startOptions)} – ${endDate.toLocaleDateString('en-US', endOptions)}`;
+}
+
+function formatHomeEventDateTime(startDateString, endDateString, timeString, timezone) {
+    const dateText = formatHomeEventDateRange(startDateString, endDateString);
+    return `${dateText} ${timeString} (${timezone})`;
+}
+
+function normalizeHomeEvent(event) {
+    const startDate = event.startDate || event.date;
+    const endDate = event.endDate || event.date;
+    const time = event.time;
+    const timezone = event.timezone;
+    const normalizedEventType = (event.eventType || '').toLowerCase();
+    const hasTime = Boolean(time || timezone);
+    const dateText = event.customDateText ||
+        (startDate ? (hasTime ? formatHomeEventDateTime(startDate, endDate, time || '12:00pm', timezone || 'CT')
+            : formatHomeEventDateRange(startDate, endDate)) : '');
+
+    return {
+        ...event,
+        startDate,
+        endDate,
+        eventType: normalizedEventType,
+        dateText
+    };
+}
+
+function isUpcomingHomeEvent(eventDateString) {
+    if (!eventDateString) return false;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const eventDate = parseLocalDate(eventDateString);
+    eventDate.setHours(0, 0, 0, 0);
+    return eventDate >= today;
+}
+
+function getHomeEvents(events) {
+    const normalized = events
+        .map(normalizeHomeEvent)
+        .filter(event => event.startDate);
+
+    const upcoming = normalized
+        .filter(event => isUpcomingHomeEvent(event.startDate))
+        .sort((a, b) => parseLocalDate(a.startDate) - parseLocalDate(b.startDate));
+
+    if (upcoming.length > 0) {
+        return upcoming.slice(0, HOME_EVENTS_LIMIT);
+    }
+
+    return normalized
+        .sort((a, b) => parseLocalDate(b.startDate) - parseLocalDate(a.startDate))
+        .slice(0, HOME_EVENTS_LIMIT);
+}
+
+function parseHomeEventDateFromLabel(labelText) {
+    if (!labelText) return null;
+    const match = labelText.match(/Date:\s*([^()]+)/i);
+    if (!match) return null;
+    let raw = match[1].trim();
+
+    const yearMatch = raw.match(/\b(\d{4})\b/);
+    const year = yearMatch ? yearMatch[1] : '';
+
+    if (raw.includes('&')) {
+        const month = raw.split(' ')[0];
+        const lastPart = raw.split('&').pop().trim();
+        const lastDayMatch = lastPart.match(/\d+/);
+        const lastDay = lastDayMatch ? lastDayMatch[0] : '';
+        raw = `${month} ${lastDay}, ${year}`;
+    }
+
+    if (raw.includes('–') || raw.includes('—') || raw.includes('-')) {
+        const dashSplit = raw.split(/–|—|-/);
+        const lastSegment = dashSplit.pop().trim();
+        const monthMatch = lastSegment.match(/[A-Za-z]+/);
+        const month = monthMatch ? monthMatch[0] : raw.split(' ')[0];
+        const dayMatch = lastSegment.match(/\d+/);
+        const day = dayMatch ? dayMatch[0] : '';
+        raw = `${month} ${day}, ${year}`;
+    }
+
+    const parsed = new Date(raw);
+    if (Number.isNaN(parsed.getTime())) return null;
+    return parsed.toISOString().slice(0, 10);
+}
+
+function normalizeY2HomeEvent(item) {
+    const titleLink = item.querySelector('a');
+    const dateSpan = item.querySelector('.event-date');
+    const locationSpan = item.querySelector('.event-location');
+    const dateLabel = dateSpan ? dateSpan.textContent.trim() : '';
+    const startDate = parseHomeEventDateFromLabel(dateLabel);
+
+    if (!titleLink || !startDate) return null;
+
+    const locationText = locationSpan
+        ? locationSpan.textContent.replace(/^[^A-Za-z0-9]+/, '').trim()
+        : '';
+
+    return {
+        title: titleLink.textContent.trim(),
+        description: '',
+        date: startDate,
+        image: 'images/events_page_images/Frame_2.png',
+        eventType: locationSpan && locationSpan.textContent.includes('Online') ? 'virtual' : 'in-person',
+        location: locationText,
+        link: titleLink.getAttribute('href')
+    };
+}
+
+async function loadY2HomeEventsFromHtml() {
+    try {
+        const response = await fetch(Y2_EVENTS_PAGE_PATH, { credentials: 'same-origin' });
+        if (!response.ok) return [];
+        const htmlText = await response.text();
+        const doc = new DOMParser().parseFromString(htmlText, 'text/html');
+        const items = Array.from(doc.querySelectorAll('details ul li'));
+        return items
+            .map(normalizeY2HomeEvent)
+            .filter(Boolean);
+    } catch (err) {
+        return [];
+    }
+}
+
+function dedupeHomeEvents(events) {
+    const seen = new Set();
+    return events.filter(event => {
+        const key = `${event.title}::${event.startDate || event.date}::${event.link || ''}`;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+    });
+}
+
+function renderHomeEvents(events) {
+    const container = document.getElementById('home-events-container');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    events.forEach(event => {
+        const isExternal = isExternalLink(event.link);
+        const linkAttrs = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
+        const locationText = event.eventType === 'virtual'
+            ? (event.location || 'Virtual')
+            : (event.location || 'Location TBD');
+        const locationIcon = event.eventType === 'virtual'
+            ? 'images/online.png'
+            : 'images/Location_icon.png';
+
+        container.insertAdjacentHTML('beforeend', `
+            <a class="event-link" href="${event.link || '#'}" ${linkAttrs}>
+                <div class="event-item">
+                    <h4>${event.title}</h4>
+                    <p class="event-date">${event.dateText}</p>
+                    <div class="event-location">
+                        <img src="${locationIcon}" alt="Location" class="location-icon">
+                        <span>${locationText}</span>
+                    </div>
+                </div>
+            </a>
+        `);
+    });
+}
+
 function setupEventListeners() {
 
     const filterToggle = document.getElementById('filterToggle');
@@ -45,11 +235,13 @@ function setupEventListeners() {
         });
     }
 
-    document.addEventListener('click', function(e) {
-        if (!filterDropdown.contains(e.target) && !filterToggle.contains(e.target)) {
-            filterDropdown.classList.add('hidden');
-        }
-    });
+    if (filterDropdown && filterToggle) {
+        document.addEventListener('click', function(e) {
+            if (!filterDropdown.contains(e.target) && !filterToggle.contains(e.target)) {
+                filterDropdown.classList.add('hidden');
+            }
+        });
+    }
 
     const filterOptions = document.querySelectorAll('input[name="eventFilter"]');
     filterOptions.forEach(option => {
@@ -481,7 +673,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             title: 'HDR Ecosystem Conference 2025',
-            description: 'This conference united researchers, and students to share breakthroughs and chart a bold data-rich future.', 
+            description: 'This conference united researchers, and students to share breakthroughs and chart a bold data-rich future.',
             startDate: '2025-09-16',
             endDate: '2025-09-19',
             image: '../images/events_page_images/HDR_Ecosystem_Conference_2025.jpg',
@@ -578,5 +770,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     ];
 
-    window.populateEvents(sampleEvents);
+    window.HDR_EVENTS = sampleEvents;
+
+    const eventsGrid = document.getElementById('eventsGrid');
+    if (eventsGrid) {
+        window.populateEvents(sampleEvents);
+    }
+
+    const homeEventsContainer = document.getElementById('home-events-container');
+    if (homeEventsContainer) {
+        (async () => {
+            const y2Events = await loadY2HomeEventsFromHtml();
+            const combined = dedupeHomeEvents([...window.HDR_EVENTS, ...y2Events]);
+            const events = getHomeEvents(combined);
+            renderHomeEvents(events);
+        })();
+    }
 });

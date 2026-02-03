@@ -81,7 +81,7 @@
 }
 
 .carousel-slide:hover .slide-image img {
-    transform: scale(1.05);
+    transform: none;
 }
 
 .slide-image::before {

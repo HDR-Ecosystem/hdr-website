@@ -158,7 +158,7 @@
         <div class="mission-hexagons columns lr">
           <div class="hex-col left">
             <div class="hexagon large">
-              <img class="hexagon-img" src="../../images/a3d3_images/(ACAT_2024)presentation.jpg" alt="..." data-caption="Yuan-Tang Chou, an A3D3 Postdoc, presenting at the International Workshop on Advanced Computing and Analysis Techniques in Physics Research." data-credit="Credit: A3D3 Leadership" />
+              <img class="hexagon-img" src="../../images/a3d3_images/(ACAT_2024)presentation.jpg" alt="..." data-caption="Yuan-Tang Chou, an A3D3 Postdoc, presenting at the International Workshop on Advanced Computing and Analysis Techniques in Physics Research." data-link="https://a3d3.ai/a3d3-affiliates-present-at-the-22nd-international-workshop-on-advanced-computing-and-analysis-techniques-in-physics-research/" data-link-text="Learn more here." data-credit="Credit: A3D3 Leadership" />
             </div>
           </div>
           <div class="hex-col right">
@@ -166,7 +166,7 @@
               <img class="hexagon-img" src="../../images/a3d3_images/Bencarsonpostersession.jpg" alt="An automated astronomical observatory." data-caption="A3D3 researcher Ben Carlson presenting his poster titled “Module for evaluation of machine learning algorithms in FPGA hardware for high energy physics.”" data-credit="Credit: A3D3 Leadership" />
             </div>
             <div class="hexagon">
-              <img class="hexagon-img" src="../../images/a3d3_images/Amyosbornresearch.jpg" alt="A futuristic control room with multiple data screens." data-caption="A3D3 researcher and Clare Boothe Luce Associate Professor Amy Osborn, studying brain signals with a student." data-credit="Credit: A3D3 Leadership" />
+              <img class="hexagon-img" src="../../images/a3d3_images/STEM_Diversity.jpg" alt="A futuristic control room with multiple data screens." data-caption="A3D3 trainees attending the National Diversity in STEM conference, an event dedicated to providing a platform for underrepresented groups in STEM." data-link="https://a3d3.ai/a3d3-trainees-attend-national-diversity-in-stem-conference/" data-link-text="Read more here" data-credit="Credit: A3D3 Leadership" />
             </div>
             
           </div>
@@ -183,7 +183,7 @@
           <div class="hex-col left">
             
             <div class="hexagon">
-              <img class="hexagon-img" src="../../images/a3d3_images/Presentation_Mission_image_1.jpg" alt="A researcher interacting with complex data visualizations." data-caption="A3D3 graduate student, Will Benoit, presenting on “Deploying Machine Learning in Time-Domain Astronomy” at the Transients from Space conference." data-credit="Credit: A3D3 leadership" />
+              <img class="hexagon-img" src="../../images/a3d3_images/Presentation_Mission_image_1.jpg" alt="A researcher interacting with complex data visualizations." data-caption="A3D3 graduate student, Will Benoit, presenting on “Deploying Machine Learning in Time-Domain Astronomy” at the Transients from Space conference." data-link="https://a3d3.ai/a3d3-attends-the-transients-from-space-conference/" data-link-text="Learn more here." data-credit="Credit: A3D3 leadership" />
             </div>
             <div class="hexagon">
               <img class="hexagon-img" src="../../images/a3d3_images/Students_vision_image_2.jpg" alt="A close-up of a high-speed data processing chip." data-caption="Yuan-Tang Chou, a member of the A3D3 team giving a presentation on applications of the NVIDIA Triton server for deploying models as-a-service." data-credit="Credit: https://a3d3.ai/tag/conference/" />
@@ -327,6 +327,13 @@
           <li><a href="../mlchallenges.html">Challenges</a></li>
           <li><a href="../events.html">Events</a></li>
         </ul>
+        <div class="footer-hosted">
+            <a href="https://github.com/HDR-Ecosystem/hdr-website" target="_blank" rel="noopener noreferrer">
+                
+                Hosted on Github
+            <img class="footer-github-icon" src="../../images/Social_Media_Icons/Github_Logo.png" alt="GitHub logo" />
+            </a>
+        </div>
       </div>
       <div class="footer-section institutes">
         <h3>Institutes</h3>
@@ -461,7 +468,18 @@
           });
 
           const imgData = this.hexagonImages[this.currentSlide];
-          this.captionEl.textContent = imgData.dataset.caption || 'Image';
+          const captionText = imgData.dataset.caption || 'Image';
+          const linkUrl = imgData.dataset.link;
+          let linkLabel = imgData.dataset.linkText || 'here';
+          if (!linkLabel.endsWith('.')) {
+            linkLabel = `${linkLabel}.`;
+          }
+
+          if (linkUrl) {
+            this.captionEl.innerHTML = `${captionText} <a href="${linkUrl}" target="_blank" rel="noopener noreferrer">${linkLabel}</a>`;
+          } else {
+            this.captionEl.textContent = captionText;
+          }
           this.creditEl.textContent = imgData.dataset.credit || 'Credit: Unknown';
       }
   }

@@ -5,6 +5,14 @@
     color: #0b1d46;
 }
 
+.y2-prizes-page .y2-content a {
+    text-decoration: underline;
+}
+
+.y2-prizes-page .y2-subnav a {
+    text-decoration: none;
+}
+
 .y2-content {
     max-width: 1200px;
     margin: 0 auto;
