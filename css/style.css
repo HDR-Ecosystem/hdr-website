@@ -838,9 +838,20 @@ a {
     margin-bottom: 15px;
 }
 
-.event-item:hover {
-    box-shadow: none;
-    
+.event-link:hover .event-item h4,
+.event-link:focus-visible .event-item h4 {
+    color: #0074E0;
+    text-decoration: none;
+}
+
+.event-link:hover .event-date,
+.event-link:focus-visible .event-date {
+    color: #000;
+}
+
+.event-link:hover .event-location,
+.event-link:focus-visible .event-location {
+    color: #0074E0;
 }
 
 .event-item h4 {
@@ -853,7 +864,7 @@ a {
 
 .event-date {
     font-size: 1rem;
-    color: #666;
+    color: #000;
     margin: 0 0 10px 0;
     font-style: italic;
 }
