@@ -1952,6 +1952,17 @@ a:hover {
     margin-top: auto;
 }
 
+/* Publications page: keep topic icons compact and centered */
+body.publications-page .publications-topics .topic-item img {
+    width: 160px;
+    height: 160px;
+    max-width: none;
+    object-fit: contain;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 @media (max-width: 1200px) {
     .publications-topics .topics-container {
         gap: 20px;
@@ -1973,6 +1984,11 @@ a:hover {
         max-width: 100%;
         align-items: center;
         text-align: center;
+    }
+
+    body.publications-page .publications-topics .topic-item img {
+        width: 160px;
+        height: 160px;
     }
 }
 
