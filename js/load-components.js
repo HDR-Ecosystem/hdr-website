@@ -14,8 +14,8 @@
     function getPathPrefix() {
         const path = window.location.pathname;
         
-        // Root level (index.html)
-        if (path.endsWith('/') || path.endsWith('/index.html') || !path.includes('/html/')) {
+        // Root level (index.html at root or just /)
+        if (path.endsWith('/') || (path.endsWith('/index.html') && !path.includes('/html/'))) {
             return '';
         }
         
@@ -24,7 +24,9 @@
         if (htmlIndex !== -1) {
             const afterHtml = path.substring(htmlIndex + 6); // Skip '/html/'
             const depth = (afterHtml.match(/\//g) || []).length;
-            return '../'.repeat(depth);
+            // Files directly in /html/ need one level up (..)
+            // Files in /html/subdir/ need two levels up (../..)
+            return '../'.repeat(depth + 1);
         }
         
         return '../';
