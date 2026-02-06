@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ID4 Institute - NSF HDR Community</title>
+  <title>ID4 Institute - NSF HDR Ecosystem</title>
   <link rel="icon" href="../../images/icon.png" />
   <link rel="stylesheet" href="../../css/style.css" />
   <link rel="stylesheet" href="../../css/institute.css" />
@@ -118,11 +118,11 @@
         <div class="about-content-wrapper">
           <div class="about-text">
             <p>
-              ID4 addresses the prediction of dynamical processes in materials. This includes ion and molecular transport, catalytic pathways, phase transformations in metamaterials, and the synthesis of porous frameworks. They focus on designing complex dynamical materials and structures and discovering new mechanisms and pathways. Their data science developments target strategies for encoding complex systems for machine intelligence, enhancing predictive capabilities, and advancing visualization, all fueled through large-scale simulations. ID4 addresses new representations of complex materials and geometrical structures, explores high-dimensional, time-dependent design spaces, and builds visual analytics tools for human-in-the-loop design feedback. They grow and unite the data-driven design community through outreach and community activities, building a new generation of STEM talent at the intersection of data science and physical sciences/engineering.
+              ID4 addresses the prediction of dynamical processes in materials. This includes ion and molecular transport, catalytic pathways, phase transformations in metamaterials, and the synthesis of porous frameworks. They focus on designing complex dynamical materials and structures and discovering new mechanisms and pathways. Their data science developments target strategies for encoding complex systems for machine intelligence, enhancing predictive capabilities, and advancing visualization, all fueled through large-scale simulations. ID4 addresses new representations of complex materials and geometrical structures, explores high-dimensional, time-dependent design spaces, and builds visual analytics tools for human-in-the-loop design feedback. They grow and unite the data-driven design community through outreach and community activities, building a new generation of STEM talent at the intersection of data science and physical sciences/engineering. <a href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2118201" target="_blank" rel="noopener noreferrer">Read the entire award abstract here.</a>
             </p>
           </div>
           <div class="about-image">
-            <img src="../../images/id4_images/ID4_group_photo.jpg" alt="ID4 Research" />
+            <img class="about-popup-trigger" src="../../images/id4_images/ID4_group_photo.jpg" alt="ID4 Research" />
           </div>
         </div>
       </div>
@@ -145,14 +145,14 @@
             </div>
 
             <div class="hexagon">
-              <img class="hexagon-img" src="../../images/id4_images/Poster_award.jpg" alt="A close-up of a complex crystalline structure." data-caption="ID4 graduate student Menghang (David) Wang winning best poster award at the 2024 Materials Research Society Spring " data-credit="Credit: ID4 Leadership" />
+              <img class="hexagon-img" src="../../images/id4_images/Poster_award.jpg" alt="A close-up of a complex crystalline structure." data-caption="ID4 graduate student Menghang (David) Wang winning best poster award at the 2024 Materials Research Society Spring." data-credit="Credit: ID4 Leadership" />
             </div>
           </div>
         </div>
 
         <div class="content-section">
           <h2>Mission</h2>
-          <p>"From chemistry to civil engineering, we seek to create platforms that accelerate the discovery of new mechanisms and dynamics through the complementary union of human and machine intelligence. We aspire to create the next generation of leaders in this transformative approach and to cultivate a vibrant, inclusive community committed to data-driven approaches."</p>
+          <p>"Accelerate the discovery of new mechanisms and dynamics for materials science through the complementary union of human and machine intelligence."</p>
         </div>
       </div>
 
@@ -168,7 +168,7 @@
           </div>
           <div class="hex-col right">
             <div class="hexagon large">
-              <img class="hexagon-img" src="../../images/id4_images/Bertoldi_lab_at_Harvard_id4.jpg" alt="A close-up of a high-tech material surface." data-caption="Bertoldi lab at Harvard during dynamic testing experiments of flexible metamaterial" data-credit="Credit: Giovanni Bordiga" />
+              <img class="hexagon-img" src="../../images/id4_images/Bertoldi_lab_at_Harvard_id4.jpg" alt="A close-up of a high-tech material surface." data-caption="Bertoldi lab at Harvard during dynamic testing experiments of flexible metamaterial." data-credit="Credit: Giovanni Bordiga" />
             </div>
           </div>
         </div>
@@ -262,9 +262,9 @@
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-section about">
-        <h3>NSF HDR Community</h3>
+        <h3>NSF HDR Ecosystem</h3>
         <p>
-          The Harnessing the Data Revolution (HDR) Community is supported by the National Science Foundation under Awards: 
+          The Harnessing the Data Revolution (HDR) Ecosystem is supported by the National Science Foundation under Awards: 
           <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118240&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118240</a>, 
           <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118201&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118201</a>, 
           <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118285&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118285</a>, 
@@ -287,6 +287,13 @@
           <li><a href="../mlchallenges.html">Challenges</a></li>
           <li><a href="../events.html">Events</a></li>
         </ul>
+        <div class="footer-hosted">
+            <a href="https://github.com/HDR-Ecosystem/hdr-website" target="_blank" rel="noopener noreferrer">
+                
+                Hosted on Github
+            <img class="footer-github-icon" src="../../images/Social_Media_Icons/Github_Logo.png" alt="GitHub logo" />
+            </a>
+        </div>
       </div>
       <div class="footer-section institutes">
         <h3>Institutes</h3>
@@ -428,7 +435,7 @@
           linkEl.href = captionLink;
           linkEl.target = '_blank';
           linkEl.rel = 'noopener noreferrer';
-          linkEl.textContent = 'Learn more here';
+          linkEl.textContent = 'Learn more here.';
           this.captionEl.appendChild(linkEl);
         } else {
           this.captionEl.textContent = captionText;
@@ -437,11 +444,53 @@
       }
     }
 
+    function setupAboutImagePopup() {
+      const triggers = Array.from(document.querySelectorAll('.about-image .about-popup-trigger'));
+      if (!triggers.length) return;
+
+      const popup = document.createElement('div');
+      popup.className = 'about-photo-popup';
+      popup.innerHTML = `
+        <div class="about-photo-popup-dialog">
+          <button class="about-photo-popup-close" aria-label="Close">&times;</button>
+          <img src="" alt="" />
+        </div>
+      `;
+      document.body.appendChild(popup);
+
+      const closeBtn = popup.querySelector('.about-photo-popup-close');
+      const popupImg = popup.querySelector('img');
+
+      const closePopup = () => {
+        popup.classList.remove('active');
+        document.body.style.overflow = 'auto';
+        popupImg.src = '';
+      };
+
+      triggers.forEach((img) => {
+        img.addEventListener('click', () => {
+          popupImg.src = img.currentSrc || img.src;
+          popupImg.alt = img.alt || 'About image';
+          popup.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      closeBtn.addEventListener('click', closePopup);
+      popup.addEventListener('click', (e) => {
+        if (e.target === popup) closePopup();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && popup.classList.contains('active')) closePopup();
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       const lightboxOverlay = document.querySelector('.lightbox-overlay');
       if (lightboxOverlay) {
         window.hexagonCarousel = new HexagonCarousel(lightboxOverlay);
       }
+      setupAboutImagePopup();
     });
   </script>
 </body>

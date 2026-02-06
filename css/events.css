@@ -223,7 +223,7 @@
 
 .event-image {
     width: 100%;
-    height: 360px; 
+    height: 240px;
     overflow: hidden;
     position: relative;
 }
@@ -240,10 +240,41 @@
     display: block;
     width: 100%;
     height: 100%;
+    position: relative;
 }
 
 .event-card:hover .event-image img {
     transform: scale(1.05);
+}
+
+.event-read-more-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    padding: 12px;
+    pointer-events: none;
+    font-family: 'IBM Plex Sans', sans-serif;
+    z-index: 1;
+}
+
+.event-card:hover .event-read-more-overlay,
+.event-card:focus-within .event-read-more-overlay {
+    opacity: 1;
+}
+
+.event-card:hover .event-image img,
+.event-card:focus-within .event-image img {
+    filter: brightness(0.8);
 }
 
 .event-content {
@@ -326,15 +357,15 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.85rem;
+    font-size: 1rem;
     color: #9D55CE;
     font-family: 'Source Sans Pro', 'Source Sans Pro', sans-serif;
     font-weight: 500;
 }
 
 .location-icon {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     object-fit: contain;
     opacity: 1;
 }
@@ -349,6 +380,10 @@
     margin: 0;
     font-family: 'Source Sans Pro', 'Source Sans Pro', sans-serif;
     flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .filter-btn-main:focus-visible,

@@ -81,7 +81,7 @@
 }
 
 .carousel-slide:hover .slide-image img {
-    transform: scale(1.05);
+    transform: none;
 }
 
 .slide-image::before {
@@ -131,6 +131,21 @@
     line-height: 1.6;
     margin: 0;
     font-family: 'Source Sans Pro', sans-serif;
+}
+
+.slide-content a {
+    color: #0074E0;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+    font-weight: 600;
+    transition: color 0.2s ease, font-weight 0.2s ease;
+}
+
+.slide-content a:hover,
+.slide-content a:focus-visible {
+    color: #1a8cff;
+    font-weight: 700;
 }
 
 .carousel-btn {

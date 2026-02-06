@@ -1,6 +1,10 @@
 @import "../mlchallenge-y2/styles.css";
 
 /* Small page-specific tweaks */
+.y1-page .y2-subnav a {
+    font-weight: 550;
+}
+
 .y1-iframe-wrap iframe {
     height: 820px;
 }

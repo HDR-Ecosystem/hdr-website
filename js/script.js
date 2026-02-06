@@ -100,8 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.initHamburger();
 
+
     const pagesToIndex = [
-        { title: "Home", url: "index.html", keywords: "HDR community home institutes events news resources publications challenges" },
+        { title: "Home", url: "index.html", keywords: "HDR ecosystem home institutes events news resources publications challenges" },
         { title: "About", url: "html/about.html", keywords: "About HDR mission institutes data revolution overview" },
         { title: "Resources", url: "html/resources.html", keywords: "data education code models datasets training materials" },
         { title: "News", url: "html/news.html", keywords: "news articles updates press releases" },

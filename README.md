@@ -2,9 +2,27 @@
 
 This repository contains the code for the HDR (Harnessing the Data Revolution) Ecosystem website.
 
-The Harnessing the Data Revolution (HDR) Community is a national ecosystem of NSF-funded institutes advancing data-intensive science, engineering, and education through convergence research. Established under the NSF Big Idea Harnessing the Data Revolution, the HDR Community brings together domain scientists, data scientists, and cyberinfrastructure experts to accelerate discovery, develop scalable and interoperable tools, and prepare a diverse data-enabled workforce.
+The Harnessing the Data Revolution (HDR) Community is a national ecosystem of NSF-funded institutes advancing data-intensive science, engineering, and education through convergence research. Established under the NSF Big Idea Harnessing the Data Revolution, the HDR Ecosystem brings together domain scientists, data scientists, and cyberinfrastructure experts to accelerate discovery, develop scalable and interoperable tools, and prepare a diverse data-enabled workforce.
 
-Member institutes—including [A3D3](https://a3d3.ai/), [Imageomics](https://imageomics.org), [ID4](https://id4.mines.edu/), [iHARP](https://iharp.umbc.edu/), and [I-GUIDE](https://i-guide.io/)—serve as both independent centers of excellence and collaborative partners, addressing challenges ranging from climate resilience and polar research to biology, materials design, and artificial intelligence. Through shared resources, cross-institute initiatives, and open science practices, the HDR Community strengthens the national research enterprise and ensures that data-driven innovation contributes to scientific progress and societal well-being.
+Member institutes—including [A3D3](https://a3d3.ai/), [Imageomics](https://imageomics.org), [ID4](https://id4.mines.edu/), [iHARP](https://iharp.umbc.edu/), and [I-GUIDE](https://i-guide.io/)—serve as both independent centers of excellence and collaborative partners, addressing challenges ranging from climate resilience and polar research to biology, materials design, and artificial intelligence. Through shared resources, cross-institute initiatives, and open science practices, the HDR Ecosystem strengthens the national research enterprise and ensures that data-driven innovation contributes to scientific progress and societal well-being.
+
+## Site Structure (Quick Map)
+
+- `index.html` is the main landing page.
+- `html/` contains the primary site pages (news, events, institutes, resources, etc.).
+- `html/institutes/` holds institute-specific pages (for example, `iguide.html`).
+- `html/mlchallenge-y1/` is the Year 1 ML Challenge site (including the AAAI workshop page).
+- `html/mlchallenge-y2/` is the Year 2 ML Challenge site.
+- `html/mlchallenges.html` is the ML Challenge landing page.
+- `css/`, `js/`, and `images/` are global assets used across the site.
+
+### Redirects (Legacy URLs)
+
+These directories exist to preserve links referenced elsewhere. Each contains a simple redirect page.
+
+- `/AAAI-workshop` → `/html/mlchallenge-y1/aaai-workshop2024.html`
+- `/mlchallenge` → `/html/mlchallenges.html`
+- `/mlchallenge-y2` → `/html/mlchallenge-y2/index.html`
 
 ## Local Testing
 
@@ -17,8 +35,8 @@ python -m http.server 8080
 Then open <http://[::]:8080/> in your browser of choice.
 
 
-## NSF HDR Community
-<p> The Harnessing the Data Revolution (HDR) Community is supported by the National Science Foundation under Awards: 
+## NSF HDR Ecosystem
+<p> The Harnessing the Data Revolution (HDR) Ecosystem is supported by the National Science Foundation under Awards: 
       <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118240&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118240</a>, 
       <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118201&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118201</a>, 
       <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118285&HistoricalAwards=false" target="_blank" rel="noopener noreferrer">2118285</a>, 
