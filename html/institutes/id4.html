@@ -122,7 +122,7 @@
             </p>
           </div>
           <div class="about-image">
-            <img src="../../images/id4_images/ID4_group_photo.jpg" alt="ID4 Research" />
+            <img class="about-popup-trigger" src="../../images/id4_images/ID4_group_photo.jpg" alt="ID4 Research" />
           </div>
         </div>
       </div>
@@ -444,11 +444,53 @@
       }
     }
 
+    function setupAboutImagePopup() {
+      const triggers = Array.from(document.querySelectorAll('.about-image .about-popup-trigger'));
+      if (!triggers.length) return;
+
+      const popup = document.createElement('div');
+      popup.className = 'about-photo-popup';
+      popup.innerHTML = `
+        <div class="about-photo-popup-dialog">
+          <button class="about-photo-popup-close" aria-label="Close">&times;</button>
+          <img src="" alt="" />
+        </div>
+      `;
+      document.body.appendChild(popup);
+
+      const closeBtn = popup.querySelector('.about-photo-popup-close');
+      const popupImg = popup.querySelector('img');
+
+      const closePopup = () => {
+        popup.classList.remove('active');
+        document.body.style.overflow = 'auto';
+        popupImg.src = '';
+      };
+
+      triggers.forEach((img) => {
+        img.addEventListener('click', () => {
+          popupImg.src = img.currentSrc || img.src;
+          popupImg.alt = img.alt || 'About image';
+          popup.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      closeBtn.addEventListener('click', closePopup);
+      popup.addEventListener('click', (e) => {
+        if (e.target === popup) closePopup();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && popup.classList.contains('active')) closePopup();
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       const lightboxOverlay = document.querySelector('.lightbox-overlay');
       if (lightboxOverlay) {
         window.hexagonCarousel = new HexagonCarousel(lightboxOverlay);
       }
+      setupAboutImagePopup();
     });
   </script>
 </body>

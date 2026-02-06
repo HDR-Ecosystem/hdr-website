@@ -106,7 +106,7 @@
         </div>
         <div class="about-image">
           <picture>
-            <img src="../../images/Imageomics_images/Imageomics_Group_photo.JPG" alt="Imageomics research using biological images and AI" />
+            <img class="about-popup-trigger" src="../../images/Imageomics_images/Imageomics_Group_photo.JPG" alt="Imageomics research using biological images and AI" />
           </picture>
         </div>
       </div>
@@ -135,7 +135,7 @@
           </div>
           <div class="hex-col right">
             <div class="hexagon">
-              <img class="hexagon-img" src="../../images/Imageomics_images/Funcapalooza25.jpg" alt="FuncaPalooza 2025" data-caption="FuncaPalooza 2025, a workshop hosted by Imageomics, using Play-Doh models to explore trait extraction of organisms." data-credit="Credit: Ryan Horn" />
+              <img class="hexagon-img" src="../../images/Imageomics_images/Funcapalooza25.jpg" alt="FuncaPalooza 2025" data-caption="FuncaPalooza 2025, a workshop hosted by Imageomics, using Play-Doh models to explore trait extraction of organisms." data-credit="Credit: Ryan Horns" />
             </div>
             <div class="hexagon">
               <img class="hexagon-img" src="../../images/Imageomics_images/Kenya_Research.JPG" alt="A researcher using machine vision to identify species." data-caption="Imageomics students and faculty at Mpala Research Centre in Kenya conducting biological field research." data-link="https://imageomics.osu.edu/news/2023/01/imageomics-embarks-kenya-research-experience" data-credit="Credit: Tanya Berger-Wolf" />
@@ -153,7 +153,7 @@
         <div class="vision-hexagons columns rl">
           <div class="hex-col left">
             <div class="hexagon">
-              <img class="hexagon-img" src="../../images/Imageomics_images/Grandparents_day.jpg" alt="Grandparents." data-caption="Grandparents Day, at Imageomics, kids and their grandparents sorting animals by traits." data-credit="Credit: Ryan Horn" />
+              <img class="hexagon-img" src="../../images/Imageomics_images/Grandparents_day.jpg" alt="Grandparents." data-caption="Grandparents Day, at Imageomics, kids and their grandparents sorting animals by traits." data-credit="Credit: Ryan Horns" />
             </div>
             <div class="hexagon">
               <img class="hexagon-img" src="../../images/Imageomics_images/the_wilds_data_collection.jpeg" alt="A phylogenetic tree with associated images of organisms." data-caption="Imageomics crew collecting data at The Wilds nature preserve to launch the Smart NatureLab project." data-link="https://imageomics.osu.edu/news/2025/07/sensor-and-sensibility-imageomics-takes-tech-wilds" data-credit="Credit: Jenna Kline" />
@@ -179,20 +179,12 @@
       <h2><strong>Areas of work</strong></h2>
       <div class="work-icons">
         <div class="work-item">
-          <img src="../../images/Imageomics_images/Ecology.png" alt="Ecology" width="145" height="145"/>
-          <p>Ecology</p>
-        </div>
-        <div class="work-item">
           <img src="../../images/Imageomics_images/Biology.png" alt="Biology" width="145" height="145"/>
           <p>Biology</p>
         </div>
         <div class="work-item">
           <img src="../../images/Imageomics_images/Image_Data.png" alt="Image Data" width="145" height="145"/>
-          <p>Image Data</p>
-        </div>
-        <div class="work-item">
-          <img src="../../images/Imageomics_images/Biodiversity.png" alt="Biodiversity Informatics" width="145" height="145"/>
-          <p>Biodiversity Informatics</p>
+          <p>Image Analysis</p>
         </div>
       </div>
     </div>
@@ -406,9 +398,52 @@
           this.creditEl.textContent = imgData.dataset.credit || 'Credit: Unknown';
       }
   }
+
+  function setupAboutImagePopup() {
+      const triggers = Array.from(document.querySelectorAll('.about-image .about-popup-trigger'));
+      if (!triggers.length) return;
+
+      const popup = document.createElement('div');
+      popup.className = 'about-photo-popup';
+      popup.innerHTML = `
+        <div class="about-photo-popup-dialog">
+          <button class="about-photo-popup-close" aria-label="Close">&times;</button>
+          <img src="" alt="" />
+        </div>
+      `;
+      document.body.appendChild(popup);
+
+      const closeBtn = popup.querySelector('.about-photo-popup-close');
+      const popupImg = popup.querySelector('img');
+
+      const closePopup = () => {
+          popup.classList.remove('active');
+          document.body.style.overflow = 'auto';
+          popupImg.src = '';
+      };
+
+      triggers.forEach((img) => {
+          img.addEventListener('click', () => {
+              popupImg.src = img.currentSrc || img.src;
+              popupImg.alt = img.alt || 'About image';
+              popup.classList.add('active');
+              document.body.style.overflow = 'hidden';
+          });
+      });
+
+      closeBtn.addEventListener('click', closePopup);
+      popup.addEventListener('click', (e) => {
+          if (e.target === popup) closePopup();
+      });
+      document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && popup.classList.contains('active')) closePopup();
+      });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
       const lightboxOverlay = document.querySelector('.lightbox-overlay');
       if (lightboxOverlay) { window.hexagonCarousel = new HexagonCarousel(lightboxOverlay); }
+      setupAboutImagePopup();
   });
   </script>
 </body>

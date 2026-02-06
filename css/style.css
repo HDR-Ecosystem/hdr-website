@@ -249,6 +249,11 @@ a {
     padding: 80px 40px 140px;
     background-color:#ffffff;
     text-align: center;
+<<<<<<< HEAD
+=======
+    overflow-x: auto;
+    overflow-y: auto;
+>>>>>>> 1c34737 (WIP #54: the section doesn't expand, but dropdowns are cut off)
     white-space: normal;
     position: relative;
     z-index: 2;
@@ -492,7 +497,11 @@ a {
     margin-top: -12px;
     transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
     text-align: center;
+<<<<<<< HEAD
     z-index: 20;
+=======
+    z-index: 10;
+>>>>>>> 1c34737 (WIP #54: the section doesn't expand, but dropdowns are cut off)
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 

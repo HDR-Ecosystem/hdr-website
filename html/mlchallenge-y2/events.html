@@ -231,10 +231,8 @@
       if (!eventDate) return false;
       const today = new Date();
       today.setHours(0, 0, 0, 0);
-      const yesterday = new Date(today);
-      yesterday.setDate(today.getDate() - 1);
       eventDate.setHours(0, 0, 0, 0);
-      return eventDate < yesterday;
+      return eventDate < today;
     }
 
     function organizeEventsByDate() {
