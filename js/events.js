@@ -202,7 +202,7 @@ function renderHomeEvents(events) {
         const isExternal = isExternalLink(event.link);
         const linkAttrs = isExternal ? 'target="_blank" rel="noopener noreferrer"' : '';
         const locationText = event.eventType === 'virtual'
-            ? (event.location || 'Virtual')
+            ? 'Virtual'
             : (event.location || 'Location TBD');
         const locationIcon = event.eventType === 'virtual'
             ? 'images/online.png'
@@ -556,7 +556,7 @@ window.getEventsData = function() {
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-    const sampleEvents = [
+    const eventsData = [
         {
             title: 'I-GUIDE VCO: The I-GUIDE Data Ethics Toolkit',
             description: 'This hands-on session will allow you to explore tools from the I-GUIDE Data Ethics Toolkit.',
@@ -633,6 +633,30 @@ document.addEventListener('DOMContentLoaded', function() {
             institute: 'A3D3, Imageomics, iHARP',
             customDateText: 'January 10, 2026 • 9:00am - 7:00pm (PST)',
             link: 'https://indico.cern.ch/event/1604685/overview'
+        },
+        {
+            title: 'Imageomics 2026 All-hands Meeting',
+            description: 'Discover how the Imageomics Institute bridges biology and AI to revolutionize our understanding of life.',
+            startDate: '2026-04-14',
+            endDate: '2026-04-16',
+            image: '../images/events_page_images/Imageomics_2026_All-hands_Meeting.jpg',
+            eventType: 'in-person',
+            location: 'Columbus, OH',
+            institute: 'Imageomics',
+            customDateText: 'April 14-16, 2026',
+            link: 'https://imageomics.osu.edu/allhands'
+        },
+        {
+            title: 'ID4 All Hands Meeting + AI for Engineering Workshop',
+            description: 'This event brings together leading researchers working across mechanics, materials, structures, and computation.',
+            startDate: '2026-05-13',
+            endDate: '2026-05-14',
+            image: '../images/events_page_images/ID4_all_hands_meeting.JPG',
+            eventType: 'in-person',
+            location: 'Princeton, NJ',
+            institute: 'ID4',
+            customDateText: 'May 13-14, 2026',
+            link: 'https://id4.mines.edu/ai-for-engineering/'
         },
         {
             title: 'AAG 2026 Symposium',
@@ -770,11 +794,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     ];
 
-    window.HDR_EVENTS = sampleEvents;
+    window.HDR_EVENTS = eventsData;
 
     const eventsGrid = document.getElementById('eventsGrid');
     if (eventsGrid) {
-        window.populateEvents(sampleEvents);
+        window.populateEvents(eventsData);
     }
 
     const homeEventsContainer = document.getElementById('home-events-container');

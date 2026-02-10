@@ -258,10 +258,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return results;
     }
 
-    const searchBar = document.getElementById('searchBar');
-    const searchContainer = document.getElementById('searchContainer');
-    const searchIconBtn = document.querySelector('.search-icon-btn');
-    const resultsContainer = document.getElementById('searchResults');
+    let searchBar = null;
+    let searchContainer = null;
+    let searchIconBtn = null;
+    let resultsContainer = null;
     const searchPagePath = 'html/search.html';
 
     function showPageMessage(message) {
@@ -376,7 +376,21 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsContainer.style.display = 'block';
     }
 
-    if (searchBar && searchContainer && resultsContainer) {
+    function initSearchUI() {
+        searchBar = document.getElementById('searchBar');
+        searchContainer = document.getElementById('searchContainer');
+        searchIconBtn = document.querySelector('.search-icon-btn');
+        resultsContainer = document.getElementById('searchResults');
+
+        if (!searchBar || !searchContainer || !resultsContainer) {
+            return;
+        }
+
+        if (searchContainer.dataset.searchBound === 'true') {
+            return;
+        }
+        searchContainer.dataset.searchBound = 'true';
+
         if (searchIconBtn) {
             searchIconBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -460,6 +474,9 @@ document.addEventListener('DOMContentLoaded', () => {
             searchBar.value = initialPageQuery;
         }
     }
+
+    window.initSearchUI = initSearchUI;
+    initSearchUI();
 
     if (searchResultsPageContainer) {
         if (initialPageQuery) {

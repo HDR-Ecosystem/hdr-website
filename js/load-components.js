@@ -73,6 +73,14 @@
                 const target = document.getElementById(targetId);
                 if (target) {
                     target.innerHTML = adjustedHtml;
+                    if (targetId === 'header-placeholder') {
+                        if (typeof window.initHamburger === 'function') {
+                            window.initHamburger();
+                        }
+                        if (typeof window.initSearchUI === 'function') {
+                            window.initSearchUI();
+                        }
+                    }
                 } else {
                     console.error(`Target element #${targetId} not found`);
                 }
