@@ -102,21 +102,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     const pagesToIndex = [
-        { title: "Home", url: "index.html", keywords: "HDR ecosystem home institutes events news resources publications challenges" },
-        { title: "About", url: "html/about.html", keywords: "About HDR mission institutes data revolution overview" },
-        { title: "Resources", url: "html/resources.html", keywords: "data education code models datasets training materials" },
-        { title: "News", url: "html/news.html", keywords: "news articles updates press releases" },
-        { title: "Publications", url: "html/publications.html", keywords: "publications papers research articles" },
-        { title: "Challenges", url: "html/mlchallenges.html", keywords: "machine learning challenges competitions leaderboard datasets" },
-        { title: "Events", url: "html/events.html", keywords: "events workshops conferences hackathons webinars" },
-        { title: "A3D3", url: "html/institutes/a3d3.html", keywords: "A3D3 accelerated AI algorithms data driven discovery" },
-        { title: "ID4", url: "html/institutes/id4.html", keywords: "ID4 institute for data driven dynamical design materials science" },
-        { title: "I-GUIDE", url: "html/institutes/iguide.html", keywords: "I-GUIDE geospatial data integrative discovery environment" },
-        { title: "iHARP", url: "html/institutes/iharp.html", keywords: "iHARP polar science climate modeling data revolution" },
-        { title: "Imageomics", url: "html/institutes/imageomics.html", keywords: "Imageomics AI biodiversity biology computer vision" },
-        { title: "ML Challenge Year 1", url: "html/mlchallenge-y1/index.html", keywords: "machine learning challenge year 1 rules datasets leaderboard" },
-        { title: "ML Challenge Year 2", url: "html/mlchallenge-y2/index.html", keywords: "machine learning challenge year 2 rules datasets leaderboard" },
-        { title: "AAAI Workshop 2024", url: "html/mlchallenge-y1/aaai-workshop2024.html", keywords: "AAAI workshop 2024 HDR machine learning" }
+        { title: "Home", url: "index.html" },
+        { title: "About", url: "html/about.html" },
+        { title: "Resources", url: "html/resources.html" },
+        { title: "News", url: "html/news.html" },
+        { title: "Publications", url: "html/publications.html" },
+        { title: "Challenges", url: "html/mlchallenges.html" },
+        { title: "Events", url: "html/events.html" },
+        { title: "A3D3", url: "html/institutes/a3d3.html" },
+        { title: "ID4", url: "html/institutes/id4.html" },
+        { title: "I-GUIDE", url: "html/institutes/iguide.html" },
+        { title: "iHARP", url: "html/institutes/iharp.html" },
+        { title: "Imageomics", url: "html/institutes/imageomics.html" },
+        { title: "HDR Conference 2025", url: "html/2025-hdr-conference.html" },
+        { title: "HDR Conference 2025 Agenda", url: "html/2025-hdr-conference-agenda.html" },
+        { title: "ML Challenge Year 1", url: "html/mlchallenge-y1/index.html" },
+        { title: "ML Challenge Year 1 Rules", url: "html/mlchallenge-y1/rules.html" },
+        { title: "ML Challenge Year 1 Datasets", url: "html/mlchallenge-y1/datasets.html" },
+        { title: "ML Challenge Year 1 Leaderboard", url: "html/mlchallenge-y1/leaderboard.html" },
+        { title: "ML Challenge Year 1 Terms", url: "html/mlchallenge-y1/terms.html" },
+        { title: "AAAI Workshop 2024", url: "html/mlchallenge-y1/aaai-workshop2024.html" },
+        { title: "ML Challenge Year 2", url: "html/mlchallenge-y2/index.html" },
+        { title: "ML Challenge Year 2 Rules", url: "html/mlchallenge-y2/rules.html" },
+        { title: "ML Challenge Year 2 Datasets", url: "html/mlchallenge-y2/datasets.html" },
+        { title: "ML Challenge Year 2 Events", url: "html/mlchallenge-y2/events.html" },
+        { title: "ML Challenge Year 2 Prizes", url: "html/mlchallenge-y2/prizes.html" },
+        { title: "ML Challenge Year 2 Terms", url: "html/mlchallenge-y2/terms.html" }
     ];
 
     const currentHref = window.location.href;
@@ -131,6 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })();
 
     const resolveToAbsolute = (relativePath) => new URL(relativePath, siteBaseHref).href;
+    const MAX_SEARCH_PAGES = 120;
 
     let searchIndexData = [];
     let isIndexBuilt = false;
@@ -140,15 +152,109 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchQueryText = document.getElementById('searchQueryText');
     const initialPageQuery = new URLSearchParams(window.location.search).get('q') || '';
 
+    function normalizeSearchText(value) {
+        return (value || '')
+            .toString()
+            .toLowerCase()
+            .normalize('NFKD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-z0-9\s]/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim();
+    }
+
+    function escapeRegExp(value) {
+        return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function isIndexableHtmlUrl(absoluteUrl) {
+        try {
+            const url = new URL(absoluteUrl);
+            return (
+                url.origin === window.location.origin &&
+                url.pathname.endsWith('.html') &&
+                !url.pathname.includes('/components/')
+            );
+        } catch (err) {
+            return false;
+        }
+    }
+
+    function inferPageTitle(absoluteUrl) {
+        try {
+            const url = new URL(absoluteUrl);
+            const filename = url.pathname.split('/').pop() || 'page';
+            return filename
+                .replace(/\.html$/i, '')
+                .replace(/[-_]+/g, ' ')
+                .replace(/\b\w/g, ch => ch.toUpperCase());
+        } catch (err) {
+            return 'Page';
+        }
+    }
+
+    function extractIndexableLinks(html, pageUrl) {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const links = Array.from(doc.querySelectorAll('a[href]'))
+            .map(a => a.getAttribute('href'))
+            .filter(Boolean)
+            .map(href => {
+                try {
+                    const resolved = new URL(href, pageUrl);
+                    resolved.hash = '';
+                    return resolved.href;
+                } catch (err) {
+                    return null;
+                }
+            })
+            .filter(Boolean)
+            .filter(isIndexableHtmlUrl);
+
+        return Array.from(new Set(links));
+    }
+
+    function indexDynamicEvents() {
+        if (!Array.isArray(window.HDR_EVENTS)) {
+            return;
+        }
+
+        const seenKeys = new Set(searchIndexData.map(item => `${item.title}::${item.url}`));
+
+        window.HDR_EVENTS.forEach(event => {
+            if (!event || !event.title) return;
+
+            const eventLink = event.link ? resolveToAbsolute(event.link) : resolveToAbsolute('html/events.html');
+            const key = `${event.title}::${eventLink}`;
+            if (seenKeys.has(key)) return;
+            seenKeys.add(key);
+
+            const eventText = [
+                event.title,
+                event.description,
+                event.institute,
+                event.location,
+                event.customDateText,
+                event.startDate,
+                event.endDate,
+                event.date
+            ].filter(Boolean).join(' ');
+
+            searchIndexData.push({
+                title: event.title,
+                url: eventLink,
+                content: eventText,
+                contentLower: normalizeSearchText(eventText)
+            });
+        });
+    }
+
     function extractTextFromHtml(html) {
         const temp = document.createElement('div');
         temp.innerHTML = html;
         
         const scripts = temp.querySelectorAll('script, style');
         scripts.forEach(script => script.remove());
-
-        const chrome = temp.querySelectorAll('header, nav, footer, .header, .nav, .footer');
-        chrome.forEach(el => el.remove());
         
         let text = temp.textContent || temp.innerText || '';
         text = text.replace(/\s+/g, ' ').trim();
@@ -158,29 +264,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function buildSearchIndex() {
         console.log('Building search index...');
-        
-        for (const page of pagesToIndex) {
-            const resolvedUrl = resolveToAbsolute(page.url);
+
+        const queue = pagesToIndex.map(page => ({
+            title: page.title,
+            url: resolveToAbsolute(page.url)
+        }));
+        const seen = new Set();
+
+        while (queue.length > 0 && seen.size < MAX_SEARCH_PAGES) {
+            const page = queue.shift();
+            if (!page || seen.has(page.url) || !isIndexableHtmlUrl(page.url)) {
+                continue;
+            }
+            seen.add(page.url);
+
             try {
-                const response = await fetch(resolvedUrl);
+                const response = await fetch(page.url);
                 if (response.ok) {
                     const html = await response.text();
                     const textContent = extractTextFromHtml(html);
-                    
+                    const combined = textContent;
+
                     searchIndexData.push({
                         title: page.title,
-                        url: resolvedUrl,
-                        content: `${page.keywords || ''} ${textContent}`.trim(),
-                        contentLower: `${page.keywords || ''} ${textContent}`.toLowerCase().trim()
+                        url: page.url,
+                        content: combined,
+                        contentLower: normalizeSearchText(combined)
                     });
-                    
+
+                    const discoveredLinks = extractIndexableLinks(html, page.url);
+                    discoveredLinks.forEach(link => {
+                        if (!seen.has(link) && !queue.some(item => item.url === link)) {
+                            queue.push({
+                                title: inferPageTitle(link),
+                                url: link
+                            });
+                        }
+                    });
+
                     console.log(`Indexed: ${page.title}`);
                 } else {
                     searchIndexData.push({
                         title: page.title,
-                        url: resolvedUrl,
-                        content: page.keywords || page.title,
-                        contentLower: (page.keywords || page.title).toLowerCase()
+                        url: page.url,
+                        content: page.title,
+                        contentLower: normalizeSearchText(page.title)
                     });
                     console.log(`Fallback indexed (response ${response.status}): ${page.title}`);
                 }
@@ -188,12 +316,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log(`Could not index ${page.title}:`, error);
                 searchIndexData.push({
                     title: page.title,
-                    url: resolvedUrl,
-                    content: page.keywords || page.title,
-                    contentLower: (page.keywords || page.title).toLowerCase()
+                    url: page.url,
+                    content: page.title,
+                    contentLower: normalizeSearchText(page.title)
                 });
             }
         }
+
+        // Include JS-rendered events that are not present in static HTML.
+        indexDynamicEvents();
         
         isIndexBuilt = true;
         console.log('Search index complete. Pages indexed:', searchIndexData.length);
@@ -227,18 +358,24 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!query || query.length < 2) {
             return [];
         }
-        
-        const queryLower = query.toLowerCase();
+
+        const normalizedQuery = normalizeSearchText(query);
+        const tokens = normalizedQuery.split(' ').filter(Boolean);
+        if (tokens.length === 0) {
+            return [];
+        }
         const results = [];
         
         searchIndexData.forEach(page => {
-            const titleMatch = page.title.toLowerCase().includes(queryLower);
-            const contentMatch = page.contentLower.includes(queryLower);
+            const normalizedTitle = normalizeSearchText(page.title);
+            const titleMatch = tokens.every(token => normalizedTitle.includes(token));
+            const contentMatch = tokens.every(token => page.contentLower.includes(token));
             
             if (titleMatch || contentMatch) {
                 let snippet = '';
                 if (contentMatch) {
-                    const index = page.contentLower.indexOf(queryLower);
+                    const firstToken = tokens[0];
+                    const index = page.contentLower.indexOf(firstToken);
                     const start = Math.max(0, index - 50);
                     const end = Math.min(page.contentLower.length, index + 100);
                     snippet = page.content.substring(start, end);
@@ -264,9 +401,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let resultsContainer = null;
     const searchPagePath = 'html/search.html';
 
-    function showPageMessage(message) {
+    function showPageMessage(message, useInlineStyle = false) {
         if (searchResultsPageContainer) {
-            searchResultsPageContainer.innerHTML = '<div class="search-results-page-message">' + message + '</div>';
+            const messageClass = useInlineStyle ? 'search-results-page-message-inline' : 'search-results-page-message';
+            searchResultsPageContainer.innerHTML = '<div class="' + messageClass + '">' + message + '</div>';
         }
     }
 
@@ -294,7 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (results.length === 0) {
-            showPageMessage('No results found for "' + query + '".');
+            showPageMessage('No results found for "' + query + '".', true);
             return;
         }
 
@@ -302,7 +440,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         results.forEach(result => {
             const highlightedSnippet = result.snippet.replace(
-                new RegExp(query, 'gi'),
+                new RegExp(escapeRegExp(query), 'gi'),
                 '<strong>$&</strong>'
             );
             
@@ -359,7 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         results.forEach(result => {
             const highlightedSnippet = result.snippet.replace(
-                new RegExp(query, 'gi'),
+                new RegExp(escapeRegExp(query), 'gi'),
                 '<strong>$&</strong>'
             );
             

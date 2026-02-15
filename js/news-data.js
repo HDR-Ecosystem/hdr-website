@@ -1,4 +1,6 @@
 // new entries should be added to the top of the array latest at the top
+
+// {title:...", date: "...", img: "...", link: "...", description: "..."},
 window.newsData = [
     {title: "Imageomics Launches New Catalog for Open Science Resources", date: "December 10, 2025", img: "../images/news_page_images/imageomicscatalog.png", link: "https://imageomics.osu.edu/news/2025/12/imageomics-launches-new-catalog-showcasing-open-science-resources-ai-and-nature", description: "The Imageomics Catalog is now live, bringing together a collection of public code, datasets, models, and spaces, all in one easy-to-explore hub."},
     {title: "I-GUIDE Ph.D. candidate’s focus on accessible geospatial resources ", date: "December 5, 2025", img: "../images/news_page_images/NathanIguide.jpg", link: "https://i-guide.io/news_events/user-centered-designs-that-improve-accessibility-for-geospatial-resources-is-hallmark-of-jaroenchais-work/", description: "Nathan’s work centers on designing clear user experiences and developing features that help researchers navigate complex geospatial workflows."},

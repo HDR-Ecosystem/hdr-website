@@ -40,8 +40,7 @@
      */
     function adjustPaths(html, prefix) {
         if (!prefix) return html;
-        
-        // Replace src and href attributes that reference root-level directories
+
         // Match patterns like src="images/...", href="html/...", etc.
         html = html.replace(/src="(images|css|js|html)\//g, `src="${prefix}$1/`);
         html = html.replace(/href="(images|css|js|html)\//g, `href="${prefix}$1/`);
@@ -90,9 +89,6 @@
             });
     }
 
-    /**
-     * Initialize component loading when DOM is ready
-     */
     function initComponents() {
         const prefix = getPathPrefix();
         const componentsPath = `${prefix}html/components/`;
