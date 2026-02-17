@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
 @import url('header-footer.css');
+@import url('search.css');
 
 * {
     box-sizing: border-box;
@@ -33,7 +34,7 @@ h1, h2, h3, h4, h5, h6,
 .topics-covered h2,
 .topic-item h3,
 .resources-list-section h2,
-.types-of-resources h2,
+.topics-covered-resources h2,
 .resource-content h3,
 .news-and-updates h1,
 .carousel-title,
@@ -334,6 +335,13 @@ a {
     text-align: left;
 }
 
+/* Resources page typography sizing */
+body.resources-page .introduction p,
+body.resources-page .topics-covered-resources-grid .resource-content p,
+body.resources-page .resources-institute-content p {
+    font-size: 16px;
+}
+
 .resources-institute-action {
     flex-shrink: 0;
     display: flex;
@@ -487,13 +495,13 @@ a {
     opacity: 0;
     overflow: hidden;
     padding: 0 16px;
-    background: #f7f7f7;
-    border-radius: 15px;
+    background: #fff;
+    border-radius: 0 0 15px 15px;
     margin-top: -12px;
     transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
     text-align: center;
     z-index: 20;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 12px -10px rgba(0, 0, 0, 0.18);
 }
 
 .institute-card:hover .institute-card-details {
@@ -811,7 +819,7 @@ a {
 .events-container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 12px;
     padding-right: 10px;
 }
 
@@ -835,7 +843,7 @@ a {
     gap: 5px;
     flex-shrink: 0;
     transition: all 0.3s ease;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
 }
 
 .event-link:hover .event-item h4,
@@ -858,14 +866,14 @@ a {
     font-size: 1.1rem;
     font-weight: 700;
     color: #333;
-    margin: 0 0 10px 0;
+    margin: 0 0 6px 0;
     line-height: 1.3;
 }
 
 .event-date {
     font-size: 1rem;
     color: #000;
-    margin: 0 0 10px 0;
+    margin: 0 0 6px 0;
     font-style: italic;
 }
 
@@ -1142,9 +1150,6 @@ a {
         font-size: 0.85rem;
     }
 
-    .search-results {
-        min-width: 100%;
-    }
 }
 
 .numbers-section {
@@ -1628,7 +1633,7 @@ a:hover {
     }
     .introduction,
     .topics-covered,
-    .types-of-resources,
+    .topics-covered-resources,
     .publications-topics,
     .resources-list-section .list-container,
     .how-to-start .content-wrapper,
@@ -1733,19 +1738,60 @@ a:hover {
     cursor: pointer;
 }
 
-.types-of-resources {
+.topics-covered-resources {
     max-width: 1200px;
     margin: 0 auto;
     padding: 60px 20px;
 }
 
-.types-of-resources h2 {
+.topics-covered-resources h2 {
     font-size: 2.5rem;
     font-weight: bold;
     font-weight: 700;
     text-align: center;
     margin-bottom: 40px;
     color: #333;
+}
+
+.topics-covered-resources-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.topics-covered-resources-grid .resource-item {
+    margin: 0;
+    padding: 20px;
+    min-height: 0;
+    gap: 20px;
+    flex-direction: column;
+    border-radius: 12px;
+    background-color: #fff;
+}
+
+.topics-covered-resources-grid .resource-content,
+.topics-covered-resources-grid .resource-image {
+    max-width: 100%;
+}
+
+.topics-covered-resources-grid .resource-content h3,
+.topics-covered-resources-grid .resource-content p {
+    text-align: left;
+}
+
+.topics-covered-resources-grid .resource-content h3 {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+}
+
+.topics-covered-resources-grid .resource-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.topics-covered-resources-grid .resource-image img {
+    height: 220px;
+    object-fit: cover;
 }
 
 .resource-item {
@@ -1793,13 +1839,18 @@ a:hover {
 }
 
 @media (max-width: 768px) {
-    .types-of-resources {
+    .topics-covered-resources {
         padding: 40px 15px;
     }
 
-    .types-of-resources h2 {
+    .topics-covered-resources h2 {
         font-size: 2rem;
         margin-bottom: 40px;
+    }
+
+    .topics-covered-resources-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 
     .resource-item {
@@ -1828,7 +1879,7 @@ a:hover {
 }
 
 @media (max-width: 480px) {
-    .types-of-resources h2 {
+    .topics-covered-resources h2 {
         font-size: 1.8rem;
     }
 
@@ -2010,7 +2061,7 @@ body.publications-page .publications-topics .topic-item img {
 @media (max-width: 768px) {
     .introduction,
     .topics-covered,
-    .types-of-resources,
+    .topics-covered-resources,
     .publications-topics,
     .resources-list-section .list-container,
     .how-to-start .content-wrapper,
@@ -2359,73 +2410,6 @@ html, body { overflow-x: hidden; }
   }
 }
 
-/* Search results page */
-.search-page {
-  padding-top: 40px;
-}
-
-.search-results-page {
-  max-width: 1100px;
-  margin: 80px auto;
-  padding: 0 20px 80px;
-}
-
-.search-results-page-header h1 {
-  font-size: 32px;
-  margin-bottom: 6px;
-  color: #0f1d40;
-}
-
-.search-page-subtitle {
-  color: #4b5563;
-  margin-bottom: 24px;
-  font-size: 16px;
-}
-
-.search-results-page-message {
-  background: #f3f4f6;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 16px;
-  color: #4b5563;
-  font-size: 15px;
-}
-
-.search-results-page-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.search-result-item-page {
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 16px;
-  background: #ffffff;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
-}
-
-.search-result-item-page .search-result-title {
-  color: #0f1d40;
-  font-size: 18px;
-  margin-bottom: 8px;
-}
-
-.search-result-item-page .search-result-snippet {
-  color: #4b5563;
-  font-size: 15px;
-  line-height: 1.5;
-}
-
-@media (max-width: 768px) {
-  .search-results-page {
-    margin: 40px auto 60px;
-  }
-
-  .search-results-page-header h1 {
-    font-size: 26px;
-  }
-}
 *:focus,
 *:focus-visible {
     outline: none !important;

@@ -94,12 +94,12 @@
         <div class="mission-hexagons columns lr">
           <div class="hex-col left">
             <div class="hexagon large">
-              <img class="hexagon-img" src="../../images/Imageomics_images/Tanya-Berger-Wolf-imageomics_presentation_mission_photo_2.jpg" alt="Tanya" data-caption="Imageomics Director, Tanya Berger-Wolf, presenting on mimicry traits of butterflies." data-credit="Credit: Jodi Miller"/>
+              <img class="hexagon-img" src="../../images/Imageomics_images/Imageomics_presentation.jpg" alt="Tanya" data-caption="Imageomics Director, Tanya Berger-Wolf, presenting on mimicry traits of butterflies." data-credit="Credit: Jodi Miller"/>
             </div>
           </div>
           <div class="hex-col right">
             <div class="hexagon">
-              <img class="hexagon-img" src="../../images/Imageomics_images/Funcapalooza25.jpg" alt="FuncaPalooza 2025" data-caption="FuncaPalooza 2025, a workshop hosted by Imageomics, using Play-Doh models to explore trait extraction of organisms." data-credit="Credit: Ryan Horns" />
+              <img class="hexagon-img" src="../../images/Imageomics_images/Funcapalooza25.jpg" alt="FuncaPalooza 2025" data-caption="FuncaPalooza 2025, a workshop hosted by Imageomics, using Play-Doh models to explore trait extraction of organisms." data-link="https://imageomics.osu.edu/news/2025/09/funcapalooza-2025-launches-new-era-open-ai-driven-biodiversity-research" data-link-text="Learn more about Funcapalooza here." data-credit="Credit: Ryan Horns" />
             </div>
             <div class="hexagon">
               <img class="hexagon-img" src="../../images/Imageomics_images/Kenya_Research.JPG" alt="A researcher using machine vision to identify species." data-caption="Imageomics students and faculty at Mpala Research Centre in Kenya conducting biological field research." data-link="https://imageomics.osu.edu/news/2023/01/imageomics-embarks-kenya-research-experience" data-credit="Credit: Tanya Berger-Wolf" />
@@ -117,7 +117,7 @@
         <div class="vision-hexagons columns rl">
           <div class="hex-col left">
             <div class="hexagon">
-              <img class="hexagon-img" src="../../images/Imageomics_images/Grandparents_day.jpg" alt="Grandparents." data-caption="Grandparents Day, at Imageomics, kids and their grandparents sorting animals by traits." data-credit="Credit: Ryan Horns" />
+              <img class="hexagon-img" src="../../images/Imageomics_images/Grandparents_day.jpg" alt="Grandparents." data-caption="Grandparents Day, at Imageomics, kids and their grandparents sorting animals by traits." data-link="https://imageomics.osu.edu/news/2025/07/grand-time-ai-nature" data-link-text="Learn more here." data-credit="Credit: Ryan Horns" />
             </div>
             <div class="hexagon">
               <img class="hexagon-img" src="../../images/Imageomics_images/the_wilds_data_collection.jpeg" alt="A phylogenetic tree with associated images of organisms." data-caption="Imageomics crew collecting data at The Wilds nature preserve to launch the Smart NatureLab project." data-link="https://imageomics.osu.edu/news/2025/07/sensor-and-sensibility-imageomics-takes-tech-wilds" data-credit="Credit: Jenna Kline" />
@@ -125,7 +125,7 @@
           </div>
           <div class="hex-col right">
             <div class="hexagon large">
-              <img class="hexagon-img" src="../../images/Imageomics_images/IMG_2409.jpg" alt="BioCLIP" data-caption="BioCLIP, a vision foundation model, won 2025 CSE Graduate Research Poster Award." 
+              <img class="hexagon-img" src="../../images/Imageomics_images/bioclip_presentation.jpg" alt="BioCLIP" data-caption="BioCLIP, a vision foundation model, won 2025 CSE Graduate Research Poster Award." 
               data-link="https://imageomics.osu.edu/news/2025/04/bioclip-wins-2025-cse-graduate-research-poster-award "
               data-credit="Credit: Imageomics Leadership" />
             </div>
@@ -164,7 +164,7 @@
 
       <div class="contributors-grid">
         <div class="contributor-card">
-          <img src="../../images/Imageomics_images/Tanya_Berger-Wolf.png" alt="Photo of Dr. Tanya Berger-Wolf" />
+          <img src="../../images/Imageomics_images/Tanya_Berger-Wolf.jpeg" alt="Photo of Dr. Tanya Berger-Wolf" />
           <div class="contributor-info">
             <h3>Tanya Berger-Wolf</h3>
             <p>Principal Investigator</p>
@@ -299,6 +299,7 @@
           const imgData = this.hexagonImages[this.currentSlide];
           const captionText = imgData.dataset.caption || 'Image';
           const captionLink = imgData.dataset.link;
+          const captionLinkText = imgData.dataset.linkText || 'Learn more here.';
 
           if (captionLink) {
               this.captionEl.textContent = '';
@@ -307,7 +308,7 @@
               linkEl.href = captionLink;
               linkEl.target = '_blank';
               linkEl.rel = 'noopener noreferrer';
-              linkEl.textContent = 'Learn more here.';
+              linkEl.textContent = captionLinkText;
               this.captionEl.appendChild(linkEl);
           } else {
               this.captionEl.textContent = captionText;
