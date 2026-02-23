@@ -63,25 +63,43 @@ function updateChallengeStatuses() {
         card.dataset.currentStatus = computedStatus;
         const isOpen = computedStatus === 'open';
 
+        const badgeDisplay = getBadgeDisplay(computedStatus, winnersDate, workshopDate, now);
+
         // Update badge
         if (badge) {
-            const label = computedStatus.charAt(0).toUpperCase() + computedStatus.slice(1);
-            badge.textContent = label;
-            badge.classList.toggle('status-open', computedStatus === 'open' || computedStatus === 'upcoming');
-            badge.classList.toggle('status-closed', computedStatus === 'closed' || computedStatus === 'archived');
+            badge.textContent = badgeDisplay.label;
+            badge.classList.toggle('status-open', badgeDisplay.tone === 'open');
+            badge.classList.toggle('status-closed', badgeDisplay.tone === 'closed');
         }
 
         // Update countdown timer
         if (countdown) {
-            countdown.classList.toggle('is-closed', !isOpen);
+            let useClosedStyle = !isOpen;
             if (daysRemaining === null) {
                 countdown.textContent = 'Timeline unavailable';
             } else if (isOpen) {
                 const dayLabel = daysRemaining === 1 ? 'day' : 'days';
                 countdown.textContent = `${daysRemaining} ${dayLabel} until submissions close`;
             } else {
-                countdown.textContent = 'Submissions closed';
+                const winnersRemaining = winnersDate ? (winnersDate - now) : null;
+                const workshopRemaining = workshopDate ? (workshopDate - now) : null;
+
+                if (winnersRemaining !== null && winnersRemaining > 0) {
+                    const winnersDays = Math.max(0, Math.floor(winnersRemaining / (1000 * 60 * 60 * 24)));
+                    const dayLabel = winnersDays === 1 ? 'day' : 'days';
+                    countdown.textContent = `${winnersDays} ${dayLabel} until winners announced`;
+                    useClosedStyle = false;
+                } else if (workshopRemaining !== null && workshopRemaining > 0) {
+                    const workshopDays = Math.max(0, Math.floor(workshopRemaining / (1000 * 60 * 60 * 24)));
+                    const dayLabel = workshopDays === 1 ? 'day' : 'days';
+                    countdown.textContent = `Winners Announced + ${workshopDays} ${dayLabel} till Award Ceremony/FARR`;
+                    useClosedStyle = false;
+                } else {
+                    countdown.textContent = 'Closed';
+                    useClosedStyle = true;
+                }
             }
+            countdown.classList.toggle('is-closed', useClosedStyle);
         }
 
         // Update timeline steps
@@ -188,6 +206,37 @@ function calculateProgress(now, datedSteps) {
     }
 
     return 100;
+}
+
+function getBadgeDisplay(computedStatus, winnersDate, workshopDate, now) {
+    if (computedStatus === 'open') {
+        return { label: 'Open', tone: 'open' };
+    }
+
+    if (computedStatus === 'upcoming') {
+        return { label: 'Upcoming', tone: 'open' };
+    }
+
+    if (computedStatus === 'archived') {
+        return { label: 'Archived', tone: 'closed' };
+    }
+
+    if (computedStatus === 'closed') {
+        const winnersPending = winnersDate && now < winnersDate;
+        const workshopPending = workshopDate && now < workshopDate;
+
+        if (winnersPending) {
+            return { label: 'Winners Soon', tone: 'open' };
+        }
+
+        if (workshopPending) {
+            return { label: 'Workshop Soon', tone: 'open' };
+        }
+
+        return { label: 'Closed', tone: 'closed' };
+    }
+
+    return { label: 'Open', tone: 'open' };
 }
 
 function applyFilters() {

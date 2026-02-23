@@ -785,7 +785,7 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'The first HDR Principal Investigator meetings, were the members of the NSF HDR ecosystem were assembled.',
             startDate: '2022-10-26',
             endDate: '2022-10-27',
-            image: '../images/events_page_images/2022_HDR²_From_Harnessing_to_Harvesting_the_Data_Revolution.png',
+            image: '../images/events_page_images/HDR_Ecosystem_Conference_2022.png',
             eventType: 'in-person',
             location: 'Alexandria, VA',
             institute: 'community',

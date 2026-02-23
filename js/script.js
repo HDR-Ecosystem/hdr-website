@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Include JS-rendered events that are not present in static HTML.
+        // JS-rendered events that are not present in static HTML.
         indexDynamicEvents();
         
         isIndexBuilt = true;
