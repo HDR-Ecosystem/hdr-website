@@ -78,7 +78,7 @@
 }
 
 .nav-links li a {
-    color: #000000;
+    color: #282828;
     font-weight: 550;
     padding: 10px 0;
     display: block;
@@ -87,14 +87,14 @@
 }
 
 .nav-links li a:hover {
-    color: #0050c8;
-    border-color: #0050c8;
+    color: #0074E0;
+    border-color: #0074E0;
 }
 
 .nav-links li a:focus-visible {
-    outline: 2px solid #0050c8;
+    outline: 2px solid #0074E0;
     outline-offset: 2px;
-    border-color: #0050c8;
+    border-color: #0074E0;
 }
 
 .dropdown {
@@ -129,7 +129,7 @@
 
 .dropdown-menu li a:hover {
     background-color: #f0f0f0;
-    color: #007bff;
+    color: #0074E0;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -178,7 +178,7 @@
 
 .header-banner .header-title {
     font-size: 3rem;
-    color: #333;
+    color: #282828;
     font-weight: 700;
     margin: 0;
     text-align: center;
@@ -394,7 +394,7 @@
 
     .nav-links li a {
         padding: 10px 0;
-        color: #000000;
+        color: #282828;
         border-bottom: 2px solid transparent;
     }
 
@@ -432,6 +432,13 @@
         display: flex;
         justify-content: center;
         width: 100%;
+    }
+
+    .nsf-logo-container {
+        justify-content: center;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .footer-github-icon {

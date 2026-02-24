@@ -16,7 +16,7 @@
     padding: 0.6rem 1.25rem;
     border: 2px solid #e0e0e0;
     background-color: #fff;
-    color: #666;
+    color: #282828;
     border-radius: 25px;
     cursor: pointer;
     font-size: 0.95rem;
@@ -203,6 +203,21 @@
     font-weight: bold;
 }
 
+.challenge-timeline a,
+.progress-bar a {
+    color: inherit;
+    text-decoration: underline;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.challenge-timeline a:hover,
+.challenge-timeline a:focus-visible,
+.progress-bar a:hover,
+.progress-bar a:focus-visible {
+    color: #0074E0;
+    text-decoration-color: #0074E0;
+}
+
 .challenge-timeline span {
     display: inline-block;
     font-style: italic;
@@ -325,7 +340,7 @@
 .challenge-description {
     font-size: 17px;
     line-height: 1.7;
-    color: #333;
+    color: #282828;
 }
 
 /* Join Link */

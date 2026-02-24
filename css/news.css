@@ -191,7 +191,7 @@
     height: 45px;
     border: 2px solid #e0e0e0;
     background-color: #fff;
-    color: #666;
+    color: #282828;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -219,7 +219,7 @@
     transform: none;
     box-shadow: none;
     border-color: #e0e0e0;
-    color: #666;
+    color: #282828;
 }
 
 .submit-news-section {
@@ -285,7 +285,7 @@
 
 .modal-content h2 {
     margin: 0 0 25px 0;
-    color: #333;
+    color: #282828;
     font-size: 1.8rem;
     text-align: center;
     font-family: 'IBM Plex Sans', sans-serif;
@@ -295,7 +295,7 @@
     display: block;
     margin-bottom: 8px;
     font-weight: 600;
-    color: #333;
+    color: #282828;
     text-align: left;
     font-family: 'Source Sans Pro', sans-serif;
 }
