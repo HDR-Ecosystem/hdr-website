@@ -434,6 +434,13 @@
         width: 100%;
     }
 
+    .nsf-logo-container {
+        justify-content: center;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .footer-github-icon {
         width: 20px;
         height: 20px;
