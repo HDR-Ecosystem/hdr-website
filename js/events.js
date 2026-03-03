@@ -430,12 +430,13 @@ function createEventCard(event) {
     const titleMarkup = event.link
         ? `<a class="event-title-link" href="${event.link}" ${linkAttrs}>${event.title}</a>`
         : `${event.title}`;
+    const imageAlt = event.alt || event.title;
     const imageMarkup = event.link
         ? `<a class="event-image-link" href="${event.link}" ${linkAttrs} aria-label="Open event details for ${event.title}">
-                <img src="${event.image}" alt="${event.title}" />
+                <img src="${event.image}" alt="${imageAlt}" />
                 ${readMoreMarkup}
            </a>`
-        : `<img src="${event.image}" alt="${event.title}" />`;
+        : `<img src="${event.image}" alt="${imageAlt}" />`;
 
     article.innerHTML = `
         <div class="event-image">
@@ -564,6 +565,7 @@ document.addEventListener('DOMContentLoaded', function() {
             time: '11:00am',
             timezone: 'CT',
             image: '../images/i-guide_images/iGUIDE_banner.jpeg',
+            alt: 'A colorful 3D map showing the bumpy surface of a piece of land. It uses greens, yellows, and browns to show different heights and shadows.',
             eventType: 'virtual',
             location: 'Online',
             institute: 'I-GUIDE',
@@ -576,6 +578,7 @@ document.addEventListener('DOMContentLoaded', function() {
             time: '2:00pm',
             timezone: 'ET',
             image: '../images/events_page_images/Frame_2.png',
+            alt: 'Three line icons, one of a brain containing gears and a heart, a beetle-like insect, and a cresting ocean wave.',
             eventType: 'Virtual',
             location: 'Virtual',
             institute: 'A3D3, Imageomics, iHARP',
@@ -588,6 +591,7 @@ document.addEventListener('DOMContentLoaded', function() {
             endDate: '2026-04-09',
             timezone: 'ET',
             image: '../images/events_page_images/FARR_Workshop.png',
+            alt: 'Washington Monument rises behind a grove of pink cherry blossoms under a clear blue sky with NSF and FARR logos in the middle.',
             eventType: 'in-person',
             location: 'Washington DC',
             institute: 'A3D3, Imageomics, iHARP',
@@ -601,6 +605,7 @@ document.addEventListener('DOMContentLoaded', function() {
             time: '8:00am - 5:00pm',
             timezone: 'MST',
             image: '../images/events_page_images/NEONESIIL_Hackathon.jpeg',
+            alt: 'Aerial view of the University of Colorado Boulder campus, featuring their Football stadium at sunset.',
             eventType: 'in-person',
             location: 'Boulder, CO',
             institute: 'A3D3, Imageomics, iHARP',
@@ -614,6 +619,7 @@ document.addEventListener('DOMContentLoaded', function() {
             time: '12:00pm',
             timezone: 'CST (台湾时间) / 11:00pm ET',
             image: '../images/events_page_images/HDR_Hackathon_Taiwan.png',
+            alt: 'A monkey with a VR headset sits on a beach, looking at a city with tall blue towers. There are green trees and green beetles flying in the blue sky.',
             eventType: 'virtual',
             location: 'Taiwan',
             institute: 'A3D3, Imageomics, iHARP',
@@ -628,6 +634,7 @@ document.addEventListener('DOMContentLoaded', function() {
             time: '9:00am - 7:00pm',
             timezone: 'PST',
             image: '../images/events_page_images/UW_A3D3_&_NSF_HDR_Challenge_Hackathon.jpg',
+            alt: 'The Physics & Astronomy Building at the University of Washington in Seattle, a tall brick building with many windows and blue sky.',
             eventType: 'in-person',
             location: 'Seattle, WA',
             institute: 'A3D3, Imageomics, iHARP',
@@ -640,6 +647,7 @@ document.addEventListener('DOMContentLoaded', function() {
             startDate: '2026-04-14',
             endDate: '2026-04-16',
             image: '../images/events_page_images/Imageomics_2026_All-hands_Meeting.jpg',
+            alt: 'Participants conversing while sitting at tables in a modern office with brick accents, working on laptops.',
             eventType: 'in-person',
             location: 'Columbus, OH',
             institute: 'Imageomics',
@@ -652,6 +660,7 @@ document.addEventListener('DOMContentLoaded', function() {
             startDate: '2026-05-13',
             endDate: '2026-05-14',
             image: '../images/events_page_images/ID4_all_hands_meeting.JPG',
+            alt: 'Extreme close-up of a dark, metallic Kirigami sculpture showing intricate geometric cutouts and folded patterns.',
             eventType: 'in-person',
             location: 'Princeton, NJ',
             institute: 'ID4',
@@ -664,6 +673,7 @@ document.addEventListener('DOMContentLoaded', function() {
             startDate: '2026-03-24',
             endDate: '2026-03-28',
             image: '../images/events_page_images/AAG-Globe-Meridian-SpaceAAG_2026_Symposium_on_Spatial_AI_and_Data_Science_Frontiers_and_Applications-AAG2024-1.jpg',
+            alt: 'Three standing people in a bright atrium gathered around a large globe placed on the floor, with two people crouching.',
             eventType: 'in-person',
             location: 'San Fransciso, CA',
             institute: 'I-GUIDE',
@@ -676,6 +686,7 @@ document.addEventListener('DOMContentLoaded', function() {
             startDate: '2026-08-03',
             endDate: '2026-08-07',
             image: '../images/events_page_images/I-GUIDE_Forum_2026_&_HDR_Community_Conference.jpg',
+            alt: 'A large group of professional colleagues posing for a portrait in a room with tall, decorative wood-lattice wall panels.',
             eventType: 'in-person',
             location: 'Chicago, IL',
             institute: 'community',
@@ -689,6 +700,7 @@ document.addEventListener('DOMContentLoaded', function() {
             time: '12:00pm - 5:00pm',
             timezone: 'ET',
             image: '../images/events_page_images/ML_Challenge_Online_Hackathon_&_Organizer_Training_Workshop.png',
+            alt: 'A close-up of a whiteboard with hand-drawn boxes and arrows showing a data process, featuring words like "Download," "Convert," and "CLIP."',
             eventType: 'virtual',
             location: 'Virtual',
             institute: 'A3D3, Imageomics, iHARP',
@@ -701,6 +713,7 @@ document.addEventListener('DOMContentLoaded', function() {
             startDate: '2025-09-16',
             endDate: '2025-09-19',
             image: '../images/events_page_images/HDR_Ecosystem_Conference_2025.jpg',
+            alt: 'People talking and working on laptops at round tables in a large room. A screen in the back shows a "HDR Ecosystem Conference" slide.',
             eventType: 'in-person',
             location: 'Columbus, OH',
             institute: 'community',
@@ -714,6 +727,7 @@ document.addEventListener('DOMContentLoaded', function() {
             time: '9:00am - 6:00pm',
             timezone: 'ET',
             image: '../images/events_page_images/AAAI_Workshop.png',
+            alt: 'A colorful space scene with a glowing purple and blue swirl. Two dark circles sit in the bright center, surrounded by paths of light and stars.',
             eventType: 'in-person',
             location: 'Philadelphia, PA',
             institute: 'community',
@@ -726,6 +740,7 @@ document.addEventListener('DOMContentLoaded', function() {
             startDate: '2024-10-31',
             endDate: '2024-11-02',
             image: '../images/events_page_images/2024_National_Diversity_in_STEM_Conference_(SACNAS).jpeg',
+            alt: 'Colorful art of a large ear of corn and two hummingbirds on a red background. Small people stand at the bottom near the roots.',
             eventType: 'in-person',
             location: 'Phoenix, AZ',
             institute: 'community',
@@ -738,6 +753,7 @@ document.addEventListener('DOMContentLoaded', function() {
             startDate: '2024-09-09',
             endDate: '2024-09-12',
             image: '../images/events_page_images/HDR_Ecosystem_Conference_2024.jpg',
+            alt: 'A large group of people stands outside on a paved area for a photo. They are wearing lanyards and smiling under a clear sky with green trees.',
             eventType: 'in-person',
             location: 'Champaign, IL',
             institute: 'community',
@@ -750,6 +766,7 @@ document.addEventListener('DOMContentLoaded', function() {
             startDate: '2023-10-26',
             endDate: '2023-10-28',
             image: '../images/events_page_images/2023_NDiSTEM_Conference.png',
+            alt: 'A colorful drawing of a pink mountain with purple lines, green pine trees, and a blue river. Scientific symbols float in the bright sky.',
             eventType: 'in-person',
             location: 'Portland, OR',
             institute: 'community',
@@ -762,6 +779,7 @@ document.addEventListener('DOMContentLoaded', function() {
             startDate: '2023-10-16',
             endDate: '2023-10-18',
             image: '../images/events_page_images/2023_HDR_Ecosystem_Conference.jpeg',
+            alt: 'A big group of people posing for a photo indoors on a patterned carpet. They are dressed in casual office clothes and many are smiling.',
             eventType: 'in-person',
             location: 'Denver, CO',
             institute: 'community',
@@ -774,6 +792,7 @@ document.addEventListener('DOMContentLoaded', function() {
             startDate: '2023-06-20',
             endDate: '2023-06-21',
             image: '../images/events_page_images/2023_HDR_Postbaccalaureate_Workshop.jpg',
+            alt: 'A group of people standing and kneeling for a photo on a green lawn. There are large trees behind them and a bright blue ocean in the distance.',
             eventType: 'in-person',
             location: 'San Diego, CA',
             institute: 'community',
@@ -786,6 +805,7 @@ document.addEventListener('DOMContentLoaded', function() {
             startDate: '2022-10-26',
             endDate: '2022-10-27',
             image: '../images/events_page_images/HDR_Ecosystem_Conference_2022.png',
+            alt: 'A large group of people poses for a photo in a hotel lobby. They stand on stairs and a rug that says "Westin Hotels & Resorts" in big white letters.',
             eventType: 'in-person',
             location: 'Alexandria, VA',
             institute: 'community',
