@@ -34,6 +34,7 @@ function displayNews(page) {
     paginatedNews.forEach(news => {
         const isExternal = isExternalLink(news.link);
         const overlayText = isExternal ? "Read more on external site →" : "Read more →";
+        const imageAlt = news.alt || news.title;
         const card = document.createElement("a");
         card.href = news.link;
         if (isExternal) {
@@ -43,7 +44,7 @@ function displayNews(page) {
         card.className = "news-card news-card-linked";
         card.innerHTML = `
             <div class="news-image-wrapper">
-                <img src="${news.img}" alt="${news.title}" class="news-image">
+                <img src="${news.img}" alt="${imageAlt}" class="news-image">
                 <div class="news-image-overlay">${overlayText}</div>
                 <span class="news-date">${news.date}</span>
             </div>
