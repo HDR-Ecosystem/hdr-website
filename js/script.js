@@ -125,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { title: "ML Challenge Year 2", url: "html/mlchallenge-y2/index.html" },
         { title: "ML Challenge Year 2 Rules", url: "html/mlchallenge-y2/rules.html" },
         { title: "ML Challenge Year 2 Datasets", url: "html/mlchallenge-y2/datasets.html" },
+        { title: "ML Challenge Year 2 Winners", url: "html/mlchallenge-y2/winners.html" },
         { title: "ML Challenge Year 2 Events", url: "html/mlchallenge-y2/events.html" },
         { title: "ML Challenge Year 2 Prizes", url: "html/mlchallenge-y2/prizes.html" },
         { title: "ML Challenge Year 2 Terms", url: "html/mlchallenge-y2/terms.html" }

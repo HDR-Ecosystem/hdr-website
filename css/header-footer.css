@@ -249,6 +249,10 @@
     color: rgba(255, 255, 255, 0.8);
 }
 
+.footer-disclaimer {
+    color: #ffffff;
+}
+
 .nsf-logo-container {
     display: flex;
     align-items: center;
@@ -263,7 +267,7 @@
 .nsf-logo-container p {
     font-size: 0.9em;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.8);
+    color: #ffffff;
 }
 
 .footer-bottom {
