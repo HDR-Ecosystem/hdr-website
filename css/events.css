@@ -1,6 +1,6 @@
 
 .events-container {
-    padding: 80px 20px; 
+    padding: 48px 20px 80px; 
 }
 
 .events-intro {
@@ -8,21 +8,14 @@
     text-align: center;
 }
 
-.events-intro h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    font-family: 'IBM Plex Sans', sans-serif;
-    color: #282828;
-}
-
-.events-intro p {
-    max-width: 700px;
-    margin: 0 auto 60px auto; 
+.events-banner-subtitle {
+    max-width: 680px;
+    margin: 14px auto 0;
     font-size: 1rem;
     line-height: 1.6;
     color: #282828;
     font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .events-controls {
@@ -412,18 +405,11 @@
 }
 
 @media (max-width: 992px) {
-    .events-intro h1 {
-        font-size: 2rem;
-    }
 }
 
 @media (max-width: 768px) {
     .events-container {
-        padding: 60px 15px; 
-    }
-
-    .events-intro h1 {
-        font-size: 1.8rem;
+        padding: 36px 15px 60px; 
     }
 
     .filter-btn-main {
@@ -434,7 +420,7 @@
 
 @media (max-width: 600px) {
     .events-container {
-        padding: 50px 24px;
+        padding: 32px 24px 50px;
     }
 
     .events-grid {

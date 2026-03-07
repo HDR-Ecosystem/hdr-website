@@ -21,9 +21,9 @@
     --highlight-color: #cde5ff;
 }
 
-body, html {
+html,
+body {
     margin: 0;
-    padding: 0;
     width: 100%;
     background-color: #ffffff;
     font-family: 'Source Sans Pro', sans-serif;
@@ -647,7 +647,9 @@ main {
 }
 
 .institute-publications-open-link {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     padding: 8px 16px;
     border: 1px solid #0074E0;
     border-radius: 25px;
@@ -663,6 +665,11 @@ main {
 .institute-publications-open-link:focus-visible {
     background-color: #0074E0;
     color: #fff;
+}
+
+.institute-publications-open-link:hover .arrow,
+.institute-publications-open-link:focus-visible .arrow {
+    transform: translateX(6px);
 }
 
 @media (max-width: 1024px) {

@@ -54,12 +54,13 @@ function updateChallengeStatuses() {
         const closeDate = parseDate(deadlineStr);
         const winnersDate = parseDate(card.dataset.winners);
         const workshopDate = parseDate(card.dataset.workshop);
+        const fullyClosed = workshopDate ? now > workshopDate : false;
 
         const msRemaining = closeDate ? (closeDate - now) : null;
         const daysRemaining = msRemaining !== null
             ? Math.max(0, Math.floor(msRemaining / (1000 * 60 * 60 * 24)))
             : null;
-        const computedStatus = getComputedStatus(card.dataset.status, openDate, closeDate, now);
+        const computedStatus = getComputedStatus(card.dataset.status, openDate, closeDate, workshopDate, now);
         card.dataset.currentStatus = computedStatus;
         const isOpen = computedStatus === 'open';
 
@@ -86,8 +87,12 @@ function updateChallengeStatuses() {
 
                 if (winnersRemaining !== null && winnersRemaining > 0) {
                     const winnersDays = Math.max(0, Math.floor(winnersRemaining / (1000 * 60 * 60 * 24)));
-                    const dayLabel = winnersDays === 1 ? 'day' : 'days';
-                    countdown.textContent = `${winnersDays} ${dayLabel} until winners announced`;
+                    if (winnersDays === 0) {
+                        countdown.textContent = 'Winners announced today';
+                    } else {
+                        const dayLabel = winnersDays === 1 ? 'day' : 'days';
+                        countdown.textContent = `${winnersDays} ${dayLabel} until winners announced`;
+                    }
                     useClosedStyle = false;
                 } else if (workshopRemaining !== null && workshopRemaining > 0) {
                     const workshopDays = Math.max(0, Math.floor(workshopRemaining / (1000 * 60 * 60 * 24)));
@@ -101,6 +106,20 @@ function updateChallengeStatuses() {
             }
             countdown.classList.toggle('is-closed', useClosedStyle);
         }
+
+        // After the final workshop milestone, hide timeline/progress
+        if (fullyClosed) {
+            const timeline = card.querySelector('.challenge-timeline');
+            const progress = card.querySelector('.challenge-progress');
+            if (timeline) timeline.style.display = 'none';
+            if (progress) progress.style.display = 'none';
+            return;
+        }
+
+        const timeline = card.querySelector('.challenge-timeline');
+        const progress = card.querySelector('.challenge-progress');
+        if (timeline) timeline.style.display = '';
+        if (progress) progress.style.display = '';
 
         // Update timeline steps
         if (timelineSteps.length) {
@@ -172,7 +191,7 @@ function parseDate(dateStr) {
     return Number.isNaN(parsed.getTime()) ? null : parsed;
 }
 
-function getComputedStatus(baseStatus, openDate, closeDate, now) {
+function getComputedStatus(baseStatus, openDate, closeDate, workshopDate, now) {
     // Explicit overrides
     if (baseStatus === 'archived') return 'archived';
     if (baseStatus === 'closed') return 'closed';
@@ -180,8 +199,16 @@ function getComputedStatus(baseStatus, openDate, closeDate, now) {
 
     // Dynamic based on dates
     if (openDate && now < openDate) return 'upcoming';
+    if (workshopDate && now > workshopDate) return 'archived';
     if (closeDate && now > closeDate) return 'closed';
     return 'open';
+}
+
+function isSameCalendarDay(a, b) {
+    if (!a || !b) return false;
+    return a.getFullYear() === b.getFullYear()
+        && a.getMonth() === b.getMonth()
+        && a.getDate() === b.getDate();
 }
 
 function calculateProgress(now, datedSteps) {
@@ -222,7 +249,7 @@ function getBadgeDisplay(computedStatus, winnersDate, workshopDate, now) {
     }
 
     if (computedStatus === 'closed') {
-        const winnersPending = winnersDate && now < winnersDate;
+        const winnersPending = winnersDate && now < winnersDate && !isSameCalendarDay(now, winnersDate);
         const workshopPending = workshopDate && now < workshopDate;
 
         if (winnersPending) {

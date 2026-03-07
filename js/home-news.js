@@ -28,6 +28,7 @@ function renderHomeNews() {
     topNews.forEach(news => {
         const isExternal = isExternalLink(news.link);
         const overlayText = isExternal ? 'Read more on external site →' : 'Read more →';
+        const imageAlt = news.alt || news.title;
         const card = document.createElement('a');
         const linkHref = news.link && news.link.startsWith('../')
             ? news.link.replace('../', '')
@@ -43,7 +44,7 @@ function renderHomeNews() {
         card.className = 'news-card news-card-linked';
         card.innerHTML = `
             <div class="news-image-wrapper">
-                <img src="${imageSrc}" alt="${news.title}" class="news-image">
+                <img src="${imageSrc}" alt="${imageAlt}" class="news-image">
                 <div class="news-image-overlay">${overlayText}</div>
                 <div class="news-date">${news.date}</div>
             </div>
