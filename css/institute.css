@@ -1402,12 +1402,6 @@ main {
     }
 }
 
-@media (max-width: 480px) {
-    .lightbox-indicators {
-        bottom: 4px;                
-    }
-}
-
 .lightbox-modal {
     width: min(1000px, 94vw);
     max-height: 90vh;
