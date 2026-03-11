@@ -6,10 +6,10 @@
     <title>ML Challenge Y2 - Winners</title>
     <link rel="icon" href="../../images/icon.png" />
     <link rel="stylesheet" href="../../css/style.css" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./mlchallenge-y2.css" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
 </head>
-<body class="y2-page">
+<body class="y2-page y2-winners-page">
     <div id="header-placeholder"></div>
 
     <div class="header-banner">
@@ -32,37 +32,150 @@
             <a href="terms.html">Terms</a>
         </nav>
 
-        <section class="y2-hero">
+        <section class="y2-hero winners-spotlight">
             <h1>Year 2 Winners</h1>
-            <p class="y2-large-text">Announced March 6, 2026</p>
+            <p class="winners-meta-date">Announced March 6, 2026</p>
+            <div class="winners-summary-grid">
+                <article class="winner-summary-card">
+                    <h2>Overall</h2>
+                    <ul class="winner-summary-list">
+                        <li>🥇 <strong>1st:</strong> seantang (Tze-Hsiang Tang, Schneider Electric Taiwan Co., Ltd)</li>
+                        <li>🥈 <strong>2nd:</strong> Dony DP (Dony Darmawan Putra, National Sun Yat-sen University)</li>
+                    </ul>
+                </article>
 
-            <h2>Overall</h2>
-            <ul>
-                <li>🥇 <strong>1st:</strong> seantang (Tze-Hsiang Tang, Schneider Electric Taiwan Co., Ltd)</li>
-                <li>🥈 <strong>2nd:</strong> Dony DP (Dony Darmawan Putra, National Sun Yat-sen University)</li>
-            </ul>
+                <article class="winner-summary-card">
+                    <h2>Imageomics: Sentinel Beetles</h2>
+                    <ul class="winner-summary-list">
+                        <li>🥇 <strong>1st:</strong> nebiyu (Nebiyeleul Yifru, University of Maryland, Baltimore County - UMBC)</li>
+                        <li>🥈 <strong>2nd:</strong> 20iterations (Chen An-Kai, National Tsing Hua University; Chang Yi-Chun, National Yang Ming Chiao Tung University; Lee Chi-Wei, National Tsing Hua University; Chiang Cheng-Han, National Tsing Hua University)</li>
+                        <li>🥉 <strong>3rd:</strong> Dony DP (Dony Darmawan Putra, National Sun Yat-sen University)</li>
+                    </ul>
+                </article>
 
-            <h2>Imageomics: Sentinel Beetles</h2>
-            <ul>
-                <li>🥇 <strong>1st:</strong> nebiyu (Nebiyeleul Yifru, University of Maryland, Baltimore County - UMBC)</li>
-                <li>🥈 <strong>2nd:</strong> 20iterations (Chen An-Kai, National Tsing Hua University; Chang Yi-Chun, National Yang Ming Chiao Tung University; Lee Chi-Wei, National Tsing Hua University; Chiang Cheng-Han, National Tsing Hua University)</li>
-                <li>🥉 <strong>3rd:</strong> Dony DP (Dony Darmawan Putra, National Sun Yat-sen University)</li>
-            </ul>
+                <article class="winner-summary-card">
+                    <h2>A3D3: Neural Forecasting</h2>
+                    <ul class="winner-summary-list">
+                        <li>🥇 <strong>1st:</strong> seantang (Tze-Hsiang Tang, Schneider Electric Taiwan Co., Ltd)</li>
+                        <li>🥈 <strong>2nd:</strong> NCU_WIDM (Zi-Yi Liao, Zi-Xuan Jian, and Wen-Chien Chang, National Central University)</li>
+                        <li>🥉 <strong>3rd:</strong> mrrobot (Ben Vaziritabar, CU Boulder)</li>
+                    </ul>
+                </article>
 
-            <h2>A3D3: Neural Forecasting</h2>
-            <ul>
-                <li>🥇 <strong>1st:</strong> seantang (Tze-Hsiang Tang, Schneider Electric Taiwan Co., Ltd)</li>
-                <li>🥈 <strong>2nd:</strong> NCU_WIDM (Zi-Yi Liao, Zi-Xuan Jian, and Wen-Chien Chang, National Central University)</li>
-                <li>🥉 <strong>3rd:</strong> mrrobot (Ben Vaziritabar, CU Boulder)</li>
-            </ul>
+                <article class="winner-summary-card">
+                    <h2>iHARP: Predicting Coastal Flooding Events</h2>
+                    <ul class="winner-summary-list">
+                        <li>🥇 <strong>1st:</strong> Dony DP (Dony Darmawan Putra, National Sun Yat-sen University)</li>
+                        <li>🥈 <strong>2nd:</strong> Aryaniharp (Aryan Jagani, UMBC)</li>
+                    </ul>
+                </article>
+            </div>
 
-            <h2>iHARP: Predicting Coastal Flooding Events</h2>
-            <ul>
-                <li>🥇 <strong>1st:</strong> Dony DP (Dony Darmawan Putra, National Sun Yat-sen University)</li>
-                <li>🥈 <strong>2nd:</strong> Aryaniharp (Aryan Jagani, UMBC)</li>
-            </ul>
+            <div class="leaderboard-header-row">
+                <h2>Full Leaderboard</h2>
+                <div class="leaderboard-controls" aria-label="Full leaderboard controls">
+                    <button type="button" class="leaderboard-toggle-btn" data-toggle-all>Expand all</button>
+                </div>
+            </div>
 
-            <p>Full leaderboard will be added here later.</p>
+            <div class="leaderboard-sections" id="full-leaderboard-sections">
+            <details open>
+                <summary>Overall Ranking</summary>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Team</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>seantang</td></tr>
+                        <tr><td>2</td><td>Dony DP</td></tr>
+                        <tr><td>3</td><td>NCU_WIDM</td></tr>
+                        <tr><td>4 (tie)</td><td>mrrobot</td></tr>
+                        <tr><td>4 (tie)</td><td>20iterations</td></tr>
+                        <tr><td>4 (tie)</td><td>NCKU_UCLab</td></tr>
+                        <tr><td>7</td><td>paulraadnui/rishadaz/jentsang</td></tr>
+                    </tbody>
+                </table>
+            </details>
+
+            <details>
+                <summary>Imageomics: Sentinel Beetles</summary>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Team</th>
+                            <th>Score</th>
+                            <th>GitHub</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>nebiyu</td><td>0.6054</td><td><a href="https://github.com/cable13/Beetle-Drought-Prediction" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>2</td><td>20iterations</td><td>0.6198</td><td><a href="https://github.com/20iterations/2026-NSF-HDR-Hachathon/tree/main/beetle" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>3</td><td>Dony DP</td><td>0.6208</td><td><a href="https://github.com/donydp/Beetles-Scientific-By-Dony" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>4</td><td>seantang</td><td>0.6265</td><td><a href="https://github.com/seantangth/seantang-scientific-mood-fair-2025-year2-submissions" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>5</td><td>mrrobot</td><td>0.6359326</td><td><a href="https://github.com/benvaz/beetles-sentinel-challenge" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>6</td><td>NCKU_UCLab</td><td>0.6416</td><td><a href="https://github.com/chengruchou/NSF-HDR-Scientific-Modeling-out-of-distribution-Challenges" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>7</td><td>NCU_WIDM</td><td>0.6557</td><td><a href="https://github.com/0857boy/2026-Scientific-Mood-ML-Challenge" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>8</td><td>paulraadnui/rishadaz/jentsang</td><td>0.7856</td><td><a href="https://github.com/risha-daz/BeetleForecasting" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                    </tbody>
+                </table>
+            </details>
+
+            <details>
+                <summary>A3D3: Neural Forecasting</summary>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Team</th>
+                            <th>Score</th>
+                            <th>GitHub</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>seantang</td><td>37623.69</td><td><a href="https://github.com/seantangth/seantang-scientific-mood-fair-2025-year2-submissions" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>2</td><td>NCU_WIDM</td><td>38730.58</td><td><a href="https://github.com/0857boy/2026-Scientific-Mood-ML-Challenge" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>3</td><td>mrrobot</td><td>38903.19</td><td><a href="https://github.com/benvaz/neural-forecast-challenge" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>4</td><td>20iterations</td><td>41601.59</td><td><a href="https://github.com/20iterations/2026-NSF-HDR-Hachathon/tree/main/neural-forecasting" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>5</td><td>N_CTTN_U</td><td>42943.196145</td><td><a href="https://github.com/YuunJiee/NeuralForecasting/tree/weighted_mse" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>6</td><td>NCKU_UCLab</td><td>45861.52</td><td><a href="https://github.com/chengruchou/NSF-HDR-Scientific-Modeling-out-of-distribution-Challenges" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>7 (tie)</td><td>Dony DP</td><td>45985.57</td><td><a href="https://github.com/donydp/Neural-Forecasting-By-Dony" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>7 (tie)</td><td>fm_rangers</td><td>45985.57</td><td><a href="https://github.com/SLAC-Julia-Group/HDR-ML-Challenges-2nd-year" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>9</td><td>paulraadnui/rishadaz/jentsang</td><td>51953.57</td><td><a href="https://github.com/jentsang/NeuralForecasting" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                    </tbody>
+                </table>
+            </details>
+
+            <details>
+                <summary>iHARP: Predicting Coastal Flooding Events</summary>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Team</th>
+                            <th>Score</th>
+                            <th>GitHub</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>Dony DP</td><td>0.7692307692</td><td><a href="https://github.com/donydp/Predicting-Coastal-Flooding-Events-By-Dony" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>2</td><td>Aryaniharp</td><td>0.7692307692</td><td><a href="https://github.com/ARYANJAGANI/NSF-HDR-Challenge-Coastal-Flooding-Forecasting" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>3 (tie)</td><td>seantang</td><td>0.7692307692</td><td><a href="https://github.com/seantangth/seantang-scientific-mood-fair-2025-year2-submissions" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>3 (tie)</td><td>NCKU_UCLab</td><td>0.7692307692</td><td><a href="https://github.com/chengruchou/NSF-HDR-Scientific-Modeling-out-of-distribution-Challenges" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>3 (tie)</td><td>NCU_WIDM</td><td>0.7692307692</td><td><a href="https://github.com/0857boy/2026-Scientific-Mood-ML-Challenge/tree/main/Predicting%20Coastal%20Flooding%20Events%20-%20Scientific%20Out-of-Distribution%20Challenge" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>3 (tie)</td><td>saisaisai</td><td>0.7692307692</td><td><a href="https://github.com/RishiksaiP/SMood" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>7</td><td>fm_rangers</td><td>0.7640449438</td><td><a href="https://github.com/SLAC-Julia-Group/HDR-ML-Challenges-2nd-year" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>8</td><td>mrrobot</td><td>0.7294117647</td><td><a href="https://github.com/benvaz/iHARP-Coastal-Flood-Prediction" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>9</td><td>paulraadnui/rishadaz/jentsang</td><td>0.7273</td><td><a href="https://github.com/sapolraadnui/coastal_flooding_events_prediction" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                        <tr><td>10</td><td>20iterations</td><td>0.6197</td><td><a href="https://github.com/20iterations/2026-NSF-HDR-Hachathon/tree/main/coastal-flooding-prediction/Predicting-Coastal-Flooding-Events-" target="_blank" rel="noopener noreferrer">GitHub</a></td></tr>
+                    </tbody>
+                </table>
+            </details>
+
+            </div>
         </section>
     </main>
 
@@ -70,5 +183,58 @@
 
 
     <script src="../../js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sectionsRoot = document.getElementById('full-leaderboard-sections');
+            if (!sectionsRoot) return;
+
+            const detailsBlocks = sectionsRoot.querySelectorAll('details');
+            const toggleBtn = document.querySelector('[data-toggle-all]');
+
+            const formatGithubLabel = (href) => {
+                try {
+                    const url = new URL(href);
+                    const isGithub = /(^|\.)github\.com$/i.test(url.hostname);
+                    if (!isGithub) return null;
+                    const parts = url.pathname.split('/').filter(Boolean);
+                    if (parts.length >= 2) return `${parts[0]}/${parts[1]}`;
+                    return 'github.com';
+                } catch (err) {
+                    return null;
+                }
+            };
+
+            const githubLinks = sectionsRoot.querySelectorAll('a[href*="github.com/"]');
+            githubLinks.forEach((link) => {
+                const label = formatGithubLabel(link.href);
+                if (label) {
+                    link.textContent = label;
+                    link.title = link.href;
+                }
+            });
+
+            if (!toggleBtn) return;
+
+            const updateToggleLabel = () => {
+                const allOpen = Array.from(detailsBlocks).every((block) => block.open);
+                toggleBtn.textContent = allOpen ? 'Collapse all' : 'Expand all';
+            };
+
+            toggleBtn.addEventListener('click', () => {
+                const allOpen = Array.from(detailsBlocks).every((block) => block.open);
+                const nextOpenState = !allOpen;
+                detailsBlocks.forEach((block) => {
+                    block.open = nextOpenState;
+                });
+                updateToggleLabel();
+            });
+
+            detailsBlocks.forEach((block) => {
+                block.addEventListener('toggle', updateToggleLabel);
+            });
+
+            updateToggleLabel();
+        });
+    </script>
 </body>
 </html>
