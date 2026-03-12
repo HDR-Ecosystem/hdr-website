@@ -845,10 +845,6 @@
 }
 
 @media (max-width: 700px) {
-    .header-banner .header-title.no-wrap {
-        white-space: normal;
-    }
-
     .header-title-box.agenda-title-box {
         padding: 16px 20px;
         width: calc(100% - 32px);

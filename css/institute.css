@@ -83,6 +83,17 @@ main {
     word-break: break-word;
 }
 
+/* Keep major institute section headings on one consistent scale */
+.about-section h1,
+.mission-section .content-section h2,
+.vision-section .content-section h2,
+.areas-of-work-container h2,
+.contributors-header h2,
+.publications-title.publications-heading-row h2,
+.social-connect h2 {
+    font-size: 2.2em;
+}
+
 .institute-details-container {
     display: flex;
     justify-content: space-between;
@@ -744,6 +755,16 @@ main {
         line-height: 1.3;
     }
 
+    .about-section h1,
+    .mission-section .content-section h2,
+    .vision-section .content-section h2,
+    .areas-of-work-container h2,
+    .contributors-header h2,
+    .publications-title.publications-heading-row h2,
+    .social-connect h2 {
+        font-size: 1.3em;
+    }
+
     
     .mission-vision-container {
         margin: 0 auto;
@@ -902,6 +923,16 @@ main {
     .header-text-overlay h1 {
         font-size: 1.1em;
         line-height: 1.2;
+    }
+
+    .about-section h1,
+    .mission-section .content-section h2,
+    .vision-section .content-section h2,
+    .areas-of-work-container h2,
+    .contributors-header h2,
+    .publications-title.publications-heading-row h2,
+    .social-connect h2 {
+        font-size: 1.1em;
     }
 
     .institute-details-container { gap: 20px; margin: 20px 0; }
@@ -1368,12 +1399,6 @@ main {
         padding: 0;                 
         margin: 0;
         z-index: 10;
-    }
-}
-
-@media (max-width: 480px) {
-    .lightbox-indicators {
-        bottom: 4px;                
     }
 }
 

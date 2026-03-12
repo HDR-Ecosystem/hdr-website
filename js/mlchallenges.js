@@ -107,18 +107,31 @@ function updateChallengeStatuses() {
             countdown.classList.toggle('is-closed', useClosedStyle);
         }
 
-        // After the final workshop milestone, hide timeline/progress
+        // After the final workshop milestone, show a single date range like Year 1
         if (fullyClosed) {
             const timeline = card.querySelector('.challenge-timeline');
             const progress = card.querySelector('.challenge-progress');
-            if (timeline) timeline.style.display = 'none';
+            if (timeline) {
+                timeline.style.display = '';
+                if (!timeline.dataset.originalMarkup) {
+                    timeline.dataset.originalMarkup = timeline.innerHTML;
+                }
+                timeline.classList.add('single-row');
+                timeline.innerHTML = `<div><strong>${formatDisplayDate(openDate)} - ${formatDisplayDate(workshopDate)}</strong></div>`;
+            }
             if (progress) progress.style.display = 'none';
             return;
         }
 
         const timeline = card.querySelector('.challenge-timeline');
         const progress = card.querySelector('.challenge-progress');
-        if (timeline) timeline.style.display = '';
+        if (timeline) {
+            timeline.style.display = '';
+            timeline.classList.remove('single-row');
+            if (timeline.dataset.originalMarkup) {
+                timeline.innerHTML = timeline.dataset.originalMarkup;
+            }
+        }
         if (progress) progress.style.display = '';
 
         // Update timeline steps
@@ -189,6 +202,15 @@ function parseDate(dateStr) {
     if (!dateStr) return null;
     const parsed = new Date(`${dateStr}T23:59:59`);
     return Number.isNaN(parsed.getTime()) ? null : parsed;
+}
+
+function formatDisplayDate(dateObj) {
+    if (!dateObj) return '';
+    return dateObj.toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+    });
 }
 
 function getComputedStatus(baseStatus, openDate, closeDate, workshopDate, now) {
