@@ -146,6 +146,23 @@
     margin-bottom: 24px;
 }
 
+@media (max-width: 600px) {
+    .winners-title-box {
+        width: calc(100% - 24px);
+        padding: 12px 18px;
+    }
+
+    .winners-title-box .header-title.no-wrap {
+        font-size: 1.45rem;
+    }
+
+    .winners-title-box .header-subtitle {
+        margin-top: 6px;
+        font-size: 0.78rem;
+        line-height: 1.2;
+    }
+}
+
 .y2-section-title {
     font-size: 26px;
     margin: 36px 0 18px;
@@ -353,7 +370,7 @@
     grid-template-columns: 1fr;
     gap: 14px;
     margin: 6px 0 20px;
-    max-width: 980px;
+    width: 100%;
 }
 
 .y2-winners-page {
@@ -631,13 +648,68 @@
         font-size: 20px;
     }
 
-    .leaderboard-toggle-btn {
-        width: 100%;
+    .y2-winners-page .winners-spotlight .leaderboard-sections details {
+        padding: 10px 12px;
+    }
+
+    .y2-winners-page .winners-spotlight .leaderboard-sections details summary {
+        font-size: 1rem;
+        line-height: 1.35;
+    }
+
+    .y2-winners-page .winners-spotlight .leaderboard-sections details:nth-of-type(n + 2) {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .y2-winners-page .winners-spotlight .leaderboard-sections details:nth-of-type(n + 2) summary {
+        position: sticky;
+        left: 0;
+        z-index: 2;
+    }
+
+    .y2-winners-page .winners-spotlight .leaderboard-sections details:nth-of-type(n + 2) table {
+        min-width: 520px;
+        margin-top: 14px;
+    }
+
+    .y2-winners-page .winners-spotlight .leaderboard-sections details:nth-of-type(4) table {
+        min-width: 620px;
+    }
+
+    .y2-winners-page .winners-spotlight .leaderboard-sections details:nth-of-type(n + 2) th,
+    .y2-winners-page .winners-spotlight .leaderboard-sections details:nth-of-type(n + 2) td {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
+
+    .y2-winners-page .winners-spotlight .leaderboard-sections details:nth-of-type(n + 2) td a {
+        display: inline-block;
+        white-space: nowrap;
     }
 
     .leaderboard-header-row {
-        align-items: stretch;
-        flex-direction: column;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .leaderboard-header-row h2 {
+        font-size: 1.1rem;
+    }
+
+    .leaderboard-header-row .leaderboard-controls {
+        flex: 0 0 auto;
+    }
+
+    .leaderboard-toggle-btn {
+        width: auto;
+        flex: 0 0 auto;
+        white-space: nowrap;
+        padding: 7px 12px;
+        font-size: 0.85rem;
     }
 }
 
