@@ -80,6 +80,140 @@ a {
     text-decoration: none;
 }
 
+.pagination {
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    min-width: 0;
+    white-space: nowrap;
+}
+
+.pagination button {
+    margin: 0 6px;
+    padding: 0;
+    border: 2px solid #e0e0e0;
+    background-color: #fff;
+    color: #282828;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.pagination button:hover {
+    border-color: #0073e6;
+    color: #0073e6;
+}
+
+.pagination button.active {
+    background-color: #0073e6;
+    border-color: #0073e6;
+    color: #fff;
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination button:disabled:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: #e0e0e0;
+    color: #282828;
+}
+
+.pagination button:focus-visible {
+    outline: 3px solid rgba(0, 115, 230, 0.6);
+    outline-offset: 3px;
+}
+
+.pagination-page {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.pagination-nav {
+    min-width: 72px;
+    height: 45px;
+    padding: 0 14px;
+    border-radius: 999px;
+}
+
+.pagination-ellipsis {
+    margin: 0 6px;
+    color: #282828;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+@media (max-width: 992px) {
+    .pagination-page {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+
+    .pagination-nav {
+        min-width: 68px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .pagination {
+        justify-content: center;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 0 4px;
+    }
+
+    .pagination::-webkit-scrollbar {
+        display: none;
+    }
+
+    .pagination-page {
+        width: 38px;
+        height: 38px;
+        margin: 0 4px;
+    }
+
+    .pagination-nav {
+        min-width: 62px;
+        height: 38px;
+        margin: 0 4px;
+        padding: 0 10px;
+    }
+
+    .pagination-ellipsis {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .pagination-page {
+        width: 35px;
+        height: 35px;
+        font-size: 0.85rem;
+    }
+
+    .pagination-nav {
+        min-width: 58px;
+        height: 35px;
+        padding: 0 9px;
+        font-size: 0.85rem;
+    }
+}
+
 .hero-section {
     position: relative;
     height: auto;

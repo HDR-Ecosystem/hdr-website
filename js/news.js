@@ -2,14 +2,35 @@ const newsData = window.newsData || [];
 
 const NEWS_PER_PAGE = 15; // Desktop default
 const MOBILE_NEWS_PER_PAGE = 6; // Mobile-only pagination
+const MOBILE_PAGINATION_BREAKPOINT = 600;
 let newsPerPage = getNewsPerPage();
 const limitedNews = newsData;
 let currentPage = 1;
 
 function getNewsPerPage() {
-    return window.matchMedia('(max-width: 600px)').matches
+    return window.matchMedia(`(max-width: ${MOBILE_PAGINATION_BREAKPOINT}px)`).matches
         ? MOBILE_NEWS_PER_PAGE
         : NEWS_PER_PAGE;
+}
+
+function isMobilePagination() {
+    return window.matchMedia(`(max-width: ${MOBILE_PAGINATION_BREAKPOINT}px)`).matches;
+}
+
+function getVisiblePaginationItems(totalPages) {
+    if (!isMobilePagination() || totalPages <= 7) {
+        return Array.from({ length: totalPages }, (_, index) => index + 1);
+    }
+
+    if (currentPage <= 3) {
+        return [1, 2, 3, 'ellipsis', totalPages];
+    }
+
+    if (currentPage >= totalPages - 2) {
+        return [1, 'ellipsis', totalPages - 2, totalPages - 1, totalPages];
+    }
+
+    return [1, 'ellipsis', currentPage - 1, currentPage, currentPage + 1, 'ellipsis', totalPages];
 }
 
 function isExternalLink(url) {
@@ -66,7 +87,10 @@ function setupPagination() {
 
     const pageCount = Math.ceil(limitedNews.length / newsPerPage);
 
+    if (pageCount <= 1) return;
+
     const prevBtn = document.createElement("button");
+    prevBtn.className = "pagination-nav";
     prevBtn.innerText = "Prev";
     prevBtn.disabled = currentPage === 1;
     prevBtn.addEventListener("click", function() {
@@ -77,18 +101,32 @@ function setupPagination() {
     });
     pagination.appendChild(prevBtn);
 
-    for (let i = 1; i <= pageCount; i++) {
+    const paginationItems = getVisiblePaginationItems(pageCount);
+
+    paginationItems.forEach((item) => {
+        if (item === "ellipsis") {
+            const ellipsis = document.createElement("span");
+            ellipsis.className = "pagination-ellipsis";
+            ellipsis.innerText = "...";
+            ellipsis.setAttribute("aria-hidden", "true");
+            pagination.appendChild(ellipsis);
+            return;
+        }
+
         const btn = document.createElement("button");
-        btn.innerText = i;
-        if(i === currentPage) btn.classList.add("active");
+        btn.className = "pagination-page";
+        btn.innerText = item;
+        btn.setAttribute("aria-label", `Go to page ${item}`);
+        if(item === currentPage) btn.classList.add("active");
         btn.addEventListener("click", function() {
-            currentPage = i;
+            currentPage = item;
             displayNews(currentPage);
         });
         pagination.appendChild(btn);
-    }
+    });
 
     const nextBtn = document.createElement("button");
+    nextBtn.className = "pagination-nav";
     nextBtn.innerText = "Next";
     nextBtn.disabled = currentPage === pageCount;
     nextBtn.addEventListener("click", function() {

@@ -322,8 +322,7 @@
     overflow: hidden;
 }
 
-.filter-btn-main:focus-visible,
-.pagination-btn:focus-visible {
+.filter-btn-main:focus-visible {
     outline: 3px solid rgba(0, 115, 230, 0.6);
     outline-offset: 3px;
 }
@@ -338,49 +337,6 @@
 
 .no-events.hidden {
     display: none;
-}
-
-.pagination {
-    margin-top: 30px;
-    text-align: center;
-}
-
-.pagination-btn {
-    margin: 0 6px;
-    padding: 0;
-    width: 45px;
-    height: 45px;
-    border: 2px solid #e0e0e0;
-    background-color: #fff;
-    color: #666;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    font-family: 'Source Sans Pro', sans-serif;
-}
-
-.pagination-btn:hover {
-    border-color: #0073e6;
-    color: #0073e6;
-}
-
-.pagination-btn.active {
-    background-color: #0073e6;
-    border-color: #0073e6;
-    color: #fff;
-}
-
-.pagination-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.pagination-btn:disabled:hover {
-    transform: none;
-    box-shadow: none;
-    border-color: #e0e0e0;
-    color: #666;
 }
 
 .pagination-section {
@@ -418,6 +374,10 @@
 @media (max-width: 600px) {
     .events-container {
         padding: 32px 24px 50px;
+    }
+
+    .pagination-section {
+        padding: 24px 0;
     }
 
     .filter-button-wrapper {
@@ -475,6 +435,7 @@
     .event-datetime {
         font-size: 0.85rem;
     }
+
 }
 
 @media (max-width: 400px) {
