@@ -1,6 +1,7 @@
 
 const EVENTS_PER_PAGE = 15; // Desktop default
 const MOBILE_EVENTS_PER_PAGE = 6; // Mobile-only pagination
+const MOBILE_PAGINATION_BREAKPOINT = 600;
 const HOME_EVENTS_LIMIT = 3;
 const Y2_EVENTS_PAGE_PATH = 'html/mlchallenge-y2/events.html';
 
@@ -21,9 +22,29 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function getEventsPerPage() {
-    return window.matchMedia('(max-width: 600px)').matches
+    return window.matchMedia(`(max-width: ${MOBILE_PAGINATION_BREAKPOINT}px)`).matches
         ? MOBILE_EVENTS_PER_PAGE
         : EVENTS_PER_PAGE;
+}
+
+function isMobilePagination() {
+    return window.matchMedia(`(max-width: ${MOBILE_PAGINATION_BREAKPOINT}px)`).matches;
+}
+
+function getVisiblePaginationItems(totalPages) {
+    if (!isMobilePagination() || totalPages <= 7) {
+        return Array.from({ length: totalPages }, (_, index) => index + 1);
+    }
+
+    if (currentPage <= 3) {
+        return [1, 2, 3, 'ellipsis', totalPages];
+    }
+
+    if (currentPage >= totalPages - 2) {
+        return [1, 'ellipsis', totalPages - 2, totalPages - 1, totalPages];
+    }
+
+    return [1, 'ellipsis', currentPage - 1, currentPage, currentPage + 1, 'ellipsis', totalPages];
 }
 
 function isExternalLink(url) {
@@ -462,8 +483,9 @@ function renderPagination() {
     if (totalPages <= 1) return;
 
     const prevBtn = document.createElement('button');
-    prevBtn.className = 'pagination-btn';
+    prevBtn.className = 'pagination-nav';
     prevBtn.textContent = 'Prev';
+    prevBtn.setAttribute('aria-label', 'Go to previous page');
     prevBtn.disabled = currentPage === 1;
     prevBtn.addEventListener('click', () => {
         if (currentPage > 1) {
@@ -475,22 +497,35 @@ function renderPagination() {
     });
     pagination.appendChild(prevBtn);
 
-    for (let i = 1; i <= totalPages; i++) {
+    const paginationItems = getVisiblePaginationItems(totalPages);
+
+    paginationItems.forEach(item => {
+        if (item === 'ellipsis') {
+            const ellipsis = document.createElement('span');
+            ellipsis.className = 'pagination-ellipsis';
+            ellipsis.textContent = '...';
+            ellipsis.setAttribute('aria-hidden', 'true');
+            pagination.appendChild(ellipsis);
+            return;
+        }
+
         const pageBtn = document.createElement('button');
-        pageBtn.className = `pagination-btn ${i === currentPage ? 'active' : ''}`;
-        pageBtn.textContent = i;
+        pageBtn.className = `pagination-page ${item === currentPage ? 'active' : ''}`;
+        pageBtn.textContent = item;
+        pageBtn.setAttribute('aria-label', `Go to page ${item}`);
         pageBtn.addEventListener('click', () => {
-            currentPage = i;
+            currentPage = item;
             renderEvents();
             renderPagination();
             scrollToTop();
         });
         pagination.appendChild(pageBtn);
-    }
+    });
 
     const nextBtn = document.createElement('button');
-    nextBtn.className = 'pagination-btn';
+    nextBtn.className = 'pagination-nav';
     nextBtn.textContent = 'Next';
+    nextBtn.setAttribute('aria-label', 'Go to next page');
     nextBtn.disabled = currentPage === totalPages;
     nextBtn.addEventListener('click', () => {
         if (currentPage < totalPages) {

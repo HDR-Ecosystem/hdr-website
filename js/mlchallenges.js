@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateChallengeStatuses, 30000);
 });
 
+function isMobileChallengeLayout() {
+    return window.matchMedia('(max-width: 500px)').matches;
+}
+
 function setupFilters() {
     const filterToggle = document.getElementById('challengeFilterToggle');
     const filterDropdown = document.getElementById('challengeFilterDropdown');
@@ -97,7 +101,9 @@ function updateChallengeStatuses() {
                 } else if (workshopRemaining !== null && workshopRemaining > 0) {
                     const workshopDays = Math.max(0, Math.floor(workshopRemaining / (1000 * 60 * 60 * 24)));
                     const dayLabel = workshopDays === 1 ? 'day' : 'days';
-                    countdown.textContent = `Winners Announced + ${workshopDays} ${dayLabel} till Award Ceremony/FARR`;
+                    countdown.textContent = isMobileChallengeLayout()
+                        ? `Winners announced. ${workshopDays} ${dayLabel} till FARR`
+                        : `Winners Announced + ${workshopDays} ${dayLabel} till Award Ceremony/FARR`;
                     useClosedStyle = false;
                 } else {
                     countdown.textContent = 'Closed';

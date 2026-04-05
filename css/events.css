@@ -8,16 +8,6 @@
     text-align: center;
 }
 
-.events-banner-subtitle {
-    max-width: 680px;
-    margin: 14px auto 0;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #282828;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 400;
-}
-
 .events-controls {
     padding: 0;
     text-align: center;
@@ -332,8 +322,7 @@
     overflow: hidden;
 }
 
-.filter-btn-main:focus-visible,
-.pagination-btn:focus-visible {
+.filter-btn-main:focus-visible {
     outline: 3px solid rgba(0, 115, 230, 0.6);
     outline-offset: 3px;
 }
@@ -348,49 +337,6 @@
 
 .no-events.hidden {
     display: none;
-}
-
-.pagination {
-    margin-top: 30px;
-    text-align: center;
-}
-
-.pagination-btn {
-    margin: 0 6px;
-    padding: 0;
-    width: 45px;
-    height: 45px;
-    border: 2px solid #e0e0e0;
-    background-color: #fff;
-    color: #666;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    font-family: 'Source Sans Pro', sans-serif;
-}
-
-.pagination-btn:hover {
-    border-color: #0073e6;
-    color: #0073e6;
-}
-
-.pagination-btn.active {
-    background-color: #0073e6;
-    border-color: #0073e6;
-    color: #fff;
-}
-
-.pagination-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.pagination-btn:disabled:hover {
-    transform: none;
-    box-shadow: none;
-    border-color: #e0e0e0;
-    color: #666;
 }
 
 .pagination-section {
@@ -412,15 +358,42 @@
         padding: 36px 15px 60px; 
     }
 
+    .events-controls {
+        margin-bottom: 28px;
+    }
+
     .filter-btn-main {
-        width: 100%;
+        width: auto;
         justify-content: center;
+        min-height: 44px;
+        padding: 0.55rem 0.95rem;
+        border-radius: 18px;
     }
 }
 
 @media (max-width: 600px) {
     .events-container {
         padding: 32px 24px 50px;
+    }
+
+    .pagination-section {
+        padding: 24px 0;
+    }
+
+    .filter-button-wrapper {
+        align-self: stretch;
+    }
+
+    .filter-btn-main {
+        min-width: 0;
+        padding: 0.5rem 0.85rem;
+        font-size: 0.9rem;
+    }
+
+    .filter-dropdown {
+        left: auto;
+        right: 0;
+        min-width: min(220px, calc(100vw - 48px));
     }
 
     .events-grid {
@@ -462,6 +435,7 @@
     .event-datetime {
         font-size: 0.85rem;
     }
+
 }
 
 @media (max-width: 400px) {
