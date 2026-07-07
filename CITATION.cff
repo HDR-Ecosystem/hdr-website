@@ -1,0 +1,45 @@
+abstract: "Harnessing the Data Revolution (HDR) Ecosystem website for discoverability of all five institutes and their resources."
+authors:
+- family-names: "Amo-Mensah"
+  given-names: "Jason"
+  affiliation: "The Ohio State University"
+- family-names: Voithofer
+  given-names: Grace
+  affiliation: "The Ohio State University"
+- family-names: Phillips
+  given-names: Andrew
+  affiliation: "The Ohio State University"
+- family-names: "Campolongo"
+  given-names: "Elizabeth G."
+  affiliation: "The Ohio State University"
+  orcid: "https://orcid.org/0000-0003-0846-2413"
+- family-names: Boghrat
+  given-names: Diane
+  affiliation: "The Ohio State University"
+- family-names: Fonner
+  given-names: Brittany
+  affiliation: "The Ohio State University"
+cff-version: 1.2.0
+date-released: "2026-07-DD"
+identifiers:
+  - description: "The GitHub release URL of tag v1.0.0."
+    type: url
+    value: "https://github.com/HDR-Ecosystem/hdr-website/releases/tag/v1.0.0"
+  - description: "The GitHub URL of the commit tagged with <tag-name>."
+    type: url
+    value: "https://github.com/HDR-Ecosystem/hdr-website/tree/<commit-hash>" # Update on release
+keywords:
+  - imageomics
+  - A3D3
+  - ID4
+  - iHARP
+  - I-GUIDE
+  - HDR-Ecosystem
+  - website
+license: MIT
+message: "If you find this software helpful in your research, please cite it using these metadata."
+repository-code: "https://github.com/HDR-Ecosystem/hdr-website"
+title: "HDR Ecosystem Website"
+version: 1.0.0
+#doi: <version-agnostic DOI from Zenodo>
+type: software

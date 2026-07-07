@@ -1,0 +1,59 @@
+{
+    "creators": [
+      {
+          "name": "Amo-Mensah, Jason",
+          "affiliation": "The Ohio State University"
+      },
+      {
+          "name": "Voithofer, Grace",
+          "affiliation": "The Ohio State University"
+      },
+      {
+          "name": "Phillips, Andrew",
+          "affiliation": "The Ohio State University"
+      },
+      {
+          "name": "Campolongo, Elizabeth G.",
+          "affiliation": "The Ohio State University"
+      },
+      {
+          "name": "Boghrat, Diane",
+          "affiliation": "The Ohio State University"
+      },
+      {
+          "name": "Fonner, Brittany",
+          "affiliation": "The Ohio State University"
+      }
+    ],
+    "description": "<p>Harnessing the Data Revolution (HDR) Ecosystem website for discoverability of all five institutes and their resources. Content was provided by the broader HDR Community.</p> <p>The Harnessing the Data Revolution (HDR) Community is a national ecosystem of NSF-funded institutes advancing data-intensive science, engineering, and education through convergence research. Established under the NSF Big Idea Harnessing the Data Revolution, the HDR Ecosystem brings together domain scientists, data scientists, and cyberinfrastructure experts to accelerate discovery, develop scalable and interoperable tools, and prepare a diverse data-enabled workforce.</p> <p>Member institutes—including <a href='https://a3d3.ai/'>A3D3</a>, <a href='https://imageomics.org/'>Imageomics</a>, <a href='https://id4.mines.edu/'>ID4</a>, <a href='https://iharp.umbc.edu/'>iHARP</a>, and <a href='https://i-guide.io/'>I-GUIDE</a>—serve as both independent centers of excellence and collaborative partners, addressing challenges ranging from climate resilience and polar research to biology, materials design, and artificial intelligence. Through shared resources, cross-institute initiatives, and open science practices, the HDR Ecosystem strengthens the national research enterprise and ensures that data-driven innovation contributes to scientific progress and societal well-being.</p>",
+    "keywords": [
+      "imageomics",
+      "A3D3",
+      "ID4",
+      "iHARP",
+      "I-GUIDE",
+      "HDR-Ecosystem",
+      "website"
+    ],
+    "title": "HDR Ecosystem Website",
+    "version": "1.0.0",
+    "license": "MIT",
+    "publication_date": "2026-07-08",
+    "grants": [
+        {
+            "id": "021nxhr62::2118240"
+        },
+        {
+            "id": "021nxhr62::2118201"
+        },
+        {
+            "id": "021nxhr62::2118285"
+        },
+        {
+            "id": "021nxhr62::2118329"
+        },
+        {
+            "id": "021nxhr62::2117997"
+        }
+    ]
+}
