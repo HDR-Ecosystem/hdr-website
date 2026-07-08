@@ -25,9 +25,9 @@ identifiers:
   - description: "The GitHub release URL of tag v1.0.0."
     type: url
     value: "https://github.com/HDR-Ecosystem/hdr-website/releases/tag/v1.0.0"
-  - description: "The GitHub URL of the commit tagged with <tag-name>."
+  - description: "The GitHub URL of the commit tagged with v1.0.0."
     type: url
-    value: "https://github.com/HDR-Ecosystem/hdr-website/tree/<commit-hash>" # Update on release
+    value: "https://github.com/HDR-Ecosystem/hdr-website/tree/fb8cc2399dcd86d381169d3cda1f45cc8d634888" # Update on release
 keywords:
   - imageomics
   - A3D3
@@ -41,5 +41,5 @@ message: "If you find this software helpful in your research, please cite it usi
 repository-code: "https://github.com/HDR-Ecosystem/hdr-website"
 title: "HDR Ecosystem Website"
 version: 1.0.0
-#doi: <version-agnostic DOI from Zenodo>
+doi: "10.5281/zenodo.21267052"
 type: software
